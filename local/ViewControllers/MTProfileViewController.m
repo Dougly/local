@@ -7,7 +7,9 @@
 //
 
 #import "MTProfileViewController.h"
-
+#import "AppDelegate.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
 
 @interface MTProfileViewController ()
 @end
@@ -16,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.sidePanelController.minimumMovePercentage = 40;
 }
 
 /*

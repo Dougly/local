@@ -21,7 +21,7 @@ class ClockViewController: UIViewController {
     @IBOutlet weak var wakeLabel: UILabel!
     @IBOutlet weak var rangeCircularSlider: RangeCircularSlider!
     @IBOutlet weak var clockFormatSegmentedControl: UISegmentedControl!
-    
+    var timer: Timer!
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -43,7 +43,7 @@ class ClockViewController: UIViewController {
         rangeCircularSlider.startPointValue = CGFloat(1 * 60 * 60)
         rangeCircularSlider.endPointValue = CGFloat(8 * 60 * 60)
 
-        updateTexts(rangeCircularSlider)
+        updateTexts(nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +51,17 @@ class ClockViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func updateTexts(_ sender: AnyObject) {
+    @IBAction func updateTexts(_ sender: AnyObject?) {
+        if sender != nil {
+            self.sidePanelController.allowLeftSwipe = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.enableSideBar), userInfo: nil, repeats: false);
+        } else {
+            
+        }
         
         adjustValue(value: &rangeCircularSlider.startPointValue)
         adjustValue(value: &rangeCircularSlider.endPointValue)
@@ -70,6 +80,10 @@ class ClockViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         durationLabel.text = dateFormatter.string(from: durationDate)
         dateFormatter.dateFormat = "hh:mm a"
+    }
+    
+    func enableSideBar() {
+        self.sidePanelController.allowLeftSwipe = true;
     }
     
     func adjustValue(value: inout CGFloat) {
