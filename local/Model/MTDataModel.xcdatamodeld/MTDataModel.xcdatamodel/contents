@@ -1,95 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G31" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Device" syncable="YES">
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="MTPhoto" representedClassName="MTPhoto" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="htmlAttributes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="place" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MTPlace" inverseName="photos" inverseEntity="MTPlace" syncable="YES"/>
     </entity>
-    <entity name="MTDelivery" representedClassName="MTDelivery" syncable="YES">
-        <attribute name="expectedDeliveryTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="pickupTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="destination" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MTDeliveryDestination" inverseName="relationship" inverseEntity="MTDeliveryDestination" syncable="YES"/>
-        <relationship name="details" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MTDeliveryDetails" inverseName="relationship" inverseEntity="MTDeliveryDetails" syncable="YES"/>
-        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MTDeliveryOrigin" inverseName="relationship" inverseEntity="MTDeliveryOrigin" syncable="YES"/>
-        <relationship name="sandTickets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTDeliverySandTicket" inverseName="relationship" inverseEntity="MTDeliverySandTicket" syncable="YES"/>
-    </entity>
-    <entity name="MTDeliveryDestination" representedClassName="MTDeliveryDestination" syncable="YES">
-        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="contactNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+    <entity name="MTPlace" representedClassName="MTPlace" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isOpenNow" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="specialInstruction" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTDelivery" inverseName="destination" inverseEntity="MTDelivery" syncable="YES"/>
-    </entity>
-    <entity name="MTDeliveryDetails" representedClassName="MTDeliveryDetails" syncable="YES">
-        <attribute name="mileage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="mt" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="orderId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="po" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTDelivery" inverseName="details" inverseEntity="MTDelivery" syncable="YES"/>
-    </entity>
-    <entity name="MTDeliveryOrigin" representedClassName="MTDeliveryOrigin" syncable="YES">
-        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="contactNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="loadingInstruction" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTDelivery" inverseName="origin" inverseEntity="MTDelivery" syncable="YES"/>
-    </entity>
-    <entity name="MTDeliverySandTicket" representedClassName="MTDeliverySandTicket" syncable="YES">
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTDelivery" inverseName="sandTickets" inverseEntity="MTDelivery" syncable="YES"/>
-    </entity>
-    <entity name="MTLog" representedClassName="MTLog" syncable="YES">
-        <attribute name="isPresent" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="jobId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="loadArrivalDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="loadingSiteAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="loadingSiteLatitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="loadingSiteLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="loadingSiteName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="orderId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="sandTicketNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="wellDepartDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="wellSiteAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wellSiteLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="wellSiteLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="wellSiteName" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="MTPreviousVehicle" representedClassName="MTPreviousVehicle" syncable="YES">
-        <attribute name="trailerNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="truckNumber" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="MTProfile" representedClassName="MTProfile" syncable="YES">
-        <attribute name="carrierName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="certificates" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="contactNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="licenseUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profilePhoto" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trailerNumer" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="truckNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pricingLevel" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scope" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="types" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uniqueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vincinity" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTPhoto" inverseName="place" inverseEntity="MTPhoto" syncable="YES"/>
     </entity>
     <entity name="MTUser" representedClassName="MTUser" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Device" positionX="-54" positionY="144" width="128" height="60"/>
-        <element name="MTDelivery" positionX="-9" positionY="171" width="128" height="135"/>
-        <element name="MTDeliveryDestination" positionX="-9" positionY="144" width="128" height="30"/>
-        <element name="MTDeliveryDetails" positionX="-18" positionY="135" width="128" height="30"/>
-        <element name="MTDeliveryOrigin" positionX="9" positionY="180" width="128" height="30"/>
-        <element name="MTDeliverySandTicket" positionX="-9" positionY="153" width="128" height="30"/>
-        <element name="MTLog" positionX="-27" positionY="207" width="128" height="270"/>
-        <element name="MTPreviousVehicle" positionX="-27" positionY="162" width="128" height="75"/>
         <element name="MTUser" positionX="-63" positionY="135" width="128" height="60"/>
-        <element name="MTProfile" positionX="-27" positionY="252" width="128" height="180"/>
+        <element name="MTPlace" positionX="-63" positionY="144" width="128" height="255"/>
+        <element name="MTPhoto" positionX="-54" positionY="162" width="128" height="120"/>
     </elements>
 </model>

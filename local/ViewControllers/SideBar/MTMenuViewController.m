@@ -18,6 +18,7 @@
 #import "MTLogsViewController.h"
 #import "MTProfileViewController.h"
 #import "MTSupportViewController.h"
+#import "MTMapViewController.h"
 #import "Local-swift.h"
 
 static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
@@ -89,7 +90,7 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
 #pragma mark - UITableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,23 +101,13 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
 
     switch (indexPath.row) {
         case 0:{
-            menuViewCell.cellStatus = MTMenuCellDispatch;
-            menuViewCell.titleLabel.text = @"Dispatch";
+            menuViewCell.cellStatus = MTMenuCellMap;
+            menuViewCell.titleLabel.text = @"Clustering";
             menuViewCell.leftImage.image = [UIImage imageNamed:@"ic_list"];
         } break;
         case 1:{
-            menuViewCell.cellStatus = MTMenuCellLogs;
-            menuViewCell.titleLabel.text = @"Logs";
-            menuViewCell.leftImage.image = [UIImage imageNamed:@"ic_about"];
-        } break;
-        case 2:{
-            menuViewCell.cellStatus = MTMenuCellProfile;
-            menuViewCell.titleLabel.text = @"Profile";
-            menuViewCell.leftImage.image = [UIImage imageNamed:@"ic_home"];
-        } break;
-        case 3:{
-            menuViewCell.cellStatus = MTMenuCellContact;
-            menuViewCell.titleLabel.text = @"Support";
+            menuViewCell.cellStatus = MTMenuCellSettings;
+            menuViewCell.titleLabel.text = @"Settings";
             menuViewCell.leftImage.image = [UIImage imageNamed:@"ic_settings"];
         } break;
 
@@ -151,35 +142,20 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
     switch (indexPath.row) {
         case 0:{
             UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MTDispatchViewController *dispatchViewController = [main instantiateViewControllerWithIdentifier:@"MTDispatchViewController"];
+            MTMapViewController *mapViewController = [main instantiateViewControllerWithIdentifier:@"MTMapViewController"];
             
-            dispatchViewController.title = @"Dispatch";
-            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:dispatchViewController];
+            mapViewController.title = @"Clustering";
+            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:mapViewController];
         } break;
             
         case 1:{
             UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MTLogsViewController *logsViewController = [main instantiateViewControllerWithIdentifier:@"MTLogsViewController"];
-            
-            logsViewController.title = @"Logs";
-            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:logsViewController];
-        } break;
-            
-        case 2:{
-            UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ClockViewController *profileViewController = [main instantiateViewControllerWithIdentifier:@"ClockViewController"];
             
-            profileViewController.title = @"Profile";
+            profileViewController.title = @"Settings";
             [[AppDelegate sharedPanel] setCentralPanelControllerViewController:profileViewController];
         } break;
-        case 3:{
-            UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MTProfileViewController *supportViewController = [main instantiateViewControllerWithIdentifier:@"MTSupportViewController"];
             
-            supportViewController.title = @"Support";
-            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:supportViewController];
-        } break;
-
         default:
             break;
     }

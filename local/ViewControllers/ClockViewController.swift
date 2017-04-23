@@ -33,15 +33,16 @@ class ClockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        rangeCircularSlider.trackFillColor = UIColor.init(colorLiteralRed: 94.0/255.0, green: 159.0/255.0, blue: 222.0/255.0, alpha: 1.0)
         // setup O'clock
-        rangeCircularSlider.startThumbImage = UIImage(named: "Bedtime")
-        rangeCircularSlider.endThumbImage = UIImage(named: "Wake")
+        rangeCircularSlider.startThumbImage = UIImage(named: "Opened")
+        rangeCircularSlider.endThumbImage = UIImage(named: "Closed")
         
         let dayInSeconds = 24 * 60 * 60
         rangeCircularSlider.maximumValue = CGFloat(dayInSeconds)
         
-        rangeCircularSlider.startPointValue = CGFloat(1 * 60 * 60)
-        rangeCircularSlider.endPointValue = CGFloat(8 * 60 * 60)
+        rangeCircularSlider.startPointValue = CGFloat(9 * 60 * 60)
+        rangeCircularSlider.endPointValue = CGFloat(19 * 60 * 60)
 
         updateTexts(nil)
     }
@@ -52,16 +53,7 @@ class ClockViewController: UIViewController {
     }
     
     @IBAction func updateTexts(_ sender: AnyObject?) {
-        if sender != nil {
-            self.sidePanelController.allowLeftSwipe = false
-            
-            if let timer = timer {
-                timer.invalidate()
-            }
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.enableSideBar), userInfo: nil, repeats: false);
-        } else {
-            
-        }
+        handleSidebar(sender)
         
         adjustValue(value: &rangeCircularSlider.startPointValue)
         adjustValue(value: &rangeCircularSlider.endPointValue)
@@ -80,6 +72,25 @@ class ClockViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         durationLabel.text = dateFormatter.string(from: durationDate)
         dateFormatter.dateFormat = "hh:mm a"
+        
+        if (durationLabel.text == "00:00") {
+            durationLabel.text = "24/7"
+            durationLabel.isHidden = false;
+        }
+        else {
+            durationLabel.isHidden = true
+        }
+    }
+    
+    func handleSidebar(_ sender: AnyObject?) {
+        if sender != nil {
+            self.sidePanelController.allowLeftSwipe = false
+            
+            if let timer = timer {
+                timer.invalidate()
+            }
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.enableSideBar), userInfo: nil, repeats: false);
+        }
     }
     
     func enableSideBar() {

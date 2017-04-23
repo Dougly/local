@@ -12,14 +12,8 @@
 
 #import "NSObject+PNCast.h"
 #import "MTUser.h"
-#import "MTPreviousVehicle.h"
-#import "MTDelivery.h"
-#import "MTDeliveryOrigin.h"
-#import "MTDeliveryDetails.h"
-#import "MTDeliveryDestination.h"
-#import "MTDeliverySandTicket.h"
-#import "MTLog.h"
-#import "MTProfile.h"
+#import "MTPlace.h"
+#import "MTPhoto.h"
 
 @interface MTDataModel ()
 
@@ -185,223 +179,50 @@
 }
 
 #pragma mark - fetch requests
-/*- (NSString *)getAccessToken {
-    __block NSString *token = nil;
-    if ([NSThread isMainThread]) {
-        NSFetchRequest *allUsers = [[NSFetchRequest alloc] init];
-        [allUsers setEntity:[NSEntityDescription entityForName:@"MTUser" inManagedObjectContext:self.managedObjectContext]];
-        
-        NSError *error = nil;
-        NSArray *users = [self.managedObjectContext executeFetchRequest:allUsers
-                                                                  error:&error];
-        
-        token = [((MTUser *)users.firstObject).accessToken copy];
-    }
-    else {
-        __weak typeof (self) weakSelf = self;
-        [self.managedObjectContext performBlock:^{
-            NSFetchRequest *allUsers = [[NSFetchRequest alloc] init];
-            [allUsers setEntity:[NSEntityDescription entityForName:@"MTUser" inManagedObjectContext:self.managedObjectContext]];
-            
-            NSError *error = nil;
-            NSArray *users = [weakSelf.managedObjectContext executeFetchRequest:allUsers
-                                                                          error:&error];
-            token = [((MTUser *)users.firstObject).accessToken copy];
-        }];
-    }
-    
-    return token;
-}*/
 
-- (NSString *)getAccessToken {
-    NSFetchRequest *allUsers = [[NSFetchRequest alloc] init];
-    [allUsers setEntity:[NSEntityDescription entityForName:@"MTUser" inManagedObjectContext:self.managedObjectContext]];
-    
-    NSError *error = nil;
-    NSArray *users = [self.managedObjectContext executeFetchRequest:allUsers
-                                                              error:&error];
-    
-    return [((MTUser *)users.firstObject).accessToken copy];
-}
-
-- (MTDelivery *)getDeliveryDetails {
-    NSFetchRequest *allDetails = [[NSFetchRequest alloc] init];
-    [allDetails setEntity:[NSEntityDescription entityForName:@"MTDelivery" inManagedObjectContext:self.managedObjectContext]];
-    
-    NSError *error = nil;
-    NSArray *details = [self.managedObjectContext executeFetchRequest:allDetails
-                                                                error:&error];
-    
-    return [details firstObject];
-}
-
-- (NSArray *)getPastLogs {
-    NSFetchRequest *allLogs = [[NSFetchRequest alloc] init];
-    [allLogs setEntity:[NSEntityDescription entityForName:@"MTLog"
+- (NSArray *)getPlaces {
+    NSFetchRequest *allPlaces = [[NSFetchRequest alloc] init];
+    [allPlaces setEntity:[NSEntityDescription entityForName:@"MTPlace"
                                    inManagedObjectContext:self.managedObjectContext]];
     
     NSError *error = nil;
-    NSArray *logs = [self.managedObjectContext executeFetchRequest:allLogs
+    NSArray *places = [self.managedObjectContext executeFetchRequest:allPlaces
                                                              error:&error];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isPresent == %@", [NSNumber numberWithBool:NO]];
-    NSArray *pastLogs = [logs filteredArrayUsingPredicate:predicate];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isPresent == %@", [NSNumber numberWithBool:NO]];
+    //NSArray *filteredPlaces = [places filteredArrayUsingPredicate:predicate];
     
-    return [pastLogs copy];
+    return [places copy];
 }
 
-- (MTLog *)getPresentLog {
-    NSFetchRequest *allLogs = [[NSFetchRequest alloc] init];
-    [allLogs setEntity:[NSEntityDescription entityForName:@"MTLog"
-                                   inManagedObjectContext:self.managedObjectContext]];
-    
-    NSError *error = nil;
-    NSArray *logs = [self.managedObjectContext executeFetchRequest:allLogs
-                                                             error:&error];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isPresent == %@", [NSNumber numberWithBool:YES]];
-    NSArray *presentLogs = [logs filteredArrayUsingPredicate:predicate];
-    
-    return presentLogs.firstObject;
-}
+#pragma mark - parse utils
 
-- (MTProfile *)getProfile {
-    NSFetchRequest *allLogs = [[NSFetchRequest alloc] init];
-    [allLogs setEntity:[NSEntityDescription entityForName:@"MTProfile"
-                                   inManagedObjectContext:self.managedObjectContext]];
+- (NSArray *)parsePlaces:(NSDictionary *)dictionary {
+    [self removeAllEntities:@"MTPlace"];
+    MTPlace *place = nil;
+    NSMutableArray *places = [[NSMutableArray alloc] init];
     
-    NSError *error = nil;
-    NSArray *profiles = [self.managedObjectContext executeFetchRequest:allLogs
-                                                             error:&error];
-    
-    
-    return profiles.firstObject;
-}
-
-#pragma mark - parsing routines
-
-- (NSString *)parseLogin:(NSData *)data {
-    [self removeAllEntities:@"MTUser"];
-    MTUser *user = nil;
-    if(data != nil) {
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            user = (MTUser *)[self emptyNode:MTUser.class];
-            [user parseNode:jsonDict];
-        }
-    }
-    [self saveContext];
-    
-    return [user.accessToken copy];
-}
-
-- (MTPreviousVehicle *)parsePreviousVehicle:(NSData *)data {
-    [self removeAllEntities:@"MTPreviousVehicle"];
-    MTPreviousVehicle *previousVehicle = nil;
-    if(data != nil) {
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            previousVehicle = (MTPreviousVehicle *)[self emptyNode:MTPreviousVehicle.class];
-            [previousVehicle parseNode:jsonDict];
-        }
-    }
-    [self saveContext];
-    
-    return previousVehicle;
-}
-
-- (MTDelivery *)parseDeliveryDetails:(NSData *)data {
-    [self removeAllEntities:@"MTDelivery"];
-    MTDelivery *delivery = nil;
-    if(data != nil) {
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            delivery = (MTDelivery *)[self emptyNode:MTDelivery.class];
-            [delivery parseNode:jsonDict];
-            
-            MTDeliveryDestination *destination = (MTDeliveryDestination *)[self emptyNode:MTDeliveryDestination.class];
-            [destination parseNode:[jsonDict[@"data"][@"destination"] firstObject]];
-            [delivery setDestination:destination];
-            
-            MTDeliveryOrigin *origin = (MTDeliveryOrigin *)[self emptyNode:MTDeliveryOrigin.class];
-            [origin parseNode:[jsonDict[@"data"][@"origin"] firstObject]];
-            [delivery setOrigin:origin];
-            
-            MTDeliveryDetails *details = (MTDeliveryDetails *)[self emptyNode:MTDeliveryDetails.class];
-            [details parseNode:[jsonDict[@"data"][@"orderDetails"] firstObject]];
-            [delivery setDetails:details];
-            
-            NSArray *sandTickets = jsonDict[@"data"][@"sandTicket"];
-            for (NSDictionary *ticketDictionary in sandTickets) {
-                MTDeliverySandTicket *deliveryTicket = (MTDeliverySandTicket *)[self emptyNode:MTDeliverySandTicket.class];
-                [deliveryTicket parseNode:ticketDictionary];
-                [delivery addSandTicketsObject:deliveryTicket];
+    if(dictionary != nil) {
+        NSArray *list = [dictionary objectForKey:@"results"];
+        if (list){
+            for (NSDictionary *placeDict in list){
+                place = (MTPlace *)[self emptyNode:MTPlace.class];
+                [place parseNode:placeDict];
+                
+                NSArray *photoDictionaries = placeDict[@"photos"];
+                for (NSDictionary *photoDictionary in photoDictionaries) {
+                    MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
+                    [photo parseNode:photoDictionary];
+                    [place addPhotosObject:photo];
+                }
+                
+                [places addObject:place];
             }
         }
     }
     [self saveContext];
     
-    return delivery;
-}
-
-- (MTProfile *)parseProfile:(NSData *)data {
-    [self removeAllEntities:@"MTProfile"];
-    MTProfile *profile = nil;
-    if(data != nil) {
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            profile = (MTProfile *)[self emptyNode:MTProfile.class];
-            [profile parseNode:jsonDict[@"data"]];
-        }
-    }
-    [self saveContext];
-    
-    return profile;
-}
-
-- (NSArray *)parseLogs:(NSData *)data {
-    [self removeAllEntities:@"MTLog"];
-    NSMutableArray *logsArray = [[NSMutableArray alloc] init];
-    if(data != nil) {
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if (!error && [jsonDict isKindOfClass:NSDictionary.class])
-        {
-            NSArray *pastRecords = jsonDict[@"data"][@"pastRecords"];
-            for (NSDictionary *pastRecord in pastRecords) {
-                MTLog *log = nil;
-                log = (MTLog *)[self emptyNode:MTLog.class];
-                [log parseNode:pastRecord
-                     isPresent:false];
-                [logsArray addObject:log];
-            }
-            
-            NSArray *presentRecords = jsonDict[@"data"][@"presentRecord"];
-            for (NSDictionary *presentRecord in presentRecords) {
-                MTLog *log = nil;
-                log = (MTLog *)[self emptyNode:MTLog.class];
-                [log parseNode:presentRecord
-                     isPresent:true];
-                [logsArray addObject:log];
-            }
-        }
-    }
-    [self saveContext];
-    
-    return [logsArray copy];
+    return [places copy];
 }
 
 #pragma mark - removing objects

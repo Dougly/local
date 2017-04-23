@@ -110,4 +110,9 @@ return _sharedObject;
 #define MT_HTTP_EXPIRED 401
 
 #define sServerNotAccessible @"Could not connect to server"
+
+
+// --- MAP ---
+#define kGoogleMapAPIKey    @"AIzaSyBim_-bgtrgl7sp7C4p_76kaLVgyWpBvYY"
+
 #endif

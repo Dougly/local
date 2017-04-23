@@ -10,33 +10,16 @@
 
 // NOTE: to update models:  mogenerator -m MTDataModel.xcdatamodel/ -O ../Classes/ --template-var arc=YES
 
-@class JCProduct;
-@class JCPostsItem;
 @class MTUser;
-@class MTPreviousVehicle;
-@class MTDelivery;
-@class MTLog;
-@class MTProfile;
+
 
 @interface MTDataModel : NSObject
 
 + (MTDataModel *)sharedDatabaseStorage;
 
-- (void)saveContext;
-
-- (NSString *)parseLogin:(NSData *)data;
-- (MTPreviousVehicle *)parsePreviousVehicle:(NSData *)data;
-- (MTDelivery *)parseDeliveryDetails:(NSData *)data;
-- (NSArray *)parseLogs:(NSData *)data;
-- (MTProfile *)parseProfile:(NSData *)data;
-
-- (NSArray *)getPastLogs;
-- (MTLog *)getPresentLog;
-- (NSString *)getAccessToken;
-- (MTDelivery *)getDeliveryDetails;
-- (MTProfile *)getProfile;
+- (NSArray *)parsePlaces:(NSDictionary *)dictionary;
+- (NSArray *)getPlaces;
 
 - (NSArray *)fetchObjectsForEntityName:(NSString *)newEntityName
                          withPredicate:(NSPredicate *)predicate;
-- (void)removeToken;
 @end

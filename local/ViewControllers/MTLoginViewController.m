@@ -12,11 +12,7 @@
 #import "MTDataModel.h"
 
 @interface MTLoginViewController ()
-
-
 - (IBAction)loginButtonClicked:(id)sender;
-- (IBAction)resetPassword:(id)sender;
-
 @end
 
 @implementation MTLoginViewController
@@ -25,14 +21,8 @@
     [super viewDidLoad];
 }
 
-- (void)checkLogin {
-    if ([[MTDataModel sharedDatabaseStorage] getAccessToken]) {
-        [self showMainScreen:NO];
-    }
-}
 
 - (void)showMainScreen:(BOOL)isAnimated {
-    
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PanelsViewController *sidebarController = [main instantiateViewControllerWithIdentifier:@"PanelsViewController"];
     [self.navigationController pushViewController:sidebarController animated:isAnimated];
@@ -70,7 +60,5 @@
     
     [request run];*/
 }
-
-
 
 @end

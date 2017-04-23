@@ -35,14 +35,14 @@
             self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_list_active"]:[UIImage imageNamed:@"ic_list"];
             break;
         case 1:
-            self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_about_active"]:[UIImage imageNamed:@"ic_about"];
+            self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_settings_active"]:[UIImage imageNamed:@"ic_settings"];
             break;
-        case 2:
+        /*case 2:
             self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_home_active"]:[UIImage imageNamed:@"ic_home"];
             break;
         case 3:
             self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_settings_active"]:[UIImage imageNamed:@"ic_settings"];
-            break;
+            break;*/
 
         default:
             break;

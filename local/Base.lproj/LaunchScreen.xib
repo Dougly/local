@@ -15,17 +15,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_splash" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-j2-vp9">
-                    <rect key="frame" x="165" y="165" width="150" height="150"/>
+                    <rect key="frame" x="175" y="175" width="130" height="130"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="ZRg-33-6me"/>
-                        <constraint firstAttribute="height" constant="150" id="iqr-Sj-1wK"/>
+                        <constraint firstAttribute="height" constant="130" id="EiQ-mU-wQW"/>
+                        <constraint firstAttribute="width" constant="130" id="yGx-Jw-Ejr"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8cZ-j2-vp9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="N9E-R6-DgA"/>
-                <constraint firstItem="8cZ-j2-vp9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rki-16-O1Y"/>
+                <constraint firstItem="8cZ-j2-vp9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4pc-Lg-XmO"/>
+                <constraint firstItem="8cZ-j2-vp9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SbT-qt-j8o"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -33,6 +33,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_splash" width="150" height="150"/>
+        <image name="ic_splash" width="150" height="148"/>
     </resources>
 </document>
