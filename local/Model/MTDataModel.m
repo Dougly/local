@@ -214,20 +214,26 @@
                 NSArray *list = [jsonDict objectForKey:@"results"];
                 
                 if (list){
-                    if ([self checkIfPlacesNotYetAdded:list]) {
+                    NSArray *alreadyStoredPlaceIds = [self getAlreadyStoredPlaces:list];
+                    if (alreadyStoredPlaceIds.count < list.count) {
+                        
+                        
                         places = [[NSMutableArray alloc] init];
                         for (NSDictionary *placeDict in list){
-                            place = (MTPlace *)[self emptyNode:MTPlace.class];
-                            [place parseNode:placeDict];
                             
-                            NSArray *photoDictionaries = placeDict[@"photos"];
-                            for (NSDictionary *photoDictionary in photoDictionaries) {
-                                MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
-                                [photo parseNode:photoDictionary];
-                                [place addPhotosObject:photo];
+                            if (![alreadyStoredPlaceIds containsObject:placeDict[@"id"]]) {
+                                place = (MTPlace *)[self emptyNode:MTPlace.class];
+                                [place parseNode:placeDict];
+                                
+                                NSArray *photoDictionaries = placeDict[@"photos"];
+                                for (NSDictionary *photoDictionary in photoDictionaries) {
+                                    MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
+                                    [photo parseNode:photoDictionary];
+                                    [place addPhotosObject:photo];
+                                }
+                                
+                                [places addObject:place];
                             }
-                            
-                            [places addObject:place];
                         }
                     }
                 }
@@ -240,7 +246,7 @@
     return [places copy];
 }
 
-- (BOOL)checkIfPlacesNotYetAdded:(NSArray *)places {
+- (NSArray *)getAlreadyStoredPlaces:(NSArray *)places {
     NSMutableArray *placeIds = [[NSMutableArray alloc] init];
     if (places) {
         for (NSDictionary *place in places) {
@@ -253,7 +259,13 @@
     fetch.predicate = [NSPredicate predicateWithFormat:@"uniqueId IN %@", placeIds];
     NSArray *array = [self.managedObjectContext executeFetchRequest:fetch error:nil];
     
-    return array.count == 0;
+    NSMutableArray *alreadyStoredPlaceIds = [[NSMutableArray alloc] init];
+
+    for (MTPlace *place in array) {
+        [alreadyStoredPlaceIds addObject:place.uniqueId];
+    }
+    
+    return alreadyStoredPlaceIds;
 }
 
 - (NSString *)parseNewPageToken:(NSData *)data {

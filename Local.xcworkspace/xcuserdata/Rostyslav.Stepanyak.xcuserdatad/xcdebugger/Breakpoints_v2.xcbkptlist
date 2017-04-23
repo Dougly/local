@@ -42,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "local/DAL/Google/MTGooglePlacesManager.m"
-            timestampString = "514636887.857392"
+            timestampString = "514638980.157503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-query:radius:pageToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "local/Model/MTDataModel.m"
+            timestampString = "514638780.643498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-getAlreadyStoredPlaces:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
