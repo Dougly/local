@@ -296,7 +296,7 @@ static NSString * const SDFalseJsonParam                = @"false";
         NSError *error = nil;
         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
-        if (!error && ([jsonDict[@"status"] integerValue] != MT_HTTP_SUCCESS && [jsonDict[@"status"] integerValue] != MT_HTTP_STATUS_OK))
+        if (!error && (![[jsonDict[@"status"] lowercaseString] isEqualToString:@"ok"]))
         {
             NSString *message = jsonDict[@"message"];
             int statusCode = (int)[jsonDict[@"status"] integerValue];

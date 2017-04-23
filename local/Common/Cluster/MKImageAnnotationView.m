@@ -7,7 +7,9 @@
 //
 
 #import "MKImageAnnotationView.h"
-#import "DummyAnnotation.h"
+#import "MTPlace.h"
+#import "MTPhoto.h"
+
 #import "UIImageView+WebCache.h"
 
 @implementation MKImageAnnotationView
@@ -16,7 +18,9 @@
     
     self.canShowCallout = YES;
     
-    NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&maxheight=120&photoreference=%@&key=%@", ((DummyAnnotation *)annotation).imageUrl, kGoogleMapAPIKey];
+    MTPhoto *photo = [((MTPlace *)annotation).photos.allObjects firstObject];
+    
+    NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&maxheight=120&photoreference=%@&key=%@", photo.reference, kGoogleMapAPIKey];
     NSURL *url = [NSURL URLWithString:strinUrl];
     
     UIImage *pinImage = [UIImage imageNamed:@"ic_pin"];

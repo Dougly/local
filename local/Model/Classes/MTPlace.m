@@ -1,8 +1,8 @@
 #import "MTPlace.h"
 
 @implementation MTPlace
-@dynamic title;
-@dynamic coordinate;
+@synthesize title;
+@synthesize coordinate;
 
 - (void)parseNode:(NSDictionary *)node {
     self.name = node[@"name"];
@@ -14,15 +14,17 @@
     self.pricingLevel = node[@"price_level"];
     self.rating = node[@"rating"];
     self.isOpenNow = node[@"opening_hours"][@"open_now"];
+    self.lat = node[@"geometry"][@"location"][@"lat"];
+    self.lon = node[@"geometry"][@"location"][@"lng"];
     
     NSArray *types = node[@"types"];
     NSString *typesString = @"";
     for (NSString *type in types) {
-        typesString = [typesString stringByAppendingString:[NSString stringWithFormat:@"|%@", type]];
+        typesString = [typesString stringByAppendingString:[NSString stringWithFormat:@"%@|", type]];
     }
     
     if (typesString.length > 0) {
-        typesString = [typesString substringFromIndex:typesString.length - 1];
+        typesString = [typesString substringToIndex:typesString.length - 1];
     }
     
     self.types = typesString;

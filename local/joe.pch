@@ -114,5 +114,5 @@ return _sharedObject;
 
 // --- MAP ---
 #define kGoogleMapAPIKey    @"AIzaSyBim_-bgtrgl7sp7C4p_76kaLVgyWpBvYY"
-
+#define kMapDomain          @"GooglePlaceAPIDomain"
 #endif

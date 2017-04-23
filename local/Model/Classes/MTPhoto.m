@@ -11,8 +11,8 @@
 - (void)parseNode:(NSDictionary *)node {
     self.width = node[@"width"];
     self.height = node[@"height"];
-    self.reference = node[@"reference"];
-    self.htmlAttributes = node[@"html_attributions"];
+    self.reference = node[@"photo_reference"];
+    self.htmlAttributes = [node[@"html_attributions"] firstObject];
 }
 
 

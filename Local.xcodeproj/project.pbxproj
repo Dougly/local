@@ -57,8 +57,8 @@
 		47157D011E7C8C26000D11E9 /* floatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47157CFF1E7C8C26000D11E9 /* floatTableViewCell.xib */; };
 		47157D041E7D4E7F000D11E9 /* MTLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157D031E7D4E7F000D11E9 /* MTLogsViewController.m */; };
 		471EEFA91E85921100F475B0 /* MTSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471EEFA81E85921100F475B0 /* MTSupportViewController.m */; };
-		47260E0B1E797C380007990C /* MTLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTLoginRequest.m */; };
-		47260E0E1E797C590007990C /* MTLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0D1E797C590007990C /* MTLoginResponse.m */; };
+		47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTGetPlaceRequest.m */; };
+		47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0D1E797C590007990C /* MTGetPlacesResponse.m */; };
 		47260E111E797EA60007990C /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E101E797EA60007990C /* MTUser.m */; };
 		47260E141E797EAD0007990C /* _MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E131E797EAD0007990C /* _MTUser.m */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
@@ -224,10 +224,10 @@
 		47157D031E7D4E7F000D11E9 /* MTLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLogsViewController.m; sourceTree = "<group>"; };
 		471EEFA71E85921100F475B0 /* MTSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSupportViewController.h; sourceTree = "<group>"; };
 		471EEFA81E85921100F475B0 /* MTSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSupportViewController.m; sourceTree = "<group>"; };
-		47260E091E797C380007990C /* MTLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginRequest.h; sourceTree = "<group>"; };
-		47260E0A1E797C380007990C /* MTLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginRequest.m; sourceTree = "<group>"; };
-		47260E0C1E797C590007990C /* MTLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginResponse.h; sourceTree = "<group>"; };
-		47260E0D1E797C590007990C /* MTLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginResponse.m; sourceTree = "<group>"; };
+		47260E091E797C380007990C /* MTGetPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesRequest.h; sourceTree = "<group>"; };
+		47260E0A1E797C380007990C /* MTGetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetPlaceRequest.m; sourceTree = "<group>"; };
+		47260E0C1E797C590007990C /* MTGetPlacesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesResponse.h; sourceTree = "<group>"; };
+		47260E0D1E797C590007990C /* MTGetPlacesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetPlacesResponse.m; sourceTree = "<group>"; };
 		47260E0F1E797EA60007990C /* MTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUser.h; sourceTree = "<group>"; };
 		47260E101E797EA60007990C /* MTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUser.m; sourceTree = "<group>"; };
 		47260E121E797EAD0007990C /* _MTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTUser.h; sourceTree = "<group>"; };
@@ -867,10 +867,10 @@
 		CE250F291B677695005447FF /* Requests&Responses */ = {
 			isa = PBXGroup;
 			children = (
-				47260E091E797C380007990C /* MTLoginRequest.h */,
-				47260E0A1E797C380007990C /* MTLoginRequest.m */,
-				47260E0C1E797C590007990C /* MTLoginResponse.h */,
-				47260E0D1E797C590007990C /* MTLoginResponse.m */,
+				47260E091E797C380007990C /* MTGetPlacesRequest.h */,
+				47260E0A1E797C380007990C /* MTGetPlaceRequest.m */,
+				47260E0C1E797C590007990C /* MTGetPlacesResponse.h */,
+				47260E0D1E797C590007990C /* MTGetPlacesResponse.m */,
 			);
 			path = "Requests&Responses";
 			sourceTree = "<group>";
@@ -1043,7 +1043,7 @@
 				CE250EF01B676654005447FF /* NSObject+PNCast.m in Sources */,
 				47157CF01E7C8BE6000D11E9 /* SDImageCache.m in Sources */,
 				47A97F9C1EABD89900AB8657 /* _MTPhoto.m in Sources */,
-				47260E0B1E797C380007990C /* MTLoginRequest.m in Sources */,
+				47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */,
 				47157CF51E7C8BE6000D11E9 /* SDWebImageManager.m in Sources */,
 				476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */,
 				47157CCD1E7C8BAC000D11E9 /* UIWebView+AFNetworking.m in Sources */,
@@ -1116,7 +1116,7 @@
 				47157C8F1E7C853A000D11E9 /* IDMPhotoBrowser.m in Sources */,
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
 				471EEFA91E85921100F475B0 /* MTSupportViewController.m in Sources */,
-				47260E0E1E797C590007990C /* MTLoginResponse.m in Sources */,
+				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				4780731E1EAA707F00D98DD7 /* ClusterAnnotationView.m in Sources */,

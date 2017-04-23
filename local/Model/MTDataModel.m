@@ -195,34 +195,81 @@
     return [places copy];
 }
 
+- (void)clearPlaces {
+    [self removeAllEntities:@"MTPlace"];
+}
+
 #pragma mark - parse utils
 
-- (NSArray *)parsePlaces:(NSDictionary *)dictionary {
-    [self removeAllEntities:@"MTPlace"];
-    MTPlace *place = nil;
-    NSMutableArray *places = [[NSMutableArray alloc] init];
-    
-    if(dictionary != nil) {
-        NSArray *list = [dictionary objectForKey:@"results"];
-        if (list){
-            for (NSDictionary *placeDict in list){
-                place = (MTPlace *)[self emptyNode:MTPlace.class];
-                [place parseNode:placeDict];
+- (NSArray *)parsePlaces:(NSData *)data {
+    NSMutableArray *places = nil;
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
+            MTPlace *place = nil;
+            
+            if(jsonDict != nil) {
+                NSArray *list = [jsonDict objectForKey:@"results"];
                 
-                NSArray *photoDictionaries = placeDict[@"photos"];
-                for (NSDictionary *photoDictionary in photoDictionaries) {
-                    MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
-                    [photo parseNode:photoDictionary];
-                    [place addPhotosObject:photo];
+                if (list){
+                    if ([self checkIfPlacesNotYetAdded:list]) {
+                        places = [[NSMutableArray alloc] init];
+                        for (NSDictionary *placeDict in list){
+                            place = (MTPlace *)[self emptyNode:MTPlace.class];
+                            [place parseNode:placeDict];
+                            
+                            NSArray *photoDictionaries = placeDict[@"photos"];
+                            for (NSDictionary *photoDictionary in photoDictionaries) {
+                                MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
+                                [photo parseNode:photoDictionary];
+                                [place addPhotosObject:photo];
+                            }
+                            
+                            [places addObject:place];
+                        }
+                    }
                 }
-                
-                [places addObject:place];
+            }
+            
+            [self saveContext];
+        }
+    }
+    
+    return [places copy];
+}
+
+- (BOOL)checkIfPlacesNotYetAdded:(NSArray *)places {
+    NSMutableArray *placeIds = [[NSMutableArray alloc] init];
+    if (places) {
+        for (NSDictionary *place in places) {
+            [placeIds addObject:place[@"id"]];
+        }
+    }
+    
+    NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+    fetch.entity = [NSEntityDescription entityForName:@"MTPlace" inManagedObjectContext:self.managedObjectContext];
+    fetch.predicate = [NSPredicate predicateWithFormat:@"uniqueId IN %@", placeIds];
+    NSArray *array = [self.managedObjectContext executeFetchRequest:fetch error:nil];
+    
+    return array.count == 0;
+}
+
+- (NSString *)parseNewPageToken:(NSData *)data {
+    NSString *newPageToken = nil;
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
+            if (jsonDict) {
+                newPageToken = jsonDict[@"next_page_token"];
             }
         }
     }
-    [self saveContext];
     
-    return [places copy];
+    return newPageToken;
 }
 
 #pragma mark - removing objects

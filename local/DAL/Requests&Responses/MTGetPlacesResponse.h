@@ -8,6 +8,7 @@
 
 #import "SDResult.h"
 
-@interface MTLoginResponse : SDResult
-@property (nonatomic, strong) NSString *accessToken;
+@interface MTGetPlacesResponse : SDResult
+@property (nonatomic, strong) NSArray *places;
+@property (nonatomic, strong) NSString *pageToken;
 @end

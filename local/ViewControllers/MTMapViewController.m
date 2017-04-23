@@ -5,10 +5,11 @@
 
 #import "MTMapViewController.h"
 #import "QTree.h"
-#import "DummyAnnotation.h"
 #import "QCluster.h"
 #import "ClusterAnnotationView.h"
 #import "MKImageAnnotationView.h"
+#import "MTGooglePlacesManager.h"
+#import "MTPlace.h"
 
 inline static CLLocationCoordinate2D referenceLocation()
 {
@@ -19,26 +20,36 @@ inline static CLLocationCoordinate2D referenceLocation()
 
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property(nonatomic, weak) IBOutlet UISegmentedControl* segmentedControl;
-@property(nonatomic, strong) QTree* qTree;
-
+@property (nonatomic, strong) QTree *qTree;
 @end
 
 @implementation MTMapViewController
 
--(void)awakeFromNib
-{
-  [super awakeFromNib];
-  self.qTree = [QTree new];
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
-  {
-      [self getRestaurantListForLocation:referenceLocation()];
-      dispatch_async(dispatch_get_main_queue(), ^
-      {
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self getPlaces];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    MKCoordinateRegion region;
+    region.center.latitude = referenceLocation().latitude;
+    region.center.longitude = referenceLocation().longitude;
+    region.span.latitudeDelta = 0.7;
+    region.span.longitudeDelta = 0.7;
+    region = [self.mapView regionThatFits:region];
+    [self.mapView setRegion:region animated:TRUE];
+    
+    [self addGesture];
+}
+
+- (void)getPlaces {
+    MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
+    self.qTree = manager.qTree;
+    
+    [manager query:referenceLocation() radius:3000 completion:^(BOOL success, NSArray *places, NSError *error) {
         [self reloadAnnotations];
-      });
-  });
-  
-  self.extendedLayoutIncludesOpaqueBars = YES;
+    }];
 }
 
 - (void)addGesture {
@@ -85,110 +96,7 @@ inline static CLLocationCoordinate2D referenceLocation()
     }
 }
 
-- (void)query:(NSString *)pageToken coordinate:(CLLocationCoordinate2D)coordinate {
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%lf,%lf&types=cafe|restaurant|pub&key=%@&radius=6000&sensor=false", coordinate.latitude, coordinate.longitude, kGoogleMapAPIKey];
-    
-    if (pageToken) {
-        NSString *tokenPart = [NSString stringWithFormat:@"&pagetoken=%@", pageToken];
-        urlString = [urlString stringByAppendingString:tokenPart];
-    }
-    
-    urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
-    __weak typeof(self) weakSelf = self;
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        
-        if (!connectionError) {
-            [weakSelf parse:data
-                 coordinate:coordinate];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self reloadAnnotations];
-        });
-    }];
-}
 
-- (void)getRestaurantListForLocation:(CLLocationCoordinate2D)coordinate{
-    [self query:nil coordinate:coordinate];
-}
-
-- (void)parse:(NSData *)data coordinate:(CLLocationCoordinate2D)coordinate{
-    if (data) {
-        
-        NSError *errorJson=nil;
-        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&errorJson];
-        
-        BOOL isPackContainingNewObjects = YES;
-        NSArray *list = [responseDict objectForKey:@"results"];
-        if (list){
-            
-            NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:list.count];
-            for (NSDictionary *dict in list){
-                
-                /*
-                 Restaurant *res = [[Restaurant alloc]init];
-                 res.name = [dict objectForKey:@"name"];
-                 res.ID = [dict objectForKey:@"id"];
-                 res.icon = [dict objectForKey:@"icon"];
-                 res.palceId = [dict objectForKey:@"place_id"];
-                 res.rating = [dict objectForKey:@"rating"];
-                 res.reference = [dict objectForKey:@"reference"];
-                 res.vicinity = [dict objectForKey:@"vicinity"];
-                 */
-                DummyAnnotation* object = [DummyAnnotation new];
-                object.uniqueId = [dict objectForKey:@"id"];
-                NSArray *photoArray = [dict objectForKey:@"photos"];
-                if (photoArray.count > 0){
-                    object.imageUrl = [[photoArray firstObject] objectForKey:@"photo_reference"];
-                }
-                
-                NSDictionary *locationDict = [dict objectForKey:@"geometry"];
-                
-                double latitude = [[[locationDict objectForKey:@"location"] objectForKey:@"lat"] doubleValue];
-                double longitude = [[[locationDict objectForKey:@"location"] objectForKey:@"lng"] doubleValue];
-                
-                
-                object.title = [dict objectForKey:@"name"];
-                object.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-                
-                if ([self.qTree removeObject:object]) {
-                    [self.qTree insertObject:object];
-                    isPackContainingNewObjects = false;
-                    NSLog(@"Insert duplicate place");
-                }
-                else {
-                    [self.qTree insertObject:object];
-                    NSLog(@"Insert unique place");
-                }
-            }
-        }
-        
-        NSString *token = responseDict[@"next_page_token"];
-        if (token && isPackContainingNewObjects)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self query:token
-             coordinate:coordinate];
-        });
-    }
-}
-
-
--(void)viewDidLoad
-{
-    [super viewDidLoad];
-    MKCoordinateRegion region;
-    region.center.latitude = referenceLocation().latitude;
-    region.center.longitude = referenceLocation().longitude;
-    region.span.latitudeDelta = 0.7;
-    region.span.longitudeDelta = 0.7;
-    region = [self.mapView regionThatFits:region];
-    [self.mapView setRegion:region animated:TRUE];
-    
-    [self addGesture];
-}
 
 - (void)reloadAnnotations {
     if( !self.isViewLoaded ) {
@@ -232,7 +140,7 @@ inline static CLLocationCoordinate2D referenceLocation()
         annotationView.cluster = (QCluster*)annotation;
         return annotationView;
   }
-  else if ([annotation isKindOfClass:[DummyAnnotation class]]){
+  else if ([annotation isKindOfClass:[MTPlace class]]){
         static NSString *defaultPinID = @"com.local.food";
         MKImageAnnotationView *pinView = (MKImageAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
         if (pinView == nil)

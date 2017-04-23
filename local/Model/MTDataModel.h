@@ -16,8 +16,10 @@
 @interface MTDataModel : NSObject
 
 + (MTDataModel *)sharedDatabaseStorage;
+- (void)clearPlaces;
 
-- (NSArray *)parsePlaces:(NSDictionary *)dictionary;
+- (NSArray *)parsePlaces:(NSData *)data;
+- (NSString *)parseNewPageToken:(NSData *)data;
 - (NSArray *)getPlaces;
 
 - (NSArray *)fetchObjectsForEntityName:(NSString *)newEntityName
