@@ -32,7 +32,9 @@
 - (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius completion:(GooglePlaceCompletion)completion{
     self.completion = completion;
     
+    self.qTree = [QTree new];
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
+    
     [self query:coordinate radius:radius pageToken:nil];
     [self query:coordinate radius:radius + 500 pageToken:nil];
 }

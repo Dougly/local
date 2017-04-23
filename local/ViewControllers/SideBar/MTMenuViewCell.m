@@ -37,12 +37,6 @@
         case 1:
             self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_settings_active"]:[UIImage imageNamed:@"ic_settings"];
             break;
-        /*case 2:
-            self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_home_active"]:[UIImage imageNamed:@"ic_home"];
-            break;
-        case 3:
-            self.leftImage.image  = isSelected ? [UIImage imageNamed:@"ic_settings_active"]:[UIImage imageNamed:@"ic_settings"];
-            break;*/
 
         default:
             break;

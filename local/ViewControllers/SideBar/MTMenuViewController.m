@@ -10,16 +10,13 @@
 #import "PanelsViewController.h"
 #import "MTMenuViewCell.h"
 #import "MTDataModel.h"
-#import "MTDispatchViewController.h"
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+Blur.h"
 #import "MTSideBarConfig.h"
-#import "MTLogsViewController.h"
-#import "MTProfileViewController.h"
-#import "MTSupportViewController.h"
 #import "MTMapViewController.h"
 #import "Local-swift.h"
+#import "PZSettignsViewController.h"
 
 static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
 
@@ -150,10 +147,10 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
             
         case 1:{
             UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ClockViewController *profileViewController = [main instantiateViewControllerWithIdentifier:@"ClockViewController"];
+            PZSettignsViewController *settingsViewController = [main instantiateViewControllerWithIdentifier:@"PZSettignsViewController"];
             
-            profileViewController.title = @"Settings";
-            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:profileViewController];
+            settingsViewController.title = @"Settings";
+            [[AppDelegate sharedPanel] setCentralPanelControllerViewController:settingsViewController];
         } break;
             
         default:

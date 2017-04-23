@@ -27,27 +27,31 @@ inline static CLLocationCoordinate2D referenceLocation()
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self getPlaces];
+    [self getPlacesAtLocation:referenceLocation()];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    MKCoordinateRegion region;
-    region.center.latitude = referenceLocation().latitude;
-    region.center.longitude = referenceLocation().longitude;
-    region.span.latitudeDelta = 0.7;
-    region.span.longitudeDelta = 0.7;
-    region = [self.mapView regionThatFits:region];
-    [self.mapView setRegion:region animated:TRUE];
-    
+   
+    [self drawCircleAroundCoordinate:referenceLocation()];
+    [self setZoomLevelWithCenter:referenceLocation()];
     [self addGesture];
 }
 
-- (void)getPlaces {
+- (void)setZoomLevelWithCenter:(CLLocationCoordinate2D)coordinate {
+    MKCoordinateRegion region;
+    region.center.latitude = coordinate.latitude;
+    region.center.longitude = coordinate.longitude;
+    region.span.latitudeDelta = 0.4;
+    region.span.longitudeDelta = 0.4;
+    region = [self.mapView regionThatFits:region];
+    [self.mapView setRegion:region animated:TRUE];
+}
+
+- (void)getPlacesAtLocation:(CLLocationCoordinate2D)coordinate {
     MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
-    self.qTree = manager.qTree;
     
-    [manager query:referenceLocation() radius:3000 completion:^(BOOL success, NSArray *places, NSError *error) {
+    [manager query:coordinate radius:3000 completion:^(BOOL success, NSArray *places, NSError *error) {
         [self reloadAnnotations];
     }];
 }
@@ -78,31 +82,29 @@ inline static CLLocationCoordinate2D referenceLocation()
 
 - (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        /*Get the coordinate*/
         [self.mapView removeOverlays:self.mapView.overlays];
-   
+        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
         
-        if ([gestureRecognizer.view isKindOfClass:[QCluster class]]) {
-            
-        }
-        else {
-            CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
-            
-            [self.mapView setCenterCoordinate:coordinate animated:YES];
-            
-            // Do anything else with the coordinate as you see fit in your application
-            MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:5000];
-            [self.mapView addOverlay:circle];
-        }
+        [self getPlacesAtLocation:coordinate];
+        [self drawCircleAroundCoordinate:coordinate];
+        [self setZoomLevelWithCenter:coordinate];
     }
 }
 
-
+- (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
+    // Do anything else with the coordinate as you see fit in your application
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:4200];
+    [self.mapView addOverlay:circle];
+}
 
 - (void)reloadAnnotations {
     if( !self.isViewLoaded ) {
         return;
     }
 
+    self.qTree = [MTGooglePlacesManager sharedManager].qTree;
+    
     const MKCoordinateRegion mapRegion = self.mapView.region;
     BOOL useClustering = (self.segmentedControl.selectedSegmentIndex == 0);
     const CLLocationDegrees minNonClusteredSpan = useClustering ? MIN(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 5
@@ -139,19 +141,22 @@ inline static CLLocationCoordinate2D referenceLocation()
         }
         annotationView.cluster = (QCluster*)annotation;
         return annotationView;
-  }
-  else if ([annotation isKindOfClass:[MTPlace class]]){
+    }
+    else if ([annotation isKindOfClass:[MTPlace class]]){
         static NSString *defaultPinID = @"com.local.food";
         MKImageAnnotationView *pinView = (MKImageAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-        if (pinView == nil)
+        if (pinView == nil) {
             pinView = [[MKImageAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-      
+        }
+        else {
+            [pinView updateWithAnnotation:annotation];
+        }
       
         return pinView;
-  }
-  else {
-      return nil;
-  }
+    }
+    else {
+        return nil;
+    }
 }
 
 

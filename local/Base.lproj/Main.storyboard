@@ -21,24 +21,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Dispatch View Controller-->
-        <scene sceneID="e2N-rW-xIq">
-            <objects>
-                <viewController storyboardIdentifier="MTDispatchViewController" id="yAo-A5-HC0" customClass="MTDispatchViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tk2-aA-DZV"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lar-zs-ecu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JRg-tl-qdt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aqM-zN-na4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1421.5999999999999" y="-323.38830584707648"/>
-        </scene>
         <!--Menu View Controller-->
         <scene sceneID="UgH-Lc-Ayq">
             <objects>
@@ -167,42 +149,6 @@
             </objects>
             <point key="canvasLocation" x="718" y="-323"/>
         </scene>
-        <!--Logs View Controller-->
-        <scene sceneID="Wec-ha-vgw">
-            <objects>
-                <viewController storyboardIdentifier="MTLogsViewController" id="Xh1-AI-n70" customClass="MTLogsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8FN-pa-cIb"/>
-                        <viewControllerLayoutGuide type="bottom" id="bXW-VM-ftu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BtZ-rU-7vk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2LC-uJ-g4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1422" y="446"/>
-        </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="zLL-0z-zLR">
-            <objects>
-                <viewController storyboardIdentifier="MTProfileViewController" id="f6d-AF-RdK" customClass="MTProfileViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dCm-7k-MYK"/>
-                        <viewControllerLayoutGuide type="bottom" id="lZf-w5-746"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Hwq-uf-gXw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FYQ-vC-DaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2376.8000000000002" y="63.418290854572717"/>
-        </scene>
         <!--Panels View Controller-->
         <scene sceneID="4Ot-yc-WRu">
             <objects>
@@ -300,30 +246,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VC-jw-3W9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1050.4000000000001" y="211.84407796101951"/>
-        </scene>
-        <!--Support View Controller-->
-        <scene sceneID="oN7-zs-X2W">
-            <objects>
-                <viewController storyboardIdentifier="MTSupportViewController" id="gzO-Dz-IRR" customClass="MTSupportViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KK7-bl-TDS"/>
-                        <viewControllerLayoutGuide type="bottom" id="BqJ-xv-dwl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rcc-Hd-Je5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="mBp-xn-vn1" appends="YES" id="FLy-rS-mRS"/>
-                        </connections>
-                    </view>
-                    <navigationItem key="navigationItem" id="dRi-Wh-187"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lEa-aa-qGl" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="mBp-xn-vn1"/>
-            </objects>
-            <point key="canvasLocation" x="2377" y="774"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="qxE-P4-XAE">
@@ -670,6 +592,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpF-47-C30" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="348" y="380"/>
+        </scene>
+        <!--Settigns View Controller-->
+        <scene sceneID="IYg-5X-uaq">
+            <objects>
+                <viewController storyboardIdentifier="PZSettignsViewController" id="Ina-R6-oqt" customClass="PZSettignsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CfQ-nr-QOh"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Mz-Mu-5oc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fCC-aa-pAj">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="46" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JLF-sZ-Q3r">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ina-R6-oqt" id="stL-lM-aM2"/>
+                                    <outlet property="delegate" destination="Ina-R6-oqt" id="nHn-Rn-3Yj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JLF-sZ-Q3r" firstAttribute="leading" secondItem="fCC-aa-pAj" secondAttribute="leading" id="dgG-Kb-kLT"/>
+                            <constraint firstItem="2Mz-Mu-5oc" firstAttribute="top" secondItem="JLF-sZ-Q3r" secondAttribute="bottom" id="f9L-dV-FUo"/>
+                            <constraint firstItem="JLF-sZ-Q3r" firstAttribute="top" secondItem="CfQ-nr-QOh" secondAttribute="bottom" id="hGv-2d-PIY"/>
+                            <constraint firstAttribute="trailing" secondItem="JLF-sZ-Q3r" secondAttribute="trailing" id="nDw-oa-E5y"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="JLF-sZ-Q3r" id="agX-cX-JfT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VVm-FJ-lj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="1107"/>
         </scene>
     </scenes>
     <resources>
