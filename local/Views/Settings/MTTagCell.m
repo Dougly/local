@@ -1,19 +1,19 @@
 //
-//  PZTagCell.m
+//  MTTagCell.m
 //  Proz
 //
 //  Created by RostyslavStepanyak on 3/16/16.
 //  Copyright © 2016 Tilf AB. All rights reserved.
 //
 
-#import "PZTagCell.h"
+#import "MTTagCell.h"
 #import "TLTagsControl.h"
 
-@interface PZTagCell()<PZSettingsDeleteTagCellProtocol>
+@interface MTTagCell()<MTSettingsDeleteTagCellProtocol>
 
 @end
 
-@implementation PZTagCell
+@implementation MTTagCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

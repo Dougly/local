@@ -98,8 +98,4 @@
     return cropped;
 }
 
-- (void)dealloc {
-    NSLog(@"Annotation dealloced");
-}
-
 @end

@@ -27,7 +27,7 @@
     self.isShadow = self.isPanelShadow;
     self.leftPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"MTMenuViewController"];
     UIViewController *dispatchViewContorller = [self.storyboard    instantiateViewControllerWithIdentifier:@"MTMapViewController"];
-    dispatchViewContorller.title = @"Clustering";
+    dispatchViewContorller.title = @"Places";
     self.centerPanel = [[UINavigationController alloc] initWithRootViewController:dispatchViewContorller];
     
 }

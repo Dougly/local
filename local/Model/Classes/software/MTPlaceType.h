@@ -1,5 +1,5 @@
 //
-//  PZSoftware.h
+//  MTSoftware.h
 //  Proz
 //
 //  Created by RostyslavStepanyak on 1/22/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PZSoftware : NSObject
-@property int softId;
+@interface MTPlaceType : NSObject
+@property int placeTypeId;
 @property (nonatomic, strong) NSString *name;
 @end

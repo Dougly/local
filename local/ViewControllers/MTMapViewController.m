@@ -19,7 +19,6 @@ inline static CLLocationCoordinate2D referenceLocation()
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
-@property(nonatomic, weak) IBOutlet UISegmentedControl* segmentedControl;
 @property (nonatomic, strong) QTree *qTree;
 @end
 
@@ -106,7 +105,7 @@ inline static CLLocationCoordinate2D referenceLocation()
     self.qTree = [MTGooglePlacesManager sharedManager].qTree;
     
     const MKCoordinateRegion mapRegion = self.mapView.region;
-    BOOL useClustering = (self.segmentedControl.selectedSegmentIndex == 0);
+    BOOL useClustering = true;
     const CLLocationDegrees minNonClusteredSpan = useClustering ? MIN(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 5
                                                               : 0;
     NSArray* objects = [self.qTree getObjectsInRegion:mapRegion minNonClusteredSpan:minNonClusteredSpan];
@@ -120,10 +119,6 @@ inline static CLLocationCoordinate2D referenceLocation()
     [annotationsToAdd removeObjectsInArray:self.mapView.annotations];
 
     [self.mapView addAnnotations:annotationsToAdd];
-}
-
-- (IBAction)segmentChanged:(id)sender {
-    [self reloadAnnotations];
 }
 
 #pragma mark MKMapViewDelegate
@@ -158,7 +153,6 @@ inline static CLLocationCoordinate2D referenceLocation()
         return nil;
     }
 }
-
 
 - (void)mapView:(MKMapView*)mapView didSelectAnnotationView:(MKAnnotationView*)view {
     id<MKAnnotation> annotation = view.annotation;

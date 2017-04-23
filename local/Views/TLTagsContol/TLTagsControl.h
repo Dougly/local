@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PZTagCell.h"
+#import "MTTagCell.h"
 
 @class TLTagsControl;
 
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 @property (nonatomic, strong) NSString *tagPlaceholder;
 @property (nonatomic) TLTagsControlMode mode;
 
-@property (nonatomic, weak) id<PZSettingsDeleteTagCellProtocol>deleteDelegate;
+@property (nonatomic, weak) id<MTSettingsDeleteTagCellProtocol>deleteDelegate;
 @property (assign, nonatomic) id<TLTagsControlDelegate> tapDelegate;
 
 - (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode;

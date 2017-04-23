@@ -109,20 +109,22 @@ return _sharedObject;
 #define MT_HTTP_STATUS_OK 4
 #define MT_HTTP_EXPIRED 401
 
-typedef NS_ENUM(NSInteger, PZSettingsSectionType) {
-    PZSoftwareType = 0,
-    PZType,
+typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
+    MTPlaceTypeSection = 0,
+    MTFoodTypeSection,
     
-    PZSwitches,
-    PZSectionNumber
+    MTSwitchesSection,
+    MTRatingSection,
+    MTDistanceSection,
+    MTSectionNumber
 };
 
-#define  POSTING_TYPE_TRANSLATION  @"translation"
-#define  POSTING_TYPE_INTERPRET    @"interpret"
-#define  POSTING_TYPE_POTENTIAL    @"potential"
+#define  FOOD_LUNCH         @"lunch"
+#define  FOOD_DRINK         @"drink"
+#define  FOOD_BREAKFAST     @"breakfast"
 #define  DELIMITER                 @"|"
-#define POSTING_TYPES    @[POSTING_TYPE_TRANSLATION, POSTING_TYPE_INTERPRET, POSTING_TYPE_POTENTIAL]
-#define PZ_DISCARD_JOB_NOTIFICATION      @"kNotificationDiscardJob"
+#define FOOD_TYPES    @[FOOD_LUNCH, FOOD_DRINK, FOOD_BREAKFAST]
+#define MT_DISCARD_JOB_NOTIFICATION      @"kNotificationDiscardJob"
 
 
 #define sServerNotAccessible @"Could not connect to server"

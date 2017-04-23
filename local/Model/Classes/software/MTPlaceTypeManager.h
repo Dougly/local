@@ -1,5 +1,5 @@
 //
-//  PZSoftware.h
+//  MTSoftware.h
 //  Proz
 //
 //  Created by RostyslavStepanyak on 1/22/16.
@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-@class PZSoftware;
+@class MTPlaceType;
 
-@interface PZSoftwareManager : NSObject
+@interface MTPlaceTypeManager : NSObject
 /*Find the software object with the id*/
-- (PZSoftware *)getSoftById:(int)softId;
-- (NSMutableArray *)allSoftwares;
+- (MTPlaceType *)getPlaceTypeById:(int)placeTypeId;
+- (NSMutableArray *)allPlaceTypes;
 - (NSString *)idsByElementNames:(NSArray *)names;
 @end

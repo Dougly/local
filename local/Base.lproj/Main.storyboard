@@ -552,61 +552,44 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <outlet property="delegate" destination="QO0-Qx-Uq8" id="s7q-gz-lKK"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ffA-Wt-Cgq">
-                                <rect key="frame" x="20" y="631" width="335" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="6NS-r4-meo"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="On"/>
-                                    <segment title="Off"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChanged:" destination="QO0-Qx-Uq8" eventType="valueChanged" id="hkj-m8-k6d"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="QZg-sD-b1v" firstAttribute="top" secondItem="gQc-jm-amm" secondAttribute="bottom" id="2in-o7-Cfl"/>
                             <constraint firstItem="gQc-jm-amm" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" id="6QF-XL-NoI"/>
-                            <constraint firstItem="ffA-Wt-Cgq" firstAttribute="leading" secondItem="Ful-Rk-RYr" secondAttribute="leadingMargin" constant="4" id="KxZ-y8-Y1e"/>
                             <constraint firstAttribute="trailing" secondItem="gQc-jm-amm" secondAttribute="trailing" id="PmN-cO-rE2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ffA-Wt-Cgq" secondAttribute="trailing" constant="4" id="Y79-xE-1tc"/>
                             <constraint firstItem="gQc-jm-amm" firstAttribute="leading" secondItem="Ful-Rk-RYr" secondAttribute="leading" id="fn3-X9-QiQ"/>
-                            <constraint firstItem="ffA-Wt-Cgq" firstAttribute="top" secondItem="gQc-jm-amm" secondAttribute="bottom" constant="8" id="nEJ-vl-HhZ"/>
-                            <constraint firstItem="QZg-sD-b1v" firstAttribute="top" secondItem="ffA-Wt-Cgq" secondAttribute="bottom" constant="8" id="oQN-Aq-RAG"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="Wsr-vJ-T7p"/>
                     <connections>
                         <outlet property="mapView" destination="gQc-jm-amm" id="zFy-1s-3XJ"/>
-                        <outlet property="segmentedControl" destination="ffA-Wt-Cgq" id="Lo3-E6-0R6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpF-47-C30" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="380"/>
+            <point key="canvasLocation" x="348" y="379.16041979010498"/>
         </scene>
         <!--Settigns View Controller-->
         <scene sceneID="IYg-5X-uaq">
             <objects>
-                <viewController storyboardIdentifier="PZSettignsViewController" id="Ina-R6-oqt" customClass="PZSettignsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MTSettignsViewController" id="Ina-R6-oqt" customClass="MTSettignsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CfQ-nr-QOh"/>
                         <viewControllerLayoutGuide type="bottom" id="2Mz-Mu-5oc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fCC-aa-pAj">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="46" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JLF-sZ-Q3r">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <sections/>
@@ -624,7 +607,7 @@
                             <constraint firstAttribute="trailing" secondItem="JLF-sZ-Q3r" secondAttribute="trailing" id="nDw-oa-E5y"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="tableView" destination="JLF-sZ-Q3r" id="agX-cX-JfT"/>
                     </connections>

@@ -28,6 +28,7 @@ static PanelsViewController *rootController;
 }
 
 - (void)setupNavigationColors {
+    [UINavigationBar appearance].translucent = NO;
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : kTotsAmourBrandColorHEX}];
     [[UINavigationBar appearance] setTintColor:kTotsAmourBrandColorHEX];
     [[UINavigationBar appearance] setTitleTextAttributes: @{

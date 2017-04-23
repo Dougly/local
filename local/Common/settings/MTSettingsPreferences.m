@@ -1,24 +1,25 @@
 //
-//  PZSettingsPreferences.m
+//  MTSettingsPreferences.m
 //  Proz
 //
 //  Created by RostyslavStepanyak on 3/17/16.
 //  Copyright © 2016 Tilf AB. All rights reserved.
 //
 
-#import "PZSettingsPreferences.h"
+#import "MTSettingsPreferences.h"
 
-@interface PZSettingsPreferences()
+@interface MTSettingsPreferences()
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
-@implementation PZSettingsPreferences
-NSString *const POSTING_TYPE_KEY = @"POSTING_TYPE_KEY";
-NSString *const DISIPLINE_KEY = @"DISIPLINE_KEY";
-NSString *const SOFTWARE_KEY = @"SOFTWARE_KEY";
-NSString *const LANGUAGE_PAIR_KEY = @"LANGUAGE_PAIR_KEY";
-NSString *const I_CAN_QOUTE_KEY = @"I_CAN_QUOTE_KEY";
-NSString *const SHOW_POSTS_IN_MY_LANG_PAIRS_KEY = @"SHOW_POSTS_IN_MY_LANG_PAIRS_KEY";
+@implementation MTSettingsPreferences
+NSString *const FOOD_TYPE_KEY = @"FOOD_TYPE_KEY";
+NSString *const PLACE_TYPE_KEY = @"PLACE_TYPE_KEY";
+
+NSString *const ONLY_OPEN_KEY = @"ONLY_OPEN_KEY";
+NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
+NSString *const RATING_KEY = @"RATING_KEY";
+NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
 
 - (id)init {
     self = [super init];
@@ -28,89 +29,91 @@ NSString *const SHOW_POSTS_IN_MY_LANG_PAIRS_KEY = @"SHOW_POSTS_IN_MY_LANG_PAIRS_
 }
 
 - (void)setupInitialValues {
-    if(![_defaults valueForKey:POSTING_TYPE_KEY]) {
-        [self addJobPostingType:POSTING_TYPE_TRANSLATION];
-        [self addJobPostingType:POSTING_TYPE_INTERPRET];
-        [self addJobPostingType:POSTING_TYPE_POTENTIAL];
+    if(![_defaults valueForKey:FOOD_TYPE_KEY]) {
+        [self addFoodType:FOOD_LUNCH];
+        [self addFoodType:FOOD_DRINK];
+        [self addFoodType:FOOD_BREAKFAST];
     }
-}
-
-#pragma mark - language pair
-
-- (NSArray *)getLanguagePairs {
-    return [self getArrayOfEntries:LANGUAGE_PAIR_KEY];
-}
-
-- (void)removeLanguagePair:(NSString *)languagePair {
-    [self removeEntry:languagePair atKey:LANGUAGE_PAIR_KEY];
-}
-
-- (void)addLanguagePair:(NSString *)languagePair {
-    [self addEntry:languagePair forKey:LANGUAGE_PAIR_KEY];
+    
+    if(![_defaults valueForKey:ONLY_OPEN_KEY]) {
+        [self setOnlyOpen:YES];
+    }
+    
+    if(![_defaults valueForKey:RATING_KEY]) {
+        [self setRating:3.5];
+    }
+    
+    if(![_defaults valueForKey:DISTANCE_KEY]) {
+        [self setDistance:3];
+    }
 }
 
 #pragma mark - job posting type
 
-- (NSArray *)getJobPostingTypes {
-    return [self getArrayOfEntries:POSTING_TYPE_KEY];
+- (NSArray *)getFoodTypes {
+    return [self getArrayOfEntries:FOOD_TYPE_KEY];
 }
 
-- (void)removeJobPostingType:(NSString *)jobPostingType {
-    [self removeEntry:jobPostingType atKey:POSTING_TYPE_KEY];
+- (void)removeFoodType:(NSString *)foodType {
+    [self removeEntry:foodType atKey:FOOD_TYPE_KEY];
 }
 
-- (void)addJobPostingType:(NSString *)jobPostingType {
-    [self addEntry:jobPostingType forKey:POSTING_TYPE_KEY];
+- (void)addFoodType:(NSString *)foodType {
+    [self addEntry:foodType forKey:FOOD_TYPE_KEY];
 }
 
-#pragma mark - Disciplines
+#pragma mark - Place Types
 
-- (NSArray *)getDisciplines {
-    return [self getArrayOfEntries:DISIPLINE_KEY];
+- (NSArray *)getPlaceTypes {
+    return [self getArrayOfEntries:PLACE_TYPE_KEY];
 }
 
-- (void)removeDiscipline:(NSString *)discipline {
-    [self removeEntry:discipline atKey:DISIPLINE_KEY];
+- (void)removePlaceType:(NSString *)placeType {
+    [self removeEntry:placeType atKey:PLACE_TYPE_KEY];
 }
 
-- (void)addDiscipline:(NSString *)discipline {
-    [self addEntry:discipline forKey:DISIPLINE_KEY];
+- (void)addPlaceType:(NSString *)placeType {
+    [self addEntry:placeType forKey:PLACE_TYPE_KEY];
 }
 
-#pragma mark - Softwares
+#pragma mark - Only open
+- (void)setOnlyOpen:(BOOL)onlyOpen {
+    [self.defaults setValue:@(onlyOpen) forKey:ONLY_OPEN_KEY];
 
-- (NSArray *)getSoftwares {
-    return [self getArrayOfEntries:SOFTWARE_KEY];
 }
 
-- (void)removeSoftware:(NSString *)software {
-    [self removeEntry:software atKey:SOFTWARE_KEY];
+- (BOOL)getOnlyOpen {
+    return [[self.defaults valueForKey:ONLY_OPEN_KEY] boolValue];
 }
 
-- (void)addSoftware:(NSString *)sotftware {
-    [self addEntry:sotftware forKey:SOFTWARE_KEY];
+#pragma mark - Only cheap
+- (void)setOnlyCheap:(BOOL)onlyCheap {
+    [self.defaults setValue:@(onlyCheap) forKey:ONLY_CHEAP_KEY];
+
 }
 
-#pragma mark - Show job postings in native language pairs
-
-- (void)setShowPostsInNativeLanguagePairs:(BOOL)showPostsInNativeLanguage {
-    [self.defaults setValue:@(showPostsInNativeLanguage) forKey:SHOW_POSTS_IN_MY_LANG_PAIRS_KEY];
+- (BOOL)getOnlyCheap {
+    return [[self.defaults valueForKey:ONLY_CHEAP_KEY] boolValue];
 }
 
-- (BOOL)getShowPostsInNativeLanguagePairs {
-    return [[self.defaults valueForKey:SHOW_POSTS_IN_MY_LANG_PAIRS_KEY] boolValue];
+#pragma mark - Rating
+- (void)setRating:(float)rating {
+    [self.defaults setValue:@(rating) forKey:RATING_KEY];
+
 }
 
-#pragma mark - I can quote
-
-- (void)setICanQuote:(BOOL)iCanQuote {
-    [self.defaults setValue:@(iCanQuote) forKey:I_CAN_QOUTE_KEY];
+- (float)getRating {
+    return [[self.defaults valueForKey:RATING_KEY] floatValue];
 }
 
-- (BOOL)getICanQuote {
-    return [[self.defaults valueForKey:I_CAN_QOUTE_KEY] boolValue];
+#pragma mark - Distance
+- (void)setDistance:(NSUInteger)distance {
+    [self.defaults setValue:@(distance) forKey:DISTANCE_KEY];
 }
 
+- (NSUInteger)getDistance {
+    return [[self.defaults valueForKey:DISTANCE_KEY] integerValue];
+}
 
 #pragma mark - string processing
 

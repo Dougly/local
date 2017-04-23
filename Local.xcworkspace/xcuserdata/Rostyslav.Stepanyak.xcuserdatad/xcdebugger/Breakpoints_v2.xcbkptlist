@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/DAL/Google/MTGooglePlacesManager.m"
-            timestampString = "514639945.347998"
+            filePath = "local/Common/settings/MTSettings.m"
+            timestampString = "514657899.962892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-query:radius:pageToken:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-addPlaceTypes:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/Common/Cluster/MKImageAnnotationView.m"
-            timestampString = "514640806.71531"
+            filePath = "local/Model/Classes/software/MTPlaceTypeManager.m"
+            timestampString = "514654925.80476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-dealloc"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-allPlaceTypes"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/ViewControllers/MTMapViewController.m"
-            timestampString = "514641055.378577"
+            filePath = "local/Views/ASValueTrackingSlider/ASValueTrackingSlider.m"
+            timestampString = "514659883.032204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-setZoomLevelWithCenter:"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "-beginTrackingWithTouch:withEvent:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "local/ViewControllers/MyTableVIew.m"
+            timestampString = "514660305.478483"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

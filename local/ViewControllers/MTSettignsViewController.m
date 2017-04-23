@@ -6,24 +6,30 @@
 //  Copyright © 2015 Tilf AB. All rights reserved.
 //
 
-#import "PZSettignsViewController.h"
+#import "MTSettignsViewController.h"
 #import "RMActionController.h"
 #import "RMPickerViewController.h"
 #import "MTDataModel.h"
-#import "PZSoftwareManager.h"
+#import "MTPlaceTypeManager.h"
 #import "TLTagsControl.h"
-#import "PZSwitchCell.h"
-#import "PZSettings.h"
+#import "MTSwitchCell.h"
+#import "MTSettings.h"
+#import "MTRatingCell.h"
+#import "MTDistanceCell.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
 
-@interface PZSettignsViewController ()<PZSettingsAddTagProtocol, PZSettingsDeleteTagProtocol,PZSwitchCellProtocol>
+@interface MTSettignsViewController ()<MTSettingsAddTagProtocol, MTSettingsDeleteTagProtocol, MTSwitchCellProtocol, MTRatingCellProtocol, MTDistanceValueProtocol>
 @property (nonatomic, weak) IBOutlet UISwitch *myLangPairsSwitch;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) PZSoftwareManager *softwareManager;
+@property (nonatomic, strong) MTPlaceTypeManager *placeTypeManager;
 @end
 
-@implementation PZSettignsViewController
-NSString *const TAG_CELL_REUSE_IDENTIFIER = @"PZTagCellReuseIdentifier";
-NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
+@implementation MTSettignsViewController
+NSString *const TAG_CELL_REUSE_IDENTIFIER = @"MTTagCellReuseIdentifier";
+NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"MTSwitchCellReuseIdentifier";
+NSString *const RATING_CELL_REUSE_IDENTIFIER = @"MTRatingCellReuseIdentifier";
+NSString *const DISTANCE_CELL_REUSE_IDENTIFIER = @"MTDistanceCellReuseIdentifier";
 
 #pragma mark - lifecycle
 
@@ -33,22 +39,29 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.title = @"ProZ.com";
-    self.navigationController.navigationBar.topItem.title = @"Jobs";
+    self.title = @"Settings";
+    self.navigationController.navigationBar.topItem.title = @"Settings";
+    self.sidePanelController.allowLeftSwipe = false;
     
-    self.softwareManager = [[PZSoftwareManager alloc] init];
+    self.placeTypeManager = [[MTPlaceTypeManager alloc] init];
     [self.myLangPairsSwitch setOn:true];
     
     [self registerCells];
 }
 
 - (void)registerCells {
-    [self.tableView registerNib:[UINib nibWithNibName:@"PZTagCell"
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTTagCell"
                                                bundle:nil]
          forCellReuseIdentifier:TAG_CELL_REUSE_IDENTIFIER];
-    [self.tableView registerNib:[UINib nibWithNibName:@"PZSwitchCell"
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTSwitchCell"
                                                bundle:nil]
          forCellReuseIdentifier:SWITCH_CELL_REUSE_IDENTIFIER];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTRatingCell"
+                                               bundle:nil]
+         forCellReuseIdentifier:RATING_CELL_REUSE_IDENTIFIER];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTDistanceCell"
+                                               bundle:nil]
+         forCellReuseIdentifier:DISTANCE_CELL_REUSE_IDENTIFIER];
 }
 
 #pragma mark - Picker
@@ -57,12 +70,16 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     NSString *itemName = @"";
     switch (self.cellBeingEdited)
     {
-        case PZSoftwareType: {
-            itemName = @"sofwtares";
+        case MTPlaceTypeSection: {
+            itemName = @"Place types";
             break;
         }
-        case PZType: {
-            itemName = @"job types";
+        case MTFoodTypeSection: {
+            itemName = @"Meals";
+            break;
+        }
+        case MTDistanceSection: {
+            itemName = @"Radius";
             break;
         }
         default: {
@@ -77,7 +94,7 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     if([self numberOfItemsForPicker] == 0) {
         NSString *itemName = [self titleForSection];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:[NSString stringWithFormat:@"All %@ are added", itemName]
+                                                        message:[NSString stringWithFormat:@"All possible %@ are added", [itemName lowercaseString]]
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -138,35 +155,35 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
 #pragma mark - RMPickerViewController Delegates
 
 - (void)handlePickerSelection:(NSArray *)selectedRows {
-    if(self.cellBeingEdited == PZSoftwareType) {
+    if(self.cellBeingEdited == MTPlaceTypeSection) {
         NSUInteger softwareRow = [[selectedRows objectAtIndex:0] integerValue];
-        NSMutableArray *softwares = [self.softwareManager allSoftwares];
+        NSMutableArray *placeTypes = [self.placeTypeManager allPlaceTypes];
         
         /*Remove already added softwares*/
-        NSArray *storedSoftwares = [[PZSettings sharedSettings] getSoftwares];
-        [softwares removeObjectsInArray:storedSoftwares];
+        NSArray *storedPlaceTypes = [[MTSettings sharedSettings] getPlaceTypes];
+        [placeTypes removeObjectsInArray:storedPlaceTypes];
         
-        NSString *software = [NSString stringWithFormat:@"%@", [softwares objectAtIndex:softwareRow]];
-        [[PZSettings sharedSettings] addSoftware:software];
+        NSString *placeType = [NSString stringWithFormat:@"%@", [placeTypes objectAtIndex:softwareRow]];
+        [[MTSettings sharedSettings] addPlaceType:placeType];
         
         NSIndexPath *indexPathToUpdate = [NSIndexPath indexPathForItem:0 inSection:self.cellBeingEdited];
-        PZTagCell *cell = (PZTagCell *)[self.tableView cellForRowAtIndexPath:indexPathToUpdate];
-        [cell.tagsControl addTag:software];
+        MTTagCell *cell = (MTTagCell *)[self.tableView cellForRowAtIndexPath:indexPathToUpdate];
+        [cell.tagsControl addTag:placeType];
     }
-    if(self.cellBeingEdited == PZType) {
+    if(self.cellBeingEdited == MTFoodTypeSection) {
         NSUInteger typeRow = [[selectedRows objectAtIndex:0] integerValue];
-        NSMutableArray *jobPostingTypes = [[NSMutableArray alloc] initWithArray:POSTING_TYPES];
+        NSMutableArray *foodTypes = [[NSMutableArray alloc] initWithArray:FOOD_TYPES];
         
-        /*Remove already added types*/
-        NSArray *storedTypes = [[PZSettings sharedSettings] getJobPostingTypes];
-        [jobPostingTypes removeObjectsInArray:storedTypes];
+        /*Remove already added foods*/
+        NSArray *storedFoods = [[MTSettings sharedSettings] getFoodTypes];
+        [foodTypes removeObjectsInArray:storedFoods];
         
-        NSString *postingType = [NSString stringWithFormat:@"%@", [jobPostingTypes objectAtIndex:typeRow]];
-        [[PZSettings sharedSettings] addJobPostingType:postingType];
+        NSString *foodType = [NSString stringWithFormat:@"%@", [foodTypes objectAtIndex:typeRow]];
+        [[MTSettings sharedSettings] addFoodType:foodType];
         
         NSIndexPath *indexPathToUpdate = [NSIndexPath indexPathForItem:0 inSection:self.cellBeingEdited];
-        PZTagCell *cell = (PZTagCell *)[self.tableView cellForRowAtIndexPath:indexPathToUpdate];
-        [cell.tagsControl addTag:postingType];
+        MTTagCell *cell = (MTTagCell *)[self.tableView cellForRowAtIndexPath:indexPathToUpdate];
+        [cell.tagsControl addTag:foodType];
     }
 }
 
@@ -178,17 +195,17 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     NSUInteger count = 0;
     switch (self.cellBeingEdited)
     {
-        case PZSoftwareType: {
-            NSMutableArray *softwares = [self.softwareManager allSoftwares];
-            NSArray *storedSoftwares = [[PZSettings sharedSettings] getSoftwares];
-            [softwares removeObjectsInArray:storedSoftwares];
-            count = softwares.count;
+        case MTPlaceTypeSection: {
+            NSMutableArray *placeTypes = [self.placeTypeManager allPlaceTypes];
+            NSArray *storedplaceTypes = [[MTSettings sharedSettings] getPlaceTypes];
+            [placeTypes removeObjectsInArray:storedplaceTypes];
+            count = placeTypes.count;
             break;
         }
-        case PZType: {
-            NSMutableArray *types = [[NSMutableArray alloc] initWithArray:POSTING_TYPES];
-            NSArray *storedTypes = [[PZSettings sharedSettings] getJobPostingTypes];
-            [types removeObjectsInArray:storedTypes];
+        case MTFoodTypeSection: {
+            NSMutableArray *types = [[NSMutableArray alloc] initWithArray:FOOD_TYPES];
+            NSArray *storedFoodsTypes = [[MTSettings sharedSettings] getFoodTypes];
+            [types removeObjectsInArray:storedFoodsTypes];
             count = types.count;
             break;
         }
@@ -205,18 +222,18 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if(self.cellBeingEdited == PZSoftwareType) {
-        NSMutableArray *softwares = [self.softwareManager allSoftwares];
+    if(self.cellBeingEdited == MTPlaceTypeSection) {
+        NSMutableArray *placeTypes = [self.placeTypeManager allPlaceTypes];
         /*Remove already stored softwares*/
-        [softwares removeObjectsInArray:[[PZSettings sharedSettings] getSoftwares]];
-        return [NSString stringWithFormat:@"%@", [softwares objectAtIndex:row]];
+        [placeTypes removeObjectsInArray:[[MTSettings sharedSettings] getPlaceTypes]];
+        return [NSString stringWithFormat:@"%@", [placeTypes objectAtIndex:row]];
     }
-    if(self.cellBeingEdited == PZType) {
-        NSMutableArray *jobPostingTypes = [[NSMutableArray alloc] initWithArray:POSTING_TYPES];
+    if(self.cellBeingEdited == MTFoodTypeSection) {
+        NSMutableArray *foodTypes = [[NSMutableArray alloc] initWithArray:FOOD_TYPES];
         /*Remove already stored softwares*/
-        [jobPostingTypes removeObjectsInArray:[[PZSettings sharedSettings] getJobPostingTypes]];
+        [foodTypes removeObjectsInArray:[[MTSettings sharedSettings] getFoodTypes]];
         
-        return [NSString stringWithFormat:@"%@", [jobPostingTypes objectAtIndex:row]];
+        return [NSString stringWithFormat:@"%@", [foodTypes objectAtIndex:row]];
     }
    
     return @"";
@@ -225,27 +242,43 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
 #pragma mark - UITableView delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return PZSectionNumber;
+    return MTSectionNumber;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    if(section <= PZType)
-       return 1;
+    if(section == MTSwitchesSection)
+       return 2;
     
-    return 2;
+    return 1;
 }
+
+/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    if(indexPath.section == MTDistanceSection) {
+        return 72;
+    }
+    
+    return 46;
+}*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;
     switch (section)
     {
-        case PZSoftwareType:
-            sectionName = @"Software";
+        case MTPlaceTypeSection:
+            sectionName = @"Place types";
             break;
-        case PZType:
-            sectionName = @"Job type";
+        case MTFoodTypeSection:
+            sectionName = @"Food";
+            break;
+        case MTRatingSection:
+            sectionName = @"Minimum rating";
+            break;
+        case MTDistanceSection:
+            sectionName = @"Radius";
             break;
         default:
             sectionName = @"";
@@ -259,19 +292,19 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     
     UITableViewCell *finalCell = nil;
     /*Setup the UI fo the cell*/
-    if(indexPath.section <= PZType) {
-        PZTagCell *cell = [tableView dequeueReusableCellWithIdentifier:TAG_CELL_REUSE_IDENTIFIER
+    if(indexPath.section <= MTFoodTypeSection) {
+        MTTagCell *cell = [tableView dequeueReusableCellWithIdentifier:TAG_CELL_REUSE_IDENTIFIER
                                                           forIndexPath:indexPath];
         /*The cell shoud keep its section type*/
         cell.sectionType = indexPath.section;
         
         /*Set the delegate*/
         cell.delegate = self;
-       [self setupCell:cell forSectionType:cell.sectionType];
+        [self setupCell:cell forSectionType:cell.sectionType];
         finalCell = cell;
     }
-    else {
-        PZSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:SWITCH_CELL_REUSE_IDENTIFIER
+    else if (indexPath.section == MTSwitchesSection ){
+        MTSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:SWITCH_CELL_REUSE_IDENTIFIER
                                                           forIndexPath:indexPath];
         
         /*Set the delegate*/
@@ -280,20 +313,37 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
         [self setupSwitchCell:cell forCellType:indexPath.row];
         finalCell = cell;
     }
+    else if (indexPath.section == MTRatingSection) {
+        MTRatingCell *cell = [tableView dequeueReusableCellWithIdentifier:RATING_CELL_REUSE_IDENTIFIER
+                                                             forIndexPath:indexPath];
+        
+        /*Set the delegate*/
+        cell.delegate = self;
+        finalCell = cell;
+    }
+    
+    else if (indexPath.section == MTDistanceSection) {
+        MTDistanceCell *cell = [tableView dequeueReusableCellWithIdentifier:DISTANCE_CELL_REUSE_IDENTIFIER
+                                                             forIndexPath:indexPath];
+        
+        /*Set the delegate*/
+        cell.delegate = self;
+        finalCell = cell;
+    }
     
     return finalCell;
 }
 
-- (void)setupCell:(PZTagCell *)cell forSectionType:(PZSettingsSectionType)sectionType{
+- (void)setupCell:(MTTagCell *)cell forSectionType:(MTSettingsSectionType)sectionType{
     NSMutableArray *tags = nil;
     
     switch (sectionType) {
-        case PZSoftwareType: {
-            tags = [[PZSettings sharedSettings] getSoftwares];
+        case MTPlaceTypeSection: {
+            tags = [[MTSettings sharedSettings] getPlaceTypes];
             break;
         }
-        case PZType: {
-            tags = [[PZSettings sharedSettings] getJobPostingTypes];
+        case MTFoodTypeSection: {
+            tags = [[MTSettings sharedSettings] getFoodTypes];
             break;
         }
             
@@ -310,28 +360,31 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     [cell.tagsControl reloadTagSubviews];
 }
 
-- (void)setupSwitchCell:(PZSwitchCell *)cell forCellType:(PZSwitchCellType)type {
-    if(type == PZSwitchCellShowPostsInNativeLanguagePairs) {
-        cell.captionLabel.text = @"Only posts in my language pairs";
+- (void)setupSwitchCell:(MTSwitchCell *)cell forCellType:(MTSwitchCellType)type {
+    if(type == MTSwitchCellOnlyOpenNow) {
+        cell.captionLabel.text = @"Only open now";
+        [cell.cellSwitch setOn: [[MTSettings sharedSettings] getOnlyOpen]];
+
     }
-    if(type == PZSwitchCellICanQuote) {
-        cell.captionLabel.text = @"Only posts I can quote on";
+    if(type == MTSwitchCellOnlyCheap) {
+        cell.captionLabel.text = @"Only cheap";
+        [cell.cellSwitch setOn: [[MTSettings sharedSettings] getOnlyCheap]];
     }
 }
 
-#pragma mark - PZSettingsAddTagProtocol
+#pragma mark - MTSettingsAddTagProtocol
 
-- (void)addButtonClicked:(PZSettingsSectionType)sectionType {
+- (void)addButtonClicked:(MTSettingsSectionType)sectionType {
     self.cellBeingEdited = sectionType;
     NSString *title = @"";
     
     switch (sectionType) {
-        case PZSoftwareType: {
-            title = @"Select the software to add";
+        case MTPlaceTypeSection: {
+            title = @"Select the place type to add";
             break;
         }
-        case PZType: {
-            title = @"Select the job posting type to add";
+        case MTFoodTypeSection: {
+            title = @"Select meal to add";
             break;
         }
             
@@ -343,26 +396,37 @@ NSString *const SWITCH_CELL_REUSE_IDENTIFIER = @"PZSwitchCellReuseIdentifier";
     [self presentPicker:title];
 }
 
-#pragma mark - PZSettingsDeleteTagProtocol
+#pragma mark - MTSettingsDeleteTagProtocol
 
-- (void)deleteButtonClicked:(NSString *)tag sectiontype:(PZSettingsSectionType)sectionType {
-    if(sectionType == PZSoftwareType) {
-        [[PZSettings sharedSettings] removeSoftware:tag];
+- (void)deleteButtonClicked:(NSString *)tag sectiontype:(MTSettingsSectionType)sectionType {
+    if(sectionType == MTPlaceTypeSection) {
+        [[MTSettings sharedSettings] removePlaceType:tag];
     }
-    if(sectionType == PZType) {
-        [[PZSettings sharedSettings] removeJobPostingType:tag];
-    }
-}
-
-#pragma mark - PZSwitchCellProtocol
-
-- (void)switchStateChanged:(Boolean)state forCellType:(PZSwitchCellType)cellType {
-    if(cellType == PZSwitchCellShowPostsInNativeLanguagePairs) {
-       
-    }
-    if(cellType == PZSwitchCellICanQuote) {
+    if(sectionType == MTFoodTypeSection) {
+        [[MTSettings sharedSettings] removeFoodType:tag];
     }
 }
 
+#pragma mark - MTSwitchCellProtocol
+
+- (void)switchStateChanged:(Boolean)state forCellType:(MTSwitchCellType)cellType {
+    if(cellType == MTSwitchCellOnlyOpenNow) {
+       [[MTSettings sharedSettings] setOnlyOpen:state];
+    }
+    
+    if(cellType == MTSwitchCellOnlyCheap) {
+        [[MTSettings sharedSettings] setOnlyCheap:state];
+    }
+}
+
+#pragma mark - rating protocol
+- (void)ratingChanged:(float)rating {
+    [[MTSettings sharedSettings] setRating:rating];
+}
+
+#pragma mark - Slider Touch delegate
+- (void)distanceChanged:(float)distance {
+    [[MTSettings sharedSettings] setDistance:distance];
+}
                                                                                
 @end

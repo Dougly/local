@@ -16,7 +16,7 @@
 #import "MTSideBarConfig.h"
 #import "MTMapViewController.h"
 #import "Local-swift.h"
-#import "PZSettignsViewController.h"
+#import "MTSettignsViewController.h"
 
 static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
 
@@ -99,7 +99,7 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
     switch (indexPath.row) {
         case 0:{
             menuViewCell.cellStatus = MTMenuCellMap;
-            menuViewCell.titleLabel.text = @"Clustering";
+            menuViewCell.titleLabel.text = @"Places";
             menuViewCell.leftImage.image = [UIImage imageNamed:@"ic_list"];
         } break;
         case 1:{
@@ -141,13 +141,13 @@ static NSString * const kMenuCellCelldentifier = @"MTMenuViewCell";
             UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             MTMapViewController *mapViewController = [main instantiateViewControllerWithIdentifier:@"MTMapViewController"];
             
-            mapViewController.title = @"Clustering";
+            mapViewController.title = @"Places";
             [[AppDelegate sharedPanel] setCentralPanelControllerViewController:mapViewController];
         } break;
             
         case 1:{
             UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            PZSettignsViewController *settingsViewController = [main instantiateViewControllerWithIdentifier:@"PZSettignsViewController"];
+            MTSettignsViewController *settingsViewController = [main instantiateViewControllerWithIdentifier:@"MTSettignsViewController"];
             
             settingsViewController.title = @"Settings";
             [[AppDelegate sharedPanel] setCentralPanelControllerViewController:settingsViewController];
