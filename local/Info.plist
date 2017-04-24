@@ -28,9 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Automatize wants to get location updates</string>
+	<string>Local wants to get your location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Local wants to get your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Automize would like to access your photos</string>
+	<string>Local would like to access your photos</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

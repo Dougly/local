@@ -13,6 +13,8 @@
 #import "MTDataModel.h"
 
 @interface MTGooglePlacesManager()
+@property (nonatomic, strong) NSMutableArray *requests;
+@property (nonatomic, strong) NSMutableArray *pendingPageTokens;
 @property(nonatomic, strong) QTree* qTree;
 @property (nonatomic) GooglePlaceCompletion completion;
 @end
@@ -34,6 +36,7 @@
     
     self.qTree = [QTree new];
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
+    [self cancelPendingRequests];
     
     [self query:coordinate radius:radius pageToken:nil];
     [self query:coordinate radius:radius + 500 pageToken:nil];
@@ -49,15 +52,24 @@
     __weak typeof (self) weakSelf = self;
     request.completionBlock = ^(SDRequest *request, SDResult *response)
     {
+        [self.requests removeObject:request];
+        
         if ([response isSuccess]) {
             MTGetPlacesResponse *googleResponse = (MTGetPlacesResponse *)response;
             
             if (googleResponse.places) {
                 [weakSelf addTreeNodes:googleResponse.places];
                 
+                
+                if (googleResponse.pageToken) {
+                    [self.pendingPageTokens addObject:googleResponse.pageToken];
+                }
+                
                 /*Fetch new page. 1.5 secs is required cause newPagetoken becomes available after some delay*/
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [weakSelf query:coordinate radius:radius pageToken:googleResponse.pageToken];
+                    /*in case it's cancelled, pendingPagetoken will not contain the token*/
+                    if ([self.pendingPageTokens containsObject:googleResponse.pageToken])
+                        [weakSelf query:coordinate radius:radius pageToken:googleResponse.pageToken];
                 });
                 
                 self.completion(true, googleResponse.places, nil);
@@ -69,7 +81,7 @@
                                                         userInfo:@{@"message" : response.message}]);
         }
     };
-    
+    [self.requests addObject:request];
     [request run];
 }
 
@@ -77,6 +89,13 @@
     for (MTPlace *place in googlePlaces) {
         [self.qTree insertObject:place];
     }
+}
+- (void)cancelPendingRequests {
+    for (SDRequest *request in self.requests) {
+        [request cancel];
+    }
+    
+    [self.pendingPageTokens removeAllObjects];
 }
 
 #pragma mark - access overrides
@@ -87,6 +106,22 @@
     }
     
     return _qTree;
+}
+
+- (NSMutableArray *)requests {
+    if (!_requests) {
+        _requests = [[NSMutableArray alloc] init];
+    }
+    
+    return _requests;
+}
+
+- (NSMutableArray *)pendingPageTokens {
+    if (!_pendingPageTokens) {
+        _pendingPageTokens = [[NSMutableArray alloc] init];
+    }
+    
+    return _pendingPageTokens;
 }
 
 @end

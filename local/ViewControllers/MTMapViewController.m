@@ -9,7 +9,10 @@
 #import "ClusterAnnotationView.h"
 #import "MKImageAnnotationView.h"
 #import "MTGooglePlacesManager.h"
+#import "MTProgressHUD.h"
+#import "MTLocationManager.h"
 #import "MTPlace.h"
+#import "MTAlertBuilder.h"
 
 inline static CLLocationCoordinate2D referenceLocation()
 {
@@ -26,15 +29,29 @@ inline static CLLocationCoordinate2D referenceLocation()
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self getPlacesAtLocation:referenceLocation()];
+    [self getLocation];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-   
-    [self drawCircleAroundCoordinate:referenceLocation()];
-    [self setZoomLevelWithCenter:referenceLocation()];
-    [self addGesture];
+- (void)getLocation {
+    [[MTProgressHUD sharedHUD] showOnView:self.view
+                               percentage:false];
+    
+    [[MTLocationManager sharedManager] getLocation:^(BOOL success, NSString *erroMessage, CLLocationCoordinate2D coordinate) {
+        [[MTProgressHUD sharedHUD] dismiss];
+        if (success) {
+            [self getPlacesAtLocation:coordinate];
+            
+            [self drawCircleAroundCoordinate:coordinate];
+            [self setZoomLevelWithCenter:coordinate];
+            [self addGesture];
+        }
+        else {
+            [MTAlertBuilder showAlertIn:self
+                                message:erroMessage
+                               delegate:nil];
+        }
+        
+    }];
 }
 
 - (void)setZoomLevelWithCenter:(CLLocationCoordinate2D)coordinate {
@@ -50,15 +67,11 @@ inline static CLLocationCoordinate2D referenceLocation()
 - (void)getPlacesAtLocation:(CLLocationCoordinate2D)coordinate {
     MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
     
+    self.qTree = nil;
     [manager query:coordinate radius:3000 completion:^(BOOL success, NSArray *places, NSError *error) {
-        [self reloadAnnotations];
+        if (success)
+            [self reloadAnnotations];
     }];
-}
-
-- (void)addGesture {
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    tapGesture.delegate = self;
-    [self.mapView addGestureRecognizer:tapGesture];
 }
 
 - (NSArray*)getTappedAnnotations:(UITouch*)touch
@@ -72,29 +85,6 @@ inline static CLLocationCoordinate2D referenceLocation()
         }
     }
     return tappedAnnotations;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-    return [self getTappedAnnotations:touch].count == 0;
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        /*Get the coordinate*/
-        [self.mapView removeOverlays:self.mapView.overlays];
-        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
-        
-        [self getPlacesAtLocation:coordinate];
-        [self drawCircleAroundCoordinate:coordinate];
-        [self setZoomLevelWithCenter:coordinate];
-    }
-}
-
-- (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
-    // Do anything else with the coordinate as you see fit in your application
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:4200];
-    [self.mapView addOverlay:circle];
 }
 
 - (void)reloadAnnotations {
@@ -163,6 +153,14 @@ inline static CLLocationCoordinate2D referenceLocation()
     }
 }
 
+#pragma mark - Overlays
+
+- (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
+    // Do anything else with the coordinate as you see fit in your application
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:4200];
+    [self.mapView addOverlay:circle];
+}
+
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKCircle class]]) {
         MKCircleRenderer *circle = [[MKCircleRenderer alloc] initWithOverlay:overlay];
@@ -172,6 +170,30 @@ inline static CLLocationCoordinate2D referenceLocation()
     }
     else {
         return nil;
+    }
+}
+
+#pragma mark - Map tap gesture
+
+- (void)addGesture {
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.delegate = self;
+    [self.mapView addGestureRecognizer:tapGesture];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return [self getTappedAnnotations:touch].count == 0;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        /*Get the coordinate*/
+        [self.mapView removeOverlays:self.mapView.overlays];
+        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
+        
+        [self getPlacesAtLocation:coordinate];
+        [self drawCircleAroundCoordinate:coordinate];
+        [self setZoomLevelWithCenter:coordinate];
     }
 }
 

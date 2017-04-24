@@ -86,7 +86,6 @@
 		4793CB111E7ED8C00054B7FB /* UIView+DropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB0C1E7ED8C00054B7FB /* UIView+DropShadow.m */; };
 		4793CB121E7ED8C00054B7FB /* ZHPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB0E1E7ED8C00054B7FB /* ZHPopupView.m */; };
 		4793CB161E7EEB5E0054B7FB /* MKInputBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB151E7EEB5E0054B7FB /* MKInputBoxView.m */; };
-		47A97F961EABD24F00AB8657 /* MTGooglePlacesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97F951EABD24F00AB8657 /* MTGooglePlacesManager.m */; };
 		47A97F9C1EABD89900AB8657 /* _MTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97F991EABD89900AB8657 /* _MTPhoto.m */; };
 		47A97F9D1EABD89900AB8657 /* _MTPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97F9B1EABD89900AB8657 /* _MTPlace.m */; };
 		47A97FA21EABD8A700AB8657 /* MTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97F9F1EABD8A700AB8657 /* MTPhoto.m */; };
@@ -113,6 +112,8 @@
 		47A97FE71EAD09FB00AB8657 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FE51EAD09FB00AB8657 /* ASValueTrackingSlider.m */; };
 		47A97FEB1EAD0A3F00AB8657 /* MTDistanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FE91EAD0A3F00AB8657 /* MTDistanceCell.m */; };
 		47A97FEC1EAD0A3F00AB8657 /* MTDistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A97FEA1EAD0A3F00AB8657 /* MTDistanceCell.xib */; };
+		47A97FF31EADEE1E00AB8657 /* MTGooglePlacesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FF21EADEE1E00AB8657 /* MTGooglePlacesManager.m */; };
+		47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FF61EADEF6200AB8657 /* MTLocationManager.m */; };
 		7F463DBF14CF218DC57446FA /* Pods_Local.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10C4E2D8B6ED29FDA40272 /* Pods_Local.framework */; };
 		9161F5EC1BCE67060072929C /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5EB1BCE67060072929C /* UIImage+Blur.m */; };
 		9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5F01BCE8ADC0072929C /* IMGActivityIndicator.m */; };
@@ -299,8 +300,6 @@
 		4793CB0E1E7ED8C00054B7FB /* ZHPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPopupView.m; sourceTree = "<group>"; };
 		4793CB141E7EEB5E0054B7FB /* MKInputBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInputBoxView.h; sourceTree = "<group>"; };
 		4793CB151E7EEB5E0054B7FB /* MKInputBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKInputBoxView.m; sourceTree = "<group>"; };
-		47A97F941EABD24F00AB8657 /* MTGooglePlacesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGooglePlacesManager.h; sourceTree = "<group>"; };
-		47A97F951EABD24F00AB8657 /* MTGooglePlacesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGooglePlacesManager.m; sourceTree = "<group>"; };
 		47A97F981EABD89900AB8657 /* _MTPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTPhoto.h; sourceTree = "<group>"; };
 		47A97F991EABD89900AB8657 /* _MTPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTPhoto.m; sourceTree = "<group>"; };
 		47A97F9A1EABD89900AB8657 /* _MTPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTPlace.h; sourceTree = "<group>"; };
@@ -348,6 +347,10 @@
 		47A97FE81EAD0A3F00AB8657 /* MTDistanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistanceCell.h; sourceTree = "<group>"; };
 		47A97FE91EAD0A3F00AB8657 /* MTDistanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistanceCell.m; sourceTree = "<group>"; };
 		47A97FEA1EAD0A3F00AB8657 /* MTDistanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDistanceCell.xib; sourceTree = "<group>"; };
+		47A97FF11EADEE1E00AB8657 /* MTGooglePlacesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGooglePlacesManager.h; sourceTree = "<group>"; };
+		47A97FF21EADEE1E00AB8657 /* MTGooglePlacesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGooglePlacesManager.m; sourceTree = "<group>"; };
+		47A97FF51EADEF6200AB8657 /* MTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLocationManager.h; sourceTree = "<group>"; };
+		47A97FF61EADEF6200AB8657 /* MTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLocationManager.m; sourceTree = "<group>"; };
 		6D10C4E2D8B6ED29FDA40272 /* Pods_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CD60B75C8C721A96381778 /* Pods-Local.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.release.xcconfig"; path = "Pods/Target Support Files/Pods-Local/Pods-Local.release.xcconfig"; sourceTree = "<group>"; };
 		9161F5EA1BCE67060072929C /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
@@ -698,15 +701,6 @@
 			path = MKInputBoxView;
 			sourceTree = "<group>";
 		};
-		47A97F931EABD20B00AB8657 /* Google */ = {
-			isa = PBXGroup;
-			children = (
-				47A97F941EABD24F00AB8657 /* MTGooglePlacesManager.h */,
-				47A97F951EABD24F00AB8657 /* MTGooglePlacesManager.m */,
-			);
-			path = Google;
-			sourceTree = "<group>";
-		};
 		47A97FAA1EACDB2B00AB8657 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +784,24 @@
 				47A97FE51EAD09FB00AB8657 /* ASValueTrackingSlider.m */,
 			);
 			path = ASValueTrackingSlider;
+			sourceTree = "<group>";
+		};
+		47A97FF01EADEE1E00AB8657 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				47A97FF11EADEE1E00AB8657 /* MTGooglePlacesManager.h */,
+				47A97FF21EADEE1E00AB8657 /* MTGooglePlacesManager.m */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		47A97FF41EADEE3E00AB8657 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				47A97FF51EADEF6200AB8657 /* MTLocationManager.h */,
+				47A97FF61EADEF6200AB8657 /* MTLocationManager.m */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		9161F5EE1BCE8ADC0072929C /* MTProgressHud */ = {
@@ -894,6 +906,8 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				47A97FF41EADEE3E00AB8657 /* Location */,
+				47A97FF01EADEE1E00AB8657 /* Google */,
 				47A97FC31EACDF7800AB8657 /* settings */,
 				4780731F1EAA70B400D98DD7 /* Misc */,
 				478073021EAA705500D98DD7 /* Cluster */,
@@ -907,7 +921,6 @@
 		CE250EE51B676634005447FF /* DAL */ = {
 			isa = PBXGroup;
 			children = (
-				47A97F931EABD20B00AB8657 /* Google */,
 				47260E081E797B970007990C /* Engine */,
 				CE250F291B677695005447FF /* Requests&Responses */,
 			);
@@ -1188,7 +1201,6 @@
 				47157C891E7C853A000D11E9 /* DACircularProgressView.m in Sources */,
 				47A97FD51EACE10A00AB8657 /* MTPlaceType.m in Sources */,
 				4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */,
-				47A97F961EABD24F00AB8657 /* MTGooglePlacesManager.m in Sources */,
 				4793CB121E7ED8C00054B7FB /* ZHPopupView.m in Sources */,
 				47157CF61E7C8BE6000D11E9 /* SDWebImagePrefetcher.m in Sources */,
 				4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */,
@@ -1200,6 +1212,7 @@
 				CE250F111B676682005447FF /* SDDepotRequestHandler.m in Sources */,
 				47157CC61E7C8BAC000D11E9 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				47A97FA61EAC992D00AB8657 /* MKImageAnnotationView.m in Sources */,
+				47A97FF31EADEE1E00AB8657 /* MTGooglePlacesManager.m in Sources */,
 				47157CC41E7C8BAC000D11E9 /* AFURLResponseSerialization.m in Sources */,
 				47157CF81E7C8BE6000D11E9 /* UIImage+GIF.m in Sources */,
 				9165342F1BCD112600E669A7 /* MTMenuViewController.m in Sources */,
@@ -1264,6 +1277,7 @@
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
+				47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */,
 				47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */,
 				4780731E1EAA707F00D98DD7 /* ClusterAnnotationView.m in Sources */,
 				47157CC11E7C8BAC000D11E9 /* AFSecurityPolicy.m in Sources */,
