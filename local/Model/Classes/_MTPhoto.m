@@ -89,14 +89,7 @@
 
 @dynamic place;
 
-- (NSMutableSet<MTPlace*>*)placeSet {
-	[self willAccessValueForKey:@"place"];
-
-	NSMutableSet<MTPlace*> *result = (NSMutableSet<MTPlace*>*)[self mutableSetValueForKey:@"place"];
-
-	[self didAccessValueForKey:@"place"];
-	return result;
-}
+@dynamic placeDetails;
 
 @end
 
@@ -118,6 +111,9 @@
 @implementation MTPhotoRelationships 
 + (NSString *)place {
 	return @"place";
+}
++ (NSString *)placeDetails {
+	return @"placeDetails";
 }
 @end
 

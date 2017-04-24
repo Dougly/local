@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EfR-WG-gqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-323"/>
+            <point key="canvasLocation" x="348" y="-320"/>
         </scene>
         <!--Panels View Controller-->
         <scene sceneID="4Ot-yc-WRu">
@@ -548,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVa-qW-iXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586.39999999999998" y="1584.5577211394304"/>
+            <point key="canvasLocation" x="-1778" y="1680"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tlU-5R-Mqr">
@@ -625,7 +625,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVm-FJ-lj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834" y="1107"/>
+            <point key="canvasLocation" x="348" y="1116"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yEB-bQ-L2W">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" automaticallyAdjustsScrollViewInsets="NO" id="B1L-Vg-7yH" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x2n-8p-Ryx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q4j-Vk-azO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hRp-e2-eZy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvR-c5-qtO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2026" y="1653"/>
         </scene>
     </scenes>
     <resources>

@@ -11,8 +11,15 @@
 #import "MTGetPlacesResponse.h"
 #import "MTPlace.h"
 #import "MTDataModel.h"
+#import "MTGoogleFilter.h"
+#import "MTGoogleQueryString.h"
+#import "MTGoogleTypesString.h"
 
 @interface MTGooglePlacesManager()
+@property (nonatomic, strong) MTGoogleQueryString *googleQuery;
+@property (nonatomic, strong) MTGoogleTypesString *googleTypes;
+@property (nonatomic, strong) MTGoogleFilter *googleFilter;
+
 @property (nonatomic, strong) NSMutableArray *requests;
 @property (nonatomic, strong) NSMutableArray *pendingPageTokens;
 @property(nonatomic, strong) QTree* qTree;
@@ -31,6 +38,14 @@
     return _sharedManager;
 }
 
+- (id)init {
+    self = [super init];
+    _googleQuery = [MTGoogleQueryString new];
+    _googleTypes = [MTGoogleTypesString new];
+    _googleFilter = [MTGoogleFilter new];
+    return self;
+}
+
 - (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius completion:(GooglePlaceCompletion)completion{
     self.completion = completion;
     
@@ -47,6 +62,8 @@
     request.latitude = coordinate.latitude;
     request.longitude = coordinate.longitude;
     request.pageToken = pageToken;
+    request.query = [self.googleQuery stringQuery];
+    request.types = [self.googleTypes stringTypes];
     request.radius = radius;
     
     __weak typeof (self) weakSelf = self;
@@ -87,7 +104,8 @@
 
 - (void)addTreeNodes:(NSArray *)googlePlaces {
     for (MTPlace *place in googlePlaces) {
-        [self.qTree insertObject:place];
+        if ([self.googleFilter doesPlaceConformToAllFilters:place])
+            [self.qTree insertObject:place];
     }
 }
 - (void)cancelPendingRequests {

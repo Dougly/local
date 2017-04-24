@@ -14,6 +14,10 @@
 #import "MTUser.h"
 #import "MTPlace.h"
 #import "MTPhoto.h"
+#import "MTPlaceDetails.h"
+#import "MTWeekdayText.h"
+#import "MTOpeningHourPeriod.h"
+#import "MTPlaceReview.h"
 
 @interface MTDataModel ()
 
@@ -217,7 +221,6 @@
                     NSArray *alreadyStoredPlaceIds = [self getAlreadyStoredPlaces:list];
                     if (alreadyStoredPlaceIds.count < list.count) {
                         
-                        
                         places = [[NSMutableArray alloc] init];
                         for (NSDictionary *placeDict in list){
                             
@@ -244,6 +247,56 @@
     }
     
     return [places copy];
+}
+
+- (MTPlaceDetails *)parsePlaceDetails:(NSData *)data {
+    [self removeAllEntities:@"MTPlaceDetails"];
+    MTPlaceDetails *placeDetails = nil;
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
+            NSDictionary *result = jsonDict[@"result"];
+            
+            placeDetails = (MTPlaceDetails *)[self emptyNode:MTPlaceDetails.class];
+            [placeDetails parseNode:result];
+            
+            NSArray *photoDictionaries = result[@"photos"];
+            for (NSDictionary *photoDictionary in photoDictionaries) {
+                MTPhoto *photo = (MTPhoto *)[self emptyNode:MTPhoto.class];
+                [photo parseNode:photoDictionary];
+                [placeDetails addPhotosObject:photo];
+            }
+            
+            NSArray *openingHoursDictionaries = result[@"opening_hours"][@"periods"];
+            for (NSDictionary *openingHoursDict in openingHoursDictionaries) {
+                MTOpeningHourPeriod *period = (MTOpeningHourPeriod *)[self emptyNode:MTOpeningHourPeriod.class];
+                [period parseNode:openingHoursDict];
+                [placeDetails addOpeningHoursPeriodsObject:period];
+            }
+            
+            NSArray *reviewDictionaries = result[@"reviews"];
+            for (NSDictionary *reviewDictionary in reviewDictionaries) {
+                MTPlaceReview *review = (MTPlaceReview *)[self emptyNode:MTPlaceReview.class];
+                [review parseNode:reviewDictionary];
+                [placeDetails addReviewsObject:review];
+            }
+            
+            NSArray *weekDayDictionaries = result[@"weekday_text"];
+            NSUInteger day = 0;
+            for (NSString *weekDayText in weekDayDictionaries) {
+                MTWeekdayText *weekdayText = (MTWeekdayText *)[self emptyNode:MTWeekdayText.class];
+                [weekdayText parseNode:weekDayText day:day];
+                [placeDetails addWeekdayTextsObject:weekdayText];
+                day++;
+            }
+            
+            [self saveContext];
+        }
+    }
+    
+    return placeDetails;
 }
 
 - (NSArray *)getAlreadyStoredPlaces:(NSArray *)places {

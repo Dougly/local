@@ -47,7 +47,7 @@
     /*Init job posting types array*/
     NSArray *storedFoodTypes = [_preferences getFoodTypes];
     if(storedFoodTypes.count == 0) {
-        [self addFoodTypes:@[FOOD_LUNCH, FOOD_DRINK, FOOD_BREAKFAST]];
+        [self addFoodTypes:FOOD_TYPES];
     }
     else {
          [_foodTypes addObjectsFromArray:storedFoodTypes];

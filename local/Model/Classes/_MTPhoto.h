@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class MTPlace;
+@class MTPlaceDetails;
 
 @interface MTPhotoID : NSManagedObjectID {}
 @end
@@ -38,16 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (int32_t)widthValue;
 - (void)setWidthValue:(int32_t)value_;
 
-@property (nonatomic, strong, nullable) NSSet<MTPlace*> *place;
-- (nullable NSMutableSet<MTPlace*>*)placeSet;
+@property (nonatomic, strong, nullable) MTPlace *place;
 
-@end
-
-@interface _MTPhoto (PlaceCoreDataGeneratedAccessors)
-- (void)addPlace:(NSSet<MTPlace*>*)value_;
-- (void)removePlace:(NSSet<MTPlace*>*)value_;
-- (void)addPlaceObject:(MTPlace*)value_;
-- (void)removePlaceObject:(MTPlace*)value_;
+@property (nonatomic, strong, nullable) MTPlaceDetails *placeDetails;
 
 @end
 
@@ -71,8 +65,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (int32_t)primitiveWidthValue;
 - (void)setPrimitiveWidthValue:(int32_t)value_;
 
-- (NSMutableSet<MTPlace*>*)primitivePlace;
-- (void)setPrimitivePlace:(NSMutableSet<MTPlace*>*)value;
+- (MTPlace*)primitivePlace;
+- (void)setPrimitivePlace:(MTPlace*)value;
+
+- (MTPlaceDetails*)primitivePlaceDetails;
+- (void)setPrimitivePlaceDetails:(MTPlaceDetails*)value;
 
 @end
 
@@ -85,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTPhotoRelationships: NSObject
 + (NSString *)place;
++ (NSString *)placeDetails;
 @end
 
 NS_ASSUME_NONNULL_END

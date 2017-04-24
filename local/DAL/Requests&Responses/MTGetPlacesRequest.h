@@ -14,4 +14,7 @@
 @property (nonatomic) CGFloat longitude;
 @property (nonatomic) NSUInteger radius;
 @property (nonatomic, strong) NSString *pageToken;
+@property (nonatomic, strong) NSString *types;
+@property (nonatomic, strong) NSString *query;
+
 @end

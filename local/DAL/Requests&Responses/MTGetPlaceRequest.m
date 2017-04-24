@@ -13,12 +13,27 @@
 
 - (NSMutableURLRequest *)serviceURLRequest
 {
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%lf,%lf&types=cafe|restaurant|pub&key=%@&radius=%ld&sensor=false", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
-    
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%lf,%lf&key=%@&radius=%ld&sensor=false", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
+    if (self.types) {
+        NSString *placeTypesPart = @"";
+        
+        if ([self.types containsString:@"|"]) {
+            placeTypesPart = [NSString stringWithFormat:@"&types=%@", self.types];
+        }
+        else {
+            placeTypesPart = [NSString stringWithFormat:@"&type=%@", self.types];
+        }
+        urlString = [urlString stringByAppendingString:placeTypesPart];
+    }
+    if (self.query) {
+        NSString *placeTypesPart = [NSString stringWithFormat:@"&query=%@", self.query];
+        urlString = [urlString stringByAppendingString:placeTypesPart];
+    }
     if (self.pageToken) {
         NSString *tokenPart = [NSString stringWithFormat:@"&pagetoken=%@", self.pageToken];
         urlString = [urlString stringByAppendingString:tokenPart];
     }
+    
     
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     

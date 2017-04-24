@@ -1,18 +1,22 @@
 [
-  {
+ {
   "place_id":1,
-  "place_name":"bakery"
+  "place_name":"restaurant"
   },
   {
   "place_id":2,
-  "place_name":"bar"
+  "place_name":"bakery"
   },
   {
   "place_id":3,
-  "place_name":"cafe"
+  "place_name":"bar"
   },
   {
   "place_id":4,
-  "place_name":"restaurant"
-  }
+  "place_name":"cafe"
+  },
+  {
+  "place_id":5,
+  "place_name":"night_club"
+  },
 ]

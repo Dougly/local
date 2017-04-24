@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="15G31" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="MTOpeningHourPeriod" representedClassName="MTOpeningHourPeriod" syncable="YES">
+        <attribute name="closeDay" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="closeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="openDay" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="openTime" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTPlaceDetails" inverseName="openingHoursPeriods" inverseEntity="MTPlaceDetails" syncable="YES"/>
+    </entity>
     <entity name="MTPhoto" representedClassName="MTPhoto" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="htmlAttributes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="place" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MTPlace" inverseName="photos" inverseEntity="MTPlace" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTPlace" inverseName="photos" inverseEntity="MTPlace" syncable="YES"/>
+        <relationship name="placeDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTPlaceDetails" inverseName="photos" inverseEntity="MTPlaceDetails" syncable="YES"/>
     </entity>
     <entity name="MTPlace" representedClassName="MTPlace" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,12 +31,53 @@
         <attribute name="vincinity" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTPhoto" inverseName="place" inverseEntity="MTPhoto" syncable="YES"/>
     </entity>
+    <entity name="MTPlaceDetails" representedClassName="MTPlaceDetails" syncable="YES">
+        <attribute name="adminLevel2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="formattedAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internationalPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isOpenNow" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="localPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="neighbourhood" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="streetName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sublocality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vincinity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="openingHoursPeriods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTOpeningHourPeriod" inverseName="parentDetails" inverseEntity="MTOpeningHourPeriod" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTPhoto" inverseName="placeDetails" inverseEntity="MTPhoto" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTPlaceReview" inverseName="parentDetails" inverseEntity="MTPlaceReview" syncable="YES"/>
+        <relationship name="weekdayTexts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MTWeekdayText" inverseName="parentDetails" inverseEntity="MTWeekdayText" syncable="YES"/>
+    </entity>
+    <entity name="MTPlaceReview" representedClassName="MTPlaceReview" syncable="YES">
+        <attribute name="authorAvatarUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="relativeTimeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTPlaceDetails" inverseName="reviews" inverseEntity="MTPlaceDetails" syncable="YES"/>
+    </entity>
     <entity name="MTUser" representedClassName="MTUser" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="MTWeekdayText" representedClassName="MTWeekdayText" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MTPlaceDetails" inverseName="weekdayTexts" inverseEntity="MTPlaceDetails" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="MTUser" positionX="-63" positionY="135" width="128" height="60"/>
+        <element name="MTOpeningHourPeriod" positionX="-27" positionY="306" width="128" height="120"/>
+        <element name="MTPhoto" positionX="-54" positionY="162" width="128" height="135"/>
         <element name="MTPlace" positionX="-63" positionY="144" width="128" height="255"/>
-        <element name="MTPhoto" positionX="-54" positionY="162" width="128" height="120"/>
+        <element name="MTPlaceDetails" positionX="-36" positionY="270" width="128" height="330"/>
+        <element name="MTPlaceReview" positionX="18" positionY="333" width="128" height="180"/>
+        <element name="MTUser" positionX="-63" positionY="135" width="128" height="60"/>
+        <element name="MTWeekdayText" positionX="0" positionY="324" width="128" height="90"/>
     </elements>
 </model>

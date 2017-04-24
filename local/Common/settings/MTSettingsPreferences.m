@@ -30,9 +30,9 @@ NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
 
 - (void)setupInitialValues {
     if(![_defaults valueForKey:FOOD_TYPE_KEY]) {
-        [self addFoodType:FOOD_LUNCH];
-        [self addFoodType:FOOD_DRINK];
-        [self addFoodType:FOOD_BREAKFAST];
+        for (NSString *foodType in FOOD_TYPES) {
+            [self addFoodType:foodType];
+        }
     }
     
     if(![_defaults valueForKey:ONLY_OPEN_KEY]) {

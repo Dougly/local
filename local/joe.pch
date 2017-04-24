@@ -122,8 +122,14 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 #define  FOOD_LUNCH         @"lunch"
 #define  FOOD_DRINK         @"drink"
 #define  FOOD_BREAKFAST     @"breakfast"
-#define  DELIMITER                 @"|"
-#define FOOD_TYPES    @[FOOD_LUNCH, FOOD_DRINK, FOOD_BREAKFAST]
+#define  FOOD_COFFEE        @"coffee"
+#define  FOOD_WINE          @"wine"
+#define  FOOD_STEAK         @"steak"
+#define  FOOD_SUSHI         @"sushi"
+#define  FOOD_VEGETARIAN    @"vegetarian"
+
+#define DELIMITER                 @"|"
+#define FOOD_TYPES    @[FOOD_VEGETARIAN, FOOD_LUNCH, FOOD_DRINK, FOOD_BREAKFAST, FOOD_COFFEE, FOOD_STEAK, FOOD_SUSHI]
 #define MT_DISCARD_JOB_NOTIFICATION      @"kNotificationDiscardJob"
 
 

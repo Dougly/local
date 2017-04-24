@@ -11,13 +11,14 @@
 // NOTE: to update models:  mogenerator -m MTDataModel.xcdatamodel/ -O ../Classes/ --template-var arc=YES
 
 @class MTUser;
-
+@class MTPlaceDetails;
 
 @interface MTDataModel : NSObject
 
 + (MTDataModel *)sharedDatabaseStorage;
 - (void)clearPlaces;
 
+- (MTPlaceDetails *)parsePlaceDetails:(NSData *)data;
 - (NSArray *)parsePlaces:(NSData *)data;
 - (NSString *)parseNewPageToken:(NSData *)data;
 - (NSArray *)getPlaces;

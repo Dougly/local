@@ -32,7 +32,7 @@
 }
 
 - (void)setupSlider {
-    self.slider.maximumValue = 5;
+    self.slider.maximumValue = 7;
     self.slider.minimumValue = 1;
     [self.slider setMaxFractionDigitsDisplayed:0];
     self.slider.popUpViewColor = kTotsAmourBrandColorHEX;

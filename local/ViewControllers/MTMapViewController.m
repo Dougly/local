@@ -13,14 +13,10 @@
 #import "MTLocationManager.h"
 #import "MTPlace.h"
 #import "MTAlertBuilder.h"
-
-inline static CLLocationCoordinate2D referenceLocation()
-{
-  return CLLocationCoordinate2DMake(40.730610, -73.935242);
-}
+#import "ViewController.h"
+#import "MTSettings.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate>
-
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
 @end
@@ -68,7 +64,10 @@ inline static CLLocationCoordinate2D referenceLocation()
     MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
     
     self.qTree = nil;
-    [manager query:coordinate radius:3000 completion:^(BOOL success, NSArray *places, NSError *error) {
+    
+    /*in km*/
+    NSUInteger radius = [[MTSettings sharedSettings] getDistance];
+    [manager query:coordinate radius:(radius * 1000) completion:^(BOOL success, NSArray *places, NSError *error) {
         if (success)
             [self reloadAnnotations];
     }];
@@ -129,13 +128,13 @@ inline static CLLocationCoordinate2D referenceLocation()
     }
     else if ([annotation isKindOfClass:[MTPlace class]]){
         static NSString *defaultPinID = @"com.local.food";
-        MKImageAnnotationView *pinView = (MKImageAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-        if (pinView == nil) {
-            pinView = [[MKImageAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-        }
-        else {
-            [pinView updateWithAnnotation:annotation];
-        }
+        //MKImageAnnotationView *pinView = (MKImageAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+        //if (pinView == nil) {
+            MKImageAnnotationView *pinView = [[MKImageAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        //}
+        //else {
+            //[pinView updateWithAnnotation:annotation];
+        //}
       
         return pinView;
     }
@@ -153,11 +152,23 @@ inline static CLLocationCoordinate2D referenceLocation()
     }
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ViewController *viewController = [main instantiateViewControllerWithIdentifier:@"ViewController"];
+    
+    viewController.title = @"Details";
+    viewController.place = (MTPlace *)view.annotation;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark - Overlays
 
 - (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
-    // Do anything else with the coordinate as you see fit in your application
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:4200];
+    /*in km*/
+    NSUInteger radius = [[MTSettings sharedSettings] getDistance];
+    
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:(radius*1000 + 700)];
     [self.mapView addOverlay:circle];
 }
 

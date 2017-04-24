@@ -16,7 +16,7 @@
     self.isOpenNow = node[@"opening_hours"][@"open_now"];
     self.lat = node[@"geometry"][@"location"][@"lat"];
     self.lon = node[@"geometry"][@"location"][@"lng"];
-    
+    self.vincinity = node[@"vincinity"];
     NSArray *types = node[@"types"];
     NSString *typesString = @"";
     for (NSString *type in types) {

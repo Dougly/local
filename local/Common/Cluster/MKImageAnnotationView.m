@@ -22,7 +22,6 @@
 
 - (void)updateWithAnnotation:(id<MKAnnotation>)annotation {
     self.canShowCallout = YES;
-    
     MTPhoto *photo = [((MTPlace *)annotation).photos.allObjects firstObject];
     
     NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&maxheight=120&photoreference=%@&key=%@", photo.reference, kGoogleMapAPIKey];
@@ -30,7 +29,8 @@
     
     UIImage *pinImage = [UIImage imageNamed:@"ic_pin"];
     self.image = pinImage;
-    
+    self.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
     
     __weak typeof(self) weakSelf = self;
     
