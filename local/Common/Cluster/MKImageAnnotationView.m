@@ -21,7 +21,7 @@
 }
 
 - (void)updateWithAnnotation:(id<MKAnnotation>)annotation {
-    self.canShowCallout = YES;
+    self.canShowCallout = NO;
     MTPhoto *photo = [((MTPlace *)annotation).photos.allObjects firstObject];
     
     NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=120&maxheight=120&photoreference=%@&key=%@", photo.reference, kGoogleMapAPIKey];
