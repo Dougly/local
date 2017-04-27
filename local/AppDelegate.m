@@ -6,7 +6,6 @@
 //
 
 #import "AppDelegate.h"
-#import "PanelsViewController.h"
 #import "Local-swift.h"
 
 @implementation NSURLRequest(DataController)
@@ -58,21 +57,6 @@ static PanelsViewController *rootController;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-+ (void)setRootController:(UIViewController *)newRootController {
-    rootController = (PanelsViewController*)newRootController;
-    
-    //setup the side bar*/
-    if (rootController.leftPanel == nil)
-    {
-        rootController.self.isPanelShadow = NO;
-        [rootController setPanels];
-    }
-}
-
-+ (PanelsViewController *)sharedPanel {
-    return rootController;
 }
 
 @end

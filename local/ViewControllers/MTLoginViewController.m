@@ -7,9 +7,7 @@
 //
 
 #import "MTLoginViewController.h"
-#import "PanelsViewController.h"
-#import "AppDelegate.h"
-#import "MTDataModel.h"
+#import "MTMainViewController.h"
 
 @interface MTLoginViewController ()
 - (IBAction)loginButtonClicked:(id)sender;
@@ -24,9 +22,8 @@
 
 - (void)showMainScreen:(BOOL)isAnimated {
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PanelsViewController *sidebarController = [main instantiateViewControllerWithIdentifier:@"PanelsViewController"];
-    [self.navigationController pushViewController:sidebarController animated:isAnimated];
-    [AppDelegate setRootController:sidebarController];
+    MTMainViewController *mainViewController = [main instantiateViewControllerWithIdentifier:@"MTMainViewController"];
+    [self.navigationController pushViewController:mainViewController animated:isAnimated];
 }
 
 - (IBAction)loginButtonClicked:(id)sender {

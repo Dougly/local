@@ -18,6 +18,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MTPhoto.h"
 #import "UIImageView+WebCache.h"
+#import "CMTabbarView.h"
+
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate>
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;

@@ -53,7 +53,6 @@ class ClockViewController: UIViewController {
     }
     
     @IBAction func updateTexts(_ sender: AnyObject?) {
-        handleSidebar(sender)
         
         adjustValue(value: &rangeCircularSlider.startPointValue)
         adjustValue(value: &rangeCircularSlider.endPointValue)
@@ -80,21 +79,6 @@ class ClockViewController: UIViewController {
         else {
             durationLabel.isHidden = true
         }
-    }
-    
-    func handleSidebar(_ sender: AnyObject?) {
-        if sender != nil {
-            self.sidePanelController.allowLeftSwipe = false
-            
-            if let timer = timer {
-                timer.invalidate()
-            }
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.enableSideBar), userInfo: nil, repeats: false);
-        }
-    }
-    
-    func enableSideBar() {
-        self.sidePanelController.allowLeftSwipe = true;
     }
     
     func adjustValue(value: inout CGFloat) {

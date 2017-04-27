@@ -3,5 +3,3 @@
 //
 
 #import "AppDelegate.h"
-#import "UIViewController+JASidePanel.h"
-#import "JASidePanelController.h"

@@ -16,8 +16,6 @@
 #import "MTSettings.h"
 #import "MTRatingCell.h"
 #import "MTDistanceCell.h"
-#import "UIViewController+JASidePanel.h"
-#import "JASidePanelController.h"
 
 @interface MTSettignsViewController ()<MTSettingsAddTagProtocol, MTSettingsDeleteTagProtocol, MTSwitchCellProtocol, MTRatingCellProtocol, MTDistanceValueProtocol>
 @property (nonatomic, weak) IBOutlet UISwitch *myLangPairsSwitch;
@@ -41,7 +39,6 @@ NSString *const DISTANCE_CELL_REUSE_IDENTIFIER = @"MTDistanceCellReuseIdentifier
     
     self.title = @"Settings";
     self.navigationController.navigationBar.topItem.title = @"Settings";
-    self.sidePanelController.allowLeftSwipe = false;
     
     self.placeTypeManager = [[MTPlaceTypeManager alloc] init];
     [self.myLangPairsSwitch setOn:true];

@@ -11,8 +11,6 @@
 @class PanelsViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-+ (PanelsViewController *)sharedPanel;
-+ (void)setRootController:(UIViewController *)rootController;
 
 @property (strong, nonatomic) UIWindow *window;
 @end
