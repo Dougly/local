@@ -209,7 +209,9 @@
     NSMutableArray *places = nil;
     if(data != nil) {
         NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:NSJSONReadingMutableContainers
+                                                                   error:&error];
         
         if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
             MTPlace *place = nil;
@@ -325,7 +327,9 @@
     NSString *newPageToken = nil;
     if(data != nil) {
         NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                                 options:NSJSONReadingMutableContainers
+                                                                   error:&error];
         
         if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
             if (jsonDict) {

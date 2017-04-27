@@ -8,18 +8,19 @@
 
 #import "MTSettingsPreferences.h"
 
+NSString *const FOOD_TYPE_KEY  = @"FOOD_TYPE_KEY";
+NSString *const PLACE_TYPE_KEY = @"PLACE_TYPE_KEY";
+NSString *const ONLY_OPEN_KEY  = @"ONLY_OPEN_KEY";
+NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
+NSString *const RATING_KEY     = @"RATING_KEY";
+NSString *const DISTANCE_KEY   = @"DISTANCE_KEY";
+
 @interface MTSettingsPreferences()
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 @implementation MTSettingsPreferences
-NSString *const FOOD_TYPE_KEY = @"FOOD_TYPE_KEY";
-NSString *const PLACE_TYPE_KEY = @"PLACE_TYPE_KEY";
 
-NSString *const ONLY_OPEN_KEY = @"ONLY_OPEN_KEY";
-NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
-NSString *const RATING_KEY = @"RATING_KEY";
-NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
 
 - (id)init {
     self = [super init];

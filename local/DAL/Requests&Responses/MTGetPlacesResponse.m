@@ -12,7 +12,7 @@
 
 - (void)parseResponseData:(NSData *)responseData {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.places = [[MTDataModel sharedDatabaseStorage] parsePlaces:responseData];
+        self.places    = [[MTDataModel sharedDatabaseStorage] parsePlaces:responseData];
         self.pageToken = [[MTDataModel sharedDatabaseStorage] parseNewPageToken:responseData];
     });
 }
