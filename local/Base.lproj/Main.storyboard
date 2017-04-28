@@ -495,7 +495,7 @@
                                     <outlet property="delegate" destination="QO0-Qx-Uq8" id="s7q-gz-lKK"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyz-4e-Fnt">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyz-4e-Fnt">
                                 <rect key="frame" x="309" y="86" width="46" height="46"/>
                                 <color key="backgroundColor" red="0.090988613665103912" green="0.40694671869277954" blue="0.12911421060562134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

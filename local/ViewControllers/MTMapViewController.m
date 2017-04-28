@@ -21,11 +21,14 @@
 #import "TitleView.h"
 #import "MapPopupView.h"
 #import "MTSettignsViewController.h"
+#import "LocationView.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate>
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
 @property (nonatomic, strong) MapPopupView *currentPopupView;
+@property (nonatomic, strong) TitleView *titleView;
+@property (nonatomic, strong) LocationView *locationView;
 @end
 
 @implementation MTMapViewController
@@ -37,10 +40,11 @@
 }
 
 - (void)addTitleView {
-    TitleView * titleView = [[[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:self options:nil] objectAtIndex:0];
-    titleView.delegate = self;
-    self.navigationItem.titleView = titleView;
+    self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:self options:nil] objectAtIndex:0];
+    self.titleView.delegate = self;
+    self.navigationItem.titleView = self.titleView;
 }
+
 - (void)getLocation {
     [[MTProgressHUD sharedHUD] showOnView:self.view
                                percentage:false];
@@ -161,7 +165,7 @@
     else {
         [self.currentPopupView removeFromSuperview];
         
-        self.currentPopupView= [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
+        self.currentPopupView = [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
         self.currentPopupView.pinViewFrame = view.frame;
         self.currentPopupView.place = (MTPlace *)annotation;
         
@@ -227,7 +231,22 @@
 
 #pragma mark - Title View delegagte
 - (void)titleViewClicked:(BOOL)isRevealing {
-    int i = 0;
+    if (isRevealing) {
+        self.locationView = [[[NSBundle mainBundle] loadNibNamed:@"LocationView" owner:self options:nil] objectAtIndex:0];
+        self.locationView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0);
+        [self.view addSubview:self.locationView];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.locationView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+        }];
+    }
+    else {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.locationView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0);
+        } completion:^(BOOL finished) {
+            [self.locationView removeFromSuperview];
+        }];
+    }
 }
 
 #pragma mark - Temporary
