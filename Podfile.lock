@@ -1,12 +1,19 @@
 PODS:
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
   - HGCircularSlider (2.0.0)
 
 DEPENDENCIES:
+  - GoogleMaps
   - HGCircularSlider (~> 2.0.0)
 
 SPEC CHECKSUMS:
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
 
-PODFILE CHECKSUM: 5fd7be50d6e862d9fd94ceb9b270034633f73789
+PODFILE CHECKSUM: 85743e4685291a66d2c1ef8eee7c9b6929985c84
 
 COCOAPODS: 1.2.1

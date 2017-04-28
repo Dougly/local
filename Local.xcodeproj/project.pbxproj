@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
 		47157C621E7C696B000D11E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47157C611E7C696B000D11E9 /* MobileCoreServices.framework */; };
 		47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C6D1E7C7457000D11E9 /* FDTakeController.m */; };
@@ -178,6 +179,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
 		47157C611E7C696B000D11E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		47157C6C1E7C7457000D11E9 /* FDTakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTakeController.h; sourceTree = "<group>"; };
@@ -519,6 +521,14 @@
 				84CD60B75C8C721A96381778 /* Pods-Local.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4713822B1EB3B61F0009344C /* AutoCompleteTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */,
+			);
+			path = AutoCompleteTextField;
 			sourceTree = "<group>";
 		};
 		47157C601E7C696B000D11E9 /* Frameworks */ = {
@@ -1158,6 +1168,7 @@
 		CE250EE91B676634005447FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4713822B1EB3B61F0009344C /* AutoCompleteTextField */,
 				47AA04DD1EB3853F00818247 /* LocationView */,
 				47AA04D71EB349D400818247 /* MapPopup */,
 				479102671EB33B140071BC2C /* TitleView */,
@@ -1459,6 +1470,7 @@
 				476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */,
 				47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */,
 				47157C8D1E7C853A000D11E9 /* IDMPhoto.m in Sources */,
+				4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */,
 				47157C8A1E7C853A000D11E9 /* DALabeledCircularProgressView.m in Sources */,
 				47157CC91E7C8BAC000D11E9 /* UIButton+AFNetworking.m in Sources */,
 				47AA04F11EB388C600818247 /* LocationView.m in Sources */,
@@ -1658,6 +1670,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 77QD7V8745;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/local/Vendor",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = local/joe.pch;
 				INFOPLIST_FILE = local/Info.plist;
@@ -1680,6 +1697,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 77QD7V8745;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/local/Vendor",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = local/joe.pch;
 				INFOPLIST_FILE = local/Info.plist;

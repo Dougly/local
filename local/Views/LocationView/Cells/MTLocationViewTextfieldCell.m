@@ -7,6 +7,12 @@
 //
 
 #import "MTLocationViewTextfieldCell.h"
+#import "Local-Bridging-Header.h"
+
+
+@interface MTLocationViewTextfieldCell()<UITextFieldDelegate>
+//@property (weak, nonatomic) IBOutlet AutoCompleteTextField *autoCompleteTextField;
+@end
 
 @implementation MTLocationViewTextfieldCell
 
@@ -14,9 +20,11 @@
     [super awakeFromNib];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    return NO;
+    return YES;
 }
+
+
 
 @end

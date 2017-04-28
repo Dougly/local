@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MTLocationViewTextfieldCell : UITableViewCell<UITextViewDelegate>
+@property (nonatomic, weak) UIView *containerView;
 @end
