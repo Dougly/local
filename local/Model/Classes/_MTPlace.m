@@ -58,6 +58,8 @@
 	return keyPaths;
 }
 
+@dynamic formattedAddress;
+
 @dynamic icon;
 
 @dynamic isOpenNow;
@@ -188,6 +190,9 @@
 @end
 
 @implementation MTPlaceAttributes 
++ (NSString *)formattedAddress {
+	return @"formattedAddress";
+}
 + (NSString *)icon {
 	return @"icon";
 }

@@ -17,13 +17,15 @@
 #import "MTSettings.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MTPhoto.h"
-#import "UIImageView+WebCache.h"
 #import "CMTabbarView.h"
+#import "TitleView.h"
+#import "MapPopupView.h"
+#import "MTSettignsViewController.h"
 
-
-@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate>
+@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate>
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
+@property (nonatomic, strong) MapPopupView *currentPopupView;
 @end
 
 @implementation MTMapViewController
@@ -31,8 +33,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self getLocation];
+    [self addTitleView];
 }
 
+- (void)addTitleView {
+    TitleView * titleView = [[[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:self options:nil] objectAtIndex:0];
+    titleView.delegate = self;
+    self.navigationItem.titleView = titleView;
+}
 - (void)getLocation {
     [[MTProgressHUD sharedHUD] showOnView:self.view
                                percentage:false];
@@ -151,59 +159,15 @@
               animated:YES];
     }
     else {
+        [self.currentPopupView removeFromSuperview];
         
-        int width = [UIScreen mainScreen].bounds.size.width;
-        int height = 150;
-
-        UIView *vvv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-        vvv.backgroundColor = [UIColor whiteColor];
-        vvv.center = CGPointMake(view.bounds.size.width / 2, -height / 2);
-        [view addSubview:vvv];
+        self.currentPopupView= [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
+        self.currentPopupView.pinViewFrame = view.frame;
+        self.currentPopupView.place = (MTPlace *)annotation;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:vvv.bounds];
-        __weak UIImageView *weakImageView = imageView;
-        MTPhoto *photo = [((MTPlace *)annotation).photos.allObjects firstObject];
-        
-        NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=840&maxheight=320&photoreference=%@&key=%@", photo.reference, kGoogleMapAPIKey];
-        [imageView setImageWithURL:[NSURL URLWithString:strinUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-            weakImageView.image = image;
-            weakImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-        }];
-        [vvv addSubview:weakImageView];
-        UIBezierPath *path = [self bubblePathWithRoundedCornerRadius:[UIScreen mainScreen].bounds.size.width height:150];
-        
-        CAShapeLayer *mask = [CAShapeLayer layer];
-        mask.path = path.CGPath;
-        
-        vvv.layer.mask = mask;
-        vvv.clipsToBounds = YES;
+        [view addSubview:self.currentPopupView];
     }
 }
-
-
-- (UIBezierPath *)bubblePathWithRoundedCornerRadius:(int)width height:(int)height
-{
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    
-    int arrowWidth = 30;
-    int arrowHeight = 30;
-    
-
-    
-    [path moveToPoint:CGPointMake(100, height - arrowHeight/2)];
-    [path addLineToPoint:CGPointMake(100 + arrowWidth/2, height)];
-    [path addLineToPoint:CGPointMake(100 + arrowWidth, height - arrowHeight/2)];
-    [path addLineToPoint:CGPointMake(width, height - arrowHeight/2)];
-    [path addLineToPoint:CGPointMake(width, 0)];
-    [path addLineToPoint:CGPointMake(0, 0)];
-    [path addLineToPoint:CGPointMake(0, height - arrowHeight/2)];
-    
-    [path closePath];
-    
-    return path;
-}
-
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
@@ -259,6 +223,19 @@
         [self drawCircleAroundCoordinate:coordinate];
         [self setZoomLevelWithCenter:coordinate];
     }
+}
+
+#pragma mark - Title View delegagte
+- (void)titleViewClicked:(BOOL)isRevealing {
+    int i = 0;
+}
+
+#pragma mark - Temporary
+
+- (IBAction)settingsButtonClicked:(id)sender {
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MTSettignsViewController *viewController = [main instantiateViewControllerWithIdentifier:@"MTSettignsViewController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

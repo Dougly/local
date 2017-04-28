@@ -9,8 +9,6 @@
 #import <MapKit/MapKit.h>
 
 @interface MKImageAnnotationView : MKAnnotationView
-@property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) UIImageView *imageView;
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)updateWithAnnotation:(id<MKAnnotation>)annotation;

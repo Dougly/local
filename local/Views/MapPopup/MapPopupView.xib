@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FontAwesome.otf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MapPopupView">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="102"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5UZ-Ay-jZY">
+                    <rect key="frame" x="0.0" y="0.0" width="409" height="102"/>
+                </imageView>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9j-9g-uh7">
+                    <rect key="frame" x="0.0" y="34" width="409" height="68"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-iG-lRt">
+                            <rect key="frame" x="15" y="2" width="379" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="f86-uK-fDd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address and rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Yvo-rB-lGQ">
+                            <rect key="frame" x="15" y="23" width="379" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="hvu-W8-OCa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Yvo-rB-lGQ" firstAttribute="leading" secondItem="k9j-9g-uh7" secondAttribute="leading" constant="15" id="88N-Yy-ty6"/>
+                        <constraint firstAttribute="trailing" secondItem="RgA-iG-lRt" secondAttribute="trailing" constant="15" id="9Pf-bd-yNf"/>
+                        <constraint firstItem="RgA-iG-lRt" firstAttribute="leading" secondItem="k9j-9g-uh7" secondAttribute="leading" constant="15" id="H5q-OT-6as"/>
+                        <constraint firstAttribute="bottom" secondItem="Yvo-rB-lGQ" secondAttribute="bottom" constant="24" id="aWF-iH-FL6"/>
+                        <constraint firstAttribute="trailing" secondItem="Yvo-rB-lGQ" secondAttribute="trailing" constant="15" id="dW6-dY-hCr"/>
+                        <constraint firstItem="Yvo-rB-lGQ" firstAttribute="top" secondItem="RgA-iG-lRt" secondAttribute="bottom" id="fVs-BA-gCW"/>
+                        <constraint firstAttribute="height" constant="68" id="q4v-Be-mYt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="k9j-9g-uh7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Pa-Bz-Tub"/>
+                <constraint firstItem="5UZ-Ay-jZY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Xn-43-KEp"/>
+                <constraint firstAttribute="trailing" secondItem="k9j-9g-uh7" secondAttribute="trailing" id="6eD-3b-RQq"/>
+                <constraint firstItem="5UZ-Ay-jZY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Q8-88-VQ9"/>
+                <constraint firstAttribute="bottom" secondItem="5UZ-Ay-jZY" secondAttribute="bottom" id="GAD-U9-Han"/>
+                <constraint firstAttribute="bottom" secondItem="k9j-9g-uh7" secondAttribute="bottom" id="T7J-qc-6Du"/>
+                <constraint firstAttribute="trailing" secondItem="5UZ-Ay-jZY" secondAttribute="trailing" id="eRT-2C-YXr"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressAndRatingLabel" destination="Yvo-rB-lGQ" id="QPJ-yC-uT3"/>
+                <outlet property="imageView" destination="5UZ-Ay-jZY" id="WpA-0y-pep"/>
+                <outlet property="titleLabel" destination="RgA-iG-lRt" id="mP4-iW-5Kn"/>
+            </connections>
+            <point key="canvasLocation" x="-0.5" y="126"/>
+        </view>
+    </objects>
+</document>

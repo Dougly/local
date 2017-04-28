@@ -6,6 +6,7 @@
 
 - (void)parseNode:(NSDictionary *)node {
     self.name = node[@"name"];
+    self.formattedAddress = node[@"formatted_address"];
     self.uniqueId = node[@"id"];
     self.placeId = node[@"place_id"];
     self.icon = node[@"icon"];
@@ -20,7 +21,7 @@
     NSArray *types = node[@"types"];
     NSString *typesString = @"";
     for (NSString *type in types) {
-        typesString = [typesString stringByAppendingString:[NSString stringWithFormat:@"%@|", type]];
+        typesString = [typesString stringByAppendingString:[NSString stringWithFormat:@"%@%@", type, DELIMITER]];
     }
     
     if (typesString.length > 0) {

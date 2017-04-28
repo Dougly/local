@@ -54,7 +54,7 @@
     [self cancelPendingRequests];
     
     [self query:coordinate radius:radius pageToken:nil];
-    [self query:coordinate radius:radius + 500 pageToken:nil];
+    [self query:coordinate radius:radius + 100 pageToken:nil];
 }
 
 - (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius pageToken:(NSString *)pageToken {

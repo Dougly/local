@@ -9,7 +9,7 @@
 #import "MTMainViewController.h"
 #import "CMTabbarView.h"
 
-@interface MTMainViewController ()
+@interface MTMainViewController ()<CMTabbarViewDelegate, CMTabbarViewDatasouce>
 @property (nonatomic, weak) IBOutlet UIView *placeHolderForTabbarView;
 @property (nonatomic, weak) IBOutlet CMTabbarView *tabbarView;
 @end
@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addTabbar];
-   
 }
 
 - (void)addTabbar {

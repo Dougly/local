@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:local/Views/TitleView/TitleView.xib">
+   </FileRef>
+   <FileRef
       location = "group:Local.xcodeproj">
    </FileRef>
    <FileRef
