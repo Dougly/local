@@ -248,7 +248,7 @@
                         <viewControllerLayoutGuide type="top" id="5Pn-Y3-Fbf"/>
                         <viewControllerLayoutGuide type="bottom" id="q5I-Mj-vft"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="lho-AX-dSH">
+                    <view key="view" contentMode="scaleToFill" id="lho-AX-dSH">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -428,19 +428,17 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eh-oG-yoF" customClass="CMTabbarView">
-                                        <rect key="frame" x="37" y="0.0" width="300" height="50"/>
+                                        <rect key="frame" x="39" y="0.0" width="336" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="FAf-Ih-7JG"/>
-                                            <constraint firstAttribute="width" constant="300" id="be8-AR-57D"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="centerY" secondItem="9R0-c5-5Gf" secondAttribute="centerY" id="bgc-X0-LqD"/>
+                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="leading" secondItem="9R0-c5-5Gf" secondAttribute="leading" constant="39" id="HUy-8f-t5E"/>
+                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="top" secondItem="9R0-c5-5Gf" secondAttribute="top" id="aK8-bd-jxT"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eh-oG-yoF" secondAttribute="bottom" id="cWM-nE-AbQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="0eh-oG-yoF" secondAttribute="trailing" id="dY7-ut-wES"/>
                                     <constraint firstAttribute="height" constant="50" id="nXc-9O-9uW"/>
-                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="centerX" secondItem="9R0-c5-5Gf" secondAttribute="centerX" id="oUa-v7-e8m"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -456,6 +454,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="leftMarginForBottomMenuConstraint" destination="HUy-8f-t5E" id="Z4I-ee-cau"/>
                         <outlet property="placeHolderForTabbarView" destination="9R0-c5-5Gf" id="AQm-h4-V3f"/>
                         <outlet property="tabbarView" destination="0eh-oG-yoF" id="BH1-rI-aRJ"/>
                     </connections>

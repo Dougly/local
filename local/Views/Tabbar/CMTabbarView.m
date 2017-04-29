@@ -117,7 +117,16 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        layout.minimumInteritemSpacing = 30;
+        
+        if (IS_IPHONE_5)
+           layout.minimumInteritemSpacing = 20;
+        
+        if (IS_IPHONE_6)
+            layout.minimumInteritemSpacing = 30;
+        
+        if (IS_IPHONE_6_PLUS)
+            layout.minimumInteritemSpacing = 40;
+        
         [_collectionView registerClass:[CMTabbarCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([CMTabbarCollectionViewCell class])];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

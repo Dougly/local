@@ -8,5 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LocationViewDelegate <NSObject>
+- (void)hideLocationView;
+@end
+
 @interface LocationView : UIView
+@property (nonatomic, weak) id<LocationViewDelegate>delegate;
 @end

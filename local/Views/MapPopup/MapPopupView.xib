@@ -43,6 +43,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FP9-pJ-hCf">
+                            <rect key="frame" x="194" y="24" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="yPL-lF-hJ1"/>
+                                <constraint firstAttribute="width" constant="20" id="ykr-EO-MP9"/>
+                            </constraints>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -51,8 +58,10 @@
                         <constraint firstItem="RgA-iG-lRt" firstAttribute="leading" secondItem="k9j-9g-uh7" secondAttribute="leading" constant="15" id="H5q-OT-6as"/>
                         <constraint firstAttribute="bottom" secondItem="Yvo-rB-lGQ" secondAttribute="bottom" constant="24" id="aWF-iH-FL6"/>
                         <constraint firstAttribute="trailing" secondItem="Yvo-rB-lGQ" secondAttribute="trailing" constant="15" id="dW6-dY-hCr"/>
+                        <constraint firstItem="FP9-pJ-hCf" firstAttribute="centerY" secondItem="k9j-9g-uh7" secondAttribute="centerY" id="fNh-gB-Nhw"/>
                         <constraint firstItem="Yvo-rB-lGQ" firstAttribute="top" secondItem="RgA-iG-lRt" secondAttribute="bottom" id="fVs-BA-gCW"/>
                         <constraint firstAttribute="height" constant="68" id="q4v-Be-mYt"/>
+                        <constraint firstItem="FP9-pJ-hCf" firstAttribute="centerX" secondItem="k9j-9g-uh7" secondAttribute="centerX" id="tc4-dB-mKi"/>
                     </constraints>
                 </view>
             </subviews>
@@ -71,6 +80,7 @@
             <connections>
                 <outlet property="addressAndRatingLabel" destination="Yvo-rB-lGQ" id="QPJ-yC-uT3"/>
                 <outlet property="imageView" destination="5UZ-Ay-jZY" id="WpA-0y-pep"/>
+                <outlet property="spinner" destination="FP9-pJ-hCf" id="Gds-p7-Ny4"/>
                 <outlet property="titleLabel" destination="RgA-iG-lRt" id="mP4-iW-5Kn"/>
             </connections>
             <point key="canvasLocation" x="-0.5" y="126"/>

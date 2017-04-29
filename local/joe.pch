@@ -139,4 +139,6 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 // --- MAP ---
 #define kGoogleMapAPIKey    @"AIzaSyBim_-bgtrgl7sp7C4p_76kaLVgyWpBvYY"
 #define kMapDomain          @"GooglePlaceAPIDomain"
+
+#define BOTTOM_NAVIGATION_BAR_HEIGHT          50
 #endif

@@ -77,5 +77,14 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
     return finalCell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pullDistance = scrollView.contentOffset.y;
+    if (pullDistance > 50) {
+        [self.delegate hideLocationView];
+        self.delegate = nil;
+    }
+}
+
 
 @end

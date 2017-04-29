@@ -10,6 +10,10 @@
 #import "MTPlace.h"
 #import "UIImageView+WebCache.h"
 #import "MTPhoto.h"
+#import "MTGetPlaceDetailRequest.h"
+#import "MTGetPlaceDetailsResponse.h"
+#import "MTPlaceDetails.h"
+#import "MTPhoto.h"
 
 #define POPUP_HEIGHT                 200
 #define MIN_POP_UP_WIDTH             160
@@ -20,6 +24,9 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *addressAndRatingLabel;
+@property (nonatomic, strong) MTPlaceDetails *placeDetails;
+
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation MapPopupView
@@ -27,10 +34,46 @@
 
 - (void)setPlace:(MTPlace *)place {
     _place = place;
-    [self downloadImage];
+    [self getDetails];
+}
+
+- (void)getDetails {
+    [self switchToLoadingView];
+    
+    MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
+    request.placeId = self.place.placeId;
+    
+    __weak typeof (self) weakSelf = self;
+    self.spinner.hidden = false;
+    [self.spinner startAnimating];
+    
+    request.completionBlock = ^(SDRequest *request, SDResult *response)
+    {
+        if ([response isSuccess]) {
+            MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
+            weakSelf.placeDetails = detailsResponse.placeDetails;
+            [weakSelf downloadImage];
+        }
+    };
+    [request run];
 }
 
 - (void)downloadImage {
+    // find the largest image
+    NSUInteger maxPhotoWidth = 0;
+    MTPhoto *largestPhoto = nil;
+    for (MTPhoto *photo in self.placeDetails.photos) {
+        if (photo.width.integerValue > maxPhotoWidth) {
+            largestPhoto = photo;
+            maxPhotoWidth = photo.width.integerValue;
+        }
+    }
+    
+    if (!largestPhoto) {
+        if (self.place.photos.allObjects > 0)
+            largestPhoto = self.place.photos.allObjects.firstObject;
+    }
+    
     NSString *pricing = @"";
     
     for (int i=0; i<self.place.pricingLevel.integerValue; i++) {
@@ -53,13 +96,15 @@
     self.addressAndRatingLabel.text = [NSString stringWithFormat:@"%@  •  %.1f %@  •  %@", address, self.place.rating.floatValue, pricing, type];
     self.titleLabel.text = self.place.name;
     
-    self.alpha = 0.0;
-    MTPhoto *photo = [self.place.photos.allObjects firstObject];
+    int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width;
+    int maxHeight = [[UIScreen mainScreen] scale] * POPUP_HEIGHT;
     
-    NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=840&maxheight=320&photoreference=%@&key=%@", photo.reference, kGoogleMapAPIKey];
-    
+    NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&maxheight=%d&photoreference=%@&key=%@", maxWidth, maxHeight, largestPhoto.reference, kGoogleMapAPIKey];
     __weak typeof (self) weakSelf = self;
     [self.imageView setImageWithURL:[NSURL URLWithString:strinUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        
+        [weakSelf switchToImageView];
+        
         weakSelf.imageView.image = image;
         weakSelf.imageView.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -67,6 +112,11 @@
         
         int viewWidth = MAX(MIN_POP_UP_WIDTH, (image.size.width / screenScale));
         int viewHeight = MIN(POPUP_HEIGHT, (image.size.height/ screenScale));
+        
+        if (viewWidth == 0 || viewHeight == 0) {
+            viewWidth = maxWidth / [[UIScreen mainScreen] scale] / 2;
+            viewHeight = maxHeight / [[UIScreen mainScreen] scale] / 2;
+        }
         
         self.frame = CGRectMake(0, 0, viewWidth, viewHeight);
         self.center = CGPointMake(self.pinViewFrame.size.width / 2, -viewHeight / 2);
@@ -191,5 +241,21 @@
     return address;
 }
 
+- (void)switchToLoadingView {
+    self.backgroundColor = [UIColor clearColor];
+    self.frame = CGRectMake(0, 0, 50, 50);
+    self.center = CGPointMake(self.pinViewFrame.size.width / 2, -50 / 2);
+    self.addressAndRatingLabel.hidden = true;
+    self.titleLabel.hidden = true;
+    [self.spinner startAnimating];
+}
+
+- (void)switchToImageView {
+    self.alpha = 0.0;
+    [self.spinner removeFromSuperview];
+    self.titleLabel.hidden = false;
+    self.addressAndRatingLabel.hidden = false;
+    self.backgroundColor = [UIColor whiteColor];
+}
 
 @end

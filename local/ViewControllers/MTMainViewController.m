@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 @property (nonatomic, weak) IBOutlet UIView *placeHolderForTabbarView;
 @property (nonatomic, weak) IBOutlet CMTabbarView *tabbarView;
 @property (nonatomic, strong) IBOutlet FilterView *filterView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *leftMarginForBottomMenuConstraint;
 @property (nonatomic) BOOL filterMenuVisisble;
 @end
 
@@ -31,6 +32,11 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addTabbar];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self adjustMenuConstraint];
 }
 
 - (void)addTabbar {
@@ -51,7 +57,7 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     [self.view addSubview:self.filterView];
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.filterView.frame = CGRectMake(0, self.view.bounds.size.height - FILTER_VIEW_HEIGHT, self.view.bounds.size.width, FILTER_VIEW_HEIGHT);
+        self.filterView.frame = CGRectMake(0, self.view.bounds.size.height - FILTER_VIEW_HEIGHT - BOTTOM_NAVIGATION_BAR_HEIGHT, self.view.bounds.size.width, FILTER_VIEW_HEIGHT);
         self.filterMenuVisisble = true;
     }];
 }
@@ -70,6 +76,22 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 - (void)tabbarView:(CMTabbarView *)tabbarView didSelectedAtIndex:(NSInteger)index {
     if (index == MTMainMenuFilter) {
         self.filterMenuVisisble ?  [self hideFilterView] : [self showFilterView];
+    }
+}
+
+#pragma mark - bottom menu constraints
+
+- (void)adjustMenuConstraint {
+    if (IS_IPHONE_6) {
+        
+    }
+    
+    if (IS_IPHONE_5) {
+        self.leftMarginForBottomMenuConstraint.constant = 15;
+    }
+    
+    if (IS_IPHONE_6_PLUS) {
+        self.leftMarginForBottomMenuConstraint.constant = 45;
     }
 }
 
