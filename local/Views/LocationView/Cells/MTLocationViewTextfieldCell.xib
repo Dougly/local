@@ -19,8 +19,8 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MTLocationViewTextfieldCell" rowHeight="50" id="bGH-IP-G5k" customClass="MTLocationViewTextfieldCell">
             <rect key="frame" x="0.0" y="0.0" width="300" height="47"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGH-IP-G5k" id="ifZ-po-PXY">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="46"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGH-IP-G5k" id="ifZ-po-PXY">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="46.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-0l-hbS">
@@ -39,7 +39,7 @@
                         <color key="textColor" red="0.20000000000000001" green="0.19215686274509802" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Neighborhood, City, State or Zip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-8h-Pal">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Neighborhood, City, State or Zip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-8h-Pal" customClass="AutoCompleteTextField" customModule="Local" customModuleProvider="target">
                         <rect key="frame" x="49" y="8" width="243" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="ei6-55-otK"/>
@@ -48,7 +48,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         <connections>
-                            <outlet property="delegate" destination="bGH-IP-G5k" id="nAh-hf-1Sm"/>
+                            <outlet property="delegate" destination="bGH-IP-G5k" id="1Hh-kg-9qd"/>
                         </connections>
                     </textField>
                 </subviews>
@@ -64,6 +64,9 @@
                     <constraint firstAttribute="bottom" secondItem="zDu-0l-hbS" secondAttribute="bottom" constant="12" id="wPi-5J-X8q"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="autoCompleteTextField" destination="QeY-8h-Pal" id="T9y-SS-Ryi"/>
+            </connections>
             <point key="canvasLocation" x="132" y="107.5"/>
         </tableViewCell>
     </objects>

@@ -7,17 +7,26 @@
 //
 
 #import "MTLocationViewTextfieldCell.h"
-#import "Local-Bridging-Header.h"
+#import "Local-swift.h"
 
 
 @interface MTLocationViewTextfieldCell()<UITextFieldDelegate>
-//@property (weak, nonatomic) IBOutlet AutoCompleteTextField *autoCompleteTextField;
+@property (weak, nonatomic) IBOutlet AutoCompleteTextField *autoCompleteTextField;
 @end
 
 @implementation MTLocationViewTextfieldCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+}
+
+- (void)setContainerView:(UIView *)containerView {
+    _containerView = containerView;
+    
+    self.autoCompleteTextField.containerview = self.containerView;
+    self.autoCompleteTextField.onSelect = ^(PredictionPlace * _Nonnull place) {
+        [self.autoCompleteTextField resignFirstResponder];
+    };
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

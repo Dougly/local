@@ -28,6 +28,7 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
     [super awakeFromNib];
     
     [self registerCells];
+    self.tableView.allowsSelection = false;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -61,6 +62,7 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
         MTLocationViewTextfieldCell *cell =
         [tableView dequeueReusableCellWithIdentifier:LOCATION_VIEW_CELL_TEXTFIELD
                                         forIndexPath:indexPath];
+        cell.containerView = self;
         
         finalCell = cell;
     }

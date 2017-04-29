@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 open class AutoCompleteTextField:UITextField {
-    
+    open var containerview : UIView! {
+        didSet { internalInit() }
+    }
     fileprivate var responseData:NSMutableData?
     fileprivate var dataTask:URLSessionDataTask?
     
@@ -20,9 +22,9 @@ open class AutoCompleteTextField:UITextField {
     /// Manages the instance of tableview
     fileprivate var autoCompleteTableView:UITableView?
     /// Holds the collection of attributed strings
-    fileprivate lazy var attributedAutoCompleteStrings = [NSAttributedString]()
+    fileprivate lazy var attributedAutoCompleteStrings = [PredictionPlace]()
     /// Handles user selection action on autocomplete table view
-    open var onSelect:(String, IndexPath)->() = {_,_ in}
+    open var onSelect:(PredictionPlace)->() = {_ in}
     /// Handles textfield's textchanged
     open var onTextChange:(String)->() = {_ in}
     
@@ -31,7 +33,7 @@ open class AutoCompleteTextField:UITextField {
     /// Color of the text suggestions
     open var autoCompleteTextColor = UIColor.black
     /// Used to set the height of cell for each suggestions
-    open var autoCompleteCellHeight:CGFloat = 44.0
+    open var autoCompleteCellHeight:CGFloat = 40
     /// The maximum visible suggestion
     open var maximumAutoCompleteCount = 10
     /// Used to set your own preferred separator inset
@@ -56,7 +58,7 @@ open class AutoCompleteTextField:UITextField {
         }
     }
     /// The strings to be shown on as suggestions, setting the value of this automatically reload the tableview
-    open var autoCompleteStrings:[String]?{
+    open var autoCompleteStrings:[PredictionPlace]?{
         didSet{ reload() }
     }
     
@@ -65,7 +67,7 @@ open class AutoCompleteTextField:UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        setupAutocompleteTable(superview!)
+        setupAutocompleteTable(containerview)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -80,8 +82,12 @@ open class AutoCompleteTextField:UITextField {
     
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
+        
+    }
+    
+    fileprivate func internalInit() {
         commonInit()
-        setupAutocompleteTable(newSuperview!)
+        setupAutocompleteTable(containerview!)
         
         self.onTextChange = {[weak self] text in
             if !text.isEmpty{
@@ -93,8 +99,7 @@ open class AutoCompleteTextField:UITextField {
         }
         
         self.autoCompleteTextColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
-        self.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 12.0)!
-        self.autoCompleteCellHeight = 35.0
+        self.autoCompleteTextFont = UIFont(name: "HelveticaNeue-Light", size: 16.0)!
         self.maximumAutoCompleteCount = 20
         self.hidesWhenSelected = true
         self.hidesWhenEmpty = true
@@ -116,15 +121,13 @@ open class AutoCompleteTextField:UITextField {
     
     fileprivate func setupAutocompleteTable(_ view:UIView){
         let screenSize = UIScreen.main.bounds.size
-        let tableView = UITableView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y + self.frame.height, width: screenSize.width - (self.frame.origin.x * 2), height: 30.0))
+        let tableView = UITableView(frame: CGRect(x: 10, y: self.frame.origin.y + self.frame.height + 10, width: screenSize.width - 10*2, height: 200.0))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = autoCompleteCellHeight
         tableView.isHidden = hidesWhenEmpty ?? true
         view.addSubview(tableView)
         autoCompleteTableView = tableView
-        
-        autoCompleteTableHeight = 100.0
     }
     
     fileprivate func redrawTable(){
@@ -146,11 +149,12 @@ open class AutoCompleteTextField:UITextField {
             
             if let autoCompleteStrings = autoCompleteStrings, let autoCompleteAttributes = autoCompleteAttributes {
                 for i in 0..<autoCompleteStrings.count{
-                    let str = autoCompleteStrings[i] as NSString
-                    let range = str.range(of: text!, options: .caseInsensitive)
-                    let attString = NSMutableAttributedString(string: autoCompleteStrings[i], attributes: attrs)
-                    attString.addAttributes(autoCompleteAttributes, range: range)
-                    attributedAutoCompleteStrings.append(attString)
+                    var place = autoCompleteStrings[i]
+                    let str = place.name
+                    let range = str?.range(of: text!, options: .caseInsensitive)
+                    let attString = NSMutableAttributedString(string: place.name, attributes: attrs)
+                    //attString.addAttributes(autoCompleteAttributes, range: range)
+                    attributedAutoCompleteStrings.append(place)
                 }
             }
         }
@@ -189,13 +193,17 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
         }
         
         if enableAttributedText{
-            cell?.textLabel?.attributedText = attributedAutoCompleteStrings[indexPath.row]
+            let place = attributedAutoCompleteStrings[indexPath.row]
+            cell?.textLabel?.text = place.name
         }
         else{
             cell?.textLabel?.font = autoCompleteTextFont
             cell?.textLabel?.textColor = autoCompleteTextColor
-            cell?.textLabel?.text = autoCompleteStrings![indexPath.row]
+            let place = autoCompleteStrings![indexPath.row]
+            cell?.textLabel?.text = place.name
         }
+        
+        cell?.textLabel?.font = self.autoCompleteTextFont
         
         cell?.contentView.gestureRecognizers = nil
         return cell!
@@ -204,9 +212,11 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         
+        let place = self.autoCompleteStrings?[indexPath.row]
+        
         if let selectedText = cell?.textLabel?.text {
             self.text = selectedText
-            onSelect(selectedText, indexPath)
+            onSelect(place!)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
@@ -248,9 +258,12 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
                             
                             if status == "OK"{
                                 if let predictions = result["predictions"]{
-                                    var locations = [String]()
+                                    var locations = [PredictionPlace]()
                                     for dict in predictions as! [NSDictionary]{
-                                        locations.append(dict["description"] as! String)
+                                        var place = PredictionPlace()
+                                        place.name = dict["description"] as! String
+                                        place.placeId = dict["place_id"] as! String
+                                        locations.append(place)
                                     }
                                     DispatchQueue.main.async(execute: { () -> Void in
                                         self.autoCompleteStrings = locations

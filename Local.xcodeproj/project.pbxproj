@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
+		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
 		47157C621E7C696B000D11E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47157C611E7C696B000D11E9 /* MobileCoreServices.framework */; };
 		47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C6D1E7C7457000D11E9 /* FDTakeController.m */; };
@@ -180,6 +181,7 @@
 
 /* Begin PBXFileReference section */
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
 		47157C611E7C696B000D11E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		47157C6C1E7C7457000D11E9 /* FDTakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTakeController.h; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */,
+				4713822E1EB3C2820009344C /* PredictionPlace.swift */,
 			);
 			path = AutoCompleteTextField;
 			sourceTree = "<group>";
@@ -1535,6 +1538,7 @@
 				47157CCA1E7C8BAC000D11E9 /* UIImageView+AFNetworking.m in Sources */,
 				47157C8F1E7C853A000D11E9 /* IDMPhotoBrowser.m in Sources */,
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
+				4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */,
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
