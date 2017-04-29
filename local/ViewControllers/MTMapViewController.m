@@ -37,6 +37,7 @@
     [super awakeFromNib];
     [self getLocation];
     [self addTitleView];
+    [self showListNavigationItem];
 }
 
 - (void)addTitleView {
@@ -265,6 +266,35 @@
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MTSettignsViewController *viewController = [main instantiateViewControllerWithIdentifier:@"MTSettignsViewController"];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+#pragma mark - right navigation item
+
+- (void)showListNavigationItem {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"List " style:UIBarButtonItemStylePlain target:self action:@selector(showList)];
+    [item setTitleTextAttributes:@{
+                                   NSForegroundColorAttributeName: UIColorFromHex(0x939598),
+                                   NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]
+                                   } forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+- (void)showMapNavigationItem {
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Map " style:UIBarButtonItemStylePlain target:self action:@selector(showMap)];
+    [item setTitleTextAttributes:@{
+                                   NSForegroundColorAttributeName: UIColorFromHex(0x939598),
+                                   NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]
+                                   } forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+#pragma mark - Switching between list and map
+- (void)showList {
+    [self showMapNavigationItem];
+}
+
+- (void)showMap {
+    [self showListNavigationItem];
 }
 
 @end

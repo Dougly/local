@@ -59,15 +59,7 @@
 }
 
 - (void)downloadImage {
-    // find the largest image
-    NSUInteger maxPhotoWidth = 0;
-    MTPhoto *largestPhoto = nil;
-    for (MTPhoto *photo in self.placeDetails.photos) {
-        if (photo.width.integerValue > maxPhotoWidth) {
-            largestPhoto = photo;
-            maxPhotoWidth = photo.width.integerValue;
-        }
-    }
+    MTPhoto *largestPhoto = [self.placeDetails getLargestPhoto];
     
     if (!largestPhoto) {
         if (self.place.photos.allObjects > 0)

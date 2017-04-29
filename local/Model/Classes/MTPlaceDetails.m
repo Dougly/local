@@ -1,4 +1,5 @@
 #import "MTPlaceDetails.h"
+#import "MTPhoto.h"
 
 @interface MTPlaceDetails ()
 
@@ -43,6 +44,18 @@
             self.adminLevel2 = addressComponent[@"long_name"];
         }
     }
+}
+
+- (MTPhoto *)getLargestPhoto {
+    NSUInteger maxPhotoWidth = 0;
+    MTPhoto *largestPhoto = nil;
+    for (MTPhoto *photo in self.photos) {
+        if (photo.width.integerValue > maxPhotoWidth) {
+            largestPhoto = photo;
+            maxPhotoWidth = photo.width.integerValue;
+        }
+    }
+    return largestPhoto;
 }
 
 @end
