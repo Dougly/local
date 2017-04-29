@@ -28,17 +28,16 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
     [super awakeFromNib];
     
     [self registerCells];
-    self.tableView.allowsSelection = false;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)registerCells {
     [self.tableView registerNib:[UINib nibWithNibName:@"MTLocationViewTextfieldCell"
                                                bundle:nil]
-         forCellReuseIdentifier:LOCATION_VIEW_CELL_TEXTFIELD];
+                               forCellReuseIdentifier:LOCATION_VIEW_CELL_TEXTFIELD];
     [self.tableView registerNib:[UINib nibWithNibName:@"MTLocationViewCurrentLocationCell"
                                                bundle:nil]
-         forCellReuseIdentifier:LOCATION_VIEW_CELL_CURRENT];
+                               forCellReuseIdentifier:LOCATION_VIEW_CELL_CURRENT];
 }
 
 #pragma mark - UITableView delegate

@@ -85,8 +85,8 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
     _locationType = CMTabbarIndicatorLocationUp;
     _contentInset = UIEdgeInsetsMake(.0f, CMTabbarViewDefaultHorizontalInset, 0, CMTabbarViewDefaultHorizontalInset);
     _indicatorAttributes = @{CMTabIndicatorColor:CMHEXCOLOR(0x333132),CMTabIndicatorViewHeight:@(2.0f),CMTabBoxBackgroundColor:[UIColor clearColor]};
-    _normalAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x939598)};
-    _selectedAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x333132)};
+    _normalAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x939598)};
+    _selectedAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x333132)};
     _defaultSelectedIndex = 0;
     self.backgroundColor = [UIColor whiteColor];
 }
@@ -288,7 +288,7 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
 
 - (void)setNormalAttributes:(NSDictionary *)normalAttributes
 {
-    NSDictionary *defaultAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15.0f],NSForegroundColorAttributeName:[UIColor blackColor]};
+    NSDictionary *defaultAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:15],NSForegroundColorAttributeName:[UIColor blackColor]};
     NSMutableDictionary *resultAttributes = [NSMutableDictionary dictionaryWithDictionary:defaultAttributes];
     [resultAttributes addEntriesFromDictionary:normalAttributes];
     _normalAttributes = [resultAttributes copy];
@@ -296,7 +296,7 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
 
 - (void)setSelectedAttributes:(NSDictionary *)selectedAttributes
 {
-    NSDictionary *defaultAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15.0f],NSForegroundColorAttributeName:[UIColor orangeColor]};
+    NSDictionary *defaultAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:17],NSForegroundColorAttributeName:[UIColor orangeColor]};
     NSMutableDictionary *resultAttributes = [NSMutableDictionary dictionaryWithDictionary:defaultAttributes];
     [resultAttributes addEntriesFromDictionary:selectedAttributes];
     _selectedAttributes = [resultAttributes copy];

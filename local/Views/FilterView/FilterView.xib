@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterView">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="489"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-Z7-tIe">
+                    <rect key="frame" x="0.0" y="0.0" width="434" height="483"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="Kuk-c2-nfe"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="2X1-2u-iCM"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Pe2-hr-v7r"/>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eEJ-5g-xYb"/>
+                <constraint firstAttribute="bottom" secondItem="NL8-Z7-tIe" secondAttribute="bottom" constant="6" id="ogR-7y-CQy"/>
+                <constraint firstAttribute="trailing" secondItem="NL8-Z7-tIe" secondAttribute="trailing" id="wbb-IE-Ux6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="NL8-Z7-tIe" id="ZVi-ZO-dlX"/>
+            </connections>
+            <point key="canvasLocation" x="17" y="27.5"/>
+        </view>
+    </objects>
+</document>
