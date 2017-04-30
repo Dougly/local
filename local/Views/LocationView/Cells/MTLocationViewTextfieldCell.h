@@ -10,4 +10,5 @@
 
 @interface MTLocationViewTextfieldCell : UITableViewCell<UITextViewDelegate>
 @property (nonatomic, weak) UIView *containerView;
+@property (nonatomic, weak) id <MTLocationViewTextfieldCellDelegate>delegate;
 @end

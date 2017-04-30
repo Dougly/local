@@ -111,6 +111,8 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     MTListViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     [cell.contentView bringSubviewToFront:cell.bottomView];
+    [cell.contentView bringSubviewToFront:cell.titleLabel];
+    [cell.contentView bringSubviewToFront:cell.detailsLabel];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,7 +120,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 }
 
 - (void)getDetails:(MTPlace *)place completion:(DetailsLargsetPhotoCompletion)completion {
-    
     MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
     request.placeId = place.placeId;
     

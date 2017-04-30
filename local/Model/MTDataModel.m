@@ -18,6 +18,7 @@
 #import "MTWeekdayText.h"
 #import "MTOpeningHourPeriod.h"
 #import "MTPlaceReview.h"
+#import "MTYelpPlace.h"
 
 @interface MTDataModel ()
 
@@ -247,6 +248,35 @@
     }
     
     return [places copy];
+}
+
+- (NSArray *)parseYelpPlaces:(NSData *)data {
+    [self removeAllEntities:@"MTYelpPlace"];
+    MTYelpPlace *yelpPlace = nil;
+    NSMutableArray *yelpPlaces = nil;
+    
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
+            
+            NSArray *businesses = jsonDict[@"businesses"];
+            
+            if (businesses.count > 0) {
+                yelpPlaces = [NSMutableArray new];
+                for (NSDictionary *business in businesses) {
+                    yelpPlace = (MTYelpPlace *)[self emptyNode:MTYelpPlace.class];
+                    [yelpPlace parseNode:business];
+                    
+                    [yelpPlaces addObject:yelpPlace];
+                }
+            }
+            
+        }
+    }
+    
+    return yelpPlaces;
 }
 
 - (MTPlaceDetails *)parsePlaceDetails:(NSData *)data {

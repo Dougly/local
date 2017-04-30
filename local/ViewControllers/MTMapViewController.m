@@ -24,8 +24,12 @@
 #import "LocationView.h"
 #import "ListView.h"
 #import "MTPageContainerViewController.h"
+#import "MTGetPlaceDetailRequest.h"
+#import "MTGetPlaceDetailsResponse.h"
+#import "MTPlaceDetails.h"
 
-@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate,ListViewDelegate>
+@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate>
+
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
 @property (nonatomic, strong) MapPopupView *currentPopupView;
@@ -224,13 +228,16 @@
 - (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         /*Get the coordinate*/
-        [self.mapView removeOverlays:self.mapView.overlays];
         CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
-        
-        [self getPlacesAtLocation:coordinate];
-        [self drawCircleAroundCoordinate:coordinate];
-        [self setZoomLevelWithCenter:coordinate];
+        [self updatePlaces:coordinate];
     }
+}
+
+- (void)updatePlaces:(CLLocationCoordinate2D)coordinate {
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self getPlacesAtLocation:coordinate];
+    [self drawCircleAroundCoordinate:coordinate];
+    [self setZoomLevelWithCenter:coordinate];
 }
 
 #pragma mark - Title View delegagte
@@ -326,6 +333,30 @@
     pageController.place = place;
     
     [self.navigationController pushViewController:pageController animated:YES];
+}
+
+#pragma mark - MTLocationViewTextfieldCellDelegate
+
+- (void)placeSelected:(NSString *)placeId {
+    MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
+    request.placeId = placeId;
+    
+    __weak typeof(self) weakSelf = self;
+    request.completionBlock = ^(SDRequest *request, SDResult *response)
+    {
+        if ([response isSuccess]) {
+            MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
+            MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
+            
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(placeDetails.lat.floatValue, placeDetails.lon.floatValue);
+            [weakSelf updatePlaces:coordinate];
+        }
+    };
+    [request run];
+}
+
+- (void)currentPlaceSelected {
+    [self updatePlaces:[MTLocationManager sharedManager].lastLocation];
 }
 
 @end

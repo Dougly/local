@@ -12,12 +12,14 @@
 
 @class MTUser;
 @class MTPlaceDetails;
+@class MTYelpPlace;
 
 @interface MTDataModel : NSObject
 
 + (MTDataModel *)sharedDatabaseStorage;
 - (void)clearPlaces;
 
+- (NSArray *)parseYelpPlaces:(NSData *)data;
 - (MTPlaceDetails *)parsePlaceDetails:(NSData *)data;
 - (NSArray *)parsePlaces:(NSData *)data;
 - (NSString *)parseNewPageToken:(NSData *)data;

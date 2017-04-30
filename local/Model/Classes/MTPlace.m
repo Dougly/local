@@ -118,4 +118,32 @@
     return address;
 }
 
+- (NSString *)nameQuery {
+    NSArray *elements = [self.name componentsSeparatedByString:@" "];
+    
+    if (elements.count > 0) {
+       return [self.name stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    }
+    
+    return self.name;
+}
+
+- (NSString *)ratingString {
+    NSString *filledStar = @"";
+    NSString *emptyStar = @"";
+    
+    int roundedRating = roundf(self.rating.floatValue);
+    
+    NSString *ratingString = @"";
+    //5 is total number of stars
+    for (int i=0; i<5; i++) {
+        if (i < roundedRating)
+            ratingString = [ratingString stringByAppendingString:filledStar];
+        else
+            ratingString = [ratingString stringByAppendingString:emptyStar];
+    }
+    
+    return ratingString;
+}
+
 @end

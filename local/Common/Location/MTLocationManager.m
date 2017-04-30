@@ -9,7 +9,6 @@
 #import "MTLocationManager.h"
 
 @interface MTLocationManager()<CLLocationManagerDelegate>
-@property (nonatomic) CLLocationCoordinate2D lastLocation;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) LocationCompletion completion;
 @end
@@ -43,7 +42,7 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     
-    self.lastLocation = newLocation.coordinate;
+    _lastLocation = newLocation.coordinate;
     
     if (self.completion) {
         self.completion (true, nil, newLocation.coordinate);

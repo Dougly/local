@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, MTLocationViewCellIndex) {
     MTLocationViewCellCurrent,
 };
 
-@interface LocationView()<UITabBarDelegate, UITableViewDataSource>
+@interface LocationView()<UITabBarDelegate, UITableViewDataSource, MTLocationViewTextfieldCellDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @end
 
@@ -61,6 +61,7 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
         MTLocationViewTextfieldCell *cell =
         [tableView dequeueReusableCellWithIdentifier:LOCATION_VIEW_CELL_TEXTFIELD
                                         forIndexPath:indexPath];
+        cell.delegate = self;
         cell.containerView = self;
         
         finalCell = cell;
@@ -77,6 +78,12 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
     return finalCell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == MTLocationViewCellCurrent) {
+        [self currentPlaceSelected];
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat pullDistance = scrollView.contentOffset.y;
@@ -84,6 +91,22 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
         [self.delegate hideLocationView];
         self.delegate = nil;
     }
+}
+
+#pragma mark - MTLocationViewTextfieldCellDelegate
+
+- (void)placeSelected:(NSString *)placeId {
+    [self.delegate placeSelected:placeId];
+    
+    [self.delegate hideLocationView];
+    self.delegate = nil;
+}
+
+- (void)currentPlaceSelected {
+    [self.delegate currentPlaceSelected];
+    
+    [self.delegate hideLocationView];
+    self.delegate = nil;
 }
 
 

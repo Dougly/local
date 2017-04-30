@@ -13,5 +13,5 @@
 @end
 
 @interface LocationView : UIView
-@property (nonatomic, weak) id<LocationViewDelegate>delegate;
+@property (nonatomic, weak) id<LocationViewDelegate, MTLocationViewTextfieldCellDelegate>delegate;
 @end

@@ -17,6 +17,8 @@
 #import "MTOpeningHourPeriod.h"
 #import "MTPlaceReview.h"
 #import "MTProgressHUD.h"
+#import "MTYelpManager.h"
+#import "MTYelpPlace.h"
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetails *details);
 
@@ -58,6 +60,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     __weak typeof(self) weakSelf = self;
     
     weakSelf.mainImageView.image = nil;
+    [self getYelpRating];
     [self getDetails:self.place completion:^(MTPhoto *largestPhoto, MTPlaceDetails *details) {
         weakSelf.placeDetails = details;
         [weakSelf showDetails];
@@ -149,6 +152,22 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         }
     };
     [request run];
+}
+
+- (void)getYelpRating {
+    self.ratingLabel.alpha = 0.0;
+    [[MTYelpManager sharedManager] getYelpPlaceMatchingGooglePlace:self.place completion:^(BOOL success, MTYelpPlace *yelpPlace, NSError *error) {
+        if (yelpPlace) {
+            self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Yelp", yelpPlace.rating.floatValue, [yelpPlace ratingString]];
+        }
+        else {
+           self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Google", self.place.rating.floatValue, [self.place ratingString]];
+        }
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.ratingLabel.alpha = 1.0;
+        }];
+    }];
 }
 
 - (void)hideUI {

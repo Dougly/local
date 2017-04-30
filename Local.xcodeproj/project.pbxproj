@@ -71,6 +71,11 @@
 		474001B81EB5D73E00C55420 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B41EB5D73E00C55420 /* ListView.xib */; };
 		474001BE1EB5F58900C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001BD1EB5F58900C55420 /* MTDetailsViewController.m */; };
 		474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C01EB6112600C55420 /* MTPageContainerViewController.m */; };
+		474001C71EB61FBC00C55420 /* MTGetYelpPlacesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C41EB61FBC00C55420 /* MTGetYelpPlacesRequest.m */; };
+		474001C81EB61FBC00C55420 /* MTGetYelpPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C61EB61FBC00C55420 /* MTGetYelpPlacesResponse.m */; };
+		474001CB1EB622AE00C55420 /* _MTYelpPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001CA1EB622AE00C55420 /* _MTYelpPlace.m */; };
+		474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001CD1EB622BF00C55420 /* MTYelpPlace.m */; };
+		474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D11EB6236C00C55420 /* MTYelpManager.m */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
 		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
@@ -311,6 +316,16 @@
 		474001BD1EB5F58900C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
 		474001BF1EB6112600C55420 /* MTPageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPageContainerViewController.h; sourceTree = "<group>"; };
 		474001C01EB6112600C55420 /* MTPageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPageContainerViewController.m; sourceTree = "<group>"; };
+		474001C31EB61FBC00C55420 /* MTGetYelpPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetYelpPlacesRequest.h; sourceTree = "<group>"; };
+		474001C41EB61FBC00C55420 /* MTGetYelpPlacesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetYelpPlacesRequest.m; sourceTree = "<group>"; };
+		474001C51EB61FBC00C55420 /* MTGetYelpPlacesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetYelpPlacesResponse.h; sourceTree = "<group>"; };
+		474001C61EB61FBC00C55420 /* MTGetYelpPlacesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetYelpPlacesResponse.m; sourceTree = "<group>"; };
+		474001C91EB622AE00C55420 /* _MTYelpPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTYelpPlace.h; sourceTree = "<group>"; };
+		474001CA1EB622AE00C55420 /* _MTYelpPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTYelpPlace.m; sourceTree = "<group>"; };
+		474001CC1EB622BF00C55420 /* MTYelpPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTYelpPlace.h; sourceTree = "<group>"; };
+		474001CD1EB622BF00C55420 /* MTYelpPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTYelpPlace.m; sourceTree = "<group>"; };
+		474001D01EB6236C00C55420 /* MTYelpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTYelpManager.h; sourceTree = "<group>"; };
+		474001D11EB6236C00C55420 /* MTYelpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTYelpManager.m; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
 		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
@@ -776,6 +791,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		474001C21EB61FBC00C55420 /* Yelp */ = {
+			isa = PBXGroup;
+			children = (
+				474001C31EB61FBC00C55420 /* MTGetYelpPlacesRequest.h */,
+				474001C41EB61FBC00C55420 /* MTGetYelpPlacesRequest.m */,
+				474001C51EB61FBC00C55420 /* MTGetYelpPlacesResponse.h */,
+				474001C61EB61FBC00C55420 /* MTGetYelpPlacesResponse.m */,
+			);
+			path = Yelp;
+			sourceTree = "<group>";
+		};
+		474001CF1EB6235800C55420 /* Yelp */ = {
+			isa = PBXGroup;
+			children = (
+				474001D01EB6236C00C55420 /* MTYelpManager.h */,
+				474001D11EB6236C00C55420 /* MTYelpManager.m */,
+			);
+			path = Yelp;
+			sourceTree = "<group>";
+		};
 		476BC22D1E79517200B1BA91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,6 +1206,7 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				474001CF1EB6235800C55420 /* Yelp */,
 				47A97FF41EADEE3E00AB8657 /* Location */,
 				47A97FF01EADEE1E00AB8657 /* Google */,
 				47A97FC31EACDF7800AB8657 /* settings */,
@@ -1268,6 +1304,8 @@
 			isa = PBXGroup;
 			children = (
 				47A97FCF1EACE10A00AB8657 /* PlaceType */,
+				474001CC1EB622BF00C55420 /* MTYelpPlace.h */,
+				474001CD1EB622BF00C55420 /* MTYelpPlace.m */,
 				47A980381EAE272B00AB8657 /* MTPlaceReview.h */,
 				47A980391EAE272B00AB8657 /* MTPlaceReview.m */,
 				47A9802F1EAE188C00AB8657 /* MTOpeningHourPeriod.h */,
@@ -1290,6 +1328,8 @@
 		CE250F281B6771AC005447FF /* MachineFiles */ = {
 			isa = PBXGroup;
 			children = (
+				474001C91EB622AE00C55420 /* _MTYelpPlace.h */,
+				474001CA1EB622AE00C55420 /* _MTYelpPlace.m */,
 				47A9803B1EAE283100AB8657 /* _MTPlaceReview.h */,
 				47A9803C1EAE283100AB8657 /* _MTPlaceReview.m */,
 				47A980261EAE186800AB8657 /* _MTOpeningHourPeriod.h */,
@@ -1311,6 +1351,7 @@
 		CE250F291B677695005447FF /* Requests&Responses */ = {
 			isa = PBXGroup;
 			children = (
+				474001C21EB61FBC00C55420 /* Yelp */,
 				47260E091E797C380007990C /* MTGetPlacesRequest.h */,
 				47260E0A1E797C380007990C /* MTGetPlaceRequest.m */,
 				47260E0C1E797C590007990C /* MTGetPlacesResponse.h */,
@@ -1516,6 +1557,7 @@
 				47A97F9C1EABD89900AB8657 /* _MTPhoto.m in Sources */,
 				47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */,
 				47157CF51E7C8BE6000D11E9 /* SDWebImageManager.m in Sources */,
+				474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */,
 				476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */,
 				47A980221EAE12AB00AB8657 /* MTGetPlaceDetailRequest.m in Sources */,
 				47157CCD1E7C8BAC000D11E9 /* UIWebView+AFNetworking.m in Sources */,
@@ -1528,10 +1570,12 @@
 				47157CF61E7C8BE6000D11E9 /* SDWebImagePrefetcher.m in Sources */,
 				4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */,
 				478073191EAA705500D98DD7 /* QTree.m in Sources */,
+				474001C71EB61FBC00C55420 /* MTGetYelpPlacesRequest.m in Sources */,
 				4780732C1EAA70B400D98DD7 /* SDInternetConnection.m in Sources */,
 				47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */,
 				47A97FDB1EACF5E900AB8657 /* EDStarRating.m in Sources */,
 				478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */,
+				474001C81EB61FBC00C55420 /* MTGetYelpPlacesResponse.m in Sources */,
 				CE250F111B676682005447FF /* SDDepotRequestHandler.m in Sources */,
 				47157CC61E7C8BAC000D11E9 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				47A97FA61EAC992D00AB8657 /* MKImageAnnotationView.m in Sources */,
@@ -1602,6 +1646,7 @@
 				47157CF11E7C8BE6000D11E9 /* SDWebImageCompat.m in Sources */,
 				47A97FA31EABD8A700AB8657 /* MTPlace.m in Sources */,
 				474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */,
+				474001CB1EB622AE00C55420 /* _MTYelpPlace.m in Sources */,
 				47157CC81E7C8BAC000D11E9 /* UIAlertView+AFNetworking.m in Sources */,
 				4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */,
 				CE250F161B676682005447FF /* SDServiceRequestHandler.m in Sources */,
@@ -1622,6 +1667,7 @@
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
+				474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */,
 				47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */,

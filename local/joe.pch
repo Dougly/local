@@ -141,4 +141,11 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 #define kMapDomain          @"GooglePlaceAPIDomain"
 
 #define BOTTOM_NAVIGATION_BAR_HEIGHT          50
+
+// --- LOCATION ---
+@protocol MTLocationViewTextfieldCellDelegate <NSObject>
+- (void)placeSelected:(NSString *)placeId;
+- (void)currentPlaceSelected;
+@end
+
 #endif

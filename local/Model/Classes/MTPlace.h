@@ -9,4 +9,6 @@
 - (void)parseNode:(NSDictionary *)node;
 
 - (NSString *)getDetailsString;
+- (NSString *)nameQuery;
+- (NSString *)ratingString;
 @end

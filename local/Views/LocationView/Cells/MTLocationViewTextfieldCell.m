@@ -26,6 +26,7 @@
     self.autoCompleteTextField.containerview = self.containerView;
     self.autoCompleteTextField.onSelect = ^(PredictionPlace * _Nonnull place) {
         [self.autoCompleteTextField resignFirstResponder];
+        [self.delegate placeSelected:place.placeId];
     };
 }
 

@@ -14,4 +14,6 @@ typedef void(^LocationCompletion)(BOOL success, NSString *erroMessage, CLLocatio
 @interface MTLocationManager : NSObject
 + (instancetype)sharedManager;
 - (void)getLocation:(LocationCompletion)completion;
+
+@property (nonatomic, readonly) CLLocationCoordinate2D lastLocation;
 @end
