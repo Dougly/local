@@ -23,8 +23,9 @@
 #import "MTSettignsViewController.h"
 #import "LocationView.h"
 #import "ListView.h"
+#import "MTPageContainerViewController.h"
 
-@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate>
+@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate,ListViewDelegate>
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
 @property (nonatomic, strong) MapPopupView *currentPopupView;
@@ -293,6 +294,7 @@
 #pragma mark - Switching between list and map
 - (void)showList {
     self.listView = [[[NSBundle mainBundle] loadNibNamed:@"ListView" owner:self options:nil] objectAtIndex:0];
+    self.listView.delegate = self;
     self.listView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     self.listView.alpha = 0.0;
     [self.view addSubview:self.listView];
@@ -312,6 +314,18 @@
     }];
     
     [self showListNavigationItem];
+}
+
+#pragma mark - ListView delegate
+
+- (void)didSelectItemForPlace:(MTPlace *)place {
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MTPageContainerViewController *pageController = [main instantiateViewControllerWithIdentifier:@"MTPageContainerViewController"];
+    
+    pageController.title = place.name;
+    pageController.place = place;
+    
+    [self.navigationController pushViewController:pageController animated:YES];
 }
 
 @end

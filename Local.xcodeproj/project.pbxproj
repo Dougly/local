@@ -69,6 +69,8 @@
 		474001B61EB5D73E00C55420 /* MTListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B11EB5D73E00C55420 /* MTListViewCell.xib */; };
 		474001B71EB5D73E00C55420 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001B31EB5D73E00C55420 /* ListView.m */; };
 		474001B81EB5D73E00C55420 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B41EB5D73E00C55420 /* ListView.xib */; };
+		474001BE1EB5F58900C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001BD1EB5F58900C55420 /* MTDetailsViewController.m */; };
+		474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C01EB6112600C55420 /* MTPageContainerViewController.m */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
 		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
@@ -305,6 +307,10 @@
 		474001B21EB5D73E00C55420 /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListView.h; sourceTree = "<group>"; };
 		474001B31EB5D73E00C55420 /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListView.m; sourceTree = "<group>"; };
 		474001B41EB5D73E00C55420 /* ListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListView.xib; sourceTree = "<group>"; };
+		474001BC1EB5F58900C55420 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
+		474001BD1EB5F58900C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
+		474001BF1EB6112600C55420 /* MTPageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPageContainerViewController.h; sourceTree = "<group>"; };
+		474001C01EB6112600C55420 /* MTPageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPageContainerViewController.m; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
 		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
@@ -1223,6 +1229,10 @@
 				476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
 				47D7793F1EB2619F00A83922 /* MTMainViewController.m */,
+				474001BC1EB5F58900C55420 /* MTDetailsViewController.h */,
+				474001BD1EB5F58900C55420 /* MTDetailsViewController.m */,
+				474001BF1EB6112600C55420 /* MTPageContainerViewController.h */,
+				474001C01EB6112600C55420 /* MTPageContainerViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1555,6 +1565,7 @@
 				CE250F121B676682005447FF /* SDDispatcher.m in Sources */,
 				47A97FC91EACDF7800AB8657 /* MTSettingsPreferences.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
+				474001BE1EB5F58900C55420 /* MTDetailsViewController.m in Sources */,
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
 				CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */,
@@ -1590,6 +1601,7 @@
 				47A97FB21EACDB2B00AB8657 /* RMDateSelectionViewController.m in Sources */,
 				47157CF11E7C8BE6000D11E9 /* SDWebImageCompat.m in Sources */,
 				47A97FA31EABD8A700AB8657 /* MTPlace.m in Sources */,
+				474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */,
 				47157CC81E7C8BAC000D11E9 /* UIAlertView+AFNetworking.m in Sources */,
 				4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */,
 				CE250F161B676682005447FF /* SDServiceRequestHandler.m in Sources */,

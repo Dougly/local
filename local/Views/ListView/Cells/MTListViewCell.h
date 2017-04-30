@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface MTListViewCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UIView *bottomView;
 @property (nonatomic, weak) IBOutlet UIImageView *mainImageView;

@@ -38,6 +38,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* openTime;
 
+@property (nonatomic, strong, nullable) NSNumber* periodNumber;
+
+@property (atomic) int16_t periodNumberValue;
+- (int16_t)periodNumberValue;
+- (void)setPeriodNumberValue:(int16_t)value_;
+
 @property (nonatomic, strong, nullable) MTPlaceDetails *parentDetails;
 
 @end
@@ -62,6 +68,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveOpenTime;
 - (void)setPrimitiveOpenTime:(nullable NSString*)value;
 
+- (nullable NSNumber*)primitivePeriodNumber;
+- (void)setPrimitivePeriodNumber:(nullable NSNumber*)value;
+
+- (int16_t)primitivePeriodNumberValue;
+- (void)setPrimitivePeriodNumberValue:(int16_t)value_;
+
 - (MTPlaceDetails*)primitiveParentDetails;
 - (void)setPrimitiveParentDetails:(MTPlaceDetails*)value;
 
@@ -72,6 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)closeTime;
 + (NSString *)openDay;
 + (NSString *)openTime;
++ (NSString *)periodNumber;
 @end
 
 @interface MTOpeningHourPeriodRelationships: NSObject

@@ -33,7 +33,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [super awakeFromNib];
     
     [self registerCells];
-    self.tableView.allowsSelection = false;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self getAllPlaces];
@@ -67,6 +66,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [tableView dequeueReusableCellWithIdentifier:LIST_VIEW_CELL
                                     forIndexPath:indexPath];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     MTPlace *place = [self.places objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = place.name;
@@ -101,6 +101,18 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MTPlace *selectedPlace = self.places[indexPath.row];
+    
+    [self.delegate didSelectItemForPlace:selectedPlace];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MTListViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell.contentView bringSubviewToFront:cell.bottomView];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return CELL_HEIGHT;
 }
@@ -125,13 +137,5 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [request run];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGFloat pullDistance = (scrollView.contentOffset.y + scrollView.frame.size.height) - scrollView.contentSize.height;
-    if (pullDistance < -22) {
-        [self.delegate hideListView];
-        self.delegate = nil;
-    }
-}
 
 @end

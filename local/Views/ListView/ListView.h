@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MTPlace;
+
 @protocol ListViewDelegate <NSObject>
-- (void)hideListView;
+- (void)didSelectItemForPlace:(MTPlace *)place;
 @end
 
 @interface ListView : UIView

@@ -270,10 +270,13 @@
             }
             
             NSArray *openingHoursDictionaries = result[@"opening_hours"][@"periods"];
+            
+            NSUInteger periodNumber = 0;
             for (NSDictionary *openingHoursDict in openingHoursDictionaries) {
                 MTOpeningHourPeriod *period = (MTOpeningHourPeriod *)[self emptyNode:MTOpeningHourPeriod.class];
-                [period parseNode:openingHoursDict];
+                [period parseNode:openingHoursDict periodNumber:periodNumber];
                 [placeDetails addOpeningHoursPeriodsObject:period];
+                periodNumber++;
             }
             
             NSArray *reviewDictionaries = result[@"reviews"];

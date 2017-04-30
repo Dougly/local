@@ -39,6 +39,11 @@
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"periodNumberValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"periodNumber"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -87,6 +92,26 @@
 
 @dynamic openTime;
 
+@dynamic periodNumber;
+
+- (int16_t)periodNumberValue {
+	NSNumber *result = [self periodNumber];
+	return [result shortValue];
+}
+
+- (void)setPeriodNumberValue:(int16_t)value_ {
+	[self setPeriodNumber:@(value_)];
+}
+
+- (int16_t)primitivePeriodNumberValue {
+	NSNumber *result = [self primitivePeriodNumber];
+	return [result shortValue];
+}
+
+- (void)setPrimitivePeriodNumberValue:(int16_t)value_ {
+	[self setPrimitivePeriodNumber:@(value_)];
+}
+
 @dynamic parentDetails;
 
 @end
@@ -103,6 +128,9 @@
 }
 + (NSString *)openTime {
 	return @"openTime";
+}
++ (NSString *)periodNumber {
+	return @"periodNumber";
 }
 @end
 

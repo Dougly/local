@@ -27,7 +27,6 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     [super awakeFromNib];
     
     [self registerCells];
-    self.tableView.allowsSelection = false;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
