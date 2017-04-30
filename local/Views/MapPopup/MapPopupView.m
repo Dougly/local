@@ -66,26 +66,7 @@
             largestPhoto = self.place.photos.allObjects.firstObject;
     }
     
-    NSString *pricing = @"";
-    
-    for (int i=0; i<self.place.pricingLevel.integerValue; i++) {
-        pricing = [pricing stringByAppendingString:@"$"];
-    }
-    
-    if (pricing.length > 0) {
-        pricing = [@"  •  " stringByAppendingString:pricing];
-    }
-    
-    NSString *type =@"Unknown type";
-    NSArray *types = [self.place.types componentsSeparatedByString:DELIMITER];
-    
-    if (types > 0) {
-        type = types.firstObject;
-    }
-    
-    NSString *address = [self getAddressDirty];
-    
-    self.addressAndRatingLabel.text = [NSString stringWithFormat:@"%@  •  %.1f %@  •  %@", address, self.place.rating.floatValue, pricing, type];
+    self.addressAndRatingLabel.text = [self.place getDetailsString];
     self.titleLabel.text = self.place.name;
     
     int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width;
@@ -176,62 +157,6 @@
     return path;
 }
 
-/*refactor this crap later*/
-- (NSString *)getAddressDirty {
-    NSString *address = self.place.formattedAddress;
-    
-    NSString *separator = @",";
-    NSUInteger index = 9999;
-    
-    NSRange range;
-    
-    range = [self.place.formattedAddress rangeOfString:@","];
-    if (range.location != NSNotFound) {
-        
-        if (range.location < index) {
-            index = range.location;
-            separator = @",";
-        }
-        
-    }
-    
-    range = [self.place.formattedAddress rangeOfString:@"-"];
-    if (range.location != NSNotFound) {
-        
-        if (range.location < index) {
-            index = range.location;
-            separator = @"-";
-        }
-    }
-    
-    range = [self.place.formattedAddress rangeOfString:@"."];
-    if (range.location != NSNotFound) {
-        
-        if (range.location < index) {
-            index = range.location;
-            separator = @".";
-        }
-    }
-    
-    if (address.length > 20) {
-        NSArray *addressComponents = [address componentsSeparatedByString:separator];
-        
-        if (addressComponents.count > 0) {
-            address = addressComponents.firstObject;
-            
-            if (address.length < 5) {
-                address = self.place.formattedAddress;
-            }
-        }
-    }
-    
-    if (address.length > 16) {
-        address = [address substringToIndex:16];
-        address = [address stringByAppendingString:@"..."];
-    }
-
-    return address;
-}
 
 - (void)switchToLoadingView {
     self.backgroundColor = [UIColor clearColor];

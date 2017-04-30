@@ -22,6 +22,7 @@
 #import "MapPopupView.h"
 #import "MTSettignsViewController.h"
 #import "LocationView.h"
+#import "ListView.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate>
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) MapPopupView *currentPopupView;
 @property (nonatomic, strong) TitleView *titleView;
 @property (nonatomic, strong) LocationView *locationView;
+@property (nonatomic, strong) ListView *listView;
 @end
 
 @implementation MTMapViewController
@@ -290,10 +292,25 @@
 
 #pragma mark - Switching between list and map
 - (void)showList {
+    self.listView = [[[NSBundle mainBundle] loadNibNamed:@"ListView" owner:self options:nil] objectAtIndex:0];
+    self.listView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.listView.alpha = 0.0;
+    [self.view addSubview:self.listView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.listView.alpha = 1.0;
+    }];
+
     [self showMapNavigationItem];
 }
 
 - (void)showMap {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.listView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.listView removeFromSuperview];
+    }];
+    
     [self showListNavigationItem];
 }
 
