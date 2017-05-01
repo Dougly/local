@@ -10,8 +10,10 @@
 
 typedef void (^onKeywordUpdated)();
 typedef void (^onNewPlacesReceived)();
+typedef void (^onLocationChanged)();
 
-@interface KeyWordsListener : NSObject
+@interface FilterListener : NSObject
 @property (nonatomic, strong) onKeywordUpdated onKeyWordUpdatedHandler;
 @property (nonatomic, strong) onNewPlacesReceived onNewPlacesReceivedHandler;
+@property (nonatomic, strong) onLocationChanged onLocationChangedHandler;
 @end

@@ -86,9 +86,14 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     self.detailsLabel.text = [self.place getDetailsString];
     self.titleLabel.text = self.place.name;
     
-    self.addressTextView.text = [self.addressTextView.text stringByAppendingString:self.placeDetails.formattedAddress];
+    if (self.placeDetails.formattedAddress)
+        self.addressTextView.text = [self.addressTextView.text stringByAppendingString:self.placeDetails.formattedAddress];
+    
     self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
-    self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.localPhone];
+    
+    if (self.placeDetails.localPhone)
+        self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.localPhone];
+    
     self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
     
     

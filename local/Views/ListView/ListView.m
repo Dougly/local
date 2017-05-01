@@ -15,7 +15,7 @@
 #import "UIImageView+WebCache.h"
 #import "MTGetPlaceDetailRequest.h"
 #import "MTGetPlaceDetailsResponse.h"
-#import "KeyWordsListener.h"
+#import "FilterListener.h"
 #import "MTProgressHUD.h"
 
 #define CELL_HEIGHT                 220
@@ -25,7 +25,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @interface ListView()<UITabBarDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *places;
-@property (nonatomic, strong) KeyWordsListener *keywordsListener;
+@property (nonatomic, strong) FilterListener *filterListener;
 @end
 
 NSString *const LIST_VIEW_CELL = @"MTListViewCell";
@@ -44,12 +44,16 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 
 - (void)subscribeForNewPlaces {
     __weak typeof(self) weakSelf = self;
-    self.keywordsListener.onKeyWordUpdatedHandler = ^{
+    self.filterListener.onKeyWordUpdatedHandler = ^{
         [weakSelf keyWordsChanged];
     };
     
-    self.keywordsListener.onNewPlacesReceivedHandler = ^{
+    self.filterListener.onNewPlacesReceivedHandler = ^{
         [weakSelf gotNewPlaces];
+    };
+    
+    self.filterListener.onLocationChangedHandler = ^{
+        [weakSelf locationChanged];
     };
 }
 
@@ -186,14 +190,20 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     }
 }
 
+- (void)locationChanged {
+    self.places = nil;
+    [self.tableView reloadData];
+    [[MTProgressHUD sharedHUD] showOnView:self percentage:false];
+}
+
 #pragma mark - access overrides
 
-- (KeyWordsListener *)keywordsListener {
-    if (!_keywordsListener) {
-        _keywordsListener = [KeyWordsListener new];
+- (FilterListener *)filterListener {
+    if (!_filterListener) {
+        _filterListener = [FilterListener new];
     }
     
-    return _keywordsListener;
+    return _filterListener;
 }
 
 

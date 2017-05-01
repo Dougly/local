@@ -27,7 +27,7 @@
 #import "MTGetPlaceDetailRequest.h"
 #import "MTGetPlaceDetailsResponse.h"
 #import "MTPlaceDetails.h"
-#import "KeyWordsListener.h"
+#import "FilterListener.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate>
 
@@ -37,7 +37,7 @@
 @property (nonatomic, strong) TitleView *titleView;
 @property (nonatomic, strong) LocationView *locationView;
 @property (nonatomic, strong) ListView *listView;
-@property (nonatomic, strong) KeyWordsListener *keywordsListener;
+@property (nonatomic, strong) FilterListener *filterListener;
 @end
 
 @implementation MTMapViewController
@@ -363,19 +363,19 @@
 
 - (void)setupKeywordsListener {
     __weak typeof(self) weakSelf = self;
-    self.keywordsListener.onKeyWordUpdatedHandler = ^{
+    self.filterListener.onKeyWordUpdatedHandler = ^{
         [weakSelf updatePlaces:[MTLocationManager sharedManager].lastUsedLocation];
     };
 }
 
 #pragma mark - access overrides
 
-- (KeyWordsListener *)keywordsListener {
-    if (!_keywordsListener) {
-        _keywordsListener = [KeyWordsListener new];
+- (FilterListener *)keywordsListener {
+    if (!_filterListener) {
+        _filterListener = [FilterListener new];
     }
     
-    return _keywordsListener;
+    return _filterListener;
 }
 
 @end

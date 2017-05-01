@@ -86,7 +86,7 @@
                 }
                 
                 /*Fetch new page. 1.5 secs is required cause newPagetoken becomes available after some delay*/
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     /*in case it's cancelled, pendingPagetoken will not contain the token*/
                     if ([self.pendingPageTokens containsObject:googleResponse.pageToken])
                         [weakSelf query:coordinate radius:radius pageToken:googleResponse.pageToken];

@@ -97,6 +97,7 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
 
 - (void)placeSelected:(NSString *)placeId {
     [self.delegate placeSelected:placeId];
+    [[NSNotificationCenter defaultCenter] postNotificationName:nLOCATION_CHANGED object:nil];
     
     [self.delegate hideLocationView];
     self.delegate = nil;
@@ -104,6 +105,8 @@ NSString *const LOCATION_VIEW_CELL_CURRENT = @"MTLocationViewCurrentLocationCell
 
 - (void)currentPlaceSelected {
     [self.delegate currentPlaceSelected];
+    [[NSNotificationCenter defaultCenter] postNotificationName:nLOCATION_CHANGED object:nil];
+
     
     [self.delegate hideLocationView];
     self.delegate = nil;
