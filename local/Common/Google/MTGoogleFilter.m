@@ -27,12 +27,22 @@
             return false;
         }
     }
-    
-    if ([settings getRating] > place.rating.floatValue) {
+    */
+    if (place.rating.floatValue < 4.0) {
         return false;
-    }*/
+    }
     
     return true;
+}
+
+- (BOOL)doesConform:(NSDictionary *)placeDictionary {
+    float rating = [placeDictionary[@"rating"] floatValue];
+    
+    if (rating > 4.0) {
+        return true;
+    }
+    
+    return false;
 }
 
 @end

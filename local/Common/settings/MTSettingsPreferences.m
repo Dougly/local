@@ -43,7 +43,7 @@ NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";
     }
     
     if(![_defaults valueForKey:RATING_KEY]) {
-        [self setRating:3.5];
+        [self setRating:4.0];
     }
     
     if(![_defaults valueForKey:DISTANCE_KEY]) {

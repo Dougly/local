@@ -19,13 +19,14 @@
 #import "MTOpeningHourPeriod.h"
 #import "MTPlaceReview.h"
 #import "MTYelpPlace.h"
+#import "MTGoogleFilter.h"
 
 @interface MTDataModel ()
 
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
+@property (nonatomic, strong) MTGoogleFilter *googleFilter;
 @end
 
 @implementation MTDataModel
@@ -225,7 +226,9 @@
                         places = [[NSMutableArray alloc] init];
                         for (NSDictionary *placeDict in list){
                             
-                            if (![alreadyStoredPlaceIds containsObject:placeDict[@"id"]]) {
+                            BOOL conformsToFilter = [self.googleFilter doesConform:placeDict];
+                            
+                            if (conformsToFilter && ![alreadyStoredPlaceIds containsObject:placeDict[@"id"]]) {
                                 place = (MTPlace *)[self emptyNode:MTPlace.class];
                                 [place parseNode:placeDict];
                                 
@@ -416,6 +419,16 @@
             abort();
         }
     }
+}
+
+#pragma mark - access overrides
+
+- (MTGoogleFilter *)googleFilter {
+    if (!_googleFilter) {
+        _googleFilter = [MTGoogleFilter new];
+    }
+    
+    return _googleFilter;
 }
 
 @end

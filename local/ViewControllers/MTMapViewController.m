@@ -28,7 +28,7 @@
 #import "MTGetPlaceDetailsResponse.h"
 #import "MTPlaceDetails.h"
 #import "FilterListener.h"
-
+#import "MTDataModel.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate, PopupClickDelegate>
 
@@ -45,9 +45,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    [[MTDataModel sharedDatabaseStorage] clearPlaces];
+    [self showListAnimated:NO];
+    
     [self getLocation];
     [self addTitleView];
-    [self showListNavigationItem];
     [self setupFilterListener];
 }
 
@@ -258,7 +261,7 @@
 #pragma mark - right navigation item
 
 - (void)showListNavigationItem {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"List " style:UIBarButtonItemStylePlain target:self action:@selector(showList)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"List " style:UIBarButtonItemStylePlain target:self action:@selector(showListByClickingNavigationItem)];
     [item setTitleTextAttributes:@{
                                    NSForegroundColorAttributeName: UIColorFromHex(0x939598),
                                    NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]
@@ -276,16 +279,24 @@
 }
 
 #pragma mark - Switching between list and map
-- (void)showList {
+
+- (void)showListByClickingNavigationItem {
+    [self showListAnimated:YES];
+}
+
+- (void)showListAnimated:(BOOL)animated {
     self.listView = [[[NSBundle mainBundle] loadNibNamed:@"ListView" owner:self options:nil] objectAtIndex:0];
     self.listView.delegate = self;
     self.listView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-    self.listView.alpha = 0.0;
     [self.view addSubview:self.listView];
     
-    [UIView animateWithDuration:0.5 animations:^{
-        self.listView.alpha = 1.0;
-    }];
+    if (animated) {
+        self.listView.alpha = 0.0;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.listView.alpha = 1.0;
+        }];
+    }
+    
 
     [self showMapNavigationItem];
 }
@@ -346,6 +357,9 @@
 #pragma mark - popup click delegate
 
 - (void)popClickedForPlace:(MTPlace *)place {
+    [self.currentPopupView removeFromSuperview];
+    self.currentPopupView = nil;
+    
     [self didSelectItemForPlace:place];
 }
 

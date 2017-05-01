@@ -11,4 +11,6 @@
 @interface MTGoogleFilter : NSObject
 
 - (BOOL)doesPlaceConformToAllFilters:(MTPlace *)place;
+
+- (BOOL)doesConform:(NSDictionary *)placeDictionary;
 @end

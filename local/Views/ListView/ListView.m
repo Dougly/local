@@ -169,7 +169,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)gotNewPlaces {
     [[MTProgressHUD sharedHUD] dismiss];
     
-    if (!self.places) {
+    if (!self.places || self.places.count == 0) {
         self.places = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
         [self.tableView reloadData];
     }

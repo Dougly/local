@@ -11,6 +11,7 @@
 #import "FilterView.h"
 #import "MTSettings.h"
 #import "AppStateListener.h"
+#import "MTDataModel.h"
 
 #define FILTER_VIEW_HEIGHT              150
 
@@ -36,6 +37,7 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self addTabbar];
     [self setTabBarIndex];
     

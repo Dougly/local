@@ -112,8 +112,7 @@
 
 - (void)addTreeNodes:(NSArray *)googlePlaces {
     for (MTPlace *place in googlePlaces) {
-        if ([self.googleFilter doesPlaceConformToAllFilters:place])
-            [self.qTree insertObject:place];
+        [self.qTree insertObject:place];
     }
 }
 - (void)cancelPendingRequests {
