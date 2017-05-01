@@ -8,6 +8,7 @@
 
 #import "FilterView.h"
 #import "MTFilterViewCell.h"
+#import "MTSettings.h"
 
 typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
     MTLocationViewCellBrunch = 0,
@@ -17,6 +18,7 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 
 @interface FilterView()<UITabBarDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @end
 
 NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
@@ -27,7 +29,17 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     [super awakeFromNib];
     
     [self registerCells];
+    [self calculateSelectedIndexPath];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)calculateSelectedIndexPath {
+    NSUInteger index = -1;
+    if ([FILTERS_KEY_WORDS containsObject:[MTSettings sharedSettings].filterKeyWords]) {
+        index = [FILTERS_KEY_WORDS indexOfObject:[MTSettings sharedSettings].filterKeyWords];
+    }
+    
+    self.selectedIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
 }
 
 - (void)registerCells {
@@ -56,6 +68,9 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     MTFilterViewCell *cell =
     [tableView dequeueReusableCellWithIdentifier:FILTER_VIEW_CELL
                                     forIndexPath:indexPath];
+    if (indexPath.row == self.selectedIndexPath.row) {
+        cell.markImageView.hidden = false;
+    }
     
     if(indexPath.row == MTLocationViewCellBrunch) {
         cell.leftImageLabel.text = @"";
@@ -76,6 +91,23 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     }
     
     return finalCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [MTSettings sharedSettings].filterKeyWords = FILTERS_KEY_WORDS[indexPath.row];
+    MTFilterViewCell *currentlySelectedCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
+    currentlySelectedCell.markImageView.hidden = true;
+    
+    MTFilterViewCell *newlySelectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    newlySelectedCell.markImageView.hidden = false;
+    
+    self.selectedIndexPath = indexPath;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.delegate hideFilterView];
+        self.delegate = nil;
+    });
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

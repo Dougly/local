@@ -38,6 +38,8 @@
 
 - (id)init {
     self = [super init];
+    _filterKeyWords = FILTERS_KEY_WORDS[0];
+    
     _foodTypes = [[NSMutableArray alloc] init];
     _placeTypes = [[NSMutableArray alloc] init];
     _placeTypesManager = [[MTPlaceTypeManager alloc] init];
@@ -147,6 +149,14 @@
 
 - (NSUInteger)getDistance {
     return [self.preferences getDistance];
+}
+
+#pragma mark - key words
+
+- (void)setFilterKeyWords:(NSString *)filterKeyWords {
+    _filterKeyWords = filterKeyWords;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:nKEYWORDS_CHANGED object:nil];
 }
 
 @end

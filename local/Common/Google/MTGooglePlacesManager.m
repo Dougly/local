@@ -14,6 +14,7 @@
 #import "MTGoogleFilter.h"
 #import "MTGoogleQueryString.h"
 #import "MTGoogleTypesString.h"
+#import "MTLocationManager.h"
 
 @interface MTGooglePlacesManager()
 @property (nonatomic, strong) MTGoogleQueryString *googleQuery;
@@ -49,12 +50,14 @@
 - (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius completion:(GooglePlaceCompletion)completion{
     self.completion = completion;
     
+    [MTLocationManager sharedManager].lastUsedLocation = coordinate;
+    
     self.qTree = [QTree new];
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
     [self cancelPendingRequests];
     
     [self query:coordinate radius:radius pageToken:nil];
-    [self query:coordinate radius:radius + 100 pageToken:nil];
+    //[self query:coordinate radius:radius + 100 pageToken:nil];
 }
 
 - (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius pageToken:(NSString *)pageToken {

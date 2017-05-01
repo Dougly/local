@@ -148,4 +148,10 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 - (void)currentPlaceSelected;
 @end
 
+// --- FILTERS ---
+#define FILTERS_KEY_WORDS            @[@"brunch", @"wine+beer+cocktail", @"coffee+tea"]
+#define MEAL_TYPES                   @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
+
+#define nKEYWORDS_CHANGED             @"KeyWordsChangedNotification"
+
 #endif

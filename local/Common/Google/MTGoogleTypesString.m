@@ -11,7 +11,7 @@
 
 @implementation MTGoogleTypesString
 - (NSString *)stringTypes {
-    NSString *types = @"";
+    /*NSString *types = @"";
     for (NSString *type in [[MTSettings sharedSettings] getPlaceTypes]) {
         types = [types stringByAppendingString:[NSString stringWithFormat:@"%@|", type]];
     }
@@ -20,6 +20,8 @@
         types = [types substringToIndex:types.length - 1];
     }
     
-    return types.length > 0 ? types : nil;
+    return types.length > 0 ? types : nil;*/
+    
+    return @"restaurant|bar|bakery|cafe|night_club";
 }
 @end

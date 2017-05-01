@@ -27,6 +27,7 @@
 #import "MTGetPlaceDetailRequest.h"
 #import "MTGetPlaceDetailsResponse.h"
 #import "MTPlaceDetails.h"
+#import "KeyWordsListener.h"
 
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate>
 
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) TitleView *titleView;
 @property (nonatomic, strong) LocationView *locationView;
 @property (nonatomic, strong) ListView *listView;
+@property (nonatomic, strong) KeyWordsListener *keywordsListener;
 @end
 
 @implementation MTMapViewController
@@ -45,6 +47,7 @@
     [self getLocation];
     [self addTitleView];
     [self showListNavigationItem];
+    [self setupKeywordsListener];
 }
 
 - (void)addTitleView {
@@ -61,7 +64,6 @@
         [[MTProgressHUD sharedHUD] dismiss];
         if (success) {
             [self getPlacesAtLocation:coordinate];
-            
             [self drawCircleAroundCoordinate:coordinate];
             [self setZoomLevelWithCenter:coordinate];
             [self addGesture];
@@ -195,10 +197,10 @@
 
 - (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
     /*in km*/
-    NSUInteger radius = [[MTSettings sharedSettings] getDistance];
+    /*NSUInteger radius = [[MTSettings sharedSettings] getDistance];
     
     MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:(radius*1000 + 700)];
-    [self.mapView addOverlay:circle];
+    [self.mapView addOverlay:circle];*/
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
@@ -357,6 +359,23 @@
 
 - (void)currentPlaceSelected {
     [self updatePlaces:[MTLocationManager sharedManager].lastLocation];
+}
+
+- (void)setupKeywordsListener {
+    __weak typeof(self) weakSelf = self;
+    self.keywordsListener.onKeyWordUpdatedHandler = ^{
+        [weakSelf updatePlaces:[MTLocationManager sharedManager].lastUsedLocation];
+    };
+}
+
+#pragma mark - access overrides
+
+- (KeyWordsListener *)keywordsListener {
+    if (!_keywordsListener) {
+        _keywordsListener = [KeyWordsListener new];
+    }
+    
+    return _keywordsListener;
 }
 
 @end

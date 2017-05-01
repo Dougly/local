@@ -12,4 +12,5 @@
 @interface MTFilterViewCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel *leftImageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *captionLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *markImageView;
 @end

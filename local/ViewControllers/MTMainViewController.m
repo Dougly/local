@@ -9,6 +9,7 @@
 #import "MTMainViewController.h"
 #import "CMTabbarView.h"
 #import "FilterView.h"
+#import "MTSettings.h"
 
 #define FILTER_VIEW_HEIGHT              150
 
@@ -45,7 +46,7 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 }
 
 - (NSArray<NSString *> *)tabbarTitlesForTabbarView:(CMTabbarView *)tabbarView {
-    return @[@"BREAKFAST", @"LUNCH", @"DINNER", @""];
+    return MEAL_TYPES;
 }
 
 #pragma mark - FilterView
@@ -76,6 +77,10 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 - (void)tabbarView:(CMTabbarView *)tabbarView didSelectedAtIndex:(NSInteger)index {
     if (index == MTMainMenuFilter) {
         self.filterMenuVisisble ?  [self hideFilterView] : [self showFilterView];
+    }
+    else {
+        [MTSettings sharedSettings].filterKeyWords = MEAL_TYPES[index];
+        [self hideFilterView];
     }
 }
 

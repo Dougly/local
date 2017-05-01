@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-0l-hbS">
-                        <rect key="frame" x="12" y="12" width="0.0" height="22.5"/>
+                        <rect key="frame" x="12" y="12" width="0.0" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -39,8 +39,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Coffee &amp; Tea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ie-mr-LDU">
-                        <rect key="frame" x="52" y="12" width="234" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee &amp; Tea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ie-mr-LDU">
+                        <rect key="frame" x="52" y="12" width="208" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="KqT-hM-eBQ"/>
                         </constraints>
@@ -48,15 +48,24 @@
                         <color key="textColor" red="0.20000000000000001" green="0.19215686274509802" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mark" translatesAutoresizingMaskIntoConstraints="NO" id="EVu-2l-VUh">
+                        <rect key="frame" x="260" y="7" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="941-Bn-EHP"/>
+                            <constraint firstAttribute="height" constant="32" id="zgt-dE-cLD"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5Ie-mr-LDU" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leadingMargin" constant="44" id="3Rf-qb-wc3"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="5Ie-mr-LDU" secondAttribute="trailing" constant="10" id="DVC-HK-IVF"/>
+                    <constraint firstItem="EVu-2l-VUh" firstAttribute="centerY" secondItem="ifZ-po-PXY" secondAttribute="centerY" id="64m-jP-g8O"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5Ie-mr-LDU" secondAttribute="trailing" constant="32" id="DVC-HK-IVF"/>
                     <constraint firstItem="zDu-0l-hbS" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leading" constant="12" id="Jy7-4j-BQY"/>
                     <constraint firstItem="5Ie-mr-LDU" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="topMargin" constant="4" id="h5Y-7Y-CLA"/>
                     <constraint firstItem="beL-ze-FaR" firstAttribute="leading" secondItem="zDu-0l-hbS" secondAttribute="trailing" constant="8" id="hUR-Jl-8wj"/>
                     <constraint firstItem="beL-ze-FaR" firstAttribute="centerY" secondItem="ifZ-po-PXY" secondAttribute="centerY" id="j3t-ud-27l"/>
                     <constraint firstAttribute="bottomMargin" secondItem="5Ie-mr-LDU" secondAttribute="bottom" constant="4" id="klG-wk-qSt"/>
+                    <constraint firstAttribute="trailing" secondItem="EVu-2l-VUh" secondAttribute="trailing" constant="8" id="mEP-pR-EX3"/>
                     <constraint firstItem="zDu-0l-hbS" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" constant="12" id="t7u-Pu-u23"/>
                     <constraint firstAttribute="bottom" secondItem="zDu-0l-hbS" secondAttribute="bottom" constant="12" id="wPi-5J-X8q"/>
                 </constraints>
@@ -64,8 +73,12 @@
             <connections>
                 <outlet property="captionLabel" destination="5Ie-mr-LDU" id="cLj-vl-Jsa"/>
                 <outlet property="leftImageLabel" destination="beL-ze-FaR" id="eA8-P3-pAW"/>
+                <outlet property="markImageView" destination="EVu-2l-VUh" id="8pZ-5O-eOW"/>
             </connections>
-            <point key="canvasLocation" x="188" y="199"/>
+            <point key="canvasLocation" x="188" y="198.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_mark" width="46" height="46"/>
+    </resources>
 </document>

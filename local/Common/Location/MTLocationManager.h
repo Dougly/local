@@ -16,4 +16,5 @@ typedef void(^LocationCompletion)(BOOL success, NSString *erroMessage, CLLocatio
 - (void)getLocation:(LocationCompletion)completion;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D lastLocation;
+@property (nonatomic) CLLocationCoordinate2D lastUsedLocation;
 @end

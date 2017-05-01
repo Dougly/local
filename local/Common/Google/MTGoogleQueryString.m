@@ -11,7 +11,7 @@
 
 @implementation MTGoogleQueryString
 - (NSString *)stringQuery {
-    NSString *query = @"";
+    /*NSString *query = @"";
     for (NSString *food in [[MTSettings sharedSettings] getFoodTypes]) {
         query = [query stringByAppendingString:[NSString stringWithFormat:@"%@+", food]];
     }
@@ -20,6 +20,9 @@
         query = [query substringToIndex:query.length - 1];
     }
     
-    return query.length > 0 ? query : nil;
+    return query.length > 0 ? query : nil;*/
+    
+    NSString *keywords = [MTSettings sharedSettings].filterKeyWords;
+    return keywords;
 }
 @end

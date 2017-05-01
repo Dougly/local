@@ -12,6 +12,8 @@
 
 + (MTSettings *)sharedSettings;
 
+@property (nonatomic, strong) NSString *filterKeyWords;
+
 /*Place types*/
 - (void)removePlaceType:(NSString *)placeType;
 - (void)addPlaceType:(NSString *)placeType;

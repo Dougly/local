@@ -14,7 +14,7 @@
 @implementation MTGoogleFilter
 
 - (BOOL)doesPlaceConformToAllFilters:(MTPlace *)place {
-    MTSettings *settings = [MTSettings sharedSettings];
+    /*MTSettings *settings = [MTSettings sharedSettings];
 
     if ([settings getOnlyOpen]) {
         if (!place.isOpenNow) {
@@ -30,7 +30,7 @@
     
     if ([settings getRating] > place.rating.floatValue) {
         return false;
-    }
+    }*/
     
     return true;
 }
