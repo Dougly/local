@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 @class MTPlace;
 
+@protocol PopupClickDelegate <NSObject>
+- (void)popClickedForPlace:(MTPlace *)place;
+@end
+
 @interface MapPopupView : UIView
 @property (nonatomic, strong) MTPlace *place;
 @property (nonatomic) CGRect pinViewFrame;
+
+@property (nonatomic, weak) id<PopupClickDelegate> delegate;
 @end

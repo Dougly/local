@@ -175,4 +175,10 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    
+    [self.delegate popClickedForPlace:self.place];
+}
+
 @end

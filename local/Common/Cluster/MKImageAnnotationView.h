@@ -7,9 +7,11 @@
 //
 
 #import <MapKit/MapKit.h>
+@class MTPlace;
 
 @interface MKImageAnnotationView : MKAnnotationView
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)updateWithAnnotation:(id<MKAnnotation>)annotation;
+
 @end

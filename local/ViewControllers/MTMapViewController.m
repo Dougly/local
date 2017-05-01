@@ -30,7 +30,7 @@
 #import "FilterListener.h"
 
 
-@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate>
+@interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate, PopupClickDelegate>
 
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) QTree *qTree;
@@ -67,7 +67,6 @@
             [self getPlacesAtLocation:coordinate];
             [self drawCircleAroundCoordinate:coordinate];
             [self setZoomLevelWithCenter:coordinate];
-            [self addGesture];
         }
         else {
             [MTAlertBuilder showAlertIn:self
@@ -130,6 +129,10 @@
     NSMutableArray* annotationsToRemove = [self.mapView.annotations mutableCopy];
     [annotationsToRemove removeObject:self.mapView.userLocation];
     [annotationsToRemove removeObjectsInArray:objects];
+    
+    if (self.currentPopupView) {
+        [annotationsToRemove removeObject:self.currentPopupView.place];
+    }
     [self.mapView removeAnnotations:annotationsToRemove];
 
     NSMutableArray* annotationsToAdd = [objects mutableCopy];
@@ -177,21 +180,12 @@
         [self.currentPopupView removeFromSuperview];
         
         self.currentPopupView = [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
+        self.currentPopupView.delegate = self;
         self.currentPopupView.pinViewFrame = view.frame;
         self.currentPopupView.place = (MTPlace *)annotation;
         
         [view addSubview:self.currentPopupView];
     }
-}
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ViewController *viewController = [main instantiateViewControllerWithIdentifier:@"ViewController"];
-    
-    viewController.title = @"Details";
-    viewController.place = (MTPlace *)view.annotation;
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Overlays
@@ -213,26 +207,6 @@
     }
     else {
         return nil;
-    }
-}
-
-#pragma mark - Map tap gesture
-
-- (void)addGesture {
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    tapGesture.delegate = self;
-    [self.mapView addGestureRecognizer:tapGesture];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    return [self getTappedAnnotations:touch].count == 0;
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        /*Get the coordinate*/
-        CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
-        [self updatePlaces:coordinate];
     }
 }
 
@@ -367,6 +341,12 @@
     self.filterListener.onKeyWordUpdatedHandler = ^{
         [weakSelf updatePlaces:[MTLocationManager sharedManager].lastUsedLocation];
     };
+}
+
+#pragma mark - popup click delegate
+
+- (void)popClickedForPlace:(MTPlace *)place {
+    [self didSelectItemForPlace:place];
 }
 
 #pragma mark - access overrides
