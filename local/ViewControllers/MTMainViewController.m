@@ -10,6 +10,7 @@
 #import "CMTabbarView.h"
 #import "FilterView.h"
 #import "MTSettings.h"
+#import "AppStateListener.h"
 
 #define FILTER_VIEW_HEIGHT              150
 
@@ -26,6 +27,9 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 @property (nonatomic, strong) IBOutlet FilterView *filterView;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *leftMarginForBottomMenuConstraint;
 @property (nonatomic) BOOL filterMenuVisisble;
+
+@property (nonatomic, strong) AppStateListener *appStateListener;
+@property (nonatomic) NSUInteger selectedNavigationIndex;
 @end
 
 @implementation MTMainViewController
@@ -33,11 +37,30 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addTabbar];
+    [self setTabBarIndex];
+    
+    //We should change tab bar index based on the keywords
+    __weak typeof(self) weakSelf = self;
+    self.appStateListener.onForegroundHandler = ^{
+        [weakSelf setTabBarIndex];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self adjustMenuConstraint];
+}
+
+- (void)setTabBarIndex {
+    NSString *keyWords = [MTSettings sharedSettings].filterKeyWords;
+    
+    /*Defaul point to filter icon*/
+    NSUInteger index = 3;
+    if ([MEAL_TYPES containsObject:keyWords]) {
+        index = [MEAL_TYPES indexOfObject:keyWords];
+    }
+    self.tabbarView.defaultSelectedIndex = index;
+    [self.tabbarView setTabIndex:index animated:false];
 }
 
 - (void)addTabbar {
@@ -63,12 +86,18 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     }];
 }
 
-- (void)hideFilterView {
+- (void)hideFilterView:(BOOL)shouldRevertToPreviousIndex {
+    
     [UIView animateWithDuration:0.4 animations:^{
         self.filterView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, FILTER_VIEW_HEIGHT);
     } completion:^(BOOL finished) {
         [self.filterView removeFromSuperview];
         self.filterMenuVisisble = false;
+        
+        //If the filterview was dismissed and nothing was selected in filter view before - then revert to previous index
+        if (shouldRevertToPreviousIndex && ![FILTERS_KEY_WORDS containsObject:[MTSettings sharedSettings].filterKeyWords]) {
+            [self.tabbarView setTabIndex:self.selectedNavigationIndex animated:YES];
+        }
     }];
 }
 
@@ -76,11 +105,18 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 
 - (void)tabbarView:(CMTabbarView *)tabbarView didSelectedAtIndex:(NSInteger)index {
     if (index == MTMainMenuFilter) {
-        self.filterMenuVisisble ?  [self hideFilterView] : [self showFilterView];
+        if (self.filterMenuVisisble) {
+            [self hideFilterView:true];
+        }
+        else {
+            [self showFilterView];
+        }
     }
     else {
+        self.selectedNavigationIndex = index;
+        
         [MTSettings sharedSettings].filterKeyWords = MEAL_TYPES[index];
-        [self hideFilterView];
+        [self hideFilterView:false];
     }
 }
 
@@ -99,5 +135,17 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
         self.leftMarginForBottomMenuConstraint.constant = 45;
     }
 }
+
+
+#pragma mark - access overrides
+
+- (AppStateListener *)appStateListener {
+    if (!_appStateListener) {
+        _appStateListener = [AppStateListener new];
+    }
+    
+    return _appStateListener;
+}
+
 
 @end

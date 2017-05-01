@@ -22,6 +22,12 @@
     
     return types.length > 0 ? types : nil;*/
     
-    return @"restaurant|bar|bakery|cafe|night_club";
+    NSString *keywords = [MTSettings sharedSettings].filterKeyWords;
+    
+    if ([keywords containsString:@"beer"]) {
+        return @"bar";
+    }
+    
+    return @"cafe";
 }
 @end

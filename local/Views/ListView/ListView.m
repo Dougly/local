@@ -22,10 +22,11 @@
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 
-@interface ListView()<UITabBarDelegate, UITableViewDataSource>
+@interface ListView()<UITabBarDelegate, UITableViewDataSource, UISearchBarDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *places;
 @property (nonatomic, strong) FilterListener *filterListener;
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @end
 
 NSString *const LIST_VIEW_CELL = @"MTListViewCell";
@@ -194,6 +195,34 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     self.places = nil;
     [self.tableView reloadData];
     [[MTProgressHUD sharedHUD] showOnView:self percentage:false];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length > 0) {
+        NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd]%@", searchText];
+        
+        NSArray *allStoredPlaces = [[MTDataModel sharedDatabaseStorage] getPlaces];
+        self.places = [[NSMutableArray alloc] initWithArray:[allStoredPlaces filteredArrayUsingPredicate:namePredicate]];
+    }
+    else {
+        self.places = [[NSMutableArray alloc] initWithArray:[[MTDataModel sharedDatabaseStorage] getPlaces]];
+        [searchBar performSelector: @selector(resignFirstResponder)
+                        withObject: nil
+                        afterDelay: 0.1];
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - access overrides

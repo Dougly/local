@@ -21,6 +21,9 @@ NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
 NSString *const RATING_KEY = @"RATING_KEY";
 NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
 
+
+NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";
+
 - (id)init {
     self = [super init];
     _defaults = [NSUserDefaults standardUserDefaults];
@@ -107,12 +110,22 @@ NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
 }
 
 #pragma mark - Distance
+
 - (void)setDistance:(NSUInteger)distance {
     [self.defaults setValue:@(distance) forKey:DISTANCE_KEY];
 }
 
 - (NSUInteger)getDistance {
     return [[self.defaults valueForKey:DISTANCE_KEY] integerValue];
+}
+
+#pragma mark - KeyWords
+- (void)setFilterKeyWords:(NSString *)filterKeyWords {
+     [self.defaults setValue:filterKeyWords forKey:KEY_WORDS_KEY];
+}
+
+- (NSString *)getFilterKeyWords {
+     return [self.defaults valueForKey:KEY_WORDS_KEY];
 }
 
 #pragma mark - string processing

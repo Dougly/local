@@ -18,6 +18,8 @@ extern NSString *const ONLY_CHEAP_KEY;
 extern NSString *const RATING_KEY;
 extern NSString *const DISTANCE_KEY;
 
+extern NSString *const KEY_WORDS_KEY;
+
 /*Place type*/
 - (NSArray *)getPlaceTypes;
 - (void)removePlaceType:(NSString *)placeType;
@@ -43,5 +45,9 @@ extern NSString *const DISTANCE_KEY;
 /*Distance*/
 - (void)setDistance:(NSUInteger)distance;
 - (NSUInteger)getDistance;
+
+/*Key words*/
+- (void)setFilterKeyWords:(NSString *)filterKeyWords;
+- (NSString *)getFilterKeyWords;
 
 @end

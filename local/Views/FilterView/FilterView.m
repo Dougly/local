@@ -104,7 +104,7 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     self.selectedIndexPath = indexPath;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.delegate hideFilterView];
+        [self.delegate hideFilterView:false];
         self.delegate = nil;
     });
     
@@ -114,7 +114,7 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
 {
     CGFloat pullDistance = (scrollView.contentOffset.y + scrollView.frame.size.height) - scrollView.contentSize.height;
     if (pullDistance < -22) {
-        [self.delegate hideFilterView];
+        [self.delegate hideFilterView:true];
         self.delegate = nil;
     }
 }

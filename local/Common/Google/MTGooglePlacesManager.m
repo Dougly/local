@@ -56,17 +56,22 @@
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
     [self cancelPendingRequests];
     
-    [self query:coordinate radius:radius pageToken:nil];
-    //[self query:coordinate radius:radius + 100 pageToken:nil];
+    NSString *majorType = [self.googleTypes stringTypes];
+    [self query:coordinate radius:radius type:majorType pageToken:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self query:coordinate radius:radius type:@"restaurant" pageToken:nil];
+    });
+    
 }
 
-- (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius pageToken:(NSString *)pageToken {
+- (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius type:(NSString *)type pageToken:(NSString *)pageToken{
     MTGetPlacesRequest *request = [MTGetPlacesRequest requestWithOwner:self];
     request.latitude = coordinate.latitude;
     request.longitude = coordinate.longitude;
     request.pageToken = pageToken;
     request.query = [self.googleQuery stringQuery];
-    request.types = [self.googleTypes stringTypes];
+    request.types = /**/type;
     request.radius = radius;
     
     __weak typeof (self) weakSelf = self;
@@ -86,10 +91,10 @@
                 }
                 
                 /*Fetch new page. 1.5 secs is required cause newPagetoken becomes available after some delay*/
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     /*in case it's cancelled, pendingPagetoken will not contain the token*/
                     if ([self.pendingPageTokens containsObject:googleResponse.pageToken])
-                        [weakSelf query:coordinate radius:radius pageToken:googleResponse.pageToken];
+                        [weakSelf query:coordinate radius:radius type:type pageToken:googleResponse.pageToken];
                 });
                 
                 self.completion(true, googleResponse.places, nil);

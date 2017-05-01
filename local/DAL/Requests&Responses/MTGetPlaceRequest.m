@@ -13,16 +13,9 @@
 
 - (NSMutableURLRequest *)serviceURLRequest
 {
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/textsearch/json?location=%lf,%lf&key=%@&radius=%ld", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/textsearch/json?location=%lf,%lf&key=%@&radius=%ld&sensor=false", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
     if (self.types) {
-        NSString *placeTypesPart = @"";
-        
-        if ([self.types containsString:@"|"]) {
-            placeTypesPart = [NSString stringWithFormat:@"&types=%@", self.types];
-        }
-        else {
-            placeTypesPart = [NSString stringWithFormat:@"&type=%@", self.types];
-        }
+        NSString *placeTypesPart = [NSString stringWithFormat:@"&type=%@", self.types];
         urlString = [urlString stringByAppendingString:placeTypesPart];
     }
     if (self.query) {
@@ -35,6 +28,7 @@
     }
     
     
+    NSLog(@"GOOGLE-URL: %@", urlString);
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     
     NSMutableURLRequest *networkRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];

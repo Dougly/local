@@ -156,4 +156,8 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 #define nNEW_PLACES_RECEIVED          @"NewPlacesReceivedNotification"
 #define nLOCATION_CHANGED             @"LocationChangedNotification"
 
+// -- APP STATE
+#define nFOREGROUND                   @"AppToForegroundNotification"
+
+
 #endif

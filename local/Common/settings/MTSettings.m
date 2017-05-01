@@ -30,6 +30,7 @@
         dispatch_once(&pred, ^{
             sharedInstance = [MTSettings alloc];
             sharedInstance = [sharedInstance init];
+            [sharedInstance overwriteKeyWordsAccordingToDayTime];
         });
     }
     
@@ -66,6 +67,27 @@
     
     
     return self;
+}
+
+- (void)overwriteKeyWordsAccordingToDayTime {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:[NSDate date]];
+    NSInteger hour = [components hour];
+    
+    NSString *keyWords = MEAL_TYPES[0];
+    if(hour >= 0 && hour < 6) {
+        keyWords = FILTERS_KEY_WORDS[1];
+    }
+    else if(hour >= 6 && hour < 12) {
+        keyWords = MEAL_TYPES[0];
+    }
+    else if(hour >= 12 && hour < 17) {
+        keyWords =MEAL_TYPES[1];
+    }
+    else if(hour >= 17){
+        keyWords = MEAL_TYPES[2];
+    }
+    
+    _filterKeyWords = keyWords;
 }
 
 #pragma mark - Software

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol FilterViewDelegate <NSObject>
-- (void)hideFilterView;
+- (void)hideFilterView:(BOOL)shouldRevertToPreviousIndex;
 @end
 
 @interface FilterView : UIView

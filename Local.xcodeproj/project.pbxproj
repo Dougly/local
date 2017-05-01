@@ -69,7 +69,6 @@
 		474001B61EB5D73E00C55420 /* MTListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B11EB5D73E00C55420 /* MTListViewCell.xib */; };
 		474001B71EB5D73E00C55420 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001B31EB5D73E00C55420 /* ListView.m */; };
 		474001B81EB5D73E00C55420 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B41EB5D73E00C55420 /* ListView.xib */; };
-		474001BE1EB5F58900C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001BD1EB5F58900C55420 /* MTDetailsViewController.m */; };
 		474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C01EB6112600C55420 /* MTPageContainerViewController.m */; };
 		474001C71EB61FBC00C55420 /* MTGetYelpPlacesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C41EB61FBC00C55420 /* MTGetYelpPlacesRequest.m */; };
 		474001C81EB61FBC00C55420 /* MTGetYelpPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001C61EB61FBC00C55420 /* MTGetYelpPlacesResponse.m */; };
@@ -77,6 +76,9 @@
 		474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001CD1EB622BF00C55420 /* MTYelpPlace.m */; };
 		474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D11EB6236C00C55420 /* MTYelpManager.m */; };
 		474001D61EB65F9400C55420 /* FilterListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D51EB65F9400C55420 /* FilterListener.m */; };
+		474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D91EB7978D00C55420 /* AppStateListener.m */; };
+		474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DC1EB79B7000C55420 /* MTDetailsViewController.m */; };
+		474001DF1EB79F4600C55420 /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DE1EB79F4600C55420 /* MTMainViewController.m */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
 		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
@@ -171,7 +173,6 @@
 		47AA04F21EB388C600818247 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04F01EB388C600818247 /* LocationView.xib */; };
 		47D7793A1EB2563600A83922 /* CMTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D779391EB2563600A83922 /* CMTabbarView.m */; };
 		47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7793C1EB256DB00A83922 /* CMTabbarCollectionViewCell.m */; };
-		47D779401EB2619F00A83922 /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7793F1EB2619F00A83922 /* MTMainViewController.m */; };
 		7F463DBF14CF218DC57446FA /* Pods_Local.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10C4E2D8B6ED29FDA40272 /* Pods_Local.framework */; };
 		9161F5EC1BCE67060072929C /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5EB1BCE67060072929C /* UIImage+Blur.m */; };
 		9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5F01BCE8ADC0072929C /* IMGActivityIndicator.m */; };
@@ -313,8 +314,6 @@
 		474001B21EB5D73E00C55420 /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListView.h; sourceTree = "<group>"; };
 		474001B31EB5D73E00C55420 /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListView.m; sourceTree = "<group>"; };
 		474001B41EB5D73E00C55420 /* ListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListView.xib; sourceTree = "<group>"; };
-		474001BC1EB5F58900C55420 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
-		474001BD1EB5F58900C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
 		474001BF1EB6112600C55420 /* MTPageContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPageContainerViewController.h; sourceTree = "<group>"; };
 		474001C01EB6112600C55420 /* MTPageContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPageContainerViewController.m; sourceTree = "<group>"; };
 		474001C31EB61FBC00C55420 /* MTGetYelpPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetYelpPlacesRequest.h; sourceTree = "<group>"; };
@@ -329,6 +328,11 @@
 		474001D11EB6236C00C55420 /* MTYelpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTYelpManager.m; sourceTree = "<group>"; };
 		474001D41EB65F9400C55420 /* FilterListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterListener.h; sourceTree = "<group>"; };
 		474001D51EB65F9400C55420 /* FilterListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListener.m; sourceTree = "<group>"; };
+		474001D81EB7978D00C55420 /* AppStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStateListener.h; sourceTree = "<group>"; };
+		474001D91EB7978D00C55420 /* AppStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStateListener.m; sourceTree = "<group>"; };
+		474001DB1EB79B7000C55420 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
+		474001DC1EB79B7000C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
+		474001DE1EB79F4600C55420 /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
 		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
@@ -502,7 +506,6 @@
 		47D7793B1EB256DB00A83922 /* CMTabbarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTabbarCollectionViewCell.h; sourceTree = "<group>"; };
 		47D7793C1EB256DB00A83922 /* CMTabbarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTabbarCollectionViewCell.m; sourceTree = "<group>"; };
 		47D7793E1EB2619F00A83922 /* MTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMainViewController.h; sourceTree = "<group>"; };
-		47D7793F1EB2619F00A83922 /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
 		6D10C4E2D8B6ED29FDA40272 /* Pods_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CD60B75C8C721A96381778 /* Pods-Local.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.release.xcconfig"; path = "Pods/Target Support Files/Pods-Local/Pods-Local.release.xcconfig"; sourceTree = "<group>"; };
 		9161F5EA1BCE67060072929C /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
@@ -821,6 +824,15 @@
 				474001D51EB65F9400C55420 /* FilterListener.m */,
 			);
 			path = keywords;
+			sourceTree = "<group>";
+		};
+		474001D71EB7974C00C55420 /* appstate */ = {
+			isa = PBXGroup;
+			children = (
+				474001D81EB7978D00C55420 /* AppStateListener.h */,
+				474001D91EB7978D00C55420 /* AppStateListener.m */,
+			);
+			path = appstate;
 			sourceTree = "<group>";
 		};
 		476BC22D1E79517200B1BA91 /* Resources */ = {
@@ -1218,6 +1230,7 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				474001D71EB7974C00C55420 /* appstate */,
 				474001D31EB65F7700C55420 /* keywords */,
 				474001CF1EB6235800C55420 /* Yelp */,
 				47A97FF41EADEE3E00AB8657 /* Location */,
@@ -1266,6 +1279,8 @@
 			children = (
 				47A97FAA1EACDB2B00AB8657 /* Picker */,
 				47157C6B1E7C7457000D11E9 /* ImagePicker */,
+				474001DB1EB79B7000C55420 /* MTDetailsViewController.h */,
+				474001DC1EB79B7000C55420 /* MTDetailsViewController.m */,
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
 				47A9801D1EAE084800AB8657 /* ViewController.xib */,
@@ -1277,9 +1292,7 @@
 				476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */,
 				476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
-				47D7793F1EB2619F00A83922 /* MTMainViewController.m */,
-				474001BC1EB5F58900C55420 /* MTDetailsViewController.h */,
-				474001BD1EB5F58900C55420 /* MTDetailsViewController.m */,
+				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
 				474001BF1EB6112600C55420 /* MTPageContainerViewController.h */,
 				474001C01EB6112600C55420 /* MTPageContainerViewController.m */,
 			);
@@ -1592,11 +1605,13 @@
 				474001C81EB61FBC00C55420 /* MTGetYelpPlacesResponse.m in Sources */,
 				CE250F111B676682005447FF /* SDDepotRequestHandler.m in Sources */,
 				47157CC61E7C8BAC000D11E9 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				474001DF1EB79F4600C55420 /* MTMainViewController.m in Sources */,
 				47A97FA61EAC992D00AB8657 /* MKImageAnnotationView.m in Sources */,
 				47A97FF31EADEE1E00AB8657 /* MTGooglePlacesManager.m in Sources */,
 				47157CC41E7C8BAC000D11E9 /* AFURLResponseSerialization.m in Sources */,
 				47A980251EAE12D700AB8657 /* MTGetPlaceDetailsResponse.m in Sources */,
 				47157CF81E7C8BE6000D11E9 /* UIImage+GIF.m in Sources */,
+				474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */,
 				47157CF41E7C8BE6000D11E9 /* SDWebImageDownloaderOperation.m in Sources */,
 				47157CEF1E7C8BE6000D11E9 /* NSData+GIF.m in Sources */,
 				9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */,
@@ -1611,7 +1626,6 @@
 				47AA04F11EB388C600818247 /* LocationView.m in Sources */,
 				4780732A1EAA70B400D98DD7 /* MTAlertBuilder.m in Sources */,
 				47A97FA21EABD8A700AB8657 /* MTPhoto.m in Sources */,
-				47D779401EB2619F00A83922 /* MTMainViewController.m in Sources */,
 				CE250F201B6768CD005447FF /* MTDataModel.xcdatamodeld in Sources */,
 				47A980121EAE070E00AB8657 /* AddressLocationCell.m in Sources */,
 				47157CBD1E7C8BAC000D11E9 /* AFHTTPRequestOperation.m in Sources */,
@@ -1623,7 +1637,6 @@
 				CE250F121B676682005447FF /* SDDispatcher.m in Sources */,
 				47A97FC91EACDF7800AB8657 /* MTSettingsPreferences.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
-				474001BE1EB5F58900C55420 /* MTDetailsViewController.m in Sources */,
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
 				CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */,
@@ -1662,6 +1675,7 @@
 				474001C11EB6112600C55420 /* MTPageContainerViewController.m in Sources */,
 				474001CB1EB622AE00C55420 /* _MTYelpPlace.m in Sources */,
 				47157CC81E7C8BAC000D11E9 /* UIAlertView+AFNetworking.m in Sources */,
+				474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */,
 				4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */,
 				CE250F161B676682005447FF /* SDServiceRequestHandler.m in Sources */,
 				4793CB0F1E7ED8C00054B7FB /* UIColor+HexString.m in Sources */,

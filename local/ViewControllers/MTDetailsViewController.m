@@ -1,8 +1,8 @@
 //
-//  MTDetailsViewController.m
-//  Local
+//  MTSignupViewController.m
+//  Automatize
 //
-//  Created by Rostyslav.Stepanyak on 4/30/17.
+//  Created by Rostyslav.Stepanyak on 4/14/17.
 //  Copyright © 2017 Tilf AB. All rights reserved.
 //
 
@@ -22,7 +22,15 @@
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetails *details);
 
-@interface MTDetailsViewController ()
+
+@interface MTDetailsViewController()
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
+@property (nonatomic) CGFloat initialScrollBottomMargin;
+
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+
+
 @property (nonatomic, weak) IBOutlet UIImageView *mainImageView;
 @property (nonatomic, strong) MTPlaceDetails *placeDetails;
 
@@ -31,8 +39,11 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
 
 @property (nonatomic, weak) IBOutlet UITextView *addressTextView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *addressTextViewHeight;
 @property (nonatomic, weak) IBOutlet UITextView *reviewTextView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *reviewTextViewHeight;
 @property (nonatomic, weak) IBOutlet UIView *ratingView;
+
 @end
 
 @implementation MTDetailsViewController
@@ -40,6 +51,17 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
+    _initialScrollBottomMargin = self.scrollViewBottomMargin.constant;
+    _contentHeight.constant = 500;
+}
+
+
+- (void)onKeyboardHide:(NSNotification *)notification {
+    self.scrollViewBottomMargin.constant = _initialScrollBottomMargin;
+    [UIView animateWithDuration:1.4
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,11 +151,19 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     if (self.placeDetails.website)
         self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.website];
     
+    CGSize sizeThatFitsTextView = [self.addressTextView sizeThatFits:CGSizeMake(self.addressTextView.frame.size.width, MAXFLOAT)];
+    self.addressTextViewHeight.constant = sizeThatFitsTextView.height;
+    
     NSArray *reviews = self.placeDetails.reviews.allObjects;
     
     if (reviews.count > 0) {
         MTPlaceReview *review = reviews.firstObject;
         self.reviewTextView.text = review.text;
+    
+        CGSize sizeThatFitsTextView = [self.reviewTextView sizeThatFits:CGSizeMake(self.reviewTextView.frame.size.width, MAXFLOAT)];
+        
+        self.reviewTextViewHeight.constant = sizeThatFitsTextView.height;
+        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsTextView.height - BOTTOM_NAVIGATION_BAR_HEIGHT;
     }
     
     [self showUI];
@@ -166,7 +196,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
             self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Yelp", yelpPlace.rating.floatValue, [yelpPlace ratingString]];
         }
         else {
-           self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Google", self.place.rating.floatValue, [self.place ratingString]];
+            self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Google", self.place.rating.floatValue, [self.place ratingString]];
         }
         
         [UIView animateWithDuration:0.4 animations:^{
@@ -194,5 +224,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         self.reviewTextView.alpha = 1.0;
     }];
 }
+
 
 @end

@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "Local-swift.h"
+#import "MTSettings.h"
 
 @implementation NSURLRequest(DataController)
 
@@ -48,7 +49,8 @@ static PanelsViewController *rootController;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[MTSettings sharedSettings] overwriteKeyWordsAccordingToDayTime];
+    [[NSNotificationCenter defaultCenter] postNotificationName:nFOREGROUND object:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

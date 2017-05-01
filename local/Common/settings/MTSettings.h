@@ -40,4 +40,5 @@
 - (void)setDistance:(NSUInteger)distance;
 - (NSUInteger)getDistance;
 
+- (void)overwriteKeyWordsAccordingToDayTime;
 @end

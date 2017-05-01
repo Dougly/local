@@ -1,8 +1,8 @@
 //
-//  MTDetailsViewController.h
-//  Local
+//  MTSignupViewController.h
+//  Automatize
 //
-//  Created by Rostyslav.Stepanyak on 4/30/17.
+//  Created by Rostyslav.Stepanyak on 4/14/17.
 //  Copyright © 2017 Tilf AB. All rights reserved.
 //
 
