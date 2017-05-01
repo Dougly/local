@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^onKeywordUpdated)();
+typedef void (^onNewPlacesReceived)();
 
 @interface KeyWordsListener : NSObject
 @property (nonatomic, strong) onKeywordUpdated onKeyWordUpdatedHandler;
+@property (nonatomic, strong) onNewPlacesReceived onNewPlacesReceivedHandler;
 @end

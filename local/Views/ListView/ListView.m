@@ -15,6 +15,8 @@
 #import "UIImageView+WebCache.h"
 #import "MTGetPlaceDetailRequest.h"
 #import "MTGetPlaceDetailsResponse.h"
+#import "KeyWordsListener.h"
+#import "MTProgressHUD.h"
 
 #define CELL_HEIGHT                 220
 
@@ -22,7 +24,8 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 
 @interface ListView()<UITabBarDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *places;
+@property (nonatomic, strong) NSMutableArray *places;
+@property (nonatomic, strong) KeyWordsListener *keywordsListener;
 @end
 
 NSString *const LIST_VIEW_CELL = @"MTListViewCell";
@@ -32,10 +35,22 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self registerCells];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
+
+    [self subscribeForNewPlaces];
+    [self registerCells];
     [self getAllPlaces];
+}
+
+- (void)subscribeForNewPlaces {
+    __weak typeof(self) weakSelf = self;
+    self.keywordsListener.onKeyWordUpdatedHandler = ^{
+        [weakSelf keyWordsChanged];
+    };
+    
+    self.keywordsListener.onNewPlacesReceivedHandler = ^{
+        [weakSelf gotNewPlaces];
+    };
 }
 
 - (void)registerCells {
@@ -45,7 +60,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 }
 
 - (void)getAllPlaces {
-    self.places = [[MTDataModel sharedDatabaseStorage] getPlaces];
+    self.places = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
 }
 
 #pragma mark - UITableView delegate
@@ -136,6 +151,49 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
         }
     };
     [request run];
+}
+
+#pragma mark - new places listener
+
+- (void)keyWordsChanged {
+    self.places = nil;
+    [self.tableView reloadData];
+    [[MTProgressHUD sharedHUD] showOnView:self percentage:false];
+}
+
+- (void)gotNewPlaces {
+    [[MTProgressHUD sharedHUD] dismiss];
+    
+    if (!self.places) {
+        self.places = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
+        [self.tableView reloadData];
+    }
+    else {
+        NSMutableArray *newPlaces = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
+        [newPlaces removeObjectsInArray:self.places];
+        
+        
+        NSMutableArray *newIndexes = [NSMutableArray new];
+        for (int i=0; i<newPlaces.count; i++) {
+            [newIndexes addObject:[NSIndexPath indexPathForRow:(self.places.count + i) inSection:0]];
+        }
+        
+        [self.places addObjectsFromArray:newPlaces];
+        
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:newIndexes withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    }
+}
+
+#pragma mark - access overrides
+
+- (KeyWordsListener *)keywordsListener {
+    if (!_keywordsListener) {
+        _keywordsListener = [KeyWordsListener new];
+    }
+    
+    return _keywordsListener;
 }
 
 

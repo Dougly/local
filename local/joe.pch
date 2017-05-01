@@ -153,5 +153,6 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 #define MEAL_TYPES                   @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
 
 #define nKEYWORDS_CHANGED             @"KeyWordsChangedNotification"
+#define nNEW_PLACES_RECEIVED          @"NewPlacesReceivedNotification"
 
 #endif

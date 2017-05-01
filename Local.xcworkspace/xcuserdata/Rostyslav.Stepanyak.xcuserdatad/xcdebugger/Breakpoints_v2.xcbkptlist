@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "local/Model/MTDataModel.m"
-            timestampString = "515264937.360108"
+            timestampString = "515325070.952926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-parseYelpPlaces:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,12 +186,12 @@
                   moduleName = "Local"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTDetailsViewController.m"
-                  timestampString = "515272957.069932"
+                  timestampString = "515325119.360724"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
                   endingLineNumber = "159"
-                  offsetFromSymbolStart = "108">
+                  offsetFromSymbolStart = "89">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -201,12 +201,12 @@
                   moduleName = "Local"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTDetailsViewController.m"
-                  timestampString = "515272957.071211"
+                  timestampString = "515325119.362481"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "160"
                   endingLineNumber = "160"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "89">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -297,22 +297,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/ViewControllers/MTMapViewController.m"
-            timestampString = "515269908.182647"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "-showLocationView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "local/Views/LocationView/LocationView.m"
             timestampString = "515267822.311596"
             startingColumnNumber = "9223372036854775807"
@@ -361,13 +345,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/Common/Google/MTGooglePlacesManager.m"
-            timestampString = "515269883.308"
+            filePath = "local/Views/ListView/ListView.m"
+            timestampString = "515325074.391257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-query:radius:pageToken:"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-gotNewPlaces"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -377,13 +361,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/ViewControllers/MTMapViewController.m"
-            timestampString = "515270043.335707"
+            filePath = "local/Views/ListView/ListView.m"
+            timestampString = "515325075.38155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "-setupKeywordsListener"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "-keyWordsChanged"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -393,13 +377,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/ViewControllers/MTMapViewController.m"
-            timestampString = "515271321.437117"
+            filePath = "local/Views/ListView/ListView.m"
+            timestampString = "515325178.046955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "-updatePlaces:"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "-gotNewPlaces"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -409,45 +393,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "local/DAL/Requests&amp;Responses/MTGetPlaceRequest.m"
-            timestampString = "515271504.310095"
+            filePath = "local/Views/ListView/ListView.m"
+            timestampString = "515325201.521975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-serviceURLRequest"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "local/Views/FilterView/FilterView.m"
-            timestampString = "515272394.273177"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-calculateSelectedIndexPath"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "local/DAL/Requests&amp;Responses/MTGetPlaceRequest.m"
-            timestampString = "515272849.76889"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "-serviceURLRequest"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-gotNewPlaces"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
