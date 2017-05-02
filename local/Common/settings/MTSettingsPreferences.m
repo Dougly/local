@@ -13,13 +13,13 @@
 @end
 
 @implementation MTSettingsPreferences
-NSString *const FOOD_TYPE_KEY = @"FOOD_TYPE_KEY";
+NSString *const FOOD_TYPE_KEY  = @"FOOD_TYPE_KEY";
 NSString *const PLACE_TYPE_KEY = @"PLACE_TYPE_KEY";
 
-NSString *const ONLY_OPEN_KEY = @"ONLY_OPEN_KEY";
+NSString *const ONLY_OPEN_KEY  = @"ONLY_OPEN_KEY";
 NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
-NSString *const RATING_KEY = @"RATING_KEY";
-NSString *const DISTANCE_KEY = @"DISTANCE_KEY";
+NSString *const RATING_KEY     = @"RATING_KEY";
+NSString *const DISTANCE_KEY   = @"DISTANCE_KEY";
 
 
 NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";

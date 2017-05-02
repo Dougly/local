@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FZG-iq-FLl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JAJ-c2-nQZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,9 +15,6 @@
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </array>
-        <array key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
-        </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
         </array>
@@ -26,97 +23,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="Zmk-GF-E8T">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="FZG-iq-FLl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xFd-l6-rjm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="LXv-5R-dX5" kind="relationship" relationship="rootViewController" id="X2J-Ni-qVN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-s9-RSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1778" y="212"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="3hU-Be-HhZ">
-            <objects>
-                <viewController storyboardIdentifier="MTLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LXv-5R-dX5" customClass="MTLoginViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6NQ-8o-i0o"/>
-                        <viewControllerLayoutGuide type="bottom" id="81p-bK-86E"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y1P-Tx-wZy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="WTA-t3-56W">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-g6-pPz">
-                                <rect key="frame" x="70" y="606" width="235" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zM-6R-ZJE">
-                                        <rect key="frame" x="0.0" y="6" width="235" height="16"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
-                                        <state key="normal" title="Could not sign in? Forgot password?">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4zM-6R-ZJE" secondAttribute="trailing" id="9xL-ZN-qsT"/>
-                                    <constraint firstAttribute="height" constant="30" id="HBi-Br-7hA"/>
-                                    <constraint firstAttribute="bottom" secondItem="4zM-6R-ZJE" secondAttribute="bottom" constant="8" id="SZR-iC-Tax"/>
-                                    <constraint firstItem="4zM-6R-ZJE" firstAttribute="top" secondItem="GcO-g6-pPz" secondAttribute="top" constant="6" id="Wd8-MC-bLh"/>
-                                    <constraint firstItem="4zM-6R-ZJE" firstAttribute="leading" secondItem="GcO-g6-pPz" secondAttribute="leading" id="wbX-Bj-mpj"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3O-9g-B9v">
-                                <rect key="frame" x="35" y="309" width="305" height="48"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="B3q-kl-jr0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="20"/>
-                                <state key="normal" title="Sign In">
-                                    <color key="titleColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginButtonClicked:" destination="LXv-5R-dX5" eventType="touchUpInside" id="k5D-4T-W0S"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="n3O-9g-B9v" firstAttribute="leading" secondItem="y1P-Tx-wZy" secondAttribute="leading" constant="35" id="1d7-W8-817"/>
-                            <constraint firstItem="WTA-t3-56W" firstAttribute="leading" secondItem="y1P-Tx-wZy" secondAttribute="leading" id="9gC-7u-Bf2"/>
-                            <constraint firstItem="81p-bK-86E" firstAttribute="top" secondItem="GcO-g6-pPz" secondAttribute="bottom" constant="31" id="IQ7-tr-z7W"/>
-                            <constraint firstAttribute="trailing" secondItem="GcO-g6-pPz" secondAttribute="trailing" constant="70" id="JPd-uq-ycK"/>
-                            <constraint firstItem="81p-bK-86E" firstAttribute="top" secondItem="WTA-t3-56W" secondAttribute="bottom" id="c2c-vq-4od"/>
-                            <constraint firstItem="n3O-9g-B9v" firstAttribute="centerY" secondItem="y1P-Tx-wZy" secondAttribute="centerY" id="cDo-Ld-rwR"/>
-                            <constraint firstAttribute="trailing" secondItem="WTA-t3-56W" secondAttribute="trailing" id="hUI-uB-nWV"/>
-                            <constraint firstItem="WTA-t3-56W" firstAttribute="top" secondItem="y1P-Tx-wZy" secondAttribute="top" id="p7O-pf-ltQ"/>
-                            <constraint firstAttribute="trailing" secondItem="n3O-9g-B9v" secondAttribute="trailing" constant="35" id="uUN-wm-qQQ"/>
-                            <constraint firstItem="GcO-g6-pPz" firstAttribute="leading" secondItem="y1P-Tx-wZy" secondAttribute="leading" constant="70" id="vKI-yv-CNx"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="7fv-vM-kzS"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0VC-jw-3W9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1050.4000000000001" y="211.84407796101951"/>
-        </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="qxE-P4-XAE">
             <objects>
@@ -241,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8CB-rg-82N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1050.4000000000001" y="-537.48125937031489"/>
+            <point key="canvasLocation" x="-1543" y="-230"/>
         </scene>
         <!--Clock-->
         <scene sceneID="meW-Iu-8Vz">
@@ -412,7 +318,7 @@
         <!--Main View Controller-->
         <scene sceneID="xFZ-as-haR">
             <objects>
-                <viewController storyboardIdentifier="MTMainViewController" id="FZB-ns-wie" customClass="MTMainViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MTMainViewController" storyboardIdentifier="MTMainViewController" id="FZB-ns-wie" customClass="MTMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YRB-uO-Dvy"/>
                         <viewControllerLayoutGuide type="bottom" id="wZz-JP-H6a"/>
@@ -751,13 +657,59 @@
             </objects>
             <point key="canvasLocation" x="4005.5999999999999" y="1279.1604197901052"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5Om-0t-Rg0">
+            <objects>
+                <viewController id="JAJ-c2-nQZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SU6-NF-o5e"/>
+                        <viewControllerLayoutGuide type="bottom" id="jfv-z2-ikL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l75-ey-G4h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hiiper-logo" translatesAutoresizingMaskIntoConstraints="NO" id="bFL-OL-nAo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c81-0c-lDv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_splash" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-pp-6kg">
+                                        <rect key="frame" x="123" y="268" width="130" height="130"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93217325210000002" green="0.93210971359999995" blue="0.93214690690000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="c81-0c-lDv" firstAttribute="leading" secondItem="bFL-OL-nAo" secondAttribute="leading" id="7uJ-bs-OS7"/>
+                            <constraint firstItem="bFL-OL-nAo" firstAttribute="top" secondItem="l75-ey-G4h" secondAttribute="top" id="BTd-9l-MJy"/>
+                            <constraint firstItem="c81-0c-lDv" firstAttribute="top" secondItem="bFL-OL-nAo" secondAttribute="top" id="KvY-8A-HWg"/>
+                            <constraint firstItem="bFL-OL-nAo" firstAttribute="leading" secondItem="l75-ey-G4h" secondAttribute="leading" id="NUo-K0-mMv"/>
+                            <constraint firstAttribute="trailing" secondItem="bFL-OL-nAo" secondAttribute="trailing" id="OrA-MJ-7gI"/>
+                            <constraint firstItem="c81-0c-lDv" firstAttribute="bottom" secondItem="jfv-z2-ikL" secondAttribute="top" id="R4W-Nk-Q6X"/>
+                            <constraint firstItem="jfv-z2-ikL" firstAttribute="top" secondItem="bFL-OL-nAo" secondAttribute="bottom" id="a3K-rr-bSM"/>
+                            <constraint firstItem="c81-0c-lDv" firstAttribute="trailing" secondItem="bFL-OL-nAo" secondAttribute="trailing" id="qkq-OS-rrr"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GsN-4a-Hk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1543" y="445"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Hours" width="219" height="219"/>
+        <image name="hiiper-logo" width="16" height="16"/>
         <image name="ic_back" width="1" height="1"/>
         <image name="ic_close" width="70" height="70"/>
         <image name="ic_closed" width="40" height="40"/>
         <image name="ic_opened" width="40" height="40"/>
+        <image name="ic_splash" width="150" height="148"/>
         <image name="second" width="30" height="30"/>
         <image name="sign-bg.png" width="1" height="1"/>
     </resources>

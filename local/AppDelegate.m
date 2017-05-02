@@ -8,6 +8,9 @@
 #import "AppDelegate.h"
 #import "Local-swift.h"
 #import "MTSettings.h"
+#import "FacebookFacade.h"
+#import "MTLoginViewController.h"
+#import "MTMainViewController.h"
 
 @implementation NSURLRequest(DataController)
 
@@ -19,11 +22,16 @@
 
 static PanelsViewController *rootController;
 
+@interface AppDelegate ()
+@property (nonatomic, strong) FacebookFacade *facebook;
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    [self.facebook application:application didFinishLaunchingWithOptions:launchOptions];
     [self setupNavigationColors];
+    [self isUserRegistered];
     return YES;
 }
 
@@ -54,11 +62,89 @@ static PanelsViewController *rootController;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self.facebook activateAppTrack];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.facebook closeAndClearCache:YES];
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if (!url) { return NO; }
+    DLog(@"application handleOpenURL: %@",url);
+    BOOL handled = [self.facebook application:application
+                                      openURL:url
+                                      options:options];
+    
+    return handled;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    if (!url) { return NO; }
+    DLog(@"application handleOpenURL: %@",url);
+    BOOL handled = [self.facebook application:application
+                                      openURL:url
+                            sourceApplication:sourceApplication
+                                   annotation:annotation];
+    
+    return handled;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    DLog(@"application handleOpenURL: %@",url);
+    return YES;
+}
+
+
++ (AppDelegate *)sharedApplication {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)isUserRegistered {
+#warning Registered Moc
+    [MTAppManager sharedInstance].userAuthToken = nil;
+    [[MTAppManager sharedInstance] save];
+    
+    if (![MTAppManager sharedInstance].userAuthToken) {
+        [self showLoginScreen];
+        return;
+    }
+    
+    [self accessToMainScreen];
+}
+
+- (void)showLoginScreen {
+    MTLoginViewController *loginView =
+    [MTLoginViewController viewControllerFromStoryboardName:MTStoryboard.loginFlow
+                                             withIdentifier:CLASS_IDENTIFIER(MTLoginViewController)];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginView];
+    [self.window makeKeyAndVisible];
+    [self.window.rootViewController presentViewController:navigationController animated:YES completion:^{
+    }];
+}
+
+- (void)accessToMainScreen {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MTMainViewController *mainView =
+        [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
+                                                withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
+        [AppDelegate sharedApplication].window.rootViewController = mainView;
+        [[AppDelegate sharedApplication].window makeKeyAndVisible];
+    });
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (FacebookFacade *)facebook {
+    if (!_facebook) {
+        _facebook = [FacebookFacade sharedInstance];
+    }
+    return _facebook;
+}
 @end

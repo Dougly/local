@@ -1,9 +1,9 @@
 //
-//  LRLoginViewController.h
-//  TotsAmour
+//  MTLoginViewController.h
+//  Steven
 //
-//  Created by TotsAmour on 20/04/15.
-//  Copyright (c) 2015 TotsAmour. All rights reserved.
+//  Created by Steven on 09/02/17.
+//  Copyright (c) 2015 Steven. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

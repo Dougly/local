@@ -11,7 +11,7 @@
 @class PanelsViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
++ (AppDelegate *)sharedApplication;
 @property (strong, nonatomic) UIWindow *window;
 @end
 
