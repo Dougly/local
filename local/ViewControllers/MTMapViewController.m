@@ -46,6 +46,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.navigationController.navigationBar.tintColor = UIColorFromHex(0x939598);
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
     [self showListAnimated:NO];
     
@@ -262,6 +263,7 @@
 
 - (void)showListNavigationItem {
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_list_item"] style:UIBarButtonItemStylePlain target:self action:@selector(showListByClickingNavigationItem)];
+    
     [item setTitleTextAttributes:@{
                                    NSForegroundColorAttributeName: UIColorFromHex(0x939598),
                                    NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]

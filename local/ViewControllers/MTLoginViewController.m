@@ -95,7 +95,7 @@ static NSString * const kId            = @"id";
 }
 
 - (void)accessToMainScreen {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+    [self.presentingViewController dismissViewControllerAnimated:NO completion:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             MTMainViewController *mainView =
             [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
