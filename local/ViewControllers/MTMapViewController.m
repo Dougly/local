@@ -261,7 +261,7 @@
 #pragma mark - right navigation item
 
 - (void)showListNavigationItem {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"List " style:UIBarButtonItemStylePlain target:self action:@selector(showListByClickingNavigationItem)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_list_item"] style:UIBarButtonItemStylePlain target:self action:@selector(showListByClickingNavigationItem)];
     [item setTitleTextAttributes:@{
                                    NSForegroundColorAttributeName: UIColorFromHex(0x939598),
                                    NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]
@@ -270,7 +270,7 @@
 }
 
 - (void)showMapNavigationItem {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Map " style:UIBarButtonItemStylePlain target:self action:@selector(showMap)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_map_item"] style:UIBarButtonItemStylePlain target:self action:@selector(showMap)];
     [item setTitleTextAttributes:@{
                                    NSForegroundColorAttributeName: UIColorFromHex(0x939598),
                                    NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:16.0f]

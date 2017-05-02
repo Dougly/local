@@ -92,21 +92,21 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     cell.titleLabel.text = place.name;
     cell.detailsLabel.text = [place getDetailsString];
     
-    int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width  *2;
-    int maxHeight = [[UIScreen mainScreen] scale] * CELL_HEIGHT  *2;
+    int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width * 2;
+    int maxHeight = [[UIScreen mainScreen] scale] * CELL_HEIGHT*2;
     
     __weak typeof(cell) weakCell = cell;
 
     cell.mainImageView.image = nil;
     [self getDetails:place completion:^(MTPhoto *largestPhoto) {
-        NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&maxheight=%d&photoreference=%@&key=%@", maxWidth, maxHeight, largestPhoto.reference, kGoogleMapAPIKey];
+        NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxheight=%d&photoreference=%@&key=%@", 1600, largestPhoto.reference, kGoogleMapAPIKey];
         
         
         [weakCell.mainImageView setImageWithURL:[NSURL URLWithString:strinUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             weakCell.mainImageView.alpha = 0.0;
             
             weakCell.mainImageView.image = image;
-            weakCell.mainImageView.contentMode = UIViewContentModeScaleToFill;
+            weakCell.mainImageView.contentMode = UIViewContentModeScaleAspectFill;
             
             [UIView animateWithDuration:0.5 animations:^{
                 weakCell.mainImageView.alpha = 1.0;
