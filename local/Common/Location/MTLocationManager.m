@@ -9,9 +9,9 @@
 #import "MTLocationManager.h"
 
 @interface MTLocationManager()<CLLocationManagerDelegate>
-@property (nonatomic) CLLocationCoordinate2D lastLocation;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) LocationCompletion completion;
+@property (nonatomic) CLLocationCoordinate2D lastLocation;
 @end
 
 @implementation MTLocationManager
@@ -27,12 +27,10 @@
 }
 
 - (void)getLocation:(LocationCompletion)completion {
-    self.completion = completion;
-    
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.completion                      = completion;
+    self.locationManager.delegate        = self;
+    self.locationManager.distanceFilter  = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
 }
@@ -42,42 +40,32 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-    
     self.lastLocation = newLocation.coordinate;
-    
     if (self.completion) {
-        self.completion (true, nil, newLocation.coordinate);
+        self.completion (YES, nil, newLocation.coordinate);
         self.completion = nil;
-        
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
-    switch([error code])
-    {
-        case kCLErrorNetwork:
-        {
+    switch([error code]) {
+        case kCLErrorNetwork: {
             if (self.completion) {
-                self.completion(false, @"Please check your network connection.", kCLLocationCoordinate2DInvalid);
+                self.completion(NO, @"Please check your network connection.", kCLLocationCoordinate2DInvalid);
             }
-        }
             break;
-        case kCLErrorDenied:{
+        }
+        case kCLErrorDenied: {
             if (self.completion) {
-                self.completion(false, @"You have to enable the Location Service to use this App. To enable, please go to Settings->Privacy->Location Services.", kCLLocationCoordinate2DInvalid);
+                self.completion(NO, @"You have to enable the Location Service to use this App. To enable, please go to Settings->Privacy->Location Services.", kCLLocationCoordinate2DInvalid);
             }
-            
-        }
             break;
+        }
         default:
-        {
-            
-        }
             break;
     }
-
 }
 
 #pragma mark - access overrides

@@ -13,8 +13,11 @@
 typedef void(^GooglePlaceCompletion)(BOOL success, NSArray *places, NSError *error);
 
 @interface MTGooglePlacesManager : NSObject
-@property(nonatomic, strong, readonly) QTree* qTree;
+@property (nonatomic, strong, readonly) QTree *qTree;
 
 + (instancetype)sharedManager;
-- (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius completion:(GooglePlaceCompletion)completion;
+
+- (void)query:(CLLocationCoordinate2D)coordinate
+       radius:(NSUInteger)radius
+   completion:(GooglePlaceCompletion)completion;
 @end

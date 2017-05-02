@@ -9,17 +9,17 @@
 #import "QTreeInsertable.h"
 
 @interface QTree : NSObject
-
--(void)insertObject:(id<QTreeInsertable>)insertableObject;
--(BOOL)removeObject:(id<QTreeInsertable>)insertableObject;
-
 @property(nonatomic, readonly) NSUInteger count;
-
-- (void) cleanup;
-
--(NSArray*)getObjectsInRegion:(MKCoordinateRegion)region minNonClusteredSpan:(CLLocationDegrees)span fillClusters:(BOOL)fillClusters;
--(NSArray*)getObjectsInRegion:(MKCoordinateRegion)region minNonClusteredSpan:(CLLocationDegrees)span;
+- (void)cleanup;
+- (void)insertObject:(id<QTreeInsertable>)insertableObject;
+- (BOOL)removeObject:(id<QTreeInsertable>)insertableObject;
+- (NSArray *)getObjectsInRegion:(MKCoordinateRegion)region
+            minNonClusteredSpan:(CLLocationDegrees)span
+                   fillClusters:(BOOL)fillClusters;
+- (NSArray *)getObjectsInRegion:(MKCoordinateRegion)region
+            minNonClusteredSpan:(CLLocationDegrees)span;
 // Returned array is sorted from the least to the most distant
--(NSArray*)neighboursForLocation:(CLLocationCoordinate2D)location limitCount:(NSUInteger)limit;
+- (NSArray *)neighboursForLocation:(CLLocationCoordinate2D)location
+                        limitCount:(NSUInteger)limit;
 
 @end

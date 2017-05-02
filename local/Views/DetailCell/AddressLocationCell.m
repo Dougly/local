@@ -10,15 +10,16 @@
 
 @implementation AddressLocationCell
 
-+ (AddressLocationCell*) addressLocationDetailCell
-{
-    AddressLocationCell * cell = [[[NSBundle mainBundle] loadNibNamed:@"AddressLocationCell" owner:self options:nil] objectAtIndex:0];
++ (AddressLocationCell*) addressLocationDetailCell {
+    AddressLocationCell * cell = [[[NSBundle mainBundle] loadNibNamed:@"AddressLocationCell"
+                                                                owner:self
+                                                              options:nil]
+                                  objectAtIndex:0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
@@ -27,8 +28,7 @@
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state

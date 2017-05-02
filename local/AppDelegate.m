@@ -9,14 +9,6 @@
 #import "PanelsViewController.h"
 #import "Local-swift.h"
 
-@implementation NSURLRequest(DataController)
-
-+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host
-{
-    return YES;
-}
-@end
-
 static PanelsViewController *rootController;
 
 @implementation AppDelegate
@@ -64,8 +56,7 @@ static PanelsViewController *rootController;
     rootController = (PanelsViewController*)newRootController;
     
     //setup the side bar*/
-    if (rootController.leftPanel == nil)
-    {
+    if (rootController.leftPanel == nil) {
         rootController.self.isPanelShadow = NO;
         [rootController setPanels];
     }

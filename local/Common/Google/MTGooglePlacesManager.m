@@ -18,11 +18,10 @@
 @interface MTGooglePlacesManager()
 @property (nonatomic, strong) MTGoogleQueryString *googleQuery;
 @property (nonatomic, strong) MTGoogleTypesString *googleTypes;
-@property (nonatomic, strong) MTGoogleFilter *googleFilter;
-
-@property (nonatomic, strong) NSMutableArray *requests;
-@property (nonatomic, strong) NSMutableArray *pendingPageTokens;
-@property(nonatomic, strong) QTree* qTree;
+@property (nonatomic, strong) MTGoogleFilter      *googleFilter;
+@property (nonatomic, strong) NSMutableArray      *requests;
+@property (nonatomic, strong) NSMutableArray      *pendingPageTokens;
+@property (nonatomic, strong) QTree               *qTree;
 @property (nonatomic) GooglePlaceCompletion completion;
 @end
 
@@ -46,7 +45,9 @@
     return self;
 }
 
-- (void)query:(CLLocationCoordinate2D)coordinate radius:(NSUInteger)radius completion:(GooglePlaceCompletion)completion{
+- (void)query:(CLLocationCoordinate2D)coordinate
+       radius:(NSUInteger)radius
+   completion:(GooglePlaceCompletion)completion {
     self.completion = completion;
     
     self.qTree = [QTree new];

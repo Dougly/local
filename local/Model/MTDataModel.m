@@ -29,8 +29,8 @@
 
 @implementation MTDataModel
 
-@synthesize managedObjectContext = managedObjectContext_;
-@synthesize managedObjectModel = managedObjectModel_;
+@synthesize managedObjectContext       = managedObjectContext_;
+@synthesize managedObjectModel         = managedObjectModel_;
 @synthesize persistentStoreCoordinator = persistentStoreCoordinator_;
 
 - (void)dealloc
