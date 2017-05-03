@@ -36,10 +36,10 @@ static PanelsViewController *rootController;
 
 - (void)setupNavigationColors {
     [UINavigationBar appearance].translucent = NO;
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : kTotsAmourBrandColorHEX}];
-    [[UINavigationBar appearance] setTintColor:kTotsAmourBrandColorHEX];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : kLocalColor}];
+    [[UINavigationBar appearance] setTintColor:kLocalColor];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: kTotsAmourBrandColorHEX,
+                                                            NSForegroundColorAttributeName: kLocalColor,
                                                             NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:18.0f]
                                                             }];
     

@@ -93,6 +93,8 @@
 #define kTotsAmourBrandColorHEX UIColorFromHex(0x5e9fde)
 #define kTotsAmourBrandColorHEX2 UIColorFromHex(0x5e9fce)
 
+#define kLocalColor UIColorFromHex(0x939598)
+
 #define kColorDisableControls [UIColor colorWithWhite:0.982 alpha:1.000]
 
 

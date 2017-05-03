@@ -60,7 +60,7 @@ CGPoint CGRectGetCenter(CGRect rect)
     UIView *backgroundView = [[UIView alloc] initWithFrame: theFrame];
     
 
-    backgroundView.backgroundColor = UIColorFromHex(0x939598);
+    backgroundView.backgroundColor = kLocalColor;
     self.shapeLayers = [NSMutableArray new];
     
     // Draw the middle dot.
