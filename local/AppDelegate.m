@@ -31,7 +31,6 @@ static PanelsViewController *rootController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self.facebook application:application didFinishLaunchingWithOptions:launchOptions];
     [self setupNavigationColors];
-    [self isUserRegistered];
     return YES;
 }
 
@@ -105,39 +104,6 @@ static PanelsViewController *rootController;
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
-- (void)isUserRegistered {
-#warning Registered Moc
-    [MTAppManager sharedInstance].userAuthToken = nil;
-    [[MTAppManager sharedInstance] save];
-    
-    if (![MTAppManager sharedInstance].userAuthToken) {
-        [self showLoginScreen];
-        return;
-    }
-    
-    [self accessToMainScreen];
-}
-
-- (void)showLoginScreen {
-    MTLoginViewController *loginView =
-    [MTLoginViewController viewControllerFromStoryboardName:MTStoryboard.loginFlow
-                                             withIdentifier:CLASS_IDENTIFIER(MTLoginViewController)];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginView];
-    [self.window makeKeyAndVisible];
-    [self.window.rootViewController presentViewController:navigationController animated:YES completion:^{
-    }];
-}
-
-- (void)accessToMainScreen {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        MTMainViewController *mainView =
-        [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
-                                                withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
-        [AppDelegate sharedApplication].window.rootViewController = mainView;
-        [[AppDelegate sharedApplication].window makeKeyAndVisible];
-    });
-}
-
 #pragma mark -
 #pragma mark Accessors
 
@@ -147,4 +113,6 @@ static PanelsViewController *rootController;
     }
     return _facebook;
 }
+
+
 @end

@@ -82,6 +82,16 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+    
+    UIImage *image = self.imageView.image;
+    if (image) {
+        CGFloat margin = 30 - image.size.width / 2;
+        CGRect titleRect =[self titleRectForContentRect:self.bounds];
+        CGFloat titleOffset = (self.bounds.size.width - titleRect.size.width - image.size.width - margin) / 2;
+        self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        self.imageEdgeInsets = UIEdgeInsetsMake(0, margin, 0, 0);
+        self.titleEdgeInsets = UIEdgeInsetsMake(0, (self.bounds.size.width - titleRect.size.width -  image.size.width - margin) / 2, 0, 0);
+    }
 }
 
 - (void)prepareForInterfaceBuilder {

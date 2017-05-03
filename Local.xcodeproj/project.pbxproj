@@ -79,7 +79,7 @@
 		474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D91EB7978D00C55420 /* AppStateListener.m */; };
 		474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DC1EB79B7000C55420 /* MTDetailsViewController.m */; };
 		474001DF1EB79F4600C55420 /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DE1EB79F4600C55420 /* MTMainViewController.m */; };
-		47447B341EB91695008EA2CC /* MTInstagramController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47447B331EB91695008EA2CC /* MTInstagramController.m */; };
+		47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47447B331EB91695008EA2CC /* MTInstagramViewController.m */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
 		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
@@ -232,7 +232,6 @@
 		B013DBDA1EB8E22500A96F75 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBD71EB8E22500A96F75 /* SSKeychain.m */; };
 		B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBD91EB8E22500A96F75 /* SSKeychainQuery.m */; };
 		B013DBDE1EB8E25400A96F75 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBDD1EB8E25400A96F75 /* NSData+Base64.m */; };
-		B013DBE11EB8E49E00A96F75 /* LoginFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B013DBDF1EB8E49E00A96F75 /* LoginFlow.storyboard */; };
 		B013DBE41EB8E5AE00A96F75 /* UIViewController+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBE31EB8E5AE00A96F75 /* UIViewController+Helpers.m */; };
 		B013DBE91EB8E5F900A96F75 /* UINavigationBar+MTTransparent.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBE61EB8E5F900A96F75 /* UINavigationBar+MTTransparent.m */; };
 		B013DBEA1EB8E5F900A96F75 /* UINavigationController+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBE81EB8E5F900A96F75 /* UINavigationController+Transition.m */; };
@@ -392,8 +391,8 @@
 		474001DB1EB79B7000C55420 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
 		474001DC1EB79B7000C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
 		474001DE1EB79F4600C55420 /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
-		47447B321EB91695008EA2CC /* MTInstagramController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInstagramController.h; sourceTree = "<group>"; };
-		47447B331EB91695008EA2CC /* MTInstagramController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInstagramController.m; sourceTree = "<group>"; };
+		47447B321EB91695008EA2CC /* MTInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInstagramViewController.h; sourceTree = "<group>"; };
+		47447B331EB91695008EA2CC /* MTInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInstagramViewController.m; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
 		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
@@ -683,7 +682,6 @@
 		B013DBD91EB8E22500A96F75 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		B013DBDC1EB8E25400A96F75 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		B013DBDD1EB8E25400A96F75 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		B013DBE01EB8E49E00A96F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginFlow.storyboard; sourceTree = "<group>"; };
 		B013DBE21EB8E5AE00A96F75 /* UIViewController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helpers.h"; sourceTree = "<group>"; };
 		B013DBE31EB8E5AE00A96F75 /* UIViewController+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helpers.m"; sourceTree = "<group>"; };
 		B013DBE51EB8E5F900A96F75 /* UINavigationBar+MTTransparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+MTTransparent.h"; sourceTree = "<group>"; };
@@ -1020,8 +1018,8 @@
 		47447B311EB91695008EA2CC /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
-				47447B321EB91695008EA2CC /* MTInstagramController.h */,
-				47447B331EB91695008EA2CC /* MTInstagramController.m */,
+				47447B321EB91695008EA2CC /* MTInstagramViewController.h */,
+				47447B331EB91695008EA2CC /* MTInstagramViewController.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -1561,7 +1559,6 @@
 				CE250EC11B67657E005447FF /* AppDelegate.h */,
 				CE250EC21B67657E005447FF /* AppDelegate.m */,
 				9165343A1BCD15CB00E669A7 /* Main.storyboard */,
-				B013DBDF1EB8E49E00A96F75 /* LoginFlow.storyboard */,
 				CE250ECC1B67657E005447FF /* LaunchScreen.xib */,
 				CE250EE31B676634005447FF /* Additions */,
 				CE250EE41B676634005447FF /* Common */,
@@ -1856,7 +1853,6 @@
 				47A980131EAE070E00AB8657 /* AddressLocationCell.xib in Resources */,
 				47AA04ED1EB3880F00818247 /* MTLocationViewTextfieldCell.xib in Resources */,
 				47A97FEC1EAD0A3F00AB8657 /* MTDistanceCell.xib in Resources */,
-				B013DBE11EB8E49E00A96F75 /* LoginFlow.storyboard in Resources */,
 				47A97FE01EACF74E00AB8657 /* MTRatingCell.xib in Resources */,
 				47157C8E1E7C853A000D11E9 /* IDMPhotoBrowser.bundle in Resources */,
 				47A9801A1EAE070E00AB8657 /* UserCell.xib in Resources */,
@@ -1999,7 +1995,7 @@
 				4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */,
 				474001D61EB65F9400C55420 /* FilterListener.m in Sources */,
 				4793CB121E7ED8C00054B7FB /* ZHPopupView.m in Sources */,
-				47447B341EB91695008EA2CC /* MTInstagramController.m in Sources */,
+				47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */,
 				47157CF61E7C8BE6000D11E9 /* SDWebImagePrefetcher.m in Sources */,
 				B013DBB11EB8DF5A00A96F75 /* MDSlider.m in Sources */,
 				4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */,
@@ -2174,14 +2170,6 @@
 				9165343B1BCD15CB00E669A7 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B013DBDF1EB8E49E00A96F75 /* LoginFlow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B013DBE01EB8E49E00A96F75 /* Base */,
-			);
-			name = LoginFlow.storyboard;
 			sourceTree = "<group>";
 		};
 		CE250ECC1B67657E005447FF /* LaunchScreen.xib */ = {

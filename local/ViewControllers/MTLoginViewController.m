@@ -10,6 +10,7 @@
 #import "MTMainViewController.h"
 #import "FacebookFacade.h"
 #import "MDButton.h"
+#import "MTInstagramViewController.h"
 
 static NSString * const kFacebookToken = @"facebookToken";
 static NSString * const kFirstName     = @"first_name";
@@ -18,7 +19,7 @@ static NSString * const kGender        = @"gender";
 static NSString * const kEmail         = @"email";
 static NSString * const kId            = @"id";
 
-@interface MTLoginViewController ()
+@interface MTLoginViewController ()<InstagramAuthDelegate>
 @property (nonatomic, weak) IBOutlet MDButton *facebookButton;
 @property (nonatomic, strong) FacebookFacade *facebookFacade;
 @property (strong, nonatomic) MTAppManager   *appManager;
@@ -46,6 +47,25 @@ static NSString * const kId            = @"id";
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     [self.facebookButton setSelected:NO];
+    
+    [self checkIfSignedIn];
+}
+
+- (void)checkIfSignedIn {
+    #warning Registered Moc
+    [MTAppManager sharedInstance].userAuthToken = nil;
+    [[MTAppManager sharedInstance] save];
+    
+    if ([MTAppManager sharedInstance].userAuthToken) {
+        [self showMainScreen];
+    }
+}
+
+- (void)showMainScreen {
+    MTMainViewController *mainViewController =
+    [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
+                                                withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
+    [self.navigationController pushViewController:mainViewController animated:YES];
 }
 
 - (void)showMainScreen:(BOOL)isAnimated {    
@@ -53,21 +73,26 @@ static NSString * const kId            = @"id";
     [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
                                               withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
     [self.navigationController pushViewController:mainView animated:isAnimated];
-
-}
-
-- (IBAction)loginButtonClicked:(id)sender {
-    [self accessToMainScreen];
 }
 
 - (IBAction)loginWithFacebook:(id)sender {
-//    [self.downloadProgressHud show:YES];
+        //[self.downloadProgressHud show:YES];
     [self.facebookFacade openSessionWithCompletionHandler:^{
         [self signUpWithFacebook];
     } andFailureBlock:^{
-        //    [self.downloadProgressHud hide:YES];
+        //[self.downloadProgressHud hide:YES];
         [self.facebookFacade closeAndClearCache:YES];
     }];
+}
+
+- (IBAction)loginWithInstagram:(id)sender {
+    MTInstagramViewController *instagramViewController =
+    [MTInstagramViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
+                                            withIdentifier:CLASS_IDENTIFIER(MTInstagramViewController)];
+    instagramViewController.delegate = self;
+    [self presentViewController:instagramViewController
+                       animated:YES
+                     completion:NULL];
 }
 
 - (void)signUpWithFacebook {
@@ -86,25 +111,23 @@ static NSString * const kId            = @"id";
             self.appManager.facebookID    = self.facebookID;
             [[MTAppManager sharedInstance] save];
             if (self.appManager.userAuthToken) {
-                [self accessToMainScreen];
+                [self showMainScreen];
             }
         }];
     } else {
-//        [self.downloadProgressHud hide:YES];
     }
 }
 
-- (void)accessToMainScreen {
-    [self.presentingViewController dismissViewControllerAnimated:NO completion:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            MTMainViewController *mainView =
-            [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
-                                                    withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
-            [AppDelegate sharedApplication].window.rootViewController = mainView;
-            [[AppDelegate sharedApplication].window makeKeyAndVisible];
-        });
+#pragma mark - instagram delegate
+
+- (void)onAuthenticated:(NSString *)authToken {
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.appManager.userAuthToken = authToken;
+        [self showMainScreen];
     }];
 }
+
+#pragma mark - access overrides
 
 - (FacebookFacade *)facebookFacade {
     if (!_facebookFacade) {

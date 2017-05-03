@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Neuron. All rights reserved.
 //
 
-#import "MTInstagramController.h"
+#import "MTInstagramViewController.h"
 #import "AppDelegate.h"
 #import "MTAppManager.h"
+#import "MTProgressHUD.h"
 
 #define INSTAGRAM_AUTHURL                               @"https://api.instagram.com/oauth/authorize/"
 #define INSTAGRAM_APIURl                                @"https://api.instagram.com/v1/users/"
@@ -19,8 +20,7 @@
 #define INSTAGRAM_SCOPE                                 @"likes+comments+relationships"
 
 
-@implementation MTInstagramController
-@synthesize typeOfAuthentication;
+@implementation MTInstagramViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +40,7 @@
     
     NSString* authURL = nil;
     
-    if ([typeOfAuthentication isEqualToString:@"UNSIGNED"])
+    if ([self.typeOfAuthentication isEqualToString:@"UNSIGNED"])
     {
          authURL = [NSString stringWithFormat: @"%@?client_id=%@&redirect_uri=%@&response_type=token&scope=%@&DEBUG=True",
          INSTAGRAM_AUTHURL,
@@ -74,6 +74,7 @@
 
 - (void) webViewDidStartLoad:(UIWebView *)webView
 {
+    [[MTProgressHUD sharedHUD] showOnView:self.view percentage:false];
     [loginIndicator startAnimating];
     [loginWebView.layer removeAllAnimations];
     loginWebView.userInteractionEnabled = NO;
@@ -84,6 +85,7 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
+    [[MTProgressHUD sharedHUD] dismiss];
     [loginIndicator stopAnimating];
     [loginWebView.layer removeAllAnimations];
     loginWebView.userInteractionEnabled = YES;
@@ -105,7 +107,7 @@
 {
     NSString* urlString = [[request URL] absoluteString];
     
-    if ([typeOfAuthentication isEqualToString:@"UNSIGNED"])
+    if ([self.typeOfAuthentication isEqualToString:@"UNSIGNED"])
     {
         // check, if auth was succesfull (check for redirect URL)
           if([urlString hasPrefix: INSTAGRAM_REDIRECT_URI])
@@ -135,25 +137,23 @@
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
-    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
+    NSMutableURLRequest *authRequest = [NSMutableURLRequest requestWithURL:
                                         [NSURL URLWithString:@"https://api.instagram.com/oauth/access_token"]];
-    [requestData setHTTPMethod:@"POST"];
-    [requestData setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [requestData setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [requestData setHTTPBody:postData];
+    [authRequest setHTTPMethod:@"POST"];
+    [authRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [authRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [authRequest setHTTPBody:postData];
     
-    NSURLResponse *response = NULL;
-    NSError *requestError = NULL;
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&requestError];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    [self handleAuth:[dict valueForKey:@"access_token"]];
-    
+    __weak typeof(self) weakSelf = self;
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithRequest:authRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        [weakSelf handleAuth:[dict valueForKey:@"access_token"]];
+    }] resume];
 }
 
-- (void) handleAuth: (NSString*) authToken {
-    
-    
+- (void)handleAuth:(NSString*)authToken {
+    [self.delegate onAuthenticated:authToken];
 }
-
 
 @end
