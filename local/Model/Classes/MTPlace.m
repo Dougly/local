@@ -128,19 +128,28 @@
     return self.name;
 }
 
-- (NSString *)ratingString {
-    NSString *filledStar = @"";
-    NSString *emptyStar = @"";
+- (NSAttributedString *)ratingString {
+    NSDictionary *filledStarAttributes = @{
+                                           NSForegroundColorAttributeName: UIColorFromHex(0xff0000),
+                                           NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:14.0f]
+                                           };
+    
+    NSDictionary *emptyStarAttributes = @{
+                                          NSForegroundColorAttributeName: kLocalColor,
+                                          NSFontAttributeName: [UIFont fontWithName:@"FontAwesome" size:14.0f]
+                                          };
+    NSAttributedString *filledStar = [[NSAttributedString alloc] initWithString:@"" attributes:filledStarAttributes];
+    NSAttributedString *emptyStar = [[NSAttributedString alloc] initWithString:@"" attributes:emptyStarAttributes];
     
     int roundedRating = roundf(self.rating.floatValue);
     
-    NSString *ratingString = @"";
+    NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] initWithString:@""];
     //5 is total number of stars
     for (int i=0; i<5; i++) {
         if (i < roundedRating)
-            ratingString = [ratingString stringByAppendingString:filledStar];
+            [ratingString appendAttributedString:filledStar];
         else
-            ratingString = [ratingString stringByAppendingString:emptyStar];
+            [ratingString appendAttributedString:emptyStar];
     }
     
     return ratingString;

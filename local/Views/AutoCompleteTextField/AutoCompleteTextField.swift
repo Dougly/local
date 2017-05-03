@@ -16,7 +16,7 @@ open class AutoCompleteTextField:UITextField {
     fileprivate var responseData:NSMutableData?
     fileprivate var dataTask:URLSessionDataTask?
     
-    fileprivate let googleMapsKey = "AIzaSyDg2tlPcoqxx2Q2rfjhsAKS-9j0n3JA_a4"
+    fileprivate let googleMapsKey = "AIzaSyBim_-bgtrgl7sp7C4p_76kaLVgyWpBvYY"
     fileprivate let baseURLString = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     
     /// Manages the instance of tableview

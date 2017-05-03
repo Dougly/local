@@ -52,10 +52,6 @@ static NSString * const kId            = @"id";
 }
 
 - (void)checkIfSignedIn {
-    #warning Registered Moc
-    [MTAppManager sharedInstance].userAuthToken = nil;
-    [[MTAppManager sharedInstance] save];
-    
     if ([MTAppManager sharedInstance].userAuthToken) {
         [self showMainScreen];
     }

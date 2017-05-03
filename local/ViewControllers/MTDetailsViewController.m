@@ -19,11 +19,13 @@
 #import "MTProgressHUD.h"
 #import "MTYelpManager.h"
 #import "MTYelpPlace.h"
+#import "TGAnnotation.h"
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetails *details);
 
 
 @interface MTDetailsViewController()
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
 @property (nonatomic) CGFloat initialScrollBottomMargin;
@@ -36,14 +38,16 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailsLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ratingNumberLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
+@property (nonatomic, weak) IBOutlet UILabel *ratingSourceLabel;
 
 @property (nonatomic, weak) IBOutlet UITextView *addressTextView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *addressTextViewHeight;
 @property (nonatomic, weak) IBOutlet UITextView *reviewTextView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *reviewTextViewHeight;
 @property (nonatomic, weak) IBOutlet UIView *ratingView;
 
+@property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @end
 
 @implementation MTDetailsViewController
@@ -108,16 +112,42 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     self.detailsLabel.text = [self.place getDetailsString];
     self.titleLabel.text = self.place.name;
     
-    if (self.placeDetails.formattedAddress)
+    NSArray *reviews = self.placeDetails.reviews.allObjects;
+    
+    if (reviews.count > 0) {
+        MTPlaceReview *review = reviews.firstObject;
+        self.reviewTextView.text = review.text;
+    }
+    
+    CGSize sizeThatFitsReviewTextView = [self.reviewTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, MAXFLOAT)];
+    
+    self.addressTextView.text = @"";
+    if (self.placeDetails.formattedAddress) {
         self.addressTextView.text = [self.addressTextView.text stringByAppendingString:self.placeDetails.formattedAddress];
+            self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
+    }
     
-    self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
-    
-    if (self.placeDetails.localPhone)
+    if (self.placeDetails.localPhone) {
         self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.localPhone];
+        self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
+    }
     
-    self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
+    if (self.placeDetails.website) {
+        self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.website];
+        self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
+    }
     
+    CGSize sizeThatFitsAddressTextView = [self.addressTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, MAXFLOAT)];
+    
+    NSLog(@"AddressHeight: %f", sizeThatFitsAddressTextView.height);
+
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"HEIGHTOFCONTENT: %f", self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height);
+        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height;
+        //[self.contentView layoutSubviews];
+        //[self.contentView updateConstraints];
+    });
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date]];
@@ -130,11 +160,11 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     if (filteredPeriods.count > 0) {
         MTOpeningHourPeriod *period = filteredPeriods.firstObject;
         
-        NSMutableString *openText = [NSMutableString stringWithString:period.openTime];
-        [openText insertString:@":" atIndex:2];
+        NSString *openText = [NSMutableString stringWithString:period.openTime];
+        openText = [openText substringToIndex:2];
         
-        NSMutableString *closeText = [NSMutableString stringWithString:period.closeTime];
-        [closeText insertString:@":" atIndex:2];
+        NSString *closeText = [NSMutableString stringWithString:period.closeTime];
+        closeText = [closeText substringToIndex:2];
         
         NSString *closeMeridien = @"PM";
         
@@ -142,31 +172,13 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
             closeMeridien = @"AM";
         }
         
-        NSString *periodText = [NSString stringWithFormat:@"Open today: %@AM - %@%@", openText, closeText, closeMeridien];
+        NSString *periodText = [NSString stringWithFormat:@"%@AM-%@%@", openText, closeText, closeMeridien];
         
-        self.addressTextView.text = [self.addressTextView.text stringByAppendingString:periodText];
-    }
-    self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
-    
-    if (self.placeDetails.website)
-        self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.website];
-    
-    CGSize sizeThatFitsTextView = [self.addressTextView sizeThatFits:CGSizeMake(self.addressTextView.frame.size.width, MAXFLOAT)];
-    self.addressTextViewHeight.constant = sizeThatFitsTextView.height;
-    
-    NSArray *reviews = self.placeDetails.reviews.allObjects;
-    
-    if (reviews.count > 0) {
-        MTPlaceReview *review = reviews.firstObject;
-        self.reviewTextView.text = review.text;
-    
-        CGSize sizeThatFitsTextView = [self.reviewTextView sizeThatFits:CGSizeMake(self.reviewTextView.frame.size.width, MAXFLOAT)];
-        
-        self.reviewTextViewHeight.constant = sizeThatFitsTextView.height;
-        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsTextView.height - BOTTOM_NAVIGATION_BAR_HEIGHT;
+        self.hoursLabel.text = periodText;
     }
     
-    [self showUI];
+   [self setupMap];
+   [self showUI];
 }
 
 - (void)getDetails:(MTPlace *)place completion:(DetailsLargsetPhotoCompletion)completion {
@@ -193,10 +205,14 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     self.ratingLabel.alpha = 0.0;
     [[MTYelpManager sharedManager] getYelpPlaceMatchingGooglePlace:self.place completion:^(BOOL success, MTYelpPlace *yelpPlace, NSError *error) {
         if (yelpPlace) {
-            self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Yelp", yelpPlace.rating.floatValue, [yelpPlace ratingString]];
+            self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", yelpPlace.rating.floatValue];
+            self.ratingLabel.attributedText = [yelpPlace ratingString];
+            self.ratingSourceLabel.text = @"Yelp";
         }
         else {
-            self.ratingLabel.text = [NSString stringWithFormat:@"%.1f %@   Google", self.place.rating.floatValue, [self.place ratingString]];
+            self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", self.place.rating.floatValue];
+            self.ratingLabel.attributedText = [self.place ratingString];
+            self.ratingSourceLabel.text = @"Google";
         }
         
         [UIView animateWithDuration:0.4 animations:^{
@@ -206,24 +222,72 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 }
 
 - (void)hideUI {
-    self.titleLabel.alpha = 0.0;
-    self.detailsLabel.alpha = 0.0;
-    self.ratingView.alpha = 0.0;
-    
-    self.addressTextView.alpha = 0.0;
-    self.reviewTextView.alpha = 0.0;
+    self.contentView.alpha = 0.0;
 }
 
 - (void)showUI {
     [UIView animateWithDuration:0.5 animations:^{
-        self.titleLabel.alpha = 1.0;
-        self.detailsLabel.alpha = 1.0;
-        self.ratingView.alpha = 1.0;
-        
-        self.addressTextView.alpha = 1.0;
-        self.reviewTextView.alpha = 1.0;
+        self.contentView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        //[weakSelf postProcessTextViewLinksStyle:weakSelf.addressTextView];
+        self.reviewTextView.tintColor = [UIColor redColor];
+        self.reviewTextView.linkTextAttributes = @{NSForegroundColorAttributeName : [UIColor redColor]};
+
+        self.addressTextView.tintColor = [UIColor redColor];
+        self.addressTextView.linkTextAttributes = @{NSForegroundColorAttributeName : [UIColor redColor]};
     }];
 }
 
+- (void)setupMap {
+    __weak typeof(self) weakSelf = self;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.mapView.userInteractionEnabled = FALSE;
+        weakSelf.mapView.delegate = weakSelf;
+        MKCoordinateRegion myRegion;
+        
+        myRegion.center.latitude = [weakSelf.placeDetails.lat floatValue];
+        myRegion.center.longitude = [weakSelf.placeDetails.lon floatValue];
+        
+        // this sets the zoom level, a smaller value like 0.02
+        // zooms in, a larger value like 80.0 zooms out
+        myRegion.span.latitudeDelta = 0.01;
+        myRegion.span.longitudeDelta = 0.01;
+        
+        // move the map to our location
+        [weakSelf.mapView setRegion:myRegion animated:NO];
+        
+        //annotation
+        TGAnnotation *annot = [[TGAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.place.lat floatValue], [self.place.lon floatValue])];
+        [weakSelf.mapView addAnnotation:annot];
+    });
+}
+
+#pragma mark - MKMap View methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    if (annotation == mapView.userLocation)
+        return nil;
+    
+    static NSString *MyPinAnnotationIdentifier = @"Pin";
+    MKPinAnnotationView *pinView =
+    (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:MyPinAnnotationIdentifier];
+    if (!pinView){
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:MyPinAnnotationIdentifier];
+        
+        annotationView.image = [UIImage imageNamed:@"pin_map_blue"];
+        
+        return annotationView;
+        
+    }else{
+        
+        pinView.image = [UIImage imageNamed:@"pin_map_blue"];
+        
+        return pinView;
+    }
+    
+    return nil;
+}
 
 @end

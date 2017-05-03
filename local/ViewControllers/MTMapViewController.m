@@ -181,8 +181,10 @@
               animated:YES];
     }
     else {
-        [self.currentPopupView removeFromSuperview];
+        CLLocationCoordinate2D pinCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
+        [self.mapView setCenterCoordinate:pinCenter animated:YES];
         
+        [self.currentPopupView removeFromSuperview];
         self.currentPopupView = [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
         self.currentPopupView.delegate = self;
         self.currentPopupView.pinViewFrame = view.frame;
@@ -352,6 +354,8 @@
 - (void)setupFilterListener {
     __weak typeof(self) weakSelf = self;
     self.filterListener.onKeyWordUpdatedHandler = ^{
+        [weakSelf.currentPopupView removeFromSuperview];
+        weakSelf.currentPopupView = nil;
         [weakSelf updatePlaces:[MTLocationManager sharedManager].lastUsedLocation];
     };
 }

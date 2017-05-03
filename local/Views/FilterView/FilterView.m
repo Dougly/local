@@ -28,9 +28,17 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    [self addBorder];
     [self registerCells];
     [self calculateSelectedIndexPath];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)addBorder {
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = UIColorFromHex(0x939598).CGColor;
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 1.0f);
+    [self.layer addSublayer:upperBorder];
 }
 
 - (void)calculateSelectedIndexPath {

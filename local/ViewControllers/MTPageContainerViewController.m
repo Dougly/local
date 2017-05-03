@@ -10,10 +10,13 @@
 #import "MTDataModel.h"
 #import "MTDetailsViewController.h"
 #import "MTPlace.h"
+#import "MTPageContainerViewController.h"
+#import "FilterListener.h"
 
 @interface MTPageContainerViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) NSArray *places;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (nonatomic, strong) FilterListener *filterListener;
 @end
 
 @implementation MTPageContainerViewController
@@ -21,8 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupKeyWordsListener];
     [self getPlaces];
     [self setup];
+}
+
+- (void)setupKeyWordsListener {
+    __weak typeof(self)weakSelf = self;
+    self.filterListener.onKeyWordUpdatedHandler = ^{
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+        weakSelf.filterListener = nil;
+    };
 }
 
 - (void)getPlaces {
@@ -114,6 +126,16 @@
         
         self.title = currentController.place.name;
     }
+}
+
+#pragma mark - access overrider
+
+- (FilterListener *)filterListener {
+    if (!_filterListener) {
+        _filterListener = [FilterListener new];
+    }
+    
+    return _filterListener;
 }
 
 @end

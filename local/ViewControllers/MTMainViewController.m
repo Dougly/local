@@ -149,5 +149,4 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     return _appStateListener;
 }
 
-
 @end

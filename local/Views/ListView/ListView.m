@@ -18,7 +18,7 @@
 #import "FilterListener.h"
 #import "MTProgressHUD.h"
 
-#define CELL_HEIGHT                 220
+#define NUMBER_OF_CELLS_PER_SCREEN                 3.0
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 
@@ -27,6 +27,8 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @property (nonatomic, strong) NSMutableArray *places;
 @property (nonatomic, strong) FilterListener *filterListener;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
+
+@property (nonatomic) CGFloat CELL_HEIGHT;
 @end
 
 NSString *const LIST_VIEW_CELL = @"MTListViewCell";
@@ -41,6 +43,12 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [self subscribeForNewPlaces];
     [self registerCells];
     [self getAllPlaces];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _CELL_HEIGHT = self.tableView.bounds.size.height / NUMBER_OF_CELLS_PER_SCREEN;
 }
 
 - (void)subscribeForNewPlaces {
@@ -93,7 +101,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     cell.detailsLabel.text = [place getDetailsString];
     
     int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width * 2;
-    int maxHeight = [[UIScreen mainScreen] scale] * CELL_HEIGHT*2;
+    int maxHeight = [[UIScreen mainScreen] scale] * self.CELL_HEIGHT*2;
     
     __weak typeof(cell) weakCell = cell;
 
@@ -136,7 +144,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return CELL_HEIGHT;
+    return self.CELL_HEIGHT;
 }
 
 - (void)getDetails:(MTPlace *)place completion:(DetailsLargsetPhotoCompletion)completion {

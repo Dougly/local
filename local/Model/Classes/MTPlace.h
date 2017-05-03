@@ -10,5 +10,5 @@
 
 - (NSString *)getDetailsString;
 - (NSString *)nameQuery;
-- (NSString *)ratingString;
+- (NSAttributedString *)ratingString;
 @end
