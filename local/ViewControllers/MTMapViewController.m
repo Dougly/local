@@ -55,6 +55,7 @@
     [self getLocation];
     [self addTitleView];
     [self setupFilterListener];
+    [self addGesture];
 }
 
 - (void)addTitleView {
@@ -67,15 +68,16 @@
     [[MTProgressHUD sharedHUD] showOnView:self.view
                                percentage:false];
     
+    __weak typeof(self) weakSelf = self;
     [[MTLocationManager sharedManager] getLocation:^(BOOL success, NSString *erroMessage, CLLocationCoordinate2D coordinate) {
         [[MTProgressHUD sharedHUD] dismiss];
         if (success) {
-            [self getPlacesAtLocation:coordinate];
-            [self drawCircleAroundCoordinate:coordinate];
-            [self setZoomLevelWithCenter:coordinate];
+            [weakSelf getPlacesAtLocation:coordinate];
+            [weakSelf drawCircleAroundCoordinate:coordinate];
+            [weakSelf setZoomLevelWithCenter:coordinate];
         }
         else {
-            [MTAlertBuilder showAlertIn:self
+            [MTAlertBuilder showAlertIn:weakSelf
                                 message:erroMessage
                                delegate:nil];
         }
@@ -87,8 +89,8 @@
     MKCoordinateRegion region;
     region.center.latitude = coordinate.latitude;
     region.center.longitude = coordinate.longitude;
-    region.span.latitudeDelta = 0.4;
-    region.span.longitudeDelta = 0.4;
+    region.span.latitudeDelta = 0.1;
+    region.span.longitudeDelta = 0.1;
     region = [self.mapView regionThatFits:region];
     [self.mapView setRegion:region animated:TRUE];
 }
@@ -97,10 +99,7 @@
     MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
     
     self.qTree = nil;
-    
-    /*in km*/
-    NSUInteger radius = [[MTSettings sharedSettings] getDistance];
-    [manager query:coordinate radius:(1 * 1900) completion:^(BOOL success, NSArray *places, NSError *error) {
+    [manager query:coordinate radius:kRadiusSearch completion:^(BOOL success, NSArray *places, NSError *error) {
         if (success)
             [self reloadAnnotations];
     }];
@@ -136,6 +135,7 @@
     [annotationsToRemove removeObject:self.mapView.userLocation];
     [annotationsToRemove removeObjectsInArray:objects];
     
+    //Prevent the popup view from being clustered if it's visible
     if (self.currentPopupView) {
         [annotationsToRemove removeObject:self.currentPopupView.place];
     }
@@ -176,6 +176,8 @@
 }
 
 - (void)mapView:(MKMapView*)mapView didSelectAnnotationView:(MKAnnotationView*)view {
+    NSLog(@"didSelectAnnotationView");
+    
     if (self.popupBeingSelelected) {
         return;
     }
@@ -190,7 +192,7 @@
         CLLocationCoordinate2D pinCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
         [self.mapView setCenterCoordinate:pinCenter animated:YES];
         
-        [self.currentPopupView removeFromSuperview];
+        [self removePopup];
         self.currentPopupView = [[[NSBundle mainBundle] loadNibNamed:@"MapPopupView" owner:self options:nil] objectAtIndex:0];
         self.currentPopupView.delegate = self;
         self.currentPopupView.pinViewFrame = view.frame;
@@ -200,26 +202,65 @@
     }
 }
 
+- (void)removePopup {
+    [self.currentPopupView removeFromSuperview];
+    self.currentPopupView = nil;
+    self.mapView.selectedAnnotations = @[];
+}
+
 #pragma mark - Overlays
 
 - (void)drawCircleAroundCoordinate:(CLLocationCoordinate2D)coordinate {
-    /*in km*/
-    /*NSUInteger radius = [[MTSettings sharedSettings] getDistance];
-    
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:(radius*1000 + 700)];
-    [self.mapView addOverlay:circle];*/
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:kRadiusSearch + 700];
+    [self.mapView addOverlay:circle];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKCircle class]]) {
         MKCircleRenderer *circle = [[MKCircleRenderer alloc] initWithOverlay:overlay];
-        circle.strokeColor = kTotsAmourBrandColorHEX;
+        circle.strokeColor = kLocalColor;
         circle.lineWidth = 1.0;
         return circle;
     }
     else {
         return nil;
     }
+}
+
+#pragma mark - Map tap gesture
+
+- (void)addGesture {
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapGesture.delegate = self;
+    [self.mapView addGestureRecognizer:tapGesture];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return [self getTappedAnnotations:touch].count == 0;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer {
+    NSLog(@"handleTap");
+    
+    id vvv = gestureRecognizer.view;
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (!self.popupBeingSelelected) {
+            [self removePopup];
+            
+            /*Get the coordinate*/
+            /*CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[gestureRecognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
+            [self updatePlaces:coordinate];*/
+        }
+        else {
+            [self didSelectItemForPlace:self.currentPopupView.place];
+        }
+    }
+}
+
+- (IBAction)updatePlaceInCurrentArea:(id)sender {
+    [self removePopup];
+    CLLocationCoordinate2D centerCoordinate = [self.mapView centerCoordinate];
+    [self updatePlaces:centerCoordinate];
 }
 
 - (void)updatePlaces:(CLLocationCoordinate2D)coordinate {
@@ -230,6 +271,7 @@
 }
 
 #pragma mark - Title View delegagte
+
 - (void)titleViewClicked:(BOOL)shouldReveal {
     if (shouldReveal) {
         [self showLocationView];
@@ -332,10 +374,8 @@
     
     [self.navigationController pushViewController:pageController animated:YES];
     
-    [self.currentPopupView removeFromSuperview];
-    self.currentPopupView = nil;
+    [self removePopup];
     self.popupBeingSelelected = NO;
-    self.mapView.selectedAnnotations = @[];
 }
 
 #pragma mark - MTLocationViewTextfieldCellDelegate
@@ -365,8 +405,7 @@
 - (void)setupFilterListener {
     __weak typeof(self) weakSelf = self;
     self.filterListener.onKeyWordUpdatedHandler = ^{
-        [weakSelf.currentPopupView removeFromSuperview];
-        weakSelf.currentPopupView = nil;
+        [weakSelf removePopup];
         [weakSelf updatePlaces:[MTLocationManager sharedManager].lastUsedLocation];
     };
 }
@@ -374,13 +413,11 @@
 #pragma mark - popup click delegate
 
 - (void)popClickedForPlace:(MTPlace *)place {
-    [self.currentPopupView removeFromSuperview];
-    self.currentPopupView = nil;
-    
     [self didSelectItemForPlace:place];
 }
 
 - (void)popupTouchBegan {
+    NSLog(@"PopupTouchBegan");
     self.popupBeingSelelected = YES;
 }
 

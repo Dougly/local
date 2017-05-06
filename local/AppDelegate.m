@@ -58,6 +58,7 @@ static PanelsViewController *rootController;
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[MTSettings sharedSettings] overwriteKeyWordsAccordingToDayTime];
     [[NSNotificationCenter defaultCenter] postNotificationName:nFOREGROUND object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:nKEYWORDS_CHANGED object:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
