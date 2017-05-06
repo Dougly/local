@@ -39,6 +39,8 @@
 @property (nonatomic, strong) LocationView *locationView;
 @property (nonatomic, strong) ListView *listView;
 @property (nonatomic, strong) FilterListener *filterListener;
+
+@property (nonatomic) BOOL popupBeingSelelected;
 @end
 
 @implementation MTMapViewController
@@ -98,7 +100,7 @@
     
     /*in km*/
     NSUInteger radius = [[MTSettings sharedSettings] getDistance];
-    [manager query:coordinate radius:(radius * 1000) completion:^(BOOL success, NSArray *places, NSError *error) {
+    [manager query:coordinate radius:(1 * 1900) completion:^(BOOL success, NSArray *places, NSError *error) {
         if (success)
             [self reloadAnnotations];
     }];
@@ -174,6 +176,10 @@
 }
 
 - (void)mapView:(MKMapView*)mapView didSelectAnnotationView:(MKAnnotationView*)view {
+    if (self.popupBeingSelelected) {
+        return;
+    }
+    
     id<MKAnnotation> annotation = view.annotation;
     if([annotation isKindOfClass:[QCluster class]]) {
         QCluster* cluster = (QCluster*)annotation;
@@ -325,6 +331,11 @@
     pageController.place = place;
     
     [self.navigationController pushViewController:pageController animated:YES];
+    
+    [self.currentPopupView removeFromSuperview];
+    self.currentPopupView = nil;
+    self.popupBeingSelelected = NO;
+    self.mapView.selectedAnnotations = @[];
 }
 
 #pragma mark - MTLocationViewTextfieldCellDelegate
@@ -367,6 +378,10 @@
     self.currentPopupView = nil;
     
     [self didSelectItemForPlace:place];
+}
+
+- (void)popupTouchBegan {
+    self.popupBeingSelelected = YES;
 }
 
 #pragma mark - access overrides

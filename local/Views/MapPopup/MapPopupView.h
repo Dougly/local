@@ -10,6 +10,7 @@
 @class MTPlace;
 
 @protocol PopupClickDelegate <NSObject>
+- (void)popupTouchBegan;
 - (void)popClickedForPlace:(MTPlace *)place;
 @end
 

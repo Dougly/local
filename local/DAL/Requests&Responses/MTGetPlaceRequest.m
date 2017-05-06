@@ -13,7 +13,7 @@
 
 - (NSMutableURLRequest *)serviceURLRequest
 {
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/textsearch/json?location=%lf,%lf&key=%@&radius=%ld&sensor=false", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/textsearch/json?location=%lf,%lf&key=%@&radius=%ld", self.latitude, self.longitude, kGoogleMapAPIKey, self.radius];
     if (self.types) {
         NSString *placeTypesPart = [NSString stringWithFormat:@"&type=%@", self.types];
         urlString = [urlString stringByAppendingString:placeTypesPart];

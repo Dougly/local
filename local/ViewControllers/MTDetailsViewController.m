@@ -91,7 +91,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         weakSelf.placeDetails = details;
         [weakSelf showDetails];
         
-        NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&maxheight=%d&photoreference=%@&key=%@", maxWidth, maxHeight, largestPhoto.reference, kGoogleMapAPIKey];
+        NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?&maxheight=%d&photoreference=%@&key=%@", 1600, largestPhoto.reference, kGoogleMapAPIKey];
         
         [weakSelf.mainImageView setImageWithURL:[NSURL URLWithString:strinUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             weakSelf.mainImageView.alpha = 0.0;
@@ -182,23 +182,29 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 }
 
 - (void)getDetails:(MTPlace *)place completion:(DetailsLargsetPhotoCompletion)completion {
+    MTPlaceDetails *placeDetails = [[MTDataModel sharedDatabaseStorage] getPlaceDetialsForId:place.placeId];
     
-    MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
-    request.placeId = place.placeId;
-    
-    request.completionBlock = ^(SDRequest *request, SDResult *response)
-    {
-        if ([response isSuccess]) {
-            MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
-            MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
-            MTPhoto *largestPhoto = [placeDetails getLargestPhoto];
-            completion(largestPhoto, placeDetails);
-        }
-        else {
-            completion(nil, nil);
-        }
-    };
-    [request run];
+    if (placeDetails) {
+        completion([placeDetails getLargestPhoto], placeDetails);
+    }
+    else {
+        MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
+        request.placeId = place.placeId;
+        
+        request.completionBlock = ^(SDRequest *request, SDResult *response)
+        {
+            if ([response isSuccess]) {
+                MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
+                MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
+                MTPhoto *largestPhoto = [placeDetails getLargestPhoto];
+                completion(largestPhoto, placeDetails);
+            }
+            else {
+                completion(nil, nil);
+            }
+        };
+        [request run];
+    }
 }
 
 - (void)getYelpRating {

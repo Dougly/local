@@ -24,6 +24,7 @@
 - (NSArray *)parsePlaces:(NSData *)data;
 - (NSString *)parseNewPageToken:(NSData *)data;
 - (NSArray *)getPlaces;
+- (MTPlaceDetails *)getPlaceDetialsForId:(NSString *)placeId;
 
 - (NSArray *)fetchObjectsForEntityName:(NSString *)newEntityName
                          withPredicate:(NSPredicate *)predicate;

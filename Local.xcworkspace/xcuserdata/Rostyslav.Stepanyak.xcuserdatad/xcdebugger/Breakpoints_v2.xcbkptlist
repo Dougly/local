@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "local/ViewControllers/MTDetailsViewController.m"
-            timestampString = "515537569.343271"
+            timestampString = "515684910.341225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "@implementation MTDetailsViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -112,6 +112,38 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "-hideFilterView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "local/Views/MapPopup/MapPopupView.m"
+            timestampString = "515785298.695598"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "local/ViewControllers/MTMapViewController.m"
+            timestampString = "515785620.35885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-mapView:didSelectAnnotationView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

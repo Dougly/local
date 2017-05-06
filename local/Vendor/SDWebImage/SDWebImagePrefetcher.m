@@ -37,7 +37,7 @@
     {
         _manager = SDWebImageManager.new;
         _options = SDWebImageLowPriority;
-        self.maxConcurrentDownloads = 3;
+        self.maxConcurrentDownloads = 40;
     }
     return self;
 }

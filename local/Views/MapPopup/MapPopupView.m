@@ -181,4 +181,10 @@
     [self.delegate popClickedForPlace:self.place];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    
+    [self.delegate popupTouchBegan];
+}
+
 @end

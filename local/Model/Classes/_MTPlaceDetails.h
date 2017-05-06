@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* neighbourhood;
 
+@property (nonatomic, strong, nullable) NSString* placeId;
+
 @property (nonatomic, strong, nullable) NSNumber* rating;
 
 @property (atomic) float ratingValue;
@@ -155,6 +157,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveNeighbourhood;
 - (void)setPrimitiveNeighbourhood:(nullable NSString*)value;
 
+- (nullable NSString*)primitivePlaceId;
+- (void)setPrimitivePlaceId:(nullable NSString*)value;
+
 - (nullable NSNumber*)primitiveRating;
 - (void)setPrimitiveRating:(nullable NSNumber*)value;
 
@@ -200,6 +205,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)lon;
 + (NSString *)name;
 + (NSString *)neighbourhood;
++ (NSString *)placeId;
 + (NSString *)rating;
 + (NSString *)streetName;
 + (NSString *)streetNumber;

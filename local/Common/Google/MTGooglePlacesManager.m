@@ -57,10 +57,14 @@
     [self cancelPendingRequests];
     
     NSString *majorType = [self.googleTypes stringTypes];
-    [self query:coordinate radius:radius type:majorType pageToken:nil];
+    [self query:coordinate radius:radius type:@"cafe" pageToken:nil];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self query:coordinate radius:radius type:@"restaurant" pageToken:nil];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self query:coordinate radius:radius type:@"bar" pageToken:nil];
     });
     
 }
@@ -71,7 +75,7 @@
     request.longitude = coordinate.longitude;
     request.pageToken = pageToken;
     request.query = [self.googleQuery stringQuery];
-    request.types = /**/type;
+    request.types = type;
     request.radius = radius;
     
     __weak typeof (self) weakSelf = self;
@@ -91,7 +95,7 @@
                 }
                 
                 /*Fetch new page. 1.5 secs is required cause newPagetoken becomes available after some delay*/
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     /*in case it's cancelled, pendingPagetoken will not contain the token*/
                     if ([self.pendingPageTokens containsObject:googleResponse.pageToken])
                         [weakSelf query:coordinate radius:radius type:type pageToken:googleResponse.pageToken];

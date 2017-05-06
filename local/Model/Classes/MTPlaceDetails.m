@@ -10,6 +10,7 @@
 @implementation MTPlaceDetails
 
 - (void)parseNode:(NSDictionary *)node {
+    self.placeId = node[@"place_id"];
     self.name = node[@"name"];
     self.rating = node[@"rating"];
     self.isOpenNow = node[@"opening_hours"][@"open_now"];

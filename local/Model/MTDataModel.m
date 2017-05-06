@@ -201,6 +201,26 @@
     return [places copy];
 }
 
+- (MTPlaceDetails *)getPlaceDetialsForId:(NSString *)placeId {
+    NSFetchRequest *allPlacesFetchRequest = [[NSFetchRequest alloc] init];
+    [allPlacesFetchRequest setEntity:[NSEntityDescription entityForName:@"MTPlaceDetails"
+                                     inManagedObjectContext:self.managedObjectContext]];
+    
+    NSError *error = nil;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"placeId == %@", placeId];
+    [allPlacesFetchRequest setPredicate:predicate];
+    
+    NSArray *placeDetails = [self.managedObjectContext executeFetchRequest:allPlacesFetchRequest
+                                                               error:&error];
+    
+    
+    if (placeDetails.count > 0) {
+        return placeDetails.firstObject;
+    }
+    
+    return nil;
+}
+
 - (void)clearPlaces {
     [self removeAllEntities:@"MTPlace"];
 }
@@ -288,7 +308,6 @@
 }
 
 - (MTPlaceDetails *)parsePlaceDetails:(NSData *)data {
-    [self removeAllEntities:@"MTPlaceDetails"];
     MTPlaceDetails *placeDetails = nil;
     if(data != nil) {
         NSError *error = nil;

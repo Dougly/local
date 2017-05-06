@@ -125,6 +125,8 @@
 
 @dynamic neighbourhood;
 
+@dynamic placeId;
+
 @dynamic rating;
 
 - (float)ratingValue {
@@ -228,6 +230,9 @@
 }
 + (NSString *)neighbourhood {
 	return @"neighbourhood";
+}
++ (NSString *)placeId {
+	return @"placeId";
 }
 + (NSString *)rating {
 	return @"rating";

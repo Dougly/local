@@ -18,7 +18,7 @@
 #import "FilterListener.h"
 #import "MTProgressHUD.h"
 
-#define NUMBER_OF_CELLS_PER_SCREEN                 3.0
+#define NUMBER_OF_CELLS_PER_SCREEN                 3.1
 
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 
@@ -87,6 +87,10 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     return self.places.count;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    int i = 0;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -100,29 +104,29 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     cell.titleLabel.text = place.name;
     cell.detailsLabel.text = [place getDetailsString];
     
-    int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width * 2;
-    int maxHeight = [[UIScreen mainScreen] scale] * self.CELL_HEIGHT*2;
+    //int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width * 2;
+    //int maxHeight = [[UIScreen mainScreen] scale] * self.CELL_HEIGHT*2;
     
     __weak typeof(cell) weakCell = cell;
 
     cell.mainImageView.image = nil;
     [self getDetails:place completion:^(MTPhoto *largestPhoto) {
+        if (!largestPhoto) {
+            NSLog(@"No Photo: %@", place.name);
+        }
         NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxheight=%d&photoreference=%@&key=%@", 1600, largestPhoto.reference, kGoogleMapAPIKey];
         
         
         [weakCell.mainImageView setImageWithURL:[NSURL URLWithString:strinUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-            weakCell.mainImageView.alpha = 0.0;
             
-            weakCell.mainImageView.image = image;
-            weakCell.mainImageView.contentMode = UIViewContentModeScaleAspectFill;
-            
-            [UIView animateWithDuration:0.5 animations:^{
-                weakCell.mainImageView.alpha = 1.0;
-            }];
-            
-            [weakCell.contentView bringSubviewToFront:weakCell.bottomView];
-            [weakCell.contentView bringSubviewToFront:weakCell.titleLabel];
-            [weakCell.contentView bringSubviewToFront:weakCell.detailsLabel];
+            if (image) {
+                weakCell.mainImageView.image = image;
+                weakCell.mainImageView.contentMode = UIViewContentModeScaleAspectFill;
+                
+                [weakCell.contentView bringSubviewToFront:weakCell.bottomView];
+                [weakCell.contentView bringSubviewToFront:weakCell.titleLabel];
+                [weakCell.contentView bringSubviewToFront:weakCell.detailsLabel];
+            }
         }];
     }];
     
@@ -148,22 +152,29 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 }
 
 - (void)getDetails:(MTPlace *)place completion:(DetailsLargsetPhotoCompletion)completion {
-    MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
-    request.placeId = place.placeId;
+    MTPlaceDetails *placeDetails = [[MTDataModel sharedDatabaseStorage] getPlaceDetialsForId:place.placeId];
     
-    request.completionBlock = ^(SDRequest *request, SDResult *response)
-    {
-        if ([response isSuccess]) {
-            MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
-            MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
-            MTPhoto *largestPhoto = [placeDetails getLargestPhoto];
-            completion(largestPhoto);
-        }
-        else {
-            completion(nil);
-        }
-    };
-    [request run];
+    if (placeDetails) {
+        completion([placeDetails getLargestPhoto]);
+    }
+    else {
+        MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
+        request.placeId = place.placeId;
+        
+        request.completionBlock = ^(SDRequest *request, SDResult *response)
+        {
+            if ([response isSuccess]) {
+                MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
+                MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
+                MTPhoto *largestPhoto = [placeDetails getLargestPhoto];
+                completion(largestPhoto);
+            }
+            else {
+                completion(nil);
+            }
+        };
+        [request run];
+    }
 }
 
 #pragma mark - new places listener
@@ -202,7 +213,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)locationChanged {
     self.places = nil;
     [self.tableView reloadData];
-    [[MTProgressHUD sharedHUD] showOnView:self percentage:false];
 }
 
 #pragma mark - UISearchBarDelegate
