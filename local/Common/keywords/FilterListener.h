@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^onKeywordUpdated)();
-typedef void (^onNewPlacesReceived)();
+typedef void (^onNewPlacesReceived)(BOOL allPlacesRetrieved);
 typedef void (^onLocationChanged)();
 
 @interface FilterListener : NSObject

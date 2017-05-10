@@ -1,4 +1,6 @@
 #import "MTPlace.h"
+#import <CoreLocation/CoreLocation.h>
+#import "MTLocationManager.h"
 
 @implementation MTPlace
 @synthesize title;
@@ -32,6 +34,7 @@
     
     self.title = self.name;
     self.coordinate = CLLocationCoordinate2DMake(self.lat.floatValue, self.lon.floatValue);
+    [self calculateDistance];
 }
 
 /*refactor this crap later*/
@@ -39,6 +42,7 @@
 - (NSString *)getDetailsString {
     NSString *pricing = @"";
     
+    //NSLog(@"Place name: %@ priving: %ld", self.name, self.pricingLevel.integerValue);
     for (int i=0; i<self.pricingLevel.integerValue; i++) {
         pricing = [pricing stringByAppendingString:@"$"];
     }
@@ -56,11 +60,20 @@
     
     NSString *address = [self getAddressDirty];
     
-    NSString *resultString = [NSString stringWithFormat:@"%@  •  %.1f %@  •  %@", address, self.rating.floatValue, pricing, type];
+    NSString *resultString = [NSString stringWithFormat:@"%dm  •  %@  •  %.1f %@  •  %@", (int)self.distance.floatValue, address, self.rating.floatValue, pricing, type];
     
     return resultString;
 }
 
+- (void)calculateDistance {
+    CLLocation *placeLocation = [[CLLocation alloc] initWithLatitude:self.lat.floatValue longitude:self.lon.floatValue];
+    
+    CLLocationCoordinate2D userCoordinate = [MTLocationManager sharedManager].lastUsedLocation;
+    CLLocation *myLocation = [[CLLocation alloc] initWithLatitude:userCoordinate.latitude longitude:userCoordinate.longitude];
+    
+    CLLocationDistance distance = [myLocation distanceFromLocation:placeLocation];
+    self.distance = @(distance);
+}
 
 - (NSString *)getAddressDirty {
     NSString *address = self.formattedAddress;

@@ -14,14 +14,6 @@
             <rect key="frame" x="0.0" y="0.0" width="434" height="489"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-Z7-tIe">
-                    <rect key="frame" x="0.0" y="44" width="434" height="445"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="Kuk-c2-nfe"/>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="2X1-2u-iCM"/>
-                    </connections>
-                </tableView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BbP-QR-jqt">
                     <rect key="frame" x="0.0" y="0.0" width="434" height="44"/>
                     <constraints>
@@ -32,20 +24,41 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="Z1S-5i-4iC"/>
                     </connections>
                 </searchBar>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-3B-caS">
+                    <rect key="frame" x="0.0" y="44" width="434" height="2"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="wkh-gJ-QSe"/>
+                    </constraints>
+                </progressView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-Z7-tIe">
+                    <rect key="frame" x="0.0" y="46" width="434" height="443"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="Kuk-c2-nfe"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="2X1-2u-iCM"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="NL8-Z7-tIe" firstAttribute="top" secondItem="BbP-QR-jqt" secondAttribute="bottom" id="Div-UW-R3r"/>
-                <constraint firstAttribute="trailing" secondItem="NL8-Z7-tIe" secondAttribute="trailing" id="GlV-FW-OAB"/>
+                <constraint firstAttribute="trailing" secondItem="NL8-Z7-tIe" secondAttribute="trailing" id="DBw-op-sdx"/>
                 <constraint firstItem="BbP-QR-jqt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jxz-et-j8U"/>
                 <constraint firstItem="BbP-QR-jqt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RzW-qt-C8P"/>
+                <constraint firstAttribute="bottom" secondItem="NL8-Z7-tIe" secondAttribute="bottom" id="ZXr-wA-890"/>
                 <constraint firstAttribute="trailing" secondItem="BbP-QR-jqt" secondAttribute="trailing" id="dH9-9w-lCF"/>
-                <constraint firstItem="NL8-Z7-tIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fto-pz-BzL"/>
-                <constraint firstAttribute="bottom" secondItem="NL8-Z7-tIe" secondAttribute="bottom" id="xZC-qA-KbI"/>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pGG-6D-tiJ"/>
+                <constraint firstAttribute="trailing" secondItem="TZa-3B-caS" secondAttribute="trailing" id="qOT-hz-1aU"/>
+                <constraint firstItem="TZa-3B-caS" firstAttribute="top" secondItem="BbP-QR-jqt" secondAttribute="bottom" id="xKo-5V-ilP"/>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="top" secondItem="TZa-3B-caS" secondAttribute="bottom" id="xf2-W5-Ffq"/>
+                <constraint firstItem="TZa-3B-caS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zxh-ed-QWG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="progressView" destination="TZa-3B-caS" id="BK3-w8-mGQ"/>
+                <outlet property="progressViewHeight" destination="wkh-gJ-QSe" id="KpF-mv-8Rn"/>
                 <outlet property="searchBar" destination="BbP-QR-jqt" id="aJs-Ba-ZZM"/>
                 <outlet property="tableView" destination="NL8-Z7-tIe" id="ZVi-ZO-dlX"/>
             </connections>

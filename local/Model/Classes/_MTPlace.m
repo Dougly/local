@@ -29,6 +29,11 @@
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
+	if ([key isEqualToString:@"distanceValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"distance"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"isOpenNowValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"isOpenNow"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -56,6 +61,26 @@
 	}
 
 	return keyPaths;
+}
+
+@dynamic distance;
+
+- (float)distanceValue {
+	NSNumber *result = [self distance];
+	return [result floatValue];
+}
+
+- (void)setDistanceValue:(float)value_ {
+	[self setDistance:@(value_)];
+}
+
+- (float)primitiveDistanceValue {
+	NSNumber *result = [self primitiveDistance];
+	return [result floatValue];
+}
+
+- (void)setPrimitiveDistanceValue:(float)value_ {
+	[self setPrimitiveDistance:@(value_)];
 }
 
 @dynamic formattedAddress;
@@ -190,6 +215,9 @@
 @end
 
 @implementation MTPlaceAttributes 
++ (NSString *)distance {
+	return @"distance";
+}
 + (NSString *)formattedAddress {
 	return @"formattedAddress";
 }

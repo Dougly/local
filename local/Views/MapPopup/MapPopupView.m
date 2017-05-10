@@ -39,23 +39,29 @@
 
 - (void)getDetails {
     [self switchToLoadingView];
-    
-    MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
-    request.placeId = self.place.placeId;
-    
-    __weak typeof (self) weakSelf = self;
-    self.spinner.hidden = false;
-    [self.spinner startAnimating];
-    
-    request.completionBlock = ^(SDRequest *request, SDResult *response)
-    {
-        if ([response isSuccess]) {
-            MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
-            weakSelf.placeDetails = detailsResponse.placeDetails;
-            [weakSelf downloadImage];
-        }
-    };
-    [request run];
+    MTPlaceDetails *placeDetails = [[MTDataModel sharedDatabaseStorage] getPlaceDetialsForId:self.place.placeId];
+    if (placeDetails) {
+        self.placeDetails = placeDetails;
+        [self downloadImage];
+    }
+    else {
+        MTGetPlaceDetailRequest *request = [MTGetPlaceDetailRequest requestWithOwner:self];
+        request.placeId = self.place.placeId;
+        
+        __weak typeof (self) weakSelf = self;
+        self.spinner.hidden = false;
+        [self.spinner startAnimating];
+        
+        request.completionBlock = ^(SDRequest *request, SDResult *response)
+        {
+            if ([response isSuccess]) {
+                MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
+                weakSelf.placeDetails = detailsResponse.placeDetails;
+                [weakSelf downloadImage];
+            }
+        };
+        [request run];
+    }
 }
 
 - (void)downloadImage {

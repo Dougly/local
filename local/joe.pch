@@ -28,6 +28,15 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
     MTSectionNumber
 };
 
+typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
+    MTFilterViewCellCoffee = 0,
+    MTFilterViewCellHardStuff,
+    MTFilterViewCellHelthy,
+    MTFilterViewCellComfort,
+    MTFilterViewCellSweet,
+    MTFilterViewCellCount
+};
+
 #define  FOOD_LUNCH         @"lunch"
 #define  FOOD_DRINK         @"drink"
 #define  FOOD_BREAKFAST     @"breakfast"
@@ -59,15 +68,24 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 @end
 
 // --- FILTERS ---
-#define FILTERS_KEY_WORDS            @[@"brunch", @"wine+beer+cocktail", @"coffee+tea"]
-#define MEAL_TYPES                   @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
+#define FILTERS_KEY_WORDS            @[@"coffee+tea", @"wine+beer+cocktail", @[@"juice", @"smoothie", @"seafood+sushi", @"vegetarian", @"salad"], @[@"italian", @"american", @"indian", @"french", @"mexican", @"chinese", @"pizza", @"steak"], @[@"ice+cream", @"pastry"]]
 
-#define nKEYWORDS_CHANGED             @"KeyWordsChangedNotification"
-#define nNEW_PLACES_RECEIVED          @"NewPlacesReceivedNotification"
-#define nLOCATION_CHANGED             @"LocationChangedNotification"
+#define FILTER_TITLES                @[@"Caffeine", @"The hard stuff", @[@"Juice", @"Smoothie", @"Seafood & sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"]]
+
+
+#define MEAL_TYPES                          @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
+
+#define nKEYWORDS_CHANGED                   @"KeyWordsChangedNotification"
+#define nNEW_PLACES_RECEIVED                @"NewPlacesReceivedNotification"
+#define nLOCATION_CHANGED                   @"LocationChangedNotification"
+
+#define nHIDE_FILTER_VIEW_NOTIFICATION      @"HideFilterViewNotification"
+#define kRevertFilterViewToPreviousIndex    @"RevertFilterVIewToPreviousIndex"
+
+#define kNEW_PLACES_FINAL_PACK              @"NewPlacesFinalPackOfPlacesKey"
 
 // -- APP STATE
-#define nFOREGROUND                   @"AppToForegroundNotification"
+#define nFOREGROUND                     @"AppToForegroundNotification"
 
 
 #endif

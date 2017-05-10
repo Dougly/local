@@ -19,7 +19,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(newPlacesReceived)
+                                             selector:@selector(newPlacesReceived:)
                                                  name:nNEW_PLACES_RECEIVED
                                                object:nil];
     
@@ -31,19 +31,35 @@
 }
 
 - (void)keywordsUpdated {
-    if (self.onKeyWordUpdatedHandler)
-        self.onKeyWordUpdatedHandler();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.onKeyWordUpdatedHandler)
+            self.onKeyWordUpdatedHandler();
+    });
 }
 
-- (void)newPlacesReceived {
-    if (self.onNewPlacesReceivedHandler)
-        self.onNewPlacesReceivedHandler();
+- (void)newPlacesReceived:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        BOOL isFinalPackOfPlaces = [self doesNotificationContainFinalPackOfPlaces:notification];
+        if (self.onNewPlacesReceivedHandler) {
+            self.onNewPlacesReceivedHandler(isFinalPackOfPlaces);
+        }
+    });
 }
 
 - (void)locationChanged {
-    if (self.onLocationChangedHandler) {
-        self.onLocationChangedHandler();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.onLocationChangedHandler) {
+            self.onLocationChangedHandler();
+        }
+    });
+}
+
+- (BOOL)doesNotificationContainFinalPackOfPlaces:(NSNotification *)notification {
+    if (notification.userInfo[kNEW_PLACES_FINAL_PACK]) {
+        return true;
     }
+    
+    return false;
 }
 
 - (void)dealloc {

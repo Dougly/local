@@ -8,12 +8,13 @@
 
 #import "MTMainViewController.h"
 #import "CMTabbarView.h"
-#import "FilterView.h"
 #import "MTSettings.h"
 #import "AppStateListener.h"
 #import "MTDataModel.h"
+#import "FilterViewListener.h"
+#import "MTFilterViewController.h"
 
-#define FILTER_VIEW_HEIGHT              150
+#define FILTER_VIEW_HEIGHT              250
 
 typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     MTMainMenuBreakfast = 0,
@@ -22,15 +23,17 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     MTMainMenuFilter
 };
 
-@interface MTMainViewController ()<CMTabbarViewDelegate, CMTabbarViewDatasouce, FilterViewDelegate>
+@interface MTMainViewController ()<CMTabbarViewDelegate, CMTabbarViewDatasouce>
 @property (nonatomic, weak) IBOutlet UIView *placeHolderForTabbarView;
 @property (nonatomic, weak) IBOutlet CMTabbarView *tabbarView;
-@property (nonatomic, strong) IBOutlet FilterView *filterView;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *leftMarginForBottomMenuConstraint;
 @property (nonatomic) BOOL filterMenuVisisble;
 
 @property (nonatomic, strong) AppStateListener *appStateListener;
+@property (nonatomic, strong) FilterViewListener *filterViewListener;
 @property (nonatomic) NSUInteger selectedNavigationIndex;
+
+@property (nonatomic, weak) IBOutlet UIView *filterContainterView;
 @end
 
 @implementation MTMainViewController
@@ -46,20 +49,36 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     self.appStateListener.onForegroundHandler = ^{
         [weakSelf setTabBarIndex];
     };
+    
+    self.filterViewListener.onFilterViewCloseHandler = ^(BOOL shoulRevertToPreviousIndex){
+        [weakSelf hideFilterView:shoulRevertToPreviousIndex];
+    };
+}
+
+- (void)_hideFilterView:(NSNotification *)notification {
+    if (notification.userInfo[kRevertFilterViewToPreviousIndex]) {
+        [self hideFilterView:true];
+    }
+    else {
+        [self hideFilterView:false];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.filterContainterView.alpha = 0.0;
     [self adjustMenuConstraint];
 }
 
 - (void)setTabBarIndex {
     NSString *keyWords = [MTSettings sharedSettings].filterKeyWords;
     
-    /*Defaul point to filter icon*/
+    /*Default point to filter icon*/
     NSUInteger index = 3;
     if ([MEAL_TYPES containsObject:keyWords]) {
         index = [MEAL_TYPES indexOfObject:keyWords];
+        self.selectedNavigationIndex = index;
     }
     self.tabbarView.defaultSelectedIndex = index;
     [self.tabbarView setTabIndex:index animated:false];
@@ -77,30 +96,51 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 #pragma mark - FilterView
 
 - (void)showFilterView {
-    self.filterView = [[[NSBundle mainBundle] loadNibNamed:@"FilterView" owner:self options:nil] objectAtIndex:0];
-    self.filterView.delegate = self;
-    self.filterView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height);
-    [self.view addSubview:self.filterView];
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.filterView.frame = CGRectMake(0, self.view.bounds.size.height - FILTER_VIEW_HEIGHT - BOTTOM_NAVIGATION_BAR_HEIGHT, self.view.bounds.size.width, FILTER_VIEW_HEIGHT);
-        self.filterMenuVisisble = true;
+    [UIView animateWithDuration:0.4 animations:^{
+        /* This looks ugly. navigation for filterview should be refactored*/
+        MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
+        [filterViewController.navigationController popViewControllerAnimated:NO];
+        [filterViewController prepareForShow];
+        self.filterContainterView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        self.filterMenuVisisble = false;
+        self.filterMenuVisisble = YES;
     }];
 }
 
 - (void)hideFilterView:(BOOL)shouldRevertToPreviousIndex {
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        self.filterView.frame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, FILTER_VIEW_HEIGHT);
+    [UIView animateWithDuration:0.2 animations:^{
+        self.filterContainterView.alpha = 0.0;
     } completion:^(BOOL finished) {
-        [self.filterView removeFromSuperview];
         self.filterMenuVisisble = false;
         
         //If the filterview was dismissed and nothing was selected in filter view before - then revert to previous index
-        if (shouldRevertToPreviousIndex && ![FILTERS_KEY_WORDS containsObject:[MTSettings sharedSettings].filterKeyWords]) {
+        if (shouldRevertToPreviousIndex && [self nothingSelected]) {
             [self.tabbarView setTabIndex:self.selectedNavigationIndex animated:YES];
         }
     }];
+}
+
+- (BOOL)nothingSelected {
+    NSUInteger index = -1;
+    
+    for (NSUInteger subfiltersIndex = MTFilterViewCellHelthy; subfiltersIndex < MTFilterViewCellCount; subfiltersIndex++) {
+        if (subfiltersIndex <= MTFilterViewCellHardStuff) {
+            if ([FILTERS_KEY_WORDS[subfiltersIndex] isEqualToString:[MTSettings sharedSettings].filterKeyWords]) {
+                index = subfiltersIndex;
+                break;
+            }
+        }
+        else {
+            NSArray *subfilters = FILTERS_KEY_WORDS[subfiltersIndex];
+            if ([subfilters containsObject:[MTSettings sharedSettings].filterKeyWords]) {
+                index = subfiltersIndex;
+                break;
+            }
+        }
+    }
+    
+    return (index == -1) ? true : false;
 }
 
 #pragma mark - CMTabbarViewDelegate
@@ -147,6 +187,14 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     }
     
     return _appStateListener;
+}
+
+- (FilterViewListener *)filterViewListener {
+    if (!_filterViewListener) {
+        _filterViewListener = [FilterViewListener new];
+    }
+    
+    return _filterViewListener;
 }
 
 @end

@@ -28,6 +28,12 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @property (nonatomic, strong) FilterListener *filterListener;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
+@property (nonatomic, strong) NSArray *placesBeforeSort;
+@property (nonatomic, strong) NSMutableArray *oldRowsBeforeSort;
+@property (nonatomic, strong) NSMutableArray *updatedRowsAfterSort;
+@property (nonatomic, weak) IBOutlet UIProgressView *progressView;
+@property (nonatomic, strong) NSTimer *hideProgressViewTimer;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *progressViewHeight;
 @property (nonatomic) CGFloat CELL_HEIGHT;
 @end
 
@@ -57,8 +63,8 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
         [weakSelf keyWordsChanged];
     };
     
-    self.filterListener.onNewPlacesReceivedHandler = ^{
-        [weakSelf gotNewPlaces];
+    self.filterListener.onNewPlacesReceivedHandler = ^(BOOL finalPackOfPlaces){
+        [weakSelf gotNewPlaces:finalPackOfPlaces];
     };
     
     self.filterListener.onLocationChangedHandler = ^{
@@ -90,7 +96,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     int i = 0;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,27 +190,44 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [[MTProgressHUD sharedHUD] showOnView:self percentage:false];
 }
 
-- (void)gotNewPlaces {
+- (void)gotNewPlaces:(BOOL)isFinalPackOfPlaces {
+    [self updateProgressView:isFinalPackOfPlaces];
     [[MTProgressHUD sharedHUD] dismiss];
     
     if (!self.places || self.places.count == 0) {
-        self.places = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
+        [self.hideProgressViewTimer invalidate];
+        
+        NSMutableArray *places = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
+        
+        NSMutableArray *sortedPlaces = [self sortPlacesByDistance:places];
+        self.places = sortedPlaces;
         [self.tableView reloadData];
     }
     else {
         NSMutableArray *newPlaces = [[NSMutableArray alloc] initWithArray: [[MTDataModel sharedDatabaseStorage] getPlaces]];
+        
+        //remove the places that we already have in datasource from the array with new places
         [newPlaces removeObjectsInArray:self.places];
+        newPlaces = [self sortPlacesByDistance:newPlaces];
         
-        
+        //Get the indexes of new rows
         NSMutableArray *newIndexes = [NSMutableArray new];
         for (int i=0; i<newPlaces.count; i++) {
             [newIndexes addObject:[NSIndexPath indexPathForRow:(self.places.count + i) inSection:0]];
         }
         
+        self.placesBeforeSort = [NSArray arrayWithArray:self.places];
+        //add new unique objects one by one
         [self.places addObjectsFromArray:newPlaces];
+        NSMutableArray *sortedPlaces = [self sortPlacesByDistance:self.places];
+        self.places = sortedPlaces;
         
         [self.tableView beginUpdates];
         [self.tableView insertRowsAtIndexPaths:newIndexes withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+        
+        [self.tableView beginUpdates];
+        [self animateSortedRows];
         [self.tableView endUpdates];
     }
 }
@@ -213,6 +235,57 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)locationChanged {
     self.places = nil;
     [self.tableView reloadData];
+}
+
+- (void)updateProgressView:(BOOL)isFinalPackOfPlaces {
+    if (isFinalPackOfPlaces) {
+        self.progressViewHeight.constant = 2;
+        [self.progressView setProgress:1.0 animated:YES];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.hideProgressViewTimer = [NSTimer scheduledTimerWithTimeInterval:1.4 target:self selector:@selector(hideProgressView) userInfo:nil repeats:NO];
+        });
+    }
+    else {
+        self.progressView.progress = 0;
+        self.progressViewHeight.constant = 2;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.progressView updateConstraints];
+            [self.progressView layoutSubviews];
+            
+            [self.progressView setProgress:0.6 animated:YES];
+        });
+    }
+}
+
+- (void)hideProgressView {
+    self.progressViewHeight.constant = 0;
+}
+
+- (void)animateSortedRows {
+    self.oldRowsBeforeSort = [NSMutableArray new];
+    self.updatedRowsAfterSort = [NSMutableArray new];
+    
+    for (int i = 0; i < self.placesBeforeSort.count; i++)
+    {
+        // newRow will get the new row of an object.  i is the old row.
+        NSInteger newRow = [self.places indexOfObject:self.placesBeforeSort[i]];
+        
+        NSIndexPath *oldRowIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        NSIndexPath *updatedRowIndexPath = [NSIndexPath indexPathForRow:newRow inSection:0];
+        
+        [self.oldRowsBeforeSort addObject:oldRowIndexPath];
+        [self.updatedRowsAfterSort addObject:updatedRowIndexPath];
+        [self.tableView moveRowAtIndexPath:oldRowIndexPath toIndexPath:updatedRowIndexPath];
+    }
+}
+
+- (NSMutableArray *)sortPlacesByDistance:(NSArray *)places {
+    NSSortDescriptor* sortOrder = [NSSortDescriptor sortDescriptorWithKey: @"distance"
+                                                                ascending: YES];
+    NSArray *sortedPlaces = [places sortedArrayUsingDescriptors: [NSArray arrayWithObject: sortOrder]];
+    return [[NSMutableArray alloc] initWithArray:sortedPlaces];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -223,9 +296,11 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
         
         NSArray *allStoredPlaces = [[MTDataModel sharedDatabaseStorage] getPlaces];
         self.places = [[NSMutableArray alloc] initWithArray:[allStoredPlaces filteredArrayUsingPredicate:namePredicate]];
+        self.places = [self sortPlacesByDistance:self.places];
     }
     else {
         self.places = [[NSMutableArray alloc] initWithArray:[[MTDataModel sharedDatabaseStorage] getPlaces]];
+        self.places = [self sortPlacesByDistance:self.places];
         [searchBar performSelector: @selector(resignFirstResponder)
                         withObject: nil
                         afterDelay: 0.1];

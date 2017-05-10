@@ -63,8 +63,6 @@
 		47260E141E797EAD0007990C /* _MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E131E797EAD0007990C /* _MTUser.m */; };
 		474001A81EB4D2CE00C55420 /* MTFilterViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001A31EB4D2CE00C55420 /* MTFilterViewCell.m */; };
 		474001A91EB4D2CE00C55420 /* MTFilterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001A41EB4D2CE00C55420 /* MTFilterViewCell.xib */; };
-		474001AA1EB4D2CE00C55420 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001A61EB4D2CE00C55420 /* FilterView.m */; };
-		474001AB1EB4D2CE00C55420 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001A71EB4D2CE00C55420 /* FilterView.xib */; };
 		474001B51EB5D73E00C55420 /* MTListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001B01EB5D73E00C55420 /* MTListViewCell.m */; };
 		474001B61EB5D73E00C55420 /* MTListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474001B11EB5D73E00C55420 /* MTListViewCell.xib */; };
 		474001B71EB5D73E00C55420 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001B31EB5D73E00C55420 /* ListView.m */; };
@@ -86,6 +84,7 @@
 		476BC2461E7957E400B1BA91 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2421E7957E400B1BA91 /* NSString+Validation.m */; };
 		476BC24A1E79582C00B1BA91 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2491E79582C00B1BA91 /* UIColor+BFPaperColors.m */; };
 		476BC24D1E795A1500B1BA91 /* SDAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC24C1E795A1500B1BA91 /* SDAuth.m */; };
+		477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */; };
 		478072FD1EA9529700D98DD7 /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478072FC1EA9529700D98DD7 /* ClockViewController.swift */; };
 		478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073001EAA6FAD00D98DD7 /* MTMapViewController.m */; };
 		478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073061EAA705500D98DD7 /* DummyAnnotation.m */; };
@@ -100,6 +99,8 @@
 		4780732C1EAA70B400D98DD7 /* SDInternetConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073251EAA70B400D98DD7 /* SDInternetConnection.m */; };
 		4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073271EAA70B400D98DD7 /* SDKeyStorage.m */; };
 		4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073291EAA70B400D98DD7 /* SDUserSettings.m */; };
+		4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */; };
+		4788ADA21EC388680072CEF2 /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788ADA11EC388680072CEF2 /* FilterViewListener.m */; };
 		479102691EB33B140071BC2C /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479102681EB33B140071BC2C /* TitleView.xib */; };
 		4791026C1EB33B280071BC2C /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791026B1EB33B280071BC2C /* TitleView.m */; };
 		4791026F1EB33C5E0071BC2C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4791026E1EB33C5E0071BC2C /* FontAwesome.otf */; };
@@ -363,9 +364,6 @@
 		474001A21EB4D2CE00C55420 /* MTFilterViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterViewCell.h; sourceTree = "<group>"; };
 		474001A31EB4D2CE00C55420 /* MTFilterViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterViewCell.m; sourceTree = "<group>"; };
 		474001A41EB4D2CE00C55420 /* MTFilterViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTFilterViewCell.xib; sourceTree = "<group>"; };
-		474001A51EB4D2CE00C55420 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterView.h; sourceTree = "<group>"; };
-		474001A61EB4D2CE00C55420 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterView.m; sourceTree = "<group>"; };
-		474001A71EB4D2CE00C55420 /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		474001AF1EB5D73E00C55420 /* MTListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTListViewCell.h; sourceTree = "<group>"; };
 		474001B01EB5D73E00C55420 /* MTListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTListViewCell.m; sourceTree = "<group>"; };
 		474001B11EB5D73E00C55420 /* MTListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTListViewCell.xib; sourceTree = "<group>"; };
@@ -404,6 +402,8 @@
 		476BC2491E79582C00B1BA91 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
 		476BC24B1E795A1500B1BA91 /* SDAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAuth.h; sourceTree = "<group>"; };
 		476BC24C1E795A1500B1BA91 /* SDAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAuth.m; sourceTree = "<group>"; };
+		477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFilterViewController.h; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTFilterViewController.h; sourceTree = "<group>"; };
+		477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFilterViewController.m; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTFilterViewController.m; sourceTree = "<group>"; };
 		478072F71EA94E7600D98DD7 /* Local-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Bridging-Header.h"; sourceTree = "<group>"; };
 		478072FC1EA9529700D98DD7 /* ClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockViewController.swift; sourceTree = "<group>"; };
 		478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
@@ -434,6 +434,10 @@
 		478073271EAA70B400D98DD7 /* SDKeyStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeyStorage.m; sourceTree = "<group>"; };
 		478073281EAA70B400D98DD7 /* SDUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUserSettings.h; sourceTree = "<group>"; };
 		478073291EAA70B400D98DD7 /* SDUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUserSettings.m; sourceTree = "<group>"; };
+		4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTSubfilterViewController.h; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTSubfilterViewController.h; sourceTree = "<group>"; };
+		4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTSubfilterViewController.m; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTSubfilterViewController.m; sourceTree = "<group>"; };
+		4788ADA01EC388680072CEF2 /* FilterViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewListener.h; sourceTree = "<group>"; };
+		4788ADA11EC388680072CEF2 /* FilterViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewListener.m; sourceTree = "<group>"; };
 		479102681EB33B140071BC2C /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		4791026A1EB33B280071BC2C /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		4791026B1EB33B280071BC2C /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
@@ -939,9 +943,6 @@
 			isa = PBXGroup;
 			children = (
 				474001A11EB4D2CE00C55420 /* Cells */,
-				474001A51EB4D2CE00C55420 /* FilterView.h */,
-				474001A61EB4D2CE00C55420 /* FilterView.m */,
-				474001A71EB4D2CE00C55420 /* FilterView.xib */,
 			);
 			path = FilterView;
 			sourceTree = "<group>";
@@ -1088,6 +1089,16 @@
 				478073291EAA70B400D98DD7 /* SDUserSettings.m */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		4788AD9F1EC388680072CEF2 /* FilterViewListener */ = {
+			isa = PBXGroup;
+			children = (
+				4788ADA01EC388680072CEF2 /* FilterViewListener.h */,
+				4788ADA11EC388680072CEF2 /* FilterViewListener.m */,
+			);
+			name = FilterViewListener;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Common/FilterViewListener;
 			sourceTree = "<group>";
 		};
 		479102671EB33B140071BC2C /* TitleView */ = {
@@ -1618,6 +1629,7 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4788AD9F1EC388680072CEF2 /* FilterViewListener */,
 				474001D71EB7974C00C55420 /* appstate */,
 				474001D31EB65F7700C55420 /* keywords */,
 				474001CF1EB6235800C55420 /* Yelp */,
@@ -1686,6 +1698,10 @@
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
 				474001BF1EB6112600C55420 /* MTPageContainerViewController.h */,
 				474001C01EB6112600C55420 /* MTPageContainerViewController.m */,
+				477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */,
+				477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */,
+				4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */,
+				4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1874,7 +1890,6 @@
 				474001B61EB5D73E00C55420 /* MTListViewCell.xib in Resources */,
 				CE250ECE1B67657E005447FF /* LaunchScreen.xib in Resources */,
 				47A980141EAE070E00AB8657 /* AddressLocationDetail.xib in Resources */,
-				474001AB1EB4D2CE00C55420 /* FilterView.xib in Resources */,
 				47157C8C1E7C853A000D11E9 /* IDMPBLocalizations.bundle in Resources */,
 				47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */,
 				47A97FBC1EACDBA500AB8657 /* MTSwitchCell.xib in Resources */,
@@ -1984,6 +1999,7 @@
 				47A97F9C1EABD89900AB8657 /* _MTPhoto.m in Sources */,
 				47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */,
 				47157CF51E7C8BE6000D11E9 /* SDWebImageManager.m in Sources */,
+				4788ADA21EC388680072CEF2 /* FilterViewListener.m in Sources */,
 				474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */,
 				476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */,
 				47A980221EAE12AB00AB8657 /* MTGetPlaceDetailRequest.m in Sources */,
@@ -2077,7 +2093,6 @@
 				B013DBA51EB8DF5A00A96F75 /* MDTimePickerDialog.m in Sources */,
 				B013DBD01EB8E13200A96F75 /* MTKeyStorageFacade.m in Sources */,
 				B013DBA21EB8DF5A00A96F75 /* MDCalendarYearSelectorViewCell.m in Sources */,
-				474001AA1EB4D2CE00C55420 /* FilterView.m in Sources */,
 				47157CFB1E7C8BE6000D11E9 /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */,
 				47A980151EAE070E00AB8657 /* DetailLocationCell.m in Sources */,
 				CE250F1D1B6768B0005447FF /* MTDataModel.m in Sources */,
@@ -2127,9 +2142,11 @@
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
 				4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */,
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
+				4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */,
 				B013DBA61EB8DF5A00A96F75 /* NSCalendarHelper.m in Sources */,
 				B013DBA31EB8DF5A00A96F75 /* MDDatePicker.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
+				477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */,
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
 				474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */,
 				B013DBB61EB8DF5A00A96F75 /* MDTableViewCell.m in Sources */,

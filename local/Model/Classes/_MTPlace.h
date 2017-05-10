@@ -22,6 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTPlaceID *objectID;
 
+@property (nonatomic, strong, nullable) NSNumber* distance;
+
+@property (atomic) float distanceValue;
+- (float)distanceValue;
+- (void)setDistanceValue:(float)value_;
+
 @property (nonatomic, strong, nullable) NSString* formattedAddress;
 
 @property (nonatomic, strong, nullable) NSString* icon;
@@ -84,6 +90,12 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface _MTPlace (CoreDataGeneratedPrimitiveAccessors)
+
+- (nullable NSNumber*)primitiveDistance;
+- (void)setPrimitiveDistance:(nullable NSNumber*)value;
+
+- (float)primitiveDistanceValue;
+- (void)setPrimitiveDistanceValue:(float)value_;
 
 - (nullable NSString*)primitiveFormattedAddress;
 - (void)setPrimitiveFormattedAddress:(nullable NSString*)value;
@@ -148,6 +160,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface MTPlaceAttributes: NSObject 
++ (NSString *)distance;
 + (NSString *)formattedAddress;
 + (NSString *)icon;
 + (NSString *)isOpenNow;

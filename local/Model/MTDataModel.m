@@ -270,11 +270,6 @@
         }
     }
     
-    
-    if (places.count > 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:nNEW_PLACES_RECEIVED object:nil];
-    }
-    
     return [places copy];
 }
 
