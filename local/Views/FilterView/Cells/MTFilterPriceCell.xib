@@ -19,166 +19,118 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGH-IP-G5k" id="ifZ-po-PXY">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-0l-hbS">
-                        <rect key="frame" x="12" y="12" width="0.0" height="23"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIe-MO-dLW">
-                        <rect key="frame" x="12" y="0.0" width="40" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="zcd-2m-YvK"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
-                        <state key="normal" title="">
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-wL-nHp">
-                        <rect key="frame" x="67" y="0.0" width="9" height="46"/>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">$    </string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVV-pA-HrA">
-                        <rect key="frame" x="51" y="0.0" width="2" height="46"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="2" id="7dv-mp-hOv"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">|</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybF-C7-3qV">
-                        <rect key="frame" x="90" y="0.0" width="2" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="2" id="oUT-Kf-81V"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">|</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rp6-UK-brN">
-                        <rect key="frame" x="137" y="0.0" width="2" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="2" id="U7u-iS-M0N"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">|</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-73-ISz">
-                        <rect key="frame" x="192" y="0.0" width="2" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="2" id="1nW-GS-nvV"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">|</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3i-hc-aAt">
-                        <rect key="frame" x="255" y="0.0" width="2" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="2" id="r2z-6B-9IZ"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">|</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckm-6t-98r">
-                        <rect key="frame" x="106" y="0.0" width="17" height="46"/>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">$$    </string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ST0-gQ-JvH">
-                        <rect key="frame" x="153" y="0.0" width="25" height="46"/>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">$$$    </string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljp-bj-68c">
-                        <rect key="frame" x="208" y="0.0" width="33" height="46"/>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">$$$$    </string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay8-Gx-ez9">
-                        <rect key="frame" x="271" y="0.0" width="26" height="46"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="26" id="eWk-L1-BAf"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
-                        <state key="normal">
-                            <string key="title">ALL</string>
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-om-neQ">
+                        <rect key="frame" x="12" y="0.0" width="290" height="45"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIe-MO-dLW">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVV-pA-HrA">
+                                <rect key="frame" x="26" y="0.0" width="29.5" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">|
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-wL-nHp">
+                                <rect key="frame" x="51.5" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">$    
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybF-C7-3qV">
+                                <rect key="frame" x="77.5" y="0.0" width="29.5" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">|
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckm-6t-98r">
+                                <rect key="frame" x="103" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">$$    
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rp6-UK-brN">
+                                <rect key="frame" x="129" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">|
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ST0-gQ-JvH">
+                                <rect key="frame" x="155" y="0.0" width="29.5" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">$$$    
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-73-ISz">
+                                <rect key="frame" x="180.5" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">|
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljp-bj-68c">
+                                <rect key="frame" x="206.5" y="0.0" width="31.5" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">$$$$    
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3i-hc-aAt">
+                                <rect key="frame" x="234" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">|
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay8-Gx-ez9">
+                                <rect key="frame" x="260" y="0.0" width="30" height="45"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                <state key="normal">
+                                    <string key="title">ALL
+</string>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="d3i-hc-aAt" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="17Z-Q9-HLe"/>
-                    <constraint firstAttribute="bottom" secondItem="yIS-73-ISz" secondAttribute="bottom" id="3e2-ME-Gk7"/>
-                    <constraint firstAttribute="bottom" secondItem="Ljp-bj-68c" secondAttribute="bottom" id="4F6-U3-gRq"/>
-                    <constraint firstAttribute="bottom" secondItem="ybF-C7-3qV" secondAttribute="bottom" id="66n-3G-Jwq"/>
-                    <constraint firstItem="YIe-MO-dLW" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leading" constant="12" id="69G-CL-m8B"/>
-                    <constraint firstItem="Rp6-UK-brN" firstAttribute="leading" secondItem="ybF-C7-3qV" secondAttribute="trailing" constant="45" id="700-kq-eeI"/>
-                    <constraint firstItem="Vb8-wL-nHp" firstAttribute="leading" secondItem="tVV-pA-HrA" secondAttribute="trailing" constant="14" id="8CJ-48-Pqd"/>
-                    <constraint firstItem="yIS-73-ISz" firstAttribute="leading" secondItem="Rp6-UK-brN" secondAttribute="trailing" constant="53" id="8sk-7w-CI4"/>
-                    <constraint firstItem="YIe-MO-dLW" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="DV9-cR-ni3"/>
-                    <constraint firstItem="yIS-73-ISz" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="ELE-rX-gg6"/>
-                    <constraint firstAttribute="bottom" secondItem="ckm-6t-98r" secondAttribute="bottom" id="Ea6-eI-uyN"/>
-                    <constraint firstAttribute="bottom" secondItem="YIe-MO-dLW" secondAttribute="bottom" id="F8U-qG-Whz"/>
-                    <constraint firstItem="ST0-gQ-JvH" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="JTY-JF-Pbj"/>
-                    <constraint firstItem="zDu-0l-hbS" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leading" constant="12" id="Jy7-4j-BQY"/>
-                    <constraint firstAttribute="bottom" secondItem="ay8-Gx-ez9" secondAttribute="bottom" id="N5e-va-OiB"/>
-                    <constraint firstAttribute="bottom" secondItem="tVV-pA-HrA" secondAttribute="bottom" id="O92-f1-DFy"/>
-                    <constraint firstItem="ay8-Gx-ez9" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="Q1t-p6-c7o"/>
-                    <constraint firstItem="Ljp-bj-68c" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="Vcr-Mk-JAt"/>
-                    <constraint firstItem="ckm-6t-98r" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="WNi-zu-2Ep"/>
-                    <constraint firstItem="tVV-pA-HrA" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="WYF-yD-iA9"/>
-                    <constraint firstItem="ST0-gQ-JvH" firstAttribute="leading" secondItem="Rp6-UK-brN" secondAttribute="trailing" constant="14" id="XFF-2y-0rS"/>
-                    <constraint firstItem="Rp6-UK-brN" firstAttribute="leading" secondItem="ckm-6t-98r" secondAttribute="trailing" constant="14" id="Xev-cS-INh"/>
-                    <constraint firstItem="Vb8-wL-nHp" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="ZhR-Ux-UKq"/>
-                    <constraint firstItem="yIS-73-ISz" firstAttribute="leading" secondItem="ST0-gQ-JvH" secondAttribute="trailing" constant="14" id="a2V-6t-wpd"/>
-                    <constraint firstItem="d3i-hc-aAt" firstAttribute="leading" secondItem="yIS-73-ISz" secondAttribute="trailing" constant="61" id="aOV-qN-bCz"/>
-                    <constraint firstItem="ay8-Gx-ez9" firstAttribute="leading" secondItem="d3i-hc-aAt" secondAttribute="trailing" constant="14" id="bN4-Aq-BEE"/>
-                    <constraint firstAttribute="bottom" secondItem="ST0-gQ-JvH" secondAttribute="bottom" id="bSr-k8-0L2"/>
-                    <constraint firstItem="d3i-hc-aAt" firstAttribute="leading" secondItem="Ljp-bj-68c" secondAttribute="trailing" constant="14" id="d4H-Rg-4Af"/>
-                    <constraint firstItem="ybF-C7-3qV" firstAttribute="leading" secondItem="tVV-pA-HrA" secondAttribute="trailing" constant="37" id="g92-hA-tgk"/>
-                    <constraint firstItem="Ljp-bj-68c" firstAttribute="leading" secondItem="yIS-73-ISz" secondAttribute="trailing" constant="14" id="gC4-Kt-UFz"/>
-                    <constraint firstAttribute="bottom" secondItem="d3i-hc-aAt" secondAttribute="bottom" id="krm-4d-Tcw"/>
-                    <constraint firstItem="ckm-6t-98r" firstAttribute="leading" secondItem="ybF-C7-3qV" secondAttribute="trailing" constant="14" id="rGA-iy-cr8"/>
-                    <constraint firstItem="tVV-pA-HrA" firstAttribute="leading" secondItem="YIe-MO-dLW" secondAttribute="trailing" constant="-1" id="sY8-L9-O4U"/>
-                    <constraint firstItem="ybF-C7-3qV" firstAttribute="leading" secondItem="Vb8-wL-nHp" secondAttribute="trailing" constant="14" id="svj-dC-JtS"/>
-                    <constraint firstItem="zDu-0l-hbS" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" constant="12" id="t7u-Pu-u23"/>
-                    <constraint firstItem="Rp6-UK-brN" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="uUZ-eN-rCB"/>
-                    <constraint firstAttribute="bottom" secondItem="Rp6-UK-brN" secondAttribute="bottom" id="vrT-N2-Bmq"/>
-                    <constraint firstAttribute="bottom" secondItem="zDu-0l-hbS" secondAttribute="bottom" constant="12" id="wPi-5J-X8q"/>
-                    <constraint firstAttribute="bottom" secondItem="Vb8-wL-nHp" secondAttribute="bottom" id="yx5-In-ltS"/>
-                    <constraint firstItem="ybF-C7-3qV" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="yx5-j0-Mbj"/>
+                    <constraint firstAttribute="bottom" secondItem="1dz-om-neQ" secondAttribute="bottom" constant="1" id="3DB-M2-nVG"/>
+                    <constraint firstItem="1dz-om-neQ" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leading" constant="12" id="Hq0-Vs-L4B"/>
+                    <constraint firstAttribute="trailing" secondItem="1dz-om-neQ" secondAttribute="trailing" constant="18" id="l9v-2B-rad"/>
+                    <constraint firstItem="1dz-om-neQ" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="sbw-bb-woa"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="188" y="198.5"/>
