@@ -17,6 +17,12 @@
 
 #import "MTConfig.h"
 
+typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
+    MTMainMenuBreakfast = 0,
+    MTMainMenuLunch,
+    MTMainMenuDinner,
+    MTMainMenuFilter,
+};
 
 typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
     MTPlaceTypeSection = 0,
@@ -73,7 +79,7 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 #define FILTER_TITLES                @[@"Caffeine", @"The hard stuff", @[@"Juice", @"Smoothie", @"Seafood & sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"]]
 
 
-#define MEAL_TYPES                          @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
+#define MEAL_TYPES                          @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
 
 #define nKEYWORDS_CHANGED                   @"KeyWordsChangedNotification"
 #define nNEW_PLACES_RECEIVED                @"NewPlacesReceivedNotification"

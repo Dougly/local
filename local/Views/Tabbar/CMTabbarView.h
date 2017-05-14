@@ -71,6 +71,9 @@ extern NSString *const CMTabBoxBackgroundColor;
  The attributes for selected tabs (NSForegroundColorAttributeName, NSFontAttributeName, NSBackgroundColorAttributeName)
  */
 @property (strong, nonatomic) NSDictionary *selectedAttributes;
+
+@property (strong, nonatomic) NSDictionary *normalFilterAttributes;
+@property (strong, nonatomic) NSDictionary *selectedFilterAttributes;
 /**
  Whether the user can scroll the tabbar
  */

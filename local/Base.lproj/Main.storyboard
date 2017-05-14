@@ -337,15 +337,15 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eh-oG-yoF" customClass="CMTabbarView">
-                                        <rect key="frame" x="31" y="0.0" width="344" height="50"/>
+                                        <rect key="frame" x="45" y="6" width="330" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="leading" secondItem="9R0-c5-5Gf" secondAttribute="leading" constant="31" id="HUy-8f-t5E"/>
-                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="top" secondItem="9R0-c5-5Gf" secondAttribute="top" id="aK8-bd-jxT"/>
-                                    <constraint firstAttribute="bottom" secondItem="0eh-oG-yoF" secondAttribute="bottom" id="cWM-nE-AbQ"/>
+                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="leading" secondItem="9R0-c5-5Gf" secondAttribute="leading" constant="45" id="HUy-8f-t5E"/>
+                                    <constraint firstItem="0eh-oG-yoF" firstAttribute="top" secondItem="9R0-c5-5Gf" secondAttribute="top" constant="6" id="aK8-bd-jxT"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eh-oG-yoF" secondAttribute="bottom" constant="4" id="cWM-nE-AbQ"/>
                                     <constraint firstAttribute="trailing" secondItem="0eh-oG-yoF" secondAttribute="trailing" id="dY7-ut-wES"/>
                                     <constraint firstAttribute="height" constant="50" id="nXc-9O-9uW"/>
                                 </constraints>
@@ -922,7 +922,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-sO-fDj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-sO-fDj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -961,7 +961,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wGA-MI-6nM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wGA-MI-6nM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>

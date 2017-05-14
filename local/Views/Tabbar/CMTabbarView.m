@@ -84,9 +84,18 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
     _selectionType = CMTabbarSelectionIndicator;
     _locationType = CMTabbarIndicatorLocationUp;
     _contentInset = UIEdgeInsetsMake(.0f, CMTabbarViewDefaultHorizontalInset, 0, CMTabbarViewDefaultHorizontalInset);
-    _indicatorAttributes = @{CMTabIndicatorColor:CMHEXCOLOR(0x333132),CMTabIndicatorViewHeight:@(2.0f),CMTabBoxBackgroundColor:[UIColor clearColor]};
-    _normalAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x939598)};
-    _selectedAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:14],NSForegroundColorAttributeName:CMHEXCOLOR(0x333132)};
+    
+    _indicatorAttributes = @{CMTabIndicatorColor:CMHEXCOLOR(0xff0000),CMTabIndicatorViewHeight:@(2.0f),CMTabBoxBackgroundColor:[UIColor clearColor]};
+    
+    _normalAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10],NSForegroundColorAttributeName:CMHEXCOLOR(0x939598)};
+    
+    _selectedAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10],NSForegroundColorAttributeName:CMHEXCOLOR(0xff0000)};
+    
+    _normalFilterAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:20],NSForegroundColorAttributeName:CMHEXCOLOR(0x939598)};
+    
+    _selectedFilterAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:20],NSForegroundColorAttributeName:CMHEXCOLOR(0xff0000)};
+    
+    
     _defaultSelectedIndex = 0;
     self.backgroundColor = [UIColor whiteColor];
 }
@@ -119,13 +128,13 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         
         if (IS_IPHONE_5)
-           layout.minimumInteritemSpacing = 20;
+           layout.minimumInteritemSpacing = 27;
         
         if (IS_IPHONE_6)
-            layout.minimumInteritemSpacing = 30;
+            layout.minimumInteritemSpacing = 38;
         
         if (IS_IPHONE_6_PLUS)
-            layout.minimumInteritemSpacing = 40;
+            layout.minimumInteritemSpacing = 48;
         
         [_collectionView registerClass:[CMTabbarCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([CMTabbarCollectionViewCell class])];
         _collectionView.dataSource = self;
@@ -158,7 +167,7 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CMTabbarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CMTabbarCollectionViewCell class]) forIndexPath:indexPath];
-    [self updateCellInterface:cell];
+    [self updateCellInterface:cell indexPath:indexPath];
     CMTabbarItem *item = self.tabbarTitles[indexPath.row];
     cell.title = item.tabTitle;
     cell.textColor = item.isSelected ? self.selectedAttributes[NSForegroundColorAttributeName] : self.normalAttributes[NSForegroundColorAttributeName];
@@ -332,8 +341,21 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
         _tabbarOffsetX = index;
         CMTabbarCollectionViewCell *preCell = [self cellAtIndex:_previousTabOffsetX];
         [self updateIndicatorWithCell:cell indexPath:[NSIndexPath indexPathForRow:index inSection:0] animate:animated];
-        preCell.textColor = self.normalAttributes[NSForegroundColorAttributeName];
-        cell.textColor = self.selectedAttributes[NSForegroundColorAttributeName];
+        
+        if (index == MTMainMenuFilter) {
+            preCell.textColor = self.normalFilterAttributes[NSForegroundColorAttributeName];
+        }
+        else {
+            preCell.textColor = self.normalAttributes[NSForegroundColorAttributeName];
+        }
+        
+        if (index == MTMainMenuFilter) {
+            cell.textColor = self.selectedFilterAttributes[NSForegroundColorAttributeName];
+        }
+        else {
+            cell.textColor = self.selectedAttributes[NSForegroundColorAttributeName];
+ 
+        }
     }
 }
 
@@ -379,21 +401,27 @@ NSString *  const CMTabBoxBackgroundColor = @"CMBoxbackgroundColor";
     return nil;
 }
 
-- (void)updateCellInterface:(CMTabbarCollectionViewCell *)cell
+- (void)updateCellInterface:(CMTabbarCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath
 {
     if (self.normalAttributes) {
-        if ([self.normalAttributes valueForKey:NSFontAttributeName]) {
-            cell.textFont = self.normalAttributes[NSFontAttributeName];
+        
+        if (indexPath.row == MTMainMenuFilter) {
+            cell.textFont = self.normalFilterAttributes[NSFontAttributeName];
+            cell.textColor = self.normalFilterAttributes[NSForegroundColorAttributeName];
         }
-        if ([self.normalAttributes valueForKey:NSForegroundColorAttributeName]) {
+        else {
+            cell.textFont = self.normalAttributes[NSFontAttributeName];
             cell.textColor = self.normalAttributes[NSForegroundColorAttributeName];
         }
     }
     if (self.selectedAttributes) {
-        if ([self.selectedAttributes valueForKey:NSFontAttributeName]) {
-            cell.selectedTextFont = self.normalAttributes[NSFontAttributeName];
+        
+        if (indexPath.row == MTMainMenuFilter) {
+            cell.selectedTextFont = self.normalFilterAttributes[NSFontAttributeName];
+            cell.selectedTextColor = self.normalFilterAttributes[NSForegroundColorAttributeName];
         }
-        if ([self.selectedAttributes valueForKey:NSForegroundColorAttributeName]) {
+        else {
+            cell.selectedTextFont = self.normalAttributes[NSFontAttributeName];
             cell.selectedTextColor = self.normalAttributes[NSForegroundColorAttributeName];
         }
     }

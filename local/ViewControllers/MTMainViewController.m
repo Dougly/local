@@ -16,13 +16,6 @@
 
 #define FILTER_VIEW_HEIGHT              250
 
-typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
-    MTMainMenuBreakfast = 0,
-    MTMainMenuLunch,
-    MTMainMenuDinner,
-    MTMainMenuFilter
-};
-
 @interface MTMainViewController ()<CMTabbarViewDelegate, CMTabbarViewDatasouce>
 @property (nonatomic, weak) IBOutlet UIView *placeHolderForTabbarView;
 @property (nonatomic, weak) IBOutlet CMTabbarView *tabbarView;
@@ -87,6 +80,14 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
 - (void)addTabbar {
     self.tabbarView.delegate = self;
     self.tabbarView.dataSource = self;
+    [self addBorder];
+}
+
+- (void)addBorder {
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = UIColorFromHex(0x939598).CGColor;
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0.5f);
+    [self.placeHolderForTabbarView.layer addSublayer:upperBorder];
 }
 
 - (NSArray<NSString *> *)tabbarTitlesForTabbarView:(CMTabbarView *)tabbarView {
@@ -170,11 +171,11 @@ typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     }
     
     if (IS_IPHONE_5) {
-        self.leftMarginForBottomMenuConstraint.constant = 15;
+        self.leftMarginForBottomMenuConstraint.constant = 32;
     }
     
     if (IS_IPHONE_6_PLUS) {
-        self.leftMarginForBottomMenuConstraint.constant = 45;
+        self.leftMarginForBottomMenuConstraint.constant = 62;
     }
 }
 

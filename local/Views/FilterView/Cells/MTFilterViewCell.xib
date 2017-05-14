@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="47"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGH-IP-G5k" id="ifZ-po-PXY">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="46"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="46.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-0l-hbS">
@@ -49,24 +49,24 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mark" translatesAutoresizingMaskIntoConstraints="NO" id="EVu-2l-VUh">
-                        <rect key="frame" x="260" y="7" width="32" height="32"/>
+                        <rect key="frame" x="262" y="12" width="24" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="941-Bn-EHP"/>
-                            <constraint firstAttribute="height" constant="32" id="zgt-dE-cLD"/>
+                            <constraint firstAttribute="width" constant="24" id="Xln-Gt-Aqp"/>
+                            <constraint firstAttribute="height" constant="24" id="jF9-Uc-vMe"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5Ie-mr-LDU" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leadingMargin" constant="44" id="3Rf-qb-wc3"/>
-                    <constraint firstItem="EVu-2l-VUh" firstAttribute="centerY" secondItem="ifZ-po-PXY" secondAttribute="centerY" id="64m-jP-g8O"/>
                     <constraint firstAttribute="trailingMargin" secondItem="5Ie-mr-LDU" secondAttribute="trailing" constant="32" id="DVC-HK-IVF"/>
+                    <constraint firstAttribute="trailing" secondItem="EVu-2l-VUh" secondAttribute="trailing" constant="14" id="FgG-HL-fTp"/>
                     <constraint firstItem="zDu-0l-hbS" firstAttribute="leading" secondItem="ifZ-po-PXY" secondAttribute="leading" constant="12" id="Jy7-4j-BQY"/>
                     <constraint firstItem="5Ie-mr-LDU" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="topMargin" constant="4" id="h5Y-7Y-CLA"/>
                     <constraint firstItem="beL-ze-FaR" firstAttribute="leading" secondItem="zDu-0l-hbS" secondAttribute="trailing" constant="8" id="hUR-Jl-8wj"/>
                     <constraint firstItem="beL-ze-FaR" firstAttribute="centerY" secondItem="ifZ-po-PXY" secondAttribute="centerY" id="j3t-ud-27l"/>
                     <constraint firstAttribute="bottomMargin" secondItem="5Ie-mr-LDU" secondAttribute="bottom" constant="4" id="klG-wk-qSt"/>
-                    <constraint firstAttribute="trailing" secondItem="EVu-2l-VUh" secondAttribute="trailing" constant="8" id="mEP-pR-EX3"/>
                     <constraint firstItem="zDu-0l-hbS" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" constant="12" id="t7u-Pu-u23"/>
+                    <constraint firstItem="EVu-2l-VUh" firstAttribute="centerY" secondItem="ifZ-po-PXY" secondAttribute="centerY" id="uSR-bz-mm5"/>
                     <constraint firstAttribute="bottom" secondItem="zDu-0l-hbS" secondAttribute="bottom" constant="12" id="wPi-5J-X8q"/>
                 </constraints>
             </tableViewCellContentView>
@@ -79,6 +79,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_mark" width="46" height="46"/>
+        <image name="ic_mark" width="49" height="49"/>
     </resources>
 </document>
