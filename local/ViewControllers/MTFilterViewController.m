@@ -10,6 +10,7 @@
 #import "MTFilterViewCell.h"
 #import "MTSettings.h"
 #import "MTSubfilterViewController.h"
+#import "MTFilterPriceCell.h"
 
 @interface MTFilterViewController()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -19,6 +20,7 @@
 @end
 
 NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
+NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 
 @implementation MTFilterViewController
 
@@ -27,7 +29,12 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     [super viewDidLoad];
     [self addBorder];
     [self registerCells];
+    
+    // Remove first cell top separator
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    // Remove last cell bottom separator
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
 }
 
 - (void)prepareForShow {
@@ -50,7 +57,7 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     }
     else {
         self.subfilterIndex = -1;
-        for (NSUInteger filterIndex = MTFilterViewCellHelthy; filterIndex < MTFilterViewCellCount; filterIndex++) {
+        for (NSUInteger filterIndex = MTFilterViewCellHelthy; filterIndex < MTFilterViewCellPrice; filterIndex++) {
             NSArray *subfilters = FILTERS_KEY_WORDS[filterIndex];
             
             if ([subfilters containsObject:[MTSettings sharedSettings].filterKeyWords]) {
@@ -68,6 +75,10 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"MTFilterViewCell"
                                                bundle:nil]
                                forCellReuseIdentifier:FILTER_VIEW_CELL];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTFilterPriceCell"
+                                               bundle:nil]
+         forCellReuseIdentifier:FILTER_PRICE_CELL];
 }
 
 #pragma mark - UITableView delegate
@@ -78,7 +89,7 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return MTFilterViewCellCount;
 }
 
 
@@ -87,57 +98,68 @@ NSString *const FILTER_VIEW_CELL = @"MTFilterViewCell";
     
     UITableViewCell *finalCell = nil;
     
-    MTFilterViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:FILTER_VIEW_CELL
-                                    forIndexPath:indexPath];
-    if (indexPath.row == self.selectedIndexPath.row) {
-        cell.markImageView.hidden = false;
-    }
-    else {
-        cell.markImageView.hidden = true;
-    }
-    
-    NSString *subfilterString = @"";
-    
-    if (self.selectedIndexPath.row < FILTER_TITLES.count && indexPath.row == self.selectedIndexPath.row) {
-        if (self.selectedIndexPath.row >= MTFilterViewCellHelthy) {
-            NSArray *subfilters = FILTER_TITLES[self.selectedIndexPath.row];
-            
-            subfilterString = [subfilters objectAtIndex:self.subfilterIndex];
-            subfilterString = [NSString stringWithFormat:@" [%@]", subfilterString];
+    // all the filter cells
+    if (indexPath.row < MTFilterViewCellPrice) {
+        MTFilterViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:FILTER_VIEW_CELL
+                                        forIndexPath:indexPath];
+        if (indexPath.row == self.selectedIndexPath.row) {
+            cell.markImageView.hidden = false;
+        }
+        else {
+            cell.markImageView.hidden = true;
+        }
+        
+        NSString *subfilterString = @"";
+        
+        if (self.selectedIndexPath.row < FILTER_TITLES.count && indexPath.row == self.selectedIndexPath.row) {
+            if (self.selectedIndexPath.row >= MTFilterViewCellHelthy) {
+                NSArray *subfilters = FILTER_TITLES[self.selectedIndexPath.row];
+                
+                subfilterString = [subfilters objectAtIndex:self.subfilterIndex];
+                subfilterString = [NSString stringWithFormat:@" [%@]", subfilterString];
+            }
+        }
+        
+        
+        if(indexPath.row == MTFilterViewCellCoffee) {
+            cell.leftImageLabel.text = @"";
+            cell.captionLabel.text = @"Caffeine";
+            finalCell = cell;
+        }
+        
+        if(indexPath.row == MTFilterViewCellHardStuff) {
+            cell.leftImageLabel.text = @"";
+            cell.captionLabel.text = @"The Hard Stuff";
+            finalCell = cell;
+        }
+        
+        if(indexPath.row == MTFilterViewCellHelthy) {
+            cell.leftImageLabel.text = @"";
+            cell.captionLabel.text = [@"Helthy-ish" stringByAppendingString:subfilterString];
+            finalCell = cell;
+        }
+        
+        if(indexPath.row == MTFilterViewCellComfort) {
+            cell.leftImageLabel.text = @"";
+            cell.captionLabel.text = [@"Comfort Food" stringByAppendingString:subfilterString];
+            finalCell = cell;
+        }
+        
+        if(indexPath.row == MTFilterViewCellSweet) {
+            cell.leftImageLabel.text = @"";
+            cell.captionLabel.text = [@"Sweet Treats" stringByAppendingString:subfilterString];
+            finalCell = cell;
         }
     }
-    
-    
-    if(indexPath.row == MTFilterViewCellCoffee) {
-        cell.leftImageLabel.text = @"";
-        cell.captionLabel.text = @"Caffeine";
+    // filter price cell
+    else {
+        MTFilterPriceCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:FILTER_PRICE_CELL
+                                        forIndexPath:indexPath];
         finalCell = cell;
     }
     
-    if(indexPath.row == MTFilterViewCellHardStuff) {
-        cell.leftImageLabel.text = @"";
-        cell.captionLabel.text = @"The Hard Stuff";
-        finalCell = cell;
-    }
-    
-    if(indexPath.row == MTFilterViewCellHelthy) {
-        cell.leftImageLabel.text = @"";
-        cell.captionLabel.text = [@"Helthy-ish" stringByAppendingString:subfilterString];
-        finalCell = cell;
-    }
-    
-    if(indexPath.row == MTFilterViewCellComfort) {
-        cell.leftImageLabel.text = @"";
-        cell.captionLabel.text = [@"Comfort Food" stringByAppendingString:subfilterString];
-        finalCell = cell;
-    }
-    
-    if(indexPath.row == MTFilterViewCellSweet) {
-        cell.leftImageLabel.text = @"";
-        cell.captionLabel.text = [@"Sweet Treats" stringByAppendingString:subfilterString];
-        finalCell = cell;
-    }
     
     return finalCell;
 }

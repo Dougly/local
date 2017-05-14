@@ -10,16 +10,6 @@
 
 @interface MTSettingsPreferences : NSObject
 
-extern NSString *const PLACE_TYPE_KEY;
-extern NSString *const FOOD_TYPE_KEY;
-
-extern NSString *const ONLY_OPEN_KEY;
-extern NSString *const ONLY_CHEAP_KEY;
-extern NSString *const RATING_KEY;
-extern NSString *const DISTANCE_KEY;
-
-extern NSString *const KEY_WORDS_KEY;
-
 /*Place type*/
 - (NSArray *)getPlaceTypes;
 - (void)removePlaceType:(NSString *)placeType;
@@ -41,6 +31,11 @@ extern NSString *const KEY_WORDS_KEY;
 /*Rating*/
 - (void)setRating:(float)rating;
 - (float)getRating;
+
+/*Pricing level*/
+#pragma mark - Price
+- (void)setPricingLevel:(NSUInteger)pricingLevel;
+- (NSUInteger)getPricingLevel;
 
 /*Distance*/
 - (void)setDistance:(NSUInteger)distance;

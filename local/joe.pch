@@ -17,6 +17,14 @@
 
 #import "MTConfig.h"
 
+typedef NS_ENUM(NSUInteger, MTPriceLevel) {
+    MTPriceLevelInexpensive = 0,
+    MTPriceLevelModerate,
+    MTPriceLevelExpensive,
+    MTPriceLevelVeryExpensive,
+    MTPriceLevelAll
+};
+
 typedef NS_ENUM(NSInteger, MTMainMenuIndex) {
     MTMainMenuBreakfast = 0,
     MTMainMenuLunch,
@@ -40,6 +48,7 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
     MTFilterViewCellHelthy,
     MTFilterViewCellComfort,
     MTFilterViewCellSweet,
+    MTFilterViewCellPrice,
     MTFilterViewCellCount
 };
 

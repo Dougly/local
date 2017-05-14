@@ -84,6 +84,8 @@
 		476BC2461E7957E400B1BA91 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2421E7957E400B1BA91 /* NSString+Validation.m */; };
 		476BC24A1E79582C00B1BA91 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2491E79582C00B1BA91 /* UIColor+BFPaperColors.m */; };
 		476BC24D1E795A1500B1BA91 /* SDAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC24C1E795A1500B1BA91 /* SDAuth.m */; };
+		476EC2D81EC865BA0007AF1D /* MTFilterPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */; };
+		476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */; };
 		477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */; };
 		478072FD1EA9529700D98DD7 /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478072FC1EA9529700D98DD7 /* ClockViewController.swift */; };
 		478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073001EAA6FAD00D98DD7 /* MTMapViewController.m */; };
@@ -402,6 +404,9 @@
 		476BC2491E79582C00B1BA91 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
 		476BC24B1E795A1500B1BA91 /* SDAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAuth.h; sourceTree = "<group>"; };
 		476BC24C1E795A1500B1BA91 /* SDAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAuth.m; sourceTree = "<group>"; };
+		476EC2D51EC865BA0007AF1D /* MTFilterPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFilterPriceCell.h; path = ../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/FilterView/Cells/MTFilterPriceCell.h; sourceTree = "<group>"; };
+		476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFilterPriceCell.m; path = ../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/FilterView/Cells/MTFilterPriceCell.m; sourceTree = "<group>"; };
+		476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MTFilterPriceCell.xib; path = ../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/FilterView/Cells/MTFilterPriceCell.xib; sourceTree = "<group>"; };
 		477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTFilterViewController.h; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTFilterViewController.h; sourceTree = "<group>"; };
 		477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTFilterViewController.m; path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/ViewControllers/MTFilterViewController.m; sourceTree = "<group>"; };
 		478072F71EA94E7600D98DD7 /* Local-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -950,6 +955,9 @@
 		474001A11EB4D2CE00C55420 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				476EC2D51EC865BA0007AF1D /* MTFilterPriceCell.h */,
+				476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */,
+				476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */,
 				474001A21EB4D2CE00C55420 /* MTFilterViewCell.h */,
 				474001A31EB4D2CE00C55420 /* MTFilterViewCell.m */,
 				474001A41EB4D2CE00C55420 /* MTFilterViewCell.xib */,
@@ -1865,6 +1873,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */,
 				9165343C1BCD15CB00E669A7 /* Main.storyboard in Resources */,
 				47A980131EAE070E00AB8657 /* AddressLocationCell.xib in Resources */,
 				47AA04ED1EB3880F00818247 /* MTLocationViewTextfieldCell.xib in Resources */,
@@ -2099,6 +2108,7 @@
 				474001B71EB5D73E00C55420 /* ListView.m in Sources */,
 				47157CC21E7C8BAC000D11E9 /* AFURLConnectionOperation.m in Sources */,
 				476BC24D1E795A1500B1BA91 /* SDAuth.m in Sources */,
+				476EC2D81EC865BA0007AF1D /* MTFilterPriceCell.m in Sources */,
 				476BC2461E7957E400B1BA91 /* NSString+Validation.m in Sources */,
 				47A980031EAE06DA00AB8657 /* TGFoursquareLocationDetail.m in Sources */,
 				47157D001E7C8C26000D11E9 /* floatTableViewCell.m in Sources */,

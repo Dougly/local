@@ -36,6 +36,11 @@
 - (void)setRating:(float)rating;
 - (float)getRating;
 
+/*Pricing level*/
+- (void)setPricingLevel:(NSUInteger)pricingLevel;
+- (NSUInteger)getPricingLevel;
+
+
 /*Distance*/
 - (void)setDistance:(NSUInteger)distance;
 - (NSUInteger)getDistance;

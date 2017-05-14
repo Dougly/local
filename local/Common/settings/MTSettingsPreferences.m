@@ -19,6 +19,7 @@ NSString *const PLACE_TYPE_KEY = @"PLACE_TYPE_KEY";
 NSString *const ONLY_OPEN_KEY  = @"ONLY_OPEN_KEY";
 NSString *const ONLY_CHEAP_KEY = @"ONLY_CHEAP_KEY";
 NSString *const RATING_KEY     = @"RATING_KEY";
+NSString *const PRICING_LEVEL_KEY = @"PRICING_LEVEL_KEY";
 NSString *const DISTANCE_KEY   = @"DISTANCE_KEY";
 
 
@@ -44,6 +45,10 @@ NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";
     
     if(![_defaults valueForKey:RATING_KEY]) {
         [self setRating:4.0];
+    }
+    
+    if(![_defaults valueForKey:PRICING_LEVEL_KEY]) {
+        [self setPricingLevel:MTPriceLevelAll];
     }
     
     if(![_defaults valueForKey:DISTANCE_KEY]) {
@@ -107,6 +112,15 @@ NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";
 
 - (float)getRating {
     return [[self.defaults valueForKey:RATING_KEY] floatValue];
+}
+
+#pragma mark - Price
+- (void)setPricingLevel:(NSUInteger)pricingLevel {
+    [self.defaults setValue:@(pricingLevel) forKey:PRICING_LEVEL_KEY];
+}
+
+- (NSUInteger)getPricingLevel {
+    return [[self.defaults valueForKey:PRICING_LEVEL_KEY] floatValue];
 }
 
 #pragma mark - Distance

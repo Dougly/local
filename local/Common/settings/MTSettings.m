@@ -164,6 +164,15 @@
     return [self.preferences getRating];
 }
 
+/*Price*/
+- (void)setPricingLevel:(NSUInteger)pricingLevel {
+    [self.preferences setPricingLevel:pricingLevel];
+}
+
+- (NSUInteger)getPricingLevel {
+    return [self.preferences getPricingLevel];
+}
+
 #pragma mark - Distance
 - (void)setDistance:(NSUInteger)distance {
     [self.preferences setDistance:distance];
