@@ -8,7 +8,7 @@
 
 #import "MTGetPlacesRequest.h"
 #import "MTGetPlacesResponse.h"
-
+#import "MTSettings.h"
 @implementation MTGetPlacesRequest
 
 - (NSMutableURLRequest *)serviceURLRequest
@@ -21,6 +21,12 @@
     if (self.query) {
         NSString *placeTypesPart = [NSString stringWithFormat:@"&query=%@", self.query];
         urlString = [urlString stringByAppendingString:placeTypesPart];
+    }
+    
+    MTPriceLevel priceLevel = [[MTSettings sharedSettings] getPricingLevel];
+    if (priceLevel != MTPriceLevelAll) {
+        NSString *priceLevelPart = [NSString stringWithFormat:@"&minprice=%lu&maxprice=%lu", (unsigned long)priceLevel, (unsigned long)priceLevel];
+        urlString = [urlString stringByAppendingString:priceLevelPart];
     }
     if (self.pageToken) {
         NSString *tokenPart = [NSString stringWithFormat:@"&pagetoken=%@", self.pageToken];

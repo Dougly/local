@@ -166,7 +166,11 @@
 
 /*Price*/
 - (void)setPricingLevel:(NSUInteger)pricingLevel {
-    [self.preferences setPricingLevel:pricingLevel];
+    //This chekc is done not to trigger full reload od data if the pricing level is the same
+    if ([self getPricingLevel] != pricingLevel) {
+        [self.preferences setPricingLevel:pricingLevel];
+        [[NSNotificationCenter defaultCenter] postNotificationName:nKEYWORDS_CHANGED object:nil];
+    }
 }
 
 - (NSUInteger)getPricingLevel {

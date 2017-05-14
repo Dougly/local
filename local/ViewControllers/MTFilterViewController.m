@@ -123,31 +123,33 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
         
         
         if(indexPath.row == MTFilterViewCellCoffee) {
-            cell.leftImageLabel.text = @"";
+            [cell.leftImageButton.titleLabel setFont: [UIFont fontWithName:@"FontAwesome" size:14]];
+            [cell.leftImageButton setTitle:@"" forState:UIControlStateNormal];
             cell.captionLabel.text = @"Caffeine";
             finalCell = cell;
         }
         
         if(indexPath.row == MTFilterViewCellHardStuff) {
-            cell.leftImageLabel.text = @"";
+            [cell.leftImageButton.titleLabel setFont: [UIFont fontWithName:@"FontAwesome" size:14]];
+            [cell.leftImageButton setTitle:@"\U0000f000" forState:UIControlStateNormal];
             cell.captionLabel.text = @"The Hard Stuff";
             finalCell = cell;
         }
         
         if(indexPath.row == MTFilterViewCellHelthy) {
-            cell.leftImageLabel.text = @"";
+            [cell.leftImageButton setTitle:@"\U0000e09e" forState:UIControlStateNormal];
             cell.captionLabel.text = [@"Helthy-ish" stringByAppendingString:subfilterString];
             finalCell = cell;
         }
         
         if(indexPath.row == MTFilterViewCellComfort) {
-            cell.leftImageLabel.text = @"";
+            [cell.leftImageButton setTitle:@"\U0000e04d" forState:UIControlStateNormal];
             cell.captionLabel.text = [@"Comfort Food" stringByAppendingString:subfilterString];
             finalCell = cell;
         }
         
         if(indexPath.row == MTFilterViewCellSweet) {
-            cell.leftImageLabel.text = @"";
+            [cell.leftImageButton setTitle:@"\U0000e073" forState:UIControlStateNormal];
             cell.captionLabel.text = [@"Sweet Treats" stringByAppendingString:subfilterString];
             finalCell = cell;
         }

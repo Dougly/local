@@ -66,6 +66,8 @@ NSString *const SUB_FILTER_VIEW_CELL = @"MTFilterViewCell";
     [tableView dequeueReusableCellWithIdentifier:SUB_FILTER_VIEW_CELL
                                     forIndexPath:indexPath];
     
+    cell.buttonWidth.constant = 0;
+    cell.imageAndTextPadding.constant = 4;
     if (indexPath.row == self.selectedIndexPath.row) {
         cell.markImageView.hidden = false;
     }
@@ -74,7 +76,7 @@ NSString *const SUB_FILTER_VIEW_CELL = @"MTFilterViewCell";
     }
     
     NSArray *titles = FILTER_TITLES[self.filterGroupIndex];
-    cell.leftImageLabel.text = @"";
+    [cell.leftImageButton setTitle:@"" forState:UIControlStateNormal];
     cell.captionLabel.text = titles[indexPath.row];
     
     return cell;

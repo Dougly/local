@@ -25,6 +25,10 @@
 }
 
 - (void)showOnView:(UIView *)view percentage:(BOOL)percentage {
+    if (self.indicator) {
+        [self.indicator removeFromSuperview];
+    }
+    
     self.indicator = [[IMGActivityIndicator alloc] initWithFrame:CGRectMake(0, 0, 100, 100) percentage:percentage];
     
     self.indicator.translatesAutoresizingMaskIntoConstraints = NO;

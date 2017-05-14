@@ -10,7 +10,9 @@
 
 
 @interface MTFilterViewCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UILabel *leftImageLabel;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonWidth;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *imageAndTextPadding;
+@property (nonatomic, weak) IBOutlet UIButton *leftImageButton;
 @property (nonatomic, weak) IBOutlet UILabel *captionLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *markImageView;
 @end

@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGH-IP-G5k" id="ifZ-po-PXY">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-om-neQ">
@@ -39,7 +39,7 @@
                                 <state key="normal">
                                     <string key="title">|
 </string>
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-wL-nHp">
@@ -50,6 +50,9 @@
 </string>
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="oneDollarButtonClicked:" destination="bGH-IP-G5k" eventType="touchUpInside" id="WbV-Qw-ssx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybF-C7-3qV">
                                 <rect key="frame" x="77.5" y="0.0" width="29.5" height="45"/>
@@ -57,7 +60,7 @@
                                 <state key="normal">
                                     <string key="title">|
 </string>
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckm-6t-98r">
@@ -68,6 +71,9 @@
 </string>
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="twoDollarButtonClicked:" destination="bGH-IP-G5k" eventType="touchUpInside" id="LIV-CP-B2h"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rp6-UK-brN">
                                 <rect key="frame" x="129" y="0.0" width="30" height="45"/>
@@ -86,6 +92,9 @@
 </string>
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="threeDollarButtonClicked:" destination="bGH-IP-G5k" eventType="touchUpInside" id="1if-aA-Wc3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIS-73-ISz">
                                 <rect key="frame" x="180.5" y="0.0" width="30" height="45"/>
@@ -104,6 +113,9 @@
 </string>
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fourDollarButtonClicked:" destination="bGH-IP-G5k" eventType="touchUpInside" id="ugS-sz-uHe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3i-hc-aAt">
                                 <rect key="frame" x="234" y="0.0" width="30" height="45"/>
@@ -122,6 +134,9 @@
 </string>
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="allButtonClicked:" destination="bGH-IP-G5k" eventType="touchUpInside" id="2fI-IO-6sF"/>
+                                </connections>
                             </button>
                         </subviews>
                     </stackView>
@@ -133,6 +148,18 @@
                     <constraint firstItem="1dz-om-neQ" firstAttribute="top" secondItem="ifZ-po-PXY" secondAttribute="top" id="sbw-bb-woa"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="allButton" destination="ay8-Gx-ez9" id="LIL-JK-qAg"/>
+                <outlet property="fourDollarButton" destination="Ljp-bj-68c" id="cYu-kB-AsI"/>
+                <outlet property="oneDollarButton" destination="Vb8-wL-nHp" id="2AQ-PP-UiV"/>
+                <outlet property="threeDollarButton" destination="ST0-gQ-JvH" id="pE0-eZ-ZXO"/>
+                <outlet property="twoDollarButton" destination="ckm-6t-98r" id="0LG-VK-c64"/>
+                <outletCollection property="buttons" destination="Vb8-wL-nHp" id="tUh-ps-ocK"/>
+                <outletCollection property="buttons" destination="ckm-6t-98r" id="0YI-xX-HkM"/>
+                <outletCollection property="buttons" destination="ST0-gQ-JvH" id="4Gr-la-0Ex"/>
+                <outletCollection property="buttons" destination="Ljp-bj-68c" id="Mx1-dL-NUJ"/>
+                <outletCollection property="buttons" destination="ay8-Gx-ez9" id="0rN-y4-wjO"/>
+            </connections>
             <point key="canvasLocation" x="188" y="198.5"/>
         </tableViewCell>
     </objects>

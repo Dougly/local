@@ -78,6 +78,7 @@
 		474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DC1EB79B7000C55420 /* MTDetailsViewController.m */; };
 		474001DF1EB79F4600C55420 /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DE1EB79F4600C55420 /* MTMainViewController.m */; };
 		47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47447B331EB91695008EA2CC /* MTInstagramViewController.m */; };
+		476759901EC8CB8600E1B3C6 /* font-awesome-extension.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
 		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
@@ -393,6 +394,7 @@
 		474001DE1EB79F4600C55420 /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
 		47447B321EB91695008EA2CC /* MTInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInstagramViewController.h; sourceTree = "<group>"; };
 		47447B331EB91695008EA2CC /* MTInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInstagramViewController.m; sourceTree = "<group>"; };
+		4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-awesome-extension.ttf"; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
 		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
@@ -1036,6 +1038,7 @@
 		476BC22D1E79517200B1BA91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */,
 				4791026E1EB33C5E0071BC2C /* FontAwesome.otf */,
 				47157C501E7C45FB000D11E9 /* sign-bg.png */,
 			);
@@ -1896,6 +1899,7 @@
 				47A980161EAE070E00AB8657 /* DetailLocationCell.xib in Resources */,
 				CE250F011B67666F005447FF /* Localizable.strings in Resources */,
 				47A97FD71EACE10A00AB8657 /* placeTypes.json in Resources */,
+				476759901EC8CB8600E1B3C6 /* font-awesome-extension.ttf in Resources */,
 				474001B61EB5D73E00C55420 /* MTListViewCell.xib in Resources */,
 				CE250ECE1B67657E005447FF /* LaunchScreen.xib in Resources */,
 				47A980141EAE070E00AB8657 /* AddressLocationDetail.xib in Resources */,

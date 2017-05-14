@@ -40,6 +40,11 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 @property (nonatomic, weak) IBOutlet UILabel *detailsLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingNumberLabel;
 @property (nonatomic, weak) IBOutlet UILabel *ratingLabel;
+
+@property (nonatomic, weak) IBOutlet UILabel *ratingIconLabel;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *ratingIconLabelWidth;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *ratingIconAndLabelPadding;
+
 @property (nonatomic, weak) IBOutlet UILabel *ratingSourceLabel;
 
 @property (nonatomic, weak) IBOutlet UITextView *addressTextView;
@@ -55,10 +60,22 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
+    [self addBorders];
     _initialScrollBottomMargin = self.scrollViewBottomMargin.constant;
     _contentHeight.constant = 500;
 }
 
+- (void)addBorders {
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.ratingView.frame), 1.5f);
+    [self.ratingView.layer addSublayer:upperBorder];
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
+    bottomBorder.frame = CGRectMake(0, self.ratingView.bounds.size.height - 1.5, CGRectGetWidth(self.ratingView.frame), 1.5f);
+    [self.ratingView.layer addSublayer:bottomBorder];
+}
 
 - (void)onKeyboardHide:(NSNotification *)notification {
     self.scrollViewBottomMargin.constant = _initialScrollBottomMargin;
@@ -213,11 +230,14 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         if (yelpPlace) {
             self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", yelpPlace.rating.floatValue];
             self.ratingLabel.attributedText = [yelpPlace ratingString];
-            self.ratingSourceLabel.text = @"Yelp";
+            self.ratingIconLabel.text = @"";
+            self.ratingSourceLabel.text = @"YELP";
         }
         else {
             self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", self.place.rating.floatValue];
             self.ratingLabel.attributedText = [self.place ratingString];
+            self.ratingIconLabelWidth.constant = 0;
+            self.ratingIconAndLabelPadding.constant = 4;
             self.ratingSourceLabel.text = @"Google";
         }
         

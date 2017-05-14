@@ -120,7 +120,7 @@ NSString *const KEY_WORDS_KEY = @"KEY_WRODS_KEY";
 }
 
 - (NSUInteger)getPricingLevel {
-    return [[self.defaults valueForKey:PRICING_LEVEL_KEY] floatValue];
+    return [[self.defaults valueForKey:PRICING_LEVEL_KEY] integerValue];
 }
 
 #pragma mark - Distance
