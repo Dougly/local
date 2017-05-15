@@ -40,6 +40,7 @@
 @property (nonatomic, strong) ListView *listView;
 @property (nonatomic, strong) FilterListener *filterListener;
 
+@property (nonatomic, weak) IBOutlet UIButton *redoSearchButton;
 @property (nonatomic) BOOL popupBeingSelelected;
 @end
 
@@ -56,6 +57,17 @@
     [self addTitleView];
     [self setupFilterListener];
     [self addGesture];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self addBorderForRedoSeacrhButton];
+}
+
+- (void)addBorderForRedoSeacrhButton {
+    self.redoSearchButton.layer.borderColor = UIColorFromHex(0xee0000).CGColor;
+    self.redoSearchButton.layer.borderWidth = 0.5f;
 }
 
 - (void)addTitleView {

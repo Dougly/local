@@ -10,8 +10,12 @@
 #import "MTDataModel.h"
 #import "MTDetailsViewController.h"
 #import "MTPlace.h"
+#import "MTPlaceDetails.h"
 #import "MTPageContainerViewController.h"
 #import "FilterListener.h"
+#import "CustomButtonItem.h"
+
+#define MAX_TITLE_SYMBOLS                 23
 
 @interface MTPageContainerViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) NSArray *places;
@@ -23,10 +27,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = @"";
+    
+    [self setupBackButton];
+    [self setupShareButton];
+    
     [self setupKeyWordsListener];
     [self getPlaces];
     [self setup];
+}
+
+- (void)setupBackButton {
+    UIBarButtonItem *backButton = [[CustomButtonItem alloc] initAsBackButtonWithText:@"  BACK"
+                                                                              target:self
+                                                                            selector:@selector(back)];
+    self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)setupShareButton {
+    UIBarButtonItem *shareButton = [[CustomButtonItem alloc] initAsShareButtonWithText:@"SHARE  "
+                                                                              target:self
+                                                                            selector:@selector(share)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)share {
+    MTDetailsViewController *viewController = [self.pageViewController.viewControllers lastObject];
+    MTPlaceDetails *placeDetails = viewController.placeDetails;
+    
+    NSArray *activityItems = [NSArray arrayWithObjects:placeDetails.name, placeDetails.website, nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (void)setupKeyWordsListener {
@@ -124,7 +161,12 @@
     if (completed) {
         MTDetailsViewController *currentController = (MTDetailsViewController *)self.pageViewController.viewControllers.firstObject;
         
-        self.title = currentController.place.name;
+        NSString *title = currentController.place.name;
+        
+        if (title.length > MAX_TITLE_SYMBOLS) {
+            title = [NSString stringWithFormat:@"%@...", [title substringToIndex:MAX_TITLE_SYMBOLS]];
+        }
+        self.title = @"";
     }
 }
 

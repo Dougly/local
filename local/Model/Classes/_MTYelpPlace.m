@@ -38,6 +38,8 @@
 	return keyPaths;
 }
 
+@dynamic categories;
+
 @dynamic name;
 
 @dynamic rating;
@@ -63,6 +65,9 @@
 @end
 
 @implementation MTYelpPlaceAttributes 
++ (NSString *)categories {
+	return @"categories";
+}
 + (NSString *)name {
 	return @"name";
 }

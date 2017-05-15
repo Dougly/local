@@ -25,7 +25,7 @@
     
     MTPriceLevel priceLevel = [[MTSettings sharedSettings] getPricingLevel];
     if (priceLevel != MTPriceLevelAll) {
-        NSString *priceLevelPart = [NSString stringWithFormat:@"&minprice=%lu&maxprice=%lu", (unsigned long)priceLevel, (unsigned long)priceLevel];
+        NSString *priceLevelPart = [NSString stringWithFormat:@"&minprice=0&maxprice=%lu",(unsigned long)priceLevel];
         urlString = [urlString stringByAppendingString:priceLevelPart];
     }
     if (self.pageToken) {

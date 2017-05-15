@@ -198,7 +198,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 {
     CGFloat pullDistance = scrollView.contentOffset.y;
     
-    if (pullDistance < -90) {
+    if (pullDistance < -70) {
         if (!self.isClosed) {
             NSDictionary *userInfo = @{kRevertFilterViewToPreviousIndex : @(YES)};
             [[NSNotificationCenter defaultCenter] postNotificationName:nHIDE_FILTER_VIEW_NOTIFICATION

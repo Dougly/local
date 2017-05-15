@@ -11,6 +11,13 @@
 - (void)parseNode:(NSDictionary *)node {
     self.name = node[@"name"];
     self.rating = node[@"rating"];
+    
+    NSString *categoryText = @"";
+    for (NSDictionary *categoryDict in node[@"categories"]) {
+        categoryText = [categoryText stringByAppendingString:[NSString stringWithFormat:@"%@. ", categoryDict[@"title"]]];
+    }
+    
+    self.categories = categoryText;
 }
 
 - (NSAttributedString *)ratingString {

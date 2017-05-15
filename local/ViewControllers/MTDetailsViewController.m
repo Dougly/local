@@ -33,7 +33,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 
 
 @property (nonatomic, weak) IBOutlet UIImageView *mainImageView;
-@property (nonatomic, strong) MTPlaceDetails *placeDetails;
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailsLabel;
@@ -53,6 +52,9 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 @property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) UIView *mapViewOverlay;
+
+@property (nonatomic, strong) CALayer *reviewBorder;
+@property (nonatomic, strong) CALayer *addressBorder;
 @end
 
 @implementation MTDetailsViewController
@@ -75,28 +77,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     [self.ratingView.layer addSublayer:bottomBorder];
 }
 
-- (void)addBorderForReviewView {
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
-    bottomBorder.frame = CGRectMake(0, self.reviewTextView.bounds.size.height - 1.5, CGRectGetWidth(self.reviewTextView.frame), 1.5f);
-    [self.reviewTextView.layer addSublayer:bottomBorder];
-}
-
-- (void)addBorderForAddressView {
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
-    bottomBorder.frame = CGRectMake(0, self.addressTextView.bounds.size.height - 1.5, CGRectGetWidth(self.addressTextView.frame), 1.5f);
-    [self.addressTextView.layer addSublayer:bottomBorder];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-
 - (void)setup {
     [[MTProgressHUD sharedHUD] dismiss];
     [[MTProgressHUD sharedHUD] showOnView:self.view percentage:NO];
@@ -107,7 +87,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     weakSelf.mainImageView.image = nil;
     [self getYelpRating];
     [self getDetails:self.place completion:^(MTPhoto *largestPhoto, MTPlaceDetails *details) {
-        weakSelf.placeDetails = details;
+        _placeDetails = details;
         [weakSelf showDetails];
         
         NSString *strinUrl = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?&maxheight=%d&photoreference=%@&key=%@", 1600, largestPhoto.reference, kGoogleMapAPIKey];
@@ -135,7 +115,13 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     
     if (reviews.count > 0) {
         MTPlaceReview *review = reviews.firstObject;
-        self.reviewTextView.text = review.text;
+        
+        NSMutableAttributedString *reviewText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Recent Review\n\n%@", review.text]];
+
+        [reviewText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14] range:NSMakeRange(0, 14)];
+        [reviewText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:16] range:NSMakeRange(14, reviewText.length - 14)];
+        
+        self.reviewTextView.attributedText = reviewText;
     }
     
     CGSize sizeThatFitsReviewTextView = [self.reviewTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 24, MAXFLOAT)];
@@ -158,13 +144,10 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     CGSize sizeThatFitsAddressTextView = [self.addressTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 24, MAXFLOAT)];
     
     NSLog(@"AddressHeight: %f", sizeThatFitsAddressTextView.height);
-
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"HEIGHTOFCONTENT: %f", self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height);
-        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - BOTTOM_NAVIGATION_BAR_HEIGHT - 20;
-        [self addBorderForReviewView];
-        [self addBorderForAddressView];
+        self.contentHeight.constant = self.addressTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - BOTTOM_NAVIGATION_BAR_HEIGHT * 1.5;
     });
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -175,22 +158,39 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"periodNumber == %d", weekday];
     NSArray *filteredPeriods = [openPeriods filteredArrayUsingPredicate:predicate];
     
+    //Sometimes opening time is devided into 2 periods like from 8am to 3pm and from 3pm to 22pm
+    //That's why we need to sort. The latest period should come after earlier period
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"openTime"
+                                                                 ascending:YES];
+    
+    filteredPeriods = [filteredPeriods sortedArrayUsingDescriptors:@[descriptor]];
+    
     if (filteredPeriods.count > 0) {
-        MTOpeningHourPeriod *period = filteredPeriods.firstObject;
+        MTOpeningHourPeriod *firstPeriod = filteredPeriods.firstObject;
         
-        NSString *openText = [NSMutableString stringWithString:period.openTime];
+        MTOpeningHourPeriod *lastPeriod = filteredPeriods.firstObject;
+        if (filteredPeriods.count > 1) {
+            lastPeriod = filteredPeriods.lastObject;
+        }
+        
+        NSString *openText = [NSMutableString stringWithString:firstPeriod.openTime];
         openText = [openText substringToIndex:2];
         
-        NSString *closeText = [NSMutableString stringWithString:period.closeTime];
+        NSString *closeText = [NSMutableString stringWithString:lastPeriod.closeTime];
         closeText = [closeText substringToIndex:2];
         
         NSString *closeMeridien = @"PM";
+        NSString *openMeridien = @"AM";
         
-        if (period.closeDay.integerValue > period.openTime.integerValue) {
+        if ([openText integerValue] > 12) {
+            openMeridien = @"PM";
+        }
+        
+        if (firstPeriod.closeDay.integerValue > lastPeriod.openTime.integerValue) {
             closeMeridien = @"AM";
         }
         
-        NSString *periodText = [NSString stringWithFormat:@"%@AM-%@%@", openText, closeText, closeMeridien];
+        NSString *periodText = [NSString stringWithFormat:@"%@%@-%@%@", openText, openMeridien, closeText, closeMeridien];
         
         self.hoursLabel.text = periodText;
     }

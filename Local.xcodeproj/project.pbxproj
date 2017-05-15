@@ -107,6 +107,8 @@
 		479102691EB33B140071BC2C /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479102681EB33B140071BC2C /* TitleView.xib */; };
 		4791026C1EB33B280071BC2C /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791026B1EB33B280071BC2C /* TitleView.m */; };
 		4791026F1EB33C5E0071BC2C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4791026E1EB33C5E0071BC2C /* FontAwesome.otf */; };
+		479278391EC9E9DE0058C2F5 /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */; };
+		4792783E1EC9F2D80058C2F5 /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */; };
 		4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */; };
 		4793CB0F1E7ED8C00054B7FB /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB081E7ED8C00054B7FB /* UIColor+HexString.m */; };
 		4793CB101E7ED8C00054B7FB /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB0A1E7ED8C00054B7FB /* UIImageEffects.m */; };
@@ -449,6 +451,10 @@
 		4791026A1EB33B280071BC2C /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		4791026B1EB33B280071BC2C /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		4791026E1EB33C5E0071BC2C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Resources/FontAwesome.otf; sourceTree = "<group>"; };
+		479278371EC9E9DE0058C2F5 /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButtonItem.h; sourceTree = "<group>"; };
+		479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButtonItem.m; sourceTree = "<group>"; };
+		4792783C1EC9F2D80058C2F5 /* BorderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedTextView.h; sourceTree = "<group>"; };
+		4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedTextView.m; sourceTree = "<group>"; };
 		4793CAF41E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSkypeActivityIndicatorView.h; sourceTree = "<group>"; };
 		4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSkypeActivityIndicatorView.m; sourceTree = "<group>"; };
 		4793CB071E7ED8C00054B7FB /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
@@ -1122,6 +1128,26 @@
 			path = TitleView;
 			sourceTree = "<group>";
 		};
+		479278361EC9E9C40058C2F5 /* CustomBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				479278371EC9E9DE0058C2F5 /* CustomButtonItem.h */,
+				479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */,
+			);
+			name = CustomBarButton;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/CustomBarButton;
+			sourceTree = "<group>";
+		};
+		4792783B1EC9F2C30058C2F5 /* BorderedTextView */ = {
+			isa = PBXGroup;
+			children = (
+				4792783C1EC9F2D80058C2F5 /* BorderedTextView.h */,
+				4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */,
+			);
+			name = BorderedTextView;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/BorderedTextView;
+			sourceTree = "<group>";
+		};
 		4793CAF31E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1720,6 +1746,8 @@
 		CE250EE91B676634005447FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4792783B1EC9F2C30058C2F5 /* BorderedTextView */,
+				479278361EC9E9C40058C2F5 /* CustomBarButton */,
 				474001AD1EB5D73E00C55420 /* ListView */,
 				474001A01EB4D20A00C55420 /* FilterView */,
 				4713822B1EB3B61F0009344C /* AutoCompleteTextField */,
@@ -2086,6 +2114,7 @@
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
 				CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */,
+				4792783E1EC9F2D80058C2F5 /* BorderedTextView.m in Sources */,
 				47A980371EAE188C00AB8657 /* MTWeekdayText.m in Sources */,
 				47157C8B1E7C853A000D11E9 /* IDMCaptionView.m in Sources */,
 				B013DBA11EB8DF5A00A96F75 /* MDCalendarYearSelector.m in Sources */,
@@ -2121,6 +2150,7 @@
 				47A97FFB1EAE06AD00AB8657 /* TGAnnotation.m in Sources */,
 				47157CBE1E7C8BAC000D11E9 /* AFHTTPRequestOperationManager.m in Sources */,
 				47A9801E1EAE084800AB8657 /* ViewController.m in Sources */,
+				479278391EC9E9DE0058C2F5 /* CustomButtonItem.m in Sources */,
 				478073181EAA705500D98DD7 /* QNode.m in Sources */,
 				47A97FB31EACDB2B00AB8657 /* RMPickerViewController.m in Sources */,
 				47A97FB21EACDB2B00AB8657 /* RMDateSelectionViewController.m in Sources */,
@@ -2320,7 +2350,7 @@
 				INFOPLIST_FILE = local/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.food;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.food3;
 				PRODUCT_NAME = Local;
 				SWIFT_OBJC_BRIDGING_HEADER = "local/Common/Local-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2348,7 +2378,7 @@
 				INFOPLIST_FILE = local/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.food;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.food3;
 				PRODUCT_NAME = Local;
 				SWIFT_OBJC_BRIDGING_HEADER = "local/Common/Local-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
