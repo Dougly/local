@@ -82,6 +82,10 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 - (void)currentPlaceSelected;
 @end
 
+//Humar readable place types
+
+#define READABLE_PLACE_TYPES @[@"bar", @"restaurant", @"cafe", @"bakery"]
+
 // --- FILTERS ---
 #define FILTERS_KEY_WORDS            @[@"coffee+tea", @"wine+beer+cocktail", @[@"juice", @"smoothie", @"seafood+sushi", @"vegetarian", @"salad"], @[@"italian", @"american", @"indian", @"french", @"mexican", @"chinese", @"pizza", @"steak"], @[@"ice+cream", @"pastry"]]
 

@@ -53,10 +53,6 @@
     for (MTPhoto *photo in self.photos) {
         if (photo.width.integerValue > maxPhotoWidth) {
             largestPhoto = photo;
-            
-            NSUInteger www = photo.width.integerValue;
-            NSUInteger hhh = photo.height.integerValue;
-            
             maxPhotoWidth = photo.width.integerValue;
         }
     }

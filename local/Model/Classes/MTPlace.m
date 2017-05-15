@@ -51,16 +51,24 @@
         pricing = [@"  •  " stringByAppendingString:pricing];
     }
     
-    NSString *type =@"Unknown type";
+    NSString *type =@"";
     NSArray *types = [self.types componentsSeparatedByString:DELIMITER];
     
     if (types > 0) {
-        type = types.firstObject;
+        if ([READABLE_PLACE_TYPES containsObject:[types.firstObject lowercaseString]])
+            type = [NSString stringWithFormat:@"  •  %@", types.firstObject];
+        
+        if ([types.firstObject isEqualToString:@"meal_takeaway"]) {
+            type = @"  •  takeaway";
+        }
+        
+        if ([types.firstObject isEqualToString:@"meal_delivery"]) {
+            type = @"  •  delivery";
+        }
     }
     
     NSString *address = [self getAddressDirty];
-    
-    NSString *resultString = [NSString stringWithFormat:@"%dm  •  %@  •  %.1f %@  •  %@", (int)self.distance.floatValue, address, self.rating.floatValue, pricing, type];
+    NSString *resultString = [NSString stringWithFormat:@"%@  •  %.1f %@%@", address, self.rating.floatValue, pricing, type];
     
     return resultString;
 }

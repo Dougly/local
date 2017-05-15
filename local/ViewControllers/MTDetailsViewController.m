@@ -27,7 +27,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 @interface MTDetailsViewController()
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
 @property (nonatomic) CGFloat initialScrollBottomMargin;
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
@@ -53,6 +52,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 
 @property (nonatomic, weak) IBOutlet UILabel *hoursLabel;
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) UIView *mapViewOverlay;
 @end
 
 @implementation MTDetailsViewController
@@ -60,12 +60,10 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
-    [self addBorders];
-    _initialScrollBottomMargin = self.scrollViewBottomMargin.constant;
-    _contentHeight.constant = 500;
+    [self addBordersForRatingView];
 }
 
-- (void)addBorders {
+- (void)addBordersForRatingView {
     CALayer *upperBorder = [CALayer layer];
     upperBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
     upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.ratingView.frame), 1.5f);
@@ -77,12 +75,18 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     [self.ratingView.layer addSublayer:bottomBorder];
 }
 
-- (void)onKeyboardHide:(NSNotification *)notification {
-    self.scrollViewBottomMargin.constant = _initialScrollBottomMargin;
-    [UIView animateWithDuration:1.4
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     }];
+- (void)addBorderForReviewView {
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
+    bottomBorder.frame = CGRectMake(0, self.reviewTextView.bounds.size.height - 1.5, CGRectGetWidth(self.reviewTextView.frame), 1.5f);
+    [self.reviewTextView.layer addSublayer:bottomBorder];
+}
+
+- (void)addBorderForAddressView {
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.backgroundColor = UIColorFromHex(0xf7f7f7).CGColor;
+    bottomBorder.frame = CGRectMake(0, self.addressTextView.bounds.size.height - 1.5, CGRectGetWidth(self.addressTextView.frame), 1.5f);
+    [self.addressTextView.layer addSublayer:bottomBorder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,8 +101,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     [[MTProgressHUD sharedHUD] dismiss];
     [[MTProgressHUD sharedHUD] showOnView:self.view percentage:NO];
     [self hideUI];
-    int maxWidth = [[UIScreen mainScreen] scale] * [UIScreen mainScreen].bounds.size.width  *2;
-    int maxHeight = [[UIScreen mainScreen] scale] * self.mainImageView.bounds.size.height  *2;
     
     __weak typeof(self) weakSelf = self;
     
@@ -136,7 +138,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         self.reviewTextView.text = review.text;
     }
     
-    CGSize sizeThatFitsReviewTextView = [self.reviewTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, MAXFLOAT)];
+    CGSize sizeThatFitsReviewTextView = [self.reviewTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 24, MAXFLOAT)];
     
     self.addressTextView.text = @"";
     if (self.placeDetails.formattedAddress) {
@@ -151,19 +153,18 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     
     if (self.placeDetails.website) {
         self.addressTextView.text =  [self.addressTextView.text stringByAppendingString:self.placeDetails.website];
-        self.addressTextView.text = [self.addressTextView.text stringByAppendingString:@"\n"];
     }
     
-    CGSize sizeThatFitsAddressTextView = [self.addressTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 40, MAXFLOAT)];
+    CGSize sizeThatFitsAddressTextView = [self.addressTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 24, MAXFLOAT)];
     
     NSLog(@"AddressHeight: %f", sizeThatFitsAddressTextView.height);
 
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.9 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"HEIGHTOFCONTENT: %f", self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height);
-        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height;
-        //[self.contentView layoutSubviews];
-        //[self.contentView updateConstraints];
+        self.contentHeight.constant = self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - BOTTOM_NAVIGATION_BAR_HEIGHT - 20;
+        [self addBorderForReviewView];
+        [self addBorderForAddressView];
     });
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -277,11 +278,20 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         
         // this sets the zoom level, a smaller value like 0.02
         // zooms in, a larger value like 80.0 zooms out
-        myRegion.span.latitudeDelta = 0.01;
-        myRegion.span.longitudeDelta = 0.01;
+        myRegion.span.latitudeDelta = 0.002;
+        myRegion.span.longitudeDelta = 0.002;
         
         // move the map to our location
         [weakSelf.mapView setRegion:myRegion animated:NO];
+        
+        if (self.mapViewOverlay) {
+            [self.mapViewOverlay removeFromSuperview];
+        }
+        
+        self.mapViewOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.mapView.bounds.size.width, self.mapView.bounds.size.height)];
+        
+        self.mapViewOverlay.backgroundColor = [UIColor colorWithRed:0.55 green:0.55 blue:0.55 alpha:0.7];
+        [self.mapView addSubview:self.mapViewOverlay];
         
         //annotation
         TGAnnotation *annot = [[TGAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.place.lat floatValue], [self.place.lon floatValue])];
@@ -302,13 +312,13 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                         reuseIdentifier:MyPinAnnotationIdentifier];
         
-        annotationView.image = [UIImage imageNamed:@"pin_map_blue"];
+        annotationView.image = [UIImage imageNamed:@"ic_pin"];
         
         return annotationView;
         
     }else{
         
-        pinView.image = [UIImage imageNamed:@"pin_map_blue"];
+        pinView.image = [UIImage imageNamed:@"ic_pin"];
         
         return pinView;
     }
