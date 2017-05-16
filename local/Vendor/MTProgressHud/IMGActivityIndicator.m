@@ -33,7 +33,7 @@ CGPoint CGRectGetCenter(CGRect rect)
     self = [super initWithFrame:frame];
     if (self) {
         self.percentage = percentage;
-        _strokeColor = [UIColor whiteColor];
+        _strokeColor = kLocalColor;
         [self createLayers];
     }
     return self;
@@ -42,7 +42,7 @@ CGPoint CGRectGetCenter(CGRect rect)
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _strokeColor = [UIColor whiteColor];
+        _strokeColor = kLocalColor;
         [self createLayers];
     }
     return self;
@@ -60,7 +60,7 @@ CGPoint CGRectGetCenter(CGRect rect)
     UIView *backgroundView = [[UIView alloc] initWithFrame: theFrame];
     
 
-    backgroundView.backgroundColor = kLocalColor;
+    backgroundView.backgroundColor = [UIColor clearColor];
     self.shapeLayers = [NSMutableArray new];
     
     // Draw the middle dot.

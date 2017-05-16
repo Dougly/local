@@ -49,7 +49,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="font-awesome-extension" family="font-awesome-extension" pointSize="15"/>
                         <state key="normal">
-                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleColor" red="0.20000000000000001" green="0.19215686274509802" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                 </subviews>

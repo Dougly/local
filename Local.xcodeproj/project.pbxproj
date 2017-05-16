@@ -2350,7 +2350,7 @@
 				INFOPLIST_FILE = local/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.food3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.food;
 				PRODUCT_NAME = Local;
 				SWIFT_OBJC_BRIDGING_HEADER = "local/Common/Local-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2378,7 +2378,7 @@
 				INFOPLIST_FILE = local/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.local.food3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.food;
 				PRODUCT_NAME = Local;
 				SWIFT_OBJC_BRIDGING_HEADER = "local/Common/Local-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -13,8 +13,10 @@
 
 #define INSTAGRAM_AUTHURL                               @"https://api.instagram.com/oauth/authorize/"
 #define INSTAGRAM_APIURl                                @"https://api.instagram.com/v1/users/"
-#define INSTAGRAM_CLIENT_ID                             @"9fa6e0ba8dab4134b6bb3690287eeaad"
-#define INSTAGRAM_CLIENTSERCRET                         @"6234af748b42484ab7146bc43d42fba2"
+
+#define INSTAGRAM_CLIENT_ID                             @"bc167b730df44ff385ee696688c9f9f1"
+#define INSTAGRAM_CLIENTSERCRET                         @"e9ec2c09d53948ab934a7562095ea540"
+
 #define INSTAGRAM_REDIRECT_URI                          @"https://www.instagram.com/averydalessandro/?hl=en"
 #define INSTAGRAM_ACCESS_TOKEN                          @"access_token"
 #define INSTAGRAM_SCOPE                                 @"likes+comments+relationships"

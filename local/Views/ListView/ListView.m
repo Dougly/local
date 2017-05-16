@@ -93,10 +93,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     return self.places.count;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    int i = 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MTListViewCell *cell =

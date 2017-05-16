@@ -21,6 +21,7 @@ static NSString * const kId            = @"id";
 
 @interface MTLoginViewController ()<InstagramAuthDelegate>
 @property (nonatomic, weak) IBOutlet MDButton *facebookButton;
+@property (nonatomic, weak) IBOutlet MDButton *instagramButton;
 @property (nonatomic, strong) FacebookFacade *facebookFacade;
 @property (strong, nonatomic) MTAppManager   *appManager;
 
@@ -30,7 +31,6 @@ static NSString * const kId            = @"id";
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;
-- (IBAction)loginButtonClicked:(id)sender;
 - (IBAction)loginWithFacebook:(id)sender;
 @end
 
@@ -39,6 +39,7 @@ static NSString * const kId            = @"id";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.facebookButton.mdButtonType    = MDButtonTypeFlat;
+    self.instagramButton.mdButtonType   = MDButtonTypeFlat;
     self.facebookButton.backgroundColor = kColorFacebook;
     [self setupStyleNavigationBarModal];
 }

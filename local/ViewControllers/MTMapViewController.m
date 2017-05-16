@@ -30,6 +30,8 @@
 #import "FilterListener.h"
 #import "MTDataModel.h"
 
+#define MIN_CLUSTERING_SPAN                       0.02
+
 @interface MTMapViewController()<MKMapViewDelegate, UIGestureRecognizerDelegate, TitleViewDelegate, LocationViewDelegate, ListViewDelegate, MTLocationViewTextfieldCellDelegate, PopupClickDelegate>
 
 @property(nonatomic, weak) IBOutlet MKMapView* mapView;
@@ -101,8 +103,8 @@
     MKCoordinateRegion region;
     region.center.latitude = coordinate.latitude;
     region.center.longitude = coordinate.longitude;
-    region.span.latitudeDelta = 0.1;
-    region.span.longitudeDelta = 0.1;
+    region.span.latitudeDelta = 0.06;
+    region.span.longitudeDelta = 0.06;
     region = [self.mapView regionThatFits:region];
     [self.mapView setRegion:region animated:TRUE];
 }
@@ -139,7 +141,8 @@
     
     const MKCoordinateRegion mapRegion = self.mapView.region;
     BOOL useClustering = true;
-    const CLLocationDegrees minNonClusteredSpan = useClustering ? MIN(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 5
+    
+    const CLLocationDegrees minNonClusteredSpan = useClustering ? MIN(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 10
                                                               : 0;
     NSArray* objects = [self.qTree getObjectsInRegion:mapRegion minNonClusteredSpan:minNonClusteredSpan];
 

@@ -66,6 +66,7 @@
 }
 
 - (void)initLayer {
+  
   _rippleColor = [UIColor colorWithWhite:0.5 alpha:1];
   if (self.backgroundColor == nil) {
     self.backgroundColor =
@@ -124,7 +125,7 @@
     [self setMdButtonType:MDButtonTypeFloatingActionRotation];
     break;
   default:
-    [self setMdButtonType:MDButtonTypeRaised];
+    [self setMdButtonType:MDButtonTypeFlat];
   }
 }
 

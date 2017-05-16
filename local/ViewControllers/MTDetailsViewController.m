@@ -115,13 +115,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     
     if (reviews.count > 0) {
         MTPlaceReview *review = reviews.firstObject;
-        
-        NSMutableAttributedString *reviewText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Recent Review\n\n%@", review.text]];
-
-        [reviewText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14] range:NSMakeRange(0, 14)];
-        [reviewText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:16] range:NSMakeRange(14, reviewText.length - 14)];
-        
-        self.reviewTextView.attributedText = reviewText;
+        self.reviewTextView.text = review.text;
     }
     
     CGSize sizeThatFitsReviewTextView = [self.reviewTextView sizeThatFits:CGSizeMake([UIScreen mainScreen].bounds.size.width - 24, MAXFLOAT)];
@@ -147,7 +141,8 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"HEIGHTOFCONTENT: %f", self.reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height);
-        self.contentHeight.constant = self.addressTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - BOTTOM_NAVIGATION_BAR_HEIGHT * 1.5;
+        
+        self.contentHeight.constant = self.addressTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - BOTTOM_NAVIGATION_BAR_HEIGHT * 1.2;
     });
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -173,25 +168,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
             lastPeriod = filteredPeriods.lastObject;
         }
         
-        NSString *openText = [NSMutableString stringWithString:firstPeriod.openTime];
-        openText = [openText substringToIndex:2];
-        
-        NSString *closeText = [NSMutableString stringWithString:lastPeriod.closeTime];
-        closeText = [closeText substringToIndex:2];
-        
-        NSString *closeMeridien = @"PM";
-        NSString *openMeridien = @"AM";
-        
-        if ([openText integerValue] > 12) {
-            openMeridien = @"PM";
-        }
-        
-        if (firstPeriod.closeDay.integerValue > lastPeriod.openTime.integerValue) {
-            closeMeridien = @"AM";
-        }
-        
-        NSString *periodText = [NSString stringWithFormat:@"%@%@-%@%@", openText, openMeridien, closeText, closeMeridien];
-        
+        NSString *periodText = [NSString stringWithFormat:@"%@-%@", [firstPeriod openPmTime], [lastPeriod closePmTime]];
         self.hoursLabel.text = periodText;
     }
     
@@ -290,7 +267,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         
         self.mapViewOverlay = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.mapView.bounds.size.width, self.mapView.bounds.size.height)];
         
-        self.mapViewOverlay.backgroundColor = [UIColor colorWithRed:0.55 green:0.55 blue:0.55 alpha:0.7];
+        self.mapViewOverlay.backgroundColor = [UIColor colorWithRed:0.55 green:0.55 blue:0.55 alpha:0.6];
         [self.mapView addSubview:self.mapViewOverlay];
         
         //annotation
