@@ -45,7 +45,7 @@ NSString *const SUB_FILTER_VIEW_CELL = @"MTFilterViewCell";
 - (void)calculateSelectedIndexPath {
     NSUInteger index = -1;
     
-    for (NSUInteger subfiltersIndex = MTFilterViewCellHelthy; subfiltersIndex < MTFilterViewCellPrice; subfiltersIndex++) {
+    for (NSUInteger subfiltersIndex = MTFilterViewCellHelthy; subfiltersIndex < MTFilterViewCellHardStuff; subfiltersIndex++) {
         NSArray *subfilters = FILTERS_KEY_WORDS[subfiltersIndex];
         
         if ([subfilters containsObject:[MTSettings sharedSettings].filterKeyWords] && subfiltersIndex == self.filterGroupIndex) {

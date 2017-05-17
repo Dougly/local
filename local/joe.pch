@@ -44,10 +44,10 @@ typedef NS_ENUM(NSInteger, MTSettingsSectionType) {
 
 typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
     MTFilterViewCellCoffee = 0,
-    MTFilterViewCellHardStuff,
     MTFilterViewCellHelthy,
     MTFilterViewCellComfort,
     MTFilterViewCellSweet,
+    MTFilterViewCellHardStuff,
     MTFilterViewCellPrice,
     MTFilterViewCellCount
 };
@@ -87,9 +87,9 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 #define READABLE_PLACE_TYPES @[@"bar", @"restaurant", @"cafe", @"bakery"]
 
 // --- FILTERS ---
-#define FILTERS_KEY_WORDS            @[@"coffee+tea", @"wine+beer+cocktail", @[@"juice", @"smoothie", @"seafood+sushi", @"vegetarian", @"salad"], @[@"italian", @"american", @"indian", @"french", @"mexican", @"chinese", @"pizza", @"steak"], @[@"ice+cream", @"pastry"]]
+#define FILTERS_KEY_WORDS            @[@"coffee+tea", @[@"juice", @"smoothie", @"seafood+sushi", @"vegetarian", @"salad"], @[@"italian", @"american", @"indian", @"french", @"mexican", @"chinese", @"pizza", @"steak"], @[@"ice+cream", @"pastry"], @"wine+beer+cocktail"]
 
-#define FILTER_TITLES                @[@"Caffeine", @"The hard stuff", @[@"Juice", @"Smoothie", @"Seafood & Sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"]]
+#define FILTER_TITLES                @[@"Caffeine", @[@"Juice", @"Smoothie", @"Seafood & Sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"], @"The hard stuff"]
 
 
 #define MEAL_TYPES                          @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]

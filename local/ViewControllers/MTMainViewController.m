@@ -130,7 +130,7 @@
 - (BOOL)nothingSelected {
     NSUInteger index = -1;
     
-    for (NSUInteger subfiltersIndex = MTFilterViewCellHelthy; subfiltersIndex < MTFilterViewCellPrice; subfiltersIndex++) {
+    for (NSUInteger subfiltersIndex = MTFilterViewCellHardStuff; subfiltersIndex < MTFilterViewCellPrice; subfiltersIndex++) {
         if (subfiltersIndex <= MTFilterViewCellHardStuff) {
             if ([FILTERS_KEY_WORDS[subfiltersIndex] isEqualToString:[MTSettings sharedSettings].filterKeyWords]) {
                 index = subfiltersIndex;

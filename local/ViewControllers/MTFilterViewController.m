@@ -65,7 +65,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
     }
     else {
         self.subfilterIndex = -1;
-        for (NSUInteger filterIndex = MTFilterViewCellHelthy; filterIndex < MTFilterViewCellPrice; filterIndex++) {
+        for (NSUInteger filterIndex = MTFilterViewCellHelthy; filterIndex < MTFilterViewCellHardStuff; filterIndex++) {
             NSArray *subfilters = FILTERS_KEY_WORDS[filterIndex];
             
             if ([subfilters containsObject:[MTSettings sharedSettings].filterKeyWords]) {
@@ -122,10 +122,15 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
         
         if (self.selectedIndexPath.row < FILTER_TITLES.count && indexPath.row == self.selectedIndexPath.row) {
             if (self.selectedIndexPath.row >= MTFilterViewCellHelthy) {
-                NSArray *subfilters = FILTER_TITLES[self.selectedIndexPath.row];
+                id subfiltersObject = FILTER_TITLES[self.selectedIndexPath.row];
                 
-                subfilterString = [subfilters objectAtIndex:self.subfilterIndex];
-                subfilterString = [NSString stringWithFormat:@" [%@]", subfilterString];
+                if ([subfiltersObject isKindOfClass:[NSArray class]]) {
+                    
+                    NSArray *subfilters = (NSArray *)subfiltersObject;
+                    subfilterString = [subfilters objectAtIndex:self.subfilterIndex];
+                    subfilterString = [NSString stringWithFormat:@" [%@]", subfilterString];
+                }
+                
             }
         }
         
@@ -175,7 +180,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row <= MTFilterViewCellHardStuff) {
+    if (indexPath.row == MTFilterViewCellCoffee || indexPath.row == MTFilterViewCellHardStuff) {
         [MTSettings sharedSettings].filterKeyWords = FILTERS_KEY_WORDS[indexPath.row];
         MTFilterViewCell *currentlySelectedCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
         currentlySelectedCell.markImageView.hidden = true;

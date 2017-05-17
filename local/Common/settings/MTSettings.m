@@ -76,7 +76,7 @@
     
     NSString *keyWords = MEAL_TYPES[0];
     if(hour >= 0 && hour < 6) {
-        keyWords = FILTERS_KEY_WORDS[1];
+        keyWords = FILTERS_KEY_WORDS[4];
     }
     else if(hour >= 6 && hour < 12) {
         keyWords = MEAL_TYPES[0];
