@@ -14,6 +14,7 @@
 #import "MTPageContainerViewController.h"
 #import "FilterListener.h"
 #import "CustomButtonItem.h"
+#import "MTAnalytics.h"
 
 #define MAX_TITLE_SYMBOLS                 23
 
@@ -35,6 +36,18 @@
     [self setupKeyWordsListener];
     [self getPlaces];
     [self setup];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[MTAnalytics sharedAnalytics] logStartScreen:evScreenProfile];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[MTAnalytics sharedAnalytics] logEndScreen:evScreenProfile];
 }
 
 - (void)setupBackButton {

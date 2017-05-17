@@ -10,6 +10,7 @@
 #import "MTDataModel.h"
 #import "MTPlaceTypeManager.h"
 #import "MTSettingsPreferences.h"
+#import "MTAnalytics.h"
 
 @interface MTSettings()
 @property (nonatomic, strong) NSMutableArray *foodTypes;
@@ -191,6 +192,7 @@
 - (void)setFilterKeyWords:(NSString *)filterKeyWords {
     _filterKeyWords = filterKeyWords;
     
+    [[MTAnalytics sharedAnalytics] logClickEvent:evClickFilterItem info:filterKeyWords];
     [[NSNotificationCenter defaultCenter] postNotificationName:nKEYWORDS_CHANGED object:nil];
 }
 

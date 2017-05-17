@@ -29,6 +29,7 @@
 #import "MTPlaceDetails.h"
 #import "FilterListener.h"
 #import "MTDataModel.h"
+#import "MTAnalytics.h"
 
 #define MIN_CLUSTERING_SPAN                       0.02
 
@@ -200,11 +201,17 @@
     
     id<MKAnnotation> annotation = view.annotation;
     if([annotation isKindOfClass:[QCluster class]]) {
+        
+        NSUInteger items = ((QCluster *)annotation).objects.count;
+        [[MTAnalytics sharedAnalytics] logClickEvent:evClickMapCluster info:[NSString stringWithFormat:@"numberOfItemsInCluster: %ld", items]];
+        
         QCluster* cluster = (QCluster*)annotation;
         [mapView setRegion:MKCoordinateRegionMake(cluster.coordinate, MKCoordinateSpanMake(2.5 * cluster.radius, 2.5 * cluster.radius))
               animated:YES];
     }
     else {
+        [[MTAnalytics sharedAnalytics] logClickEvent:evClickMapAnnotation info:@""];
+        
         CLLocationCoordinate2D pinCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
         [self.mapView setCenterCoordinate:pinCenter animated:YES];
         
@@ -268,6 +275,7 @@
             [self updatePlaces:coordinate];*/
         }
         else {
+            [[MTAnalytics sharedAnalytics] logClickEvent:evClickMapPopup info:self.currentPopupView.place.title];
             [self didSelectItemForPlace:self.currentPopupView.place];
         }
     }
@@ -298,6 +306,8 @@
 }
 
 - (void)showLocationView {
+    [[MTAnalytics sharedAnalytics] logStartScreen:evScreenLocationView];
+    
     self.locationView = [[[NSBundle mainBundle] loadNibNamed:@"LocationView" owner:self options:nil] objectAtIndex:0];
     self.locationView.delegate = self;
     self.locationView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0);
@@ -309,6 +319,8 @@
 }
 
 - (void)hideLocationView {
+    [[MTAnalytics sharedAnalytics] logEndScreen:evScreenLocationView];
+    
     [self.titleView collapse];
     [UIView animateWithDuration:0.5 animations:^{
         self.locationView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 0);
@@ -353,6 +365,9 @@
 }
 
 - (void)showListAnimated:(BOOL)animated {
+    [[MTAnalytics sharedAnalytics] logEndScreen:evScreenMapView];
+    [[MTAnalytics sharedAnalytics] logStartScreen:evScreenListView];
+    
     self.listView = [[[NSBundle mainBundle] loadNibNamed:@"ListView" owner:self options:nil] objectAtIndex:0];
     self.listView.delegate = self;
     self.listView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
@@ -370,6 +385,9 @@
 }
 
 - (void)showMap {
+    [[MTAnalytics sharedAnalytics] logEndScreen:evScreenListView];
+    [[MTAnalytics sharedAnalytics] logStartScreen:evScreenMapView];
+    
     [UIView animateWithDuration:0.4 animations:^{
         self.listView.alpha = 0.0;
     } completion:^(BOOL finished) {
@@ -407,6 +425,8 @@
             MTGetPlaceDetailsResponse *detailsResponse = (MTGetPlaceDetailsResponse *)response;
             MTPlaceDetails *placeDetails = detailsResponse.placeDetails;
             
+            [[MTAnalytics sharedAnalytics] logClickEvent:evClickAutoCompletePlace info:placeDetails.name];
+            
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(placeDetails.lat.floatValue, placeDetails.lon.floatValue);
             [weakSelf updatePlaces:coordinate];
         }
@@ -415,6 +435,8 @@
 }
 
 - (void)currentPlaceSelected {
+    [[MTAnalytics sharedAnalytics] logClickEvent:evClickAutoCompletePlace info:@"*current_place"];
+    
     [self updatePlaces:[MTLocationManager sharedManager].lastLocation];
 }
 
@@ -429,6 +451,8 @@
 #pragma mark - popup click delegate
 
 - (void)popClickedForPlace:(MTPlace *)place {
+    [[MTAnalytics sharedAnalytics] logClickEvent:evClickMapPopup info:place.title];
+    
     [self didSelectItemForPlace:place];
 }
 

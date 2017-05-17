@@ -13,6 +13,7 @@
 #import "MTDataModel.h"
 #import "FilterViewListener.h"
 #import "MTFilterViewController.h"
+#import "MTAnalytics.h"
 
 #define FILTER_VIEW_HEIGHT              250
 
@@ -97,6 +98,8 @@
 #pragma mark - FilterView
 
 - (void)showFilterView {
+    [[MTAnalytics sharedAnalytics] logStartScreen:evScreenFilterView];
+    
     [UIView animateWithDuration:0.4 animations:^{
         /* This looks ugly. navigation for filterview should be refactored*/
         MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
@@ -110,11 +113,7 @@
 }
 
 - (void)hideFilterView:(BOOL)shouldRevertToPreviousIndex {
-    
-    /* This looks ugly. navigation for filterview should be refactored*/
-    /*MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
-    [filterViewController disableSwipe];*/
-
+    [[MTAnalytics sharedAnalytics] logEndScreen:evScreenFilterView];
     
     [UIView animateWithDuration:0.2 animations:^{
         self.filterContainterView.alpha = 0.0;

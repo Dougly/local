@@ -146,7 +146,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
         
         if(indexPath.row == MTFilterViewCellHelthy) {
             [cell.leftImageButton setTitle:@"\U0000e09e" forState:UIControlStateNormal];
-            cell.captionLabel.text = [@"Helthy-ish" stringByAppendingString:subfilterString];
+            cell.captionLabel.text = [@"Healthy-ish" stringByAppendingString:subfilterString];
             finalCell = cell;
         }
         

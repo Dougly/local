@@ -11,6 +11,7 @@
 #import "FacebookFacade.h"
 #import "MTLoginViewController.h"
 #import "MTMainViewController.h"
+#import "Countly.h"
 
 @implementation NSURLRequest(DataController)
 
@@ -31,7 +32,16 @@ static PanelsViewController *rootController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self.facebook application:application didFinishLaunchingWithOptions:launchOptions];
     [self setupNavigationColors];
+    [self setupCountly];
     return YES;
+}
+
+- (void)setupCountly {
+    CountlyConfig* config = CountlyConfig.new;
+    config.appKey = COUNTLY_APP_ID;
+    config.host = @"https://try.count.ly";
+    
+    [Countly.sharedInstance startWithConfig:config];
 }
 
 - (void)setupNavigationColors {

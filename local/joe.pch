@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 // --- FILTERS ---
 #define FILTERS_KEY_WORDS            @[@"coffee+tea", @"wine+beer+cocktail", @[@"juice", @"smoothie", @"seafood+sushi", @"vegetarian", @"salad"], @[@"italian", @"american", @"indian", @"french", @"mexican", @"chinese", @"pizza", @"steak"], @[@"ice+cream", @"pastry"]]
 
-#define FILTER_TITLES                @[@"Caffeine", @"The hard stuff", @[@"Juice", @"Smoothie", @"Seafood & sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"]]
+#define FILTER_TITLES                @[@"Caffeine", @"The hard stuff", @[@"Juice", @"Smoothie", @"Seafood & Sushi", @"Vegetarian", @"Salad"], @[@"Italian", @"American", @"Indian" , @"French", @"Mexican", @"Chinese", @"Pizza", @"Steak"], @[@"Ice cream", @"Pastry"]]
 
 
 #define MEAL_TYPES                          @[@"BREAKFAST", @"LUNCH", @"DINNER", @""]
@@ -113,5 +113,8 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 #define kYelpDomain                  @"Yelp"
 #define kYELP_CLIENT_ID              @"xhGfYgXd8Iyr7EpwDZ05Cw"
 #define kYELP_CLIENT_SECRET          @"Fmk3cfsWDUYdaNg7CNrZBkBrBS9yxKDsjO2Acu5Tmx1Jk3USZd58LHDRNXyA8sN3"
+
+// -- Countly
+#define COUNTLY_APP_ID               @"8a9e5e5b38c59cdea5fa4abeb2730a5332e37db1"
 
 #endif

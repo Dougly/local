@@ -17,6 +17,7 @@
 #import "MTGetPlaceDetailsResponse.h"
 #import "FilterListener.h"
 #import "MTProgressHUD.h"
+#import "MTAnalytics.h"
 
 #define NUMBER_OF_CELLS_PER_SCREEN                 3.1
 
@@ -137,6 +138,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MTPlace *selectedPlace = self.places[indexPath.row];
     
+    [[MTAnalytics sharedAnalytics] logClickEvent:evClickListItem info:selectedPlace.name];
     [self.delegate didSelectItemForPlace:selectedPlace];
 }
 

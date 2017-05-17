@@ -61,6 +61,23 @@
 		47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0A1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m */; };
 		47237C0E1ECC42B600E514C1 /* MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0D1ECC42B600E514C1 /* MTYelpUser.m */; };
 		47237C111ECC42C500E514C1 /* _MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C101ECC42C500E514C1 /* _MTYelpUser.m */; };
+		47237C331ECC518400E514C1 /* Countly.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C141ECC518400E514C1 /* Countly.m */; };
+		47237C341ECC518400E514C1 /* Countly_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C161ECC518400E514C1 /* Countly_OpenUDID.m */; };
+		47237C351ECC518400E514C1 /* CountlyAPM.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C181ECC518400E514C1 /* CountlyAPM.m */; };
+		47237C361ECC518400E514C1 /* CountlyAPMNetworkLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C1A1ECC518400E514C1 /* CountlyAPMNetworkLog.m */; };
+		47237C371ECC518400E514C1 /* CountlyCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C1C1ECC518400E514C1 /* CountlyCommon.m */; };
+		47237C381ECC518400E514C1 /* CountlyConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C1E1ECC518400E514C1 /* CountlyConfig.m */; };
+		47237C391ECC518400E514C1 /* CountlyConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C201ECC518400E514C1 /* CountlyConnectionManager.m */; };
+		47237C3A1ECC518400E514C1 /* CountlyCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C221ECC518400E514C1 /* CountlyCrashReporter.m */; };
+		47237C3B1ECC518400E514C1 /* CountlyDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C241ECC518400E514C1 /* CountlyDeviceInfo.m */; };
+		47237C3C1ECC518400E514C1 /* CountlyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C261ECC518400E514C1 /* CountlyEvent.m */; };
+		47237C3D1ECC518400E514C1 /* CountlyNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C281ECC518400E514C1 /* CountlyNotificationService.m */; };
+		47237C3E1ECC518400E514C1 /* CountlyPersistency.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C2A1ECC518400E514C1 /* CountlyPersistency.m */; };
+		47237C3F1ECC518400E514C1 /* CountlyPushNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C2C1ECC518400E514C1 /* CountlyPushNotifications.m */; };
+		47237C401ECC518400E514C1 /* CountlyStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C2E1ECC518400E514C1 /* CountlyStarRating.m */; };
+		47237C411ECC518400E514C1 /* CountlyUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C301ECC518400E514C1 /* CountlyUserDetails.m */; };
+		47237C421ECC518400E514C1 /* CountlyViewTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C321ECC518400E514C1 /* CountlyViewTracking.m */; };
+		47237C461ECC596800E514C1 /* MTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C451ECC596800E514C1 /* MTAnalytics.m */; };
 		47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTGetPlaceRequest.m */; };
 		47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0D1E797C590007990C /* MTGetPlacesResponse.m */; };
 		47260E111E797EA60007990C /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E101E797EA60007990C /* MTUser.m */; };
@@ -370,6 +387,40 @@
 		47237C0D1ECC42B600E514C1 /* MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTYelpUser.m; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/MTYelpUser.m; sourceTree = "<group>"; };
 		47237C0F1ECC42C500E514C1 /* _MTYelpUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MTYelpUser.h; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/_MTYelpUser.h; sourceTree = "<group>"; };
 		47237C101ECC42C500E514C1 /* _MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MTYelpUser.m; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/_MTYelpUser.m; sourceTree = "<group>"; };
+		47237C131ECC518400E514C1 /* Countly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly.h; sourceTree = "<group>"; };
+		47237C141ECC518400E514C1 /* Countly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Countly.m; sourceTree = "<group>"; };
+		47237C151ECC518400E514C1 /* Countly_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Countly_OpenUDID.h; sourceTree = "<group>"; };
+		47237C161ECC518400E514C1 /* Countly_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Countly_OpenUDID.m; sourceTree = "<group>"; };
+		47237C171ECC518400E514C1 /* CountlyAPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyAPM.h; sourceTree = "<group>"; };
+		47237C181ECC518400E514C1 /* CountlyAPM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyAPM.m; sourceTree = "<group>"; };
+		47237C191ECC518400E514C1 /* CountlyAPMNetworkLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyAPMNetworkLog.h; sourceTree = "<group>"; };
+		47237C1A1ECC518400E514C1 /* CountlyAPMNetworkLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyAPMNetworkLog.m; sourceTree = "<group>"; };
+		47237C1B1ECC518400E514C1 /* CountlyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCommon.h; sourceTree = "<group>"; };
+		47237C1C1ECC518400E514C1 /* CountlyCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyCommon.m; sourceTree = "<group>"; };
+		47237C1D1ECC518400E514C1 /* CountlyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConfig.h; sourceTree = "<group>"; };
+		47237C1E1ECC518400E514C1 /* CountlyConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyConfig.m; sourceTree = "<group>"; };
+		47237C1F1ECC518400E514C1 /* CountlyConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyConnectionManager.h; sourceTree = "<group>"; };
+		47237C201ECC518400E514C1 /* CountlyConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyConnectionManager.m; sourceTree = "<group>"; };
+		47237C211ECC518400E514C1 /* CountlyCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyCrashReporter.h; sourceTree = "<group>"; };
+		47237C221ECC518400E514C1 /* CountlyCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyCrashReporter.m; sourceTree = "<group>"; };
+		47237C231ECC518400E514C1 /* CountlyDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyDeviceInfo.h; sourceTree = "<group>"; };
+		47237C241ECC518400E514C1 /* CountlyDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyDeviceInfo.m; sourceTree = "<group>"; };
+		47237C251ECC518400E514C1 /* CountlyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyEvent.h; sourceTree = "<group>"; };
+		47237C261ECC518400E514C1 /* CountlyEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyEvent.m; sourceTree = "<group>"; };
+		47237C271ECC518400E514C1 /* CountlyNotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyNotificationService.h; sourceTree = "<group>"; };
+		47237C281ECC518400E514C1 /* CountlyNotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyNotificationService.m; sourceTree = "<group>"; };
+		47237C291ECC518400E514C1 /* CountlyPersistency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyPersistency.h; sourceTree = "<group>"; };
+		47237C2A1ECC518400E514C1 /* CountlyPersistency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyPersistency.m; sourceTree = "<group>"; };
+		47237C2B1ECC518400E514C1 /* CountlyPushNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyPushNotifications.h; sourceTree = "<group>"; };
+		47237C2C1ECC518400E514C1 /* CountlyPushNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyPushNotifications.m; sourceTree = "<group>"; };
+		47237C2D1ECC518400E514C1 /* CountlyStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyStarRating.h; sourceTree = "<group>"; };
+		47237C2E1ECC518400E514C1 /* CountlyStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyStarRating.m; sourceTree = "<group>"; };
+		47237C2F1ECC518400E514C1 /* CountlyUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyUserDetails.h; sourceTree = "<group>"; };
+		47237C301ECC518400E514C1 /* CountlyUserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyUserDetails.m; sourceTree = "<group>"; };
+		47237C311ECC518400E514C1 /* CountlyViewTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyViewTracking.h; sourceTree = "<group>"; };
+		47237C321ECC518400E514C1 /* CountlyViewTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyViewTracking.m; sourceTree = "<group>"; };
+		47237C441ECC596800E514C1 /* MTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAnalytics.h; sourceTree = "<group>"; };
+		47237C451ECC596800E514C1 /* MTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAnalytics.m; sourceTree = "<group>"; };
 		47260E091E797C380007990C /* MTGetPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesRequest.h; sourceTree = "<group>"; };
 		47260E0A1E797C380007990C /* MTGetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetPlaceRequest.m; sourceTree = "<group>"; };
 		47260E0C1E797C590007990C /* MTGetPlacesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesResponse.h; sourceTree = "<group>"; };
@@ -941,6 +992,56 @@
 				47157CED1E7C8BE6000D11E9 /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		47237C121ECC518400E514C1 /* Countly */ = {
+			isa = PBXGroup;
+			children = (
+				47237C131ECC518400E514C1 /* Countly.h */,
+				47237C141ECC518400E514C1 /* Countly.m */,
+				47237C151ECC518400E514C1 /* Countly_OpenUDID.h */,
+				47237C161ECC518400E514C1 /* Countly_OpenUDID.m */,
+				47237C171ECC518400E514C1 /* CountlyAPM.h */,
+				47237C181ECC518400E514C1 /* CountlyAPM.m */,
+				47237C191ECC518400E514C1 /* CountlyAPMNetworkLog.h */,
+				47237C1A1ECC518400E514C1 /* CountlyAPMNetworkLog.m */,
+				47237C1B1ECC518400E514C1 /* CountlyCommon.h */,
+				47237C1C1ECC518400E514C1 /* CountlyCommon.m */,
+				47237C1D1ECC518400E514C1 /* CountlyConfig.h */,
+				47237C1E1ECC518400E514C1 /* CountlyConfig.m */,
+				47237C1F1ECC518400E514C1 /* CountlyConnectionManager.h */,
+				47237C201ECC518400E514C1 /* CountlyConnectionManager.m */,
+				47237C211ECC518400E514C1 /* CountlyCrashReporter.h */,
+				47237C221ECC518400E514C1 /* CountlyCrashReporter.m */,
+				47237C231ECC518400E514C1 /* CountlyDeviceInfo.h */,
+				47237C241ECC518400E514C1 /* CountlyDeviceInfo.m */,
+				47237C251ECC518400E514C1 /* CountlyEvent.h */,
+				47237C261ECC518400E514C1 /* CountlyEvent.m */,
+				47237C271ECC518400E514C1 /* CountlyNotificationService.h */,
+				47237C281ECC518400E514C1 /* CountlyNotificationService.m */,
+				47237C291ECC518400E514C1 /* CountlyPersistency.h */,
+				47237C2A1ECC518400E514C1 /* CountlyPersistency.m */,
+				47237C2B1ECC518400E514C1 /* CountlyPushNotifications.h */,
+				47237C2C1ECC518400E514C1 /* CountlyPushNotifications.m */,
+				47237C2D1ECC518400E514C1 /* CountlyStarRating.h */,
+				47237C2E1ECC518400E514C1 /* CountlyStarRating.m */,
+				47237C2F1ECC518400E514C1 /* CountlyUserDetails.h */,
+				47237C301ECC518400E514C1 /* CountlyUserDetails.m */,
+				47237C311ECC518400E514C1 /* CountlyViewTracking.h */,
+				47237C321ECC518400E514C1 /* CountlyViewTracking.m */,
+			);
+			name = Countly;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Vendor/Countly;
+			sourceTree = "<group>";
+		};
+		47237C431ECC594F00E514C1 /* CountlyEventLogger */ = {
+			isa = PBXGroup;
+			children = (
+				47237C441ECC596800E514C1 /* MTAnalytics.h */,
+				47237C451ECC596800E514C1 /* MTAnalytics.m */,
+			);
+			name = CountlyEventLogger;
+			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Common/CountlyEventLogger;
 			sourceTree = "<group>";
 		};
 		47260E081E797B970007990C /* Engine */ = {
@@ -1682,6 +1783,7 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				47237C431ECC594F00E514C1 /* CountlyEventLogger */,
 				4788AD9F1EC388680072CEF2 /* FilterViewListener */,
 				474001D71EB7974C00C55420 /* appstate */,
 				474001D31EB65F7700C55420 /* keywords */,
@@ -1721,6 +1823,7 @@
 		CE250EE71B676634005447FF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				47237C121ECC518400E514C1 /* Countly */,
 				B013DBD51EB8E22500A96F75 /* SSKeychain */,
 				B013DB451EB8DF5A00A96F75 /* Material */,
 				B013DB3C1EB8DBF700A96F75 /* FacebookSDK */,
@@ -2034,6 +2137,7 @@
 				47237C081ECC404300E514C1 /* MTAuthenticateYelpRequest.m in Sources */,
 				B013DBC31EB8DF5A00A96F75 /* UIView+MDExtension.m in Sources */,
 				47157CC31E7C8BAC000D11E9 /* AFURLRequestSerialization.m in Sources */,
+				47237C3E1ECC518400E514C1 /* CountlyPersistency.m in Sources */,
 				47A97FE61EAD09FB00AB8657 /* ASValuePopUpView.m in Sources */,
 				47A97FB11EACDB2B00AB8657 /* RMActionController.m in Sources */,
 				47157CCB1E7C8BAC000D11E9 /* UIProgressView+AFNetworking.m in Sources */,
@@ -2071,6 +2175,7 @@
 				47A97FD51EACE10A00AB8657 /* MTPlaceType.m in Sources */,
 				47A9803D1EAE283100AB8657 /* _MTPlaceReview.m in Sources */,
 				4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */,
+				47237C381ECC518400E514C1 /* CountlyConfig.m in Sources */,
 				474001D61EB65F9400C55420 /* FilterListener.m in Sources */,
 				4793CB121E7ED8C00054B7FB /* ZHPopupView.m in Sources */,
 				47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */,
@@ -2103,6 +2208,7 @@
 				47157CEF1E7C8BE6000D11E9 /* NSData+GIF.m in Sources */,
 				9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */,
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
+				47237C391ECC518400E514C1 /* CountlyConnectionManager.m in Sources */,
 				47260E111E797EA60007990C /* MTUser.m in Sources */,
 				47260E141E797EAD0007990C /* _MTUser.m in Sources */,
 				476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */,
@@ -2140,17 +2246,22 @@
 				47A980371EAE188C00AB8657 /* MTWeekdayText.m in Sources */,
 				47157C8B1E7C853A000D11E9 /* IDMCaptionView.m in Sources */,
 				B013DBA11EB8DF5A00A96F75 /* MDCalendarYearSelector.m in Sources */,
+				47237C461ECC596800E514C1 /* MTAnalytics.m in Sources */,
 				CE250F131B676682005447FF /* SDRequest.m in Sources */,
 				B013DBD11EB8E13200A96F75 /* MTStoryboardFlow.m in Sources */,
 				4791026C1EB33B280071BC2C /* TitleView.m in Sources */,
+				47237C361ECC518400E514C1 /* CountlyAPMNetworkLog.m in Sources */,
+				47237C3B1ECC518400E514C1 /* CountlyDeviceInfo.m in Sources */,
 				B013DBA01EB8DF5A00A96F75 /* MDCalendarHeader.m in Sources */,
 				474001A81EB4D2CE00C55420 /* MTFilterViewCell.m in Sources */,
+				47237C351ECC518400E514C1 /* CountlyAPM.m in Sources */,
 				47A97FD61EACE10A00AB8657 /* MTPlaceTypeManager.m in Sources */,
 				B013DBAA1EB8DF5A00A96F75 /* UIColorHelper.m in Sources */,
 				47157CFA1E7C8BE6000D11E9 /* UIImage+WebP.m in Sources */,
 				B013DBAD1EB8DF5A00A96F75 /* MDButton.m in Sources */,
 				47A97FBB1EACDBA500AB8657 /* MTSwitchCell.m in Sources */,
 				47157CBF1E7C8BAC000D11E9 /* AFHTTPSessionManager.m in Sources */,
+				47237C3F1ECC518400E514C1 /* CountlyPushNotifications.m in Sources */,
 				478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */,
 				47A9802C1EAE186800AB8657 /* _MTOpeningHourPeriod.m in Sources */,
 				CE250F151B676682005447FF /* SDResult.m in Sources */,
@@ -2158,6 +2269,7 @@
 				B013DBD01EB8E13200A96F75 /* MTKeyStorageFacade.m in Sources */,
 				47237C0E1ECC42B600E514C1 /* MTYelpUser.m in Sources */,
 				B013DBA21EB8DF5A00A96F75 /* MDCalendarYearSelectorViewCell.m in Sources */,
+				47237C341ECC518400E514C1 /* Countly_OpenUDID.m in Sources */,
 				47157CFB1E7C8BE6000D11E9 /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */,
 				47A980151EAE070E00AB8657 /* DetailLocationCell.m in Sources */,
 				CE250F1D1B6768B0005447FF /* MTDataModel.m in Sources */,
@@ -2172,8 +2284,10 @@
 				47A9802E1EAE186800AB8657 /* _MTWeekdayText.m in Sources */,
 				47A97FFB1EAE06AD00AB8657 /* TGAnnotation.m in Sources */,
 				47157CBE1E7C8BAC000D11E9 /* AFHTTPRequestOperationManager.m in Sources */,
+				47237C411ECC518400E514C1 /* CountlyUserDetails.m in Sources */,
 				47A9801E1EAE084800AB8657 /* ViewController.m in Sources */,
 				479278391EC9E9DE0058C2F5 /* CustomButtonItem.m in Sources */,
+				47237C421ECC518400E514C1 /* CountlyViewTracking.m in Sources */,
 				478073181EAA705500D98DD7 /* QNode.m in Sources */,
 				47A97FB31EACDB2B00AB8657 /* RMPickerViewController.m in Sources */,
 				47A97FB21EACDB2B00AB8657 /* RMDateSelectionViewController.m in Sources */,
@@ -2205,11 +2319,13 @@
 				47157CEE1E7C8BE6000D11E9 /* MKAnnotationView+WebCache.m in Sources */,
 				47157CCA1E7C8BAC000D11E9 /* UIImageView+AFNetworking.m in Sources */,
 				47157C8F1E7C853A000D11E9 /* IDMPhotoBrowser.m in Sources */,
+				47237C3A1ECC518400E514C1 /* CountlyCrashReporter.m in Sources */,
 				B013DBB81EB8DF5A00A96F75 /* MDToast.m in Sources */,
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
 				4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */,
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */,
+				47237C331ECC518400E514C1 /* Countly.m in Sources */,
 				B013DBA61EB8DF5A00A96F75 /* NSCalendarHelper.m in Sources */,
 				B013DBA31EB8DF5A00A96F75 /* MDDatePicker.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
@@ -2217,6 +2333,7 @@
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
 				474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */,
 				B013DBB61EB8DF5A00A96F75 /* MDTableViewCell.m in Sources */,
+				47237C371ECC518400E514C1 /* CountlyCommon.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */,
 				47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */,
@@ -2224,6 +2341,7 @@
 				4780731E1EAA707F00D98DD7 /* ClusterAnnotationView.m in Sources */,
 				47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */,
 				47A980431EAE67E100AB8657 /* MTGoogleQueryString.m in Sources */,
+				47237C3C1ECC518400E514C1 /* CountlyEvent.m in Sources */,
 				B013DBAE1EB8DF5A00A96F75 /* MDCollectionViewCell.m in Sources */,
 				47157CC11E7C8BAC000D11E9 /* AFSecurityPolicy.m in Sources */,
 				B013DBD41EB8E1FB00A96F75 /* NSDateHelper.m in Sources */,
@@ -2233,12 +2351,14 @@
 				47A97FEB1EAD0A3F00AB8657 /* MTDistanceCell.m in Sources */,
 				47157CF31E7C8BE6000D11E9 /* SDWebImageDownloader.m in Sources */,
 				47A980401EAE64DD00AB8657 /* MTGoogleFilter.m in Sources */,
+				47237C3D1ECC518400E514C1 /* CountlyNotificationService.m in Sources */,
 				47157C911E7C853A000D11E9 /* IDMTapDetectingView.m in Sources */,
 				B013DBCF1EB8E13200A96F75 /* MTAppManager.m in Sources */,
 				47A97F9D1EABD89900AB8657 /* _MTPlace.m in Sources */,
 				B013DBE91EB8E5F900A96F75 /* UINavigationBar+MTTransparent.m in Sources */,
 				4793CB101E7ED8C00054B7FB /* UIImageEffects.m in Sources */,
 				47A97FDF1EACF74E00AB8657 /* MTRatingCell.m in Sources */,
+				47237C401ECC518400E514C1 /* CountlyStarRating.m in Sources */,
 				47A980361EAE188C00AB8657 /* MTPlaceDetails.m in Sources */,
 				B013DBBF1EB8DF5A00A96F75 /* MDSliderThumbView.m in Sources */,
 				47AA04DB1EB34A0500818247 /* MapPopupView.m in Sources */,
