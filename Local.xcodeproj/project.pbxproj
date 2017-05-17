@@ -2098,7 +2098,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run a75f0b824aef17a34bc1de60d1021528c0c7c3ba 406412cdcd50165fda9a1c230de2ae77ebcd76bc01df0632aecda74756e577ce";
+			shellScript = "./Fabric.framework/run 510fc32108c5a30fd1a90a356fede7d8ccdac49a d54c5bc3d70dc6650435a806640e444bfa113b064a4a831b26e506532c845e60";
 		};
 		47A97F971EABD7C800AB8657 /* Mogenerator Script */ = {
 			isa = PBXShellScriptBuildPhase;
