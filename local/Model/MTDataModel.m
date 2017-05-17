@@ -20,6 +20,7 @@
 #import "MTPlaceReview.h"
 #import "MTYelpPlace.h"
 #import "MTGoogleFilter.h"
+#import "MTYelpUser.h"
 
 @interface MTDataModel ()
 
@@ -185,6 +186,17 @@
 }
 
 #pragma mark - fetch requests
+- (MTYelpUser *)getYelpUser {
+    NSFetchRequest *allPlaces = [[NSFetchRequest alloc] init];
+    [allPlaces setEntity:[NSEntityDescription entityForName:@"MTYelpUser"
+                                     inManagedObjectContext:self.managedObjectContext]];
+    
+    NSError *error = nil;
+    NSArray *places = [self.managedObjectContext executeFetchRequest:allPlaces
+                                                               error:&error];
+    
+    return [places firstObject];
+}
 
 - (NSArray *)getPlaces {
     NSFetchRequest *allPlaces = [[NSFetchRequest alloc] init];
@@ -194,9 +206,6 @@
     NSError *error = nil;
     NSArray *places = [self.managedObjectContext executeFetchRequest:allPlaces
                                                              error:&error];
-    
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isPresent == %@", [NSNumber numberWithBool:NO]];
-    //NSArray *filteredPlaces = [places filteredArrayUsingPredicate:predicate];
     
     return [places copy];
 }
@@ -226,6 +235,27 @@
 }
 
 #pragma mark - parse utils
+
+- (MTYelpUser *)parseYelpUser:(NSData *)data {
+    [self removeAllEntities:@"MTYelpUser"];
+    MTYelpUser *yelpUser = nil;
+    
+    if(data != nil) {
+        NSError *error = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        if (!error && [jsonDict isKindOfClass:NSDictionary.class]) {
+            
+            if(jsonDict != nil) {
+                yelpUser = (MTYelpUser *)[self emptyNode:MTYelpUser.class];
+                [yelpUser parseNode:jsonDict];
+            }
+        }
+        [self saveContext];
+    }
+    
+    return yelpUser;
+}
 
 - (NSArray *)parsePlaces:(NSData *)data {
     NSMutableArray *places = nil;

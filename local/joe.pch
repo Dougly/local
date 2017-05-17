@@ -104,7 +104,14 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 #define kNEW_PLACES_FINAL_PACK              @"NewPlacesFinalPackOfPlacesKey"
 
 // -- APP STATE
-#define nFOREGROUND                     @"AppToForegroundNotification"
+#define nFOREGROUND                         @"AppToForegroundNotification"
 
+
+
+
+// -- YELP
+#define kYelpDomain                  @"Yelp"
+#define kYELP_CLIENT_ID              @"xhGfYgXd8Iyr7EpwDZ05Cw"
+#define kYELP_CLIENT_SECRET          @"Fmk3cfsWDUYdaNg7CNrZBkBrBS9yxKDsjO2Acu5Tmx1Jk3USZd58LHDRNXyA8sN3"
 
 #endif

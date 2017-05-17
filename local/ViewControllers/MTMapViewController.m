@@ -52,6 +52,7 @@
     [super awakeFromNib];
     
     self.navigationController.navigationBar.tintColor = UIColorFromHex(0x939598);
+    
     [[MTDataModel sharedDatabaseStorage] clearPlaces];
     [self showListAnimated:NO];
     

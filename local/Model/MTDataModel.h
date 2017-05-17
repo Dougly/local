@@ -13,11 +13,15 @@
 @class MTUser;
 @class MTPlaceDetails;
 @class MTYelpPlace;
+@class MTYelpUser;
 
 @interface MTDataModel : NSObject
 
 + (MTDataModel *)sharedDatabaseStorage;
 - (void)clearPlaces;
+
+- (MTYelpUser *)parseYelpUser:(NSData *)data;
+- (MTYelpUser *)getYelpUser;
 
 - (NSArray *)parseYelpPlaces:(NSData *)data;
 - (MTPlaceDetails *)parsePlaceDetails:(NSData *)data;

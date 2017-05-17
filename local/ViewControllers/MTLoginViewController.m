@@ -38,10 +38,11 @@ static NSString * const kId            = @"id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.facebookButton.mdButtonType    = MDButtonTypeFlat;
     self.instagramButton.mdButtonType   = MDButtonTypeFlat;
     self.facebookButton.backgroundColor = kColorFacebook;
-    [self setupStyleNavigationBarModal];
+    //[self setupStyleNavigationBarModal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,16 +60,16 @@ static NSString * const kId            = @"id";
 }
 
 - (void)showMainScreen {
-    MTMainViewController *mainViewController =
-    [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
-                                                withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    MTMainViewController *mainViewController = [main instantiateViewControllerWithIdentifier:@"MTMainViewController"];
     [self.navigationController pushViewController:mainViewController animated:YES];
 }
 
-- (void)showMainScreen:(BOOL)isAnimated {    
-    MTMainViewController *mainView =
-    [MTMainViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
-                                              withIdentifier:CLASS_IDENTIFIER(MTMainViewController)];
+- (void)showMainScreen:(BOOL)isAnimated {
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    MTMainViewController *mainView = [main instantiateViewControllerWithIdentifier:@"MTMainViewController"];
     [self.navigationController pushViewController:mainView animated:isAnimated];
 }
 
@@ -83,9 +84,9 @@ static NSString * const kId            = @"id";
 }
 
 - (IBAction)loginWithInstagram:(id)sender {
-    MTInstagramViewController *instagramViewController =
-    [MTInstagramViewController viewControllerFromStoryboardName:MTStoryboard.mainIphone
-                                            withIdentifier:CLASS_IDENTIFIER(MTInstagramViewController)];
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+    MTInstagramViewController *instagramViewController = [main instantiateViewControllerWithIdentifier:@"MTInstagramViewController"];
     instagramViewController.delegate = self;
     [self presentViewController:instagramViewController
                        animated:YES

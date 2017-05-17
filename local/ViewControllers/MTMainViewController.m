@@ -110,6 +110,12 @@
 }
 
 - (void)hideFilterView:(BOOL)shouldRevertToPreviousIndex {
+    
+    /* This looks ugly. navigation for filterview should be refactored*/
+    /*MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
+    [filterViewController disableSwipe];*/
+
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.filterContainterView.alpha = 0.0;
     } completion:^(BOOL finished) {

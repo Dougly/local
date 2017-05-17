@@ -12,9 +12,12 @@
 @class MTPlace;
 
 typedef void(^YelpCompletion)(BOOL success, MTYelpPlace *place, NSError *error);
+typedef void(^YelpAuthenticateCompletion)(BOOL success);
 
 @interface MTYelpManager : NSObject
 
 + (instancetype)sharedManager;
 - (void)getYelpPlaceMatchingGooglePlace:(MTPlace *)place completion:(YelpCompletion)completion;
+- (void)authenticate:(YelpAuthenticateCompletion)completion;
+
 @end

@@ -22,10 +22,24 @@ NSString *const SUB_FILTER_VIEW_CELL = @"MTFilterViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self calculateSelectedIndexPath];
     [self registerCells];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
 }
 
 - (void)calculateSelectedIndexPath {

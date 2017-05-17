@@ -27,6 +27,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self addBorder];
     [self registerCells];
     
@@ -41,6 +42,13 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
     [self calculateSelectedIndexPath];
     [self.tableView reloadData];
     self.isClosed = false;
+}
+
+- (void)disableSwipe {
+    /*if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }*/
 }
 
 - (void)addBorder {

@@ -204,24 +204,30 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 
 - (void)getYelpRating {
     self.ratingLabel.alpha = 0.0;
+    __weak typeof(self) weakSelf = self;
+    
     [[MTYelpManager sharedManager] getYelpPlaceMatchingGooglePlace:self.place completion:^(BOOL success, MTYelpPlace *yelpPlace, NSError *error) {
-        if (yelpPlace) {
-            self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", yelpPlace.rating.floatValue];
-            self.ratingLabel.attributedText = [yelpPlace ratingString];
-            self.ratingIconLabel.text = @"";
-            self.ratingSourceLabel.text = @"YELP";
-        }
-        else {
-            self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", self.place.rating.floatValue];
-            self.ratingLabel.attributedText = [self.place ratingString];
-            self.ratingIconLabelWidth.constant = 0;
-            self.ratingIconAndLabelPadding.constant = 4;
-            self.ratingSourceLabel.text = @"Google";
-        }
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            self.ratingLabel.alpha = 1.0;
-        }];
+            [weakSelf showRating:yelpPlace];
+    }];
+}
+
+- (void)showRating:(MTYelpPlace *)yelpPlace {
+    if (yelpPlace) {
+        self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", yelpPlace.rating.floatValue];
+        self.ratingLabel.attributedText = [yelpPlace ratingString];
+        self.ratingIconLabel.text = @"";
+        self.ratingSourceLabel.text = @"YELP";
+    }
+    else {
+        self.ratingNumberLabel.text = [NSString stringWithFormat:@"%.1f", self.place.rating.floatValue];
+        self.ratingLabel.attributedText = [self.place ratingString];
+        self.ratingIconLabelWidth.constant = 0;
+        self.ratingIconAndLabelPadding.constant = 4;
+        self.ratingSourceLabel.text = @"Google";
+    }
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        self.ratingLabel.alpha = 1.0;
     }];
 }
 

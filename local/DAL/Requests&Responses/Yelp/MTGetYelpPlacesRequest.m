@@ -9,6 +9,8 @@
 #import "MTGetYelpPlacesRequest.h"
 #import "MTGetYelpPlacesResponse.h"
 #import "MTGoogleQueryString.h"
+#import "MTDataModel.h"
+#import "MTYelpUser.h"
 
 @interface MTGetYelpPlacesRequest()
 @end
@@ -23,8 +25,16 @@
     urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     
     NSMutableURLRequest *networkRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    //[networkRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [networkRequest addValue:@"Bearer Z2NZ370JEhYtOMjiRGN3F0PlVUxhcLJ_Y1qz3NOscIRbAQqEge7IUZdD_ZHzKf9LlVL8tLDi5FfG1PGur1lZra5tDLXoN7Ylrpv6lRO6VcUhdXZbNaorBKszCPYFWXYx" forHTTPHeaderField:@"Authorization"];
+    
+    MTYelpUser *yelpUser = [[MTDataModel sharedDatabaseStorage] getYelpUser];
+    
+    NSString *token = @"";
+    
+    if (yelpUser) {
+        token = yelpUser.bearer;
+    }
+    
+    [networkRequest addValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
     
     networkRequest.HTTPMethod = @"GET";
     return networkRequest;

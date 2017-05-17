@@ -57,6 +57,10 @@
 		47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157CED1E7C8BE6000D11E9 /* UIImageView+WebCache.m */; };
 		47157D001E7C8C26000D11E9 /* floatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157CFE1E7C8C26000D11E9 /* floatTableViewCell.m */; };
 		47157D011E7C8C26000D11E9 /* floatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47157CFF1E7C8C26000D11E9 /* floatTableViewCell.xib */; };
+		47237C081ECC404300E514C1 /* MTAuthenticateYelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C071ECC404300E514C1 /* MTAuthenticateYelpRequest.m */; };
+		47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0A1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m */; };
+		47237C0E1ECC42B600E514C1 /* MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0D1ECC42B600E514C1 /* MTYelpUser.m */; };
+		47237C111ECC42C500E514C1 /* _MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C101ECC42C500E514C1 /* _MTYelpUser.m */; };
 		47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTGetPlaceRequest.m */; };
 		47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0D1E797C590007990C /* MTGetPlacesResponse.m */; };
 		47260E111E797EA60007990C /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E101E797EA60007990C /* MTUser.m */; };
@@ -358,6 +362,14 @@
 		47157CFD1E7C8C26000D11E9 /* floatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = floatTableViewCell.h; sourceTree = "<group>"; };
 		47157CFE1E7C8C26000D11E9 /* floatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = floatTableViewCell.m; sourceTree = "<group>"; };
 		47157CFF1E7C8C26000D11E9 /* floatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = floatTableViewCell.xib; sourceTree = "<group>"; };
+		47237C061ECC404300E514C1 /* MTAuthenticateYelpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTAuthenticateYelpRequest.h; path = "../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/DAL/Requests&Responses/Yelp/MTAuthenticateYelpRequest.h"; sourceTree = "<group>"; };
+		47237C071ECC404300E514C1 /* MTAuthenticateYelpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTAuthenticateYelpRequest.m; path = "../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/DAL/Requests&Responses/Yelp/MTAuthenticateYelpRequest.m"; sourceTree = "<group>"; };
+		47237C091ECC405C00E514C1 /* MTAuthenticateYelpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTAuthenticateYelpResponse.h; path = "../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/DAL/Requests&Responses/Yelp/MTAuthenticateYelpResponse.h"; sourceTree = "<group>"; };
+		47237C0A1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTAuthenticateYelpResponse.m; path = "../../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/DAL/Requests&Responses/Yelp/MTAuthenticateYelpResponse.m"; sourceTree = "<group>"; };
+		47237C0C1ECC42B600E514C1 /* MTYelpUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTYelpUser.h; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/MTYelpUser.h; sourceTree = "<group>"; };
+		47237C0D1ECC42B600E514C1 /* MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTYelpUser.m; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/MTYelpUser.m; sourceTree = "<group>"; };
+		47237C0F1ECC42C500E514C1 /* _MTYelpUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _MTYelpUser.h; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/_MTYelpUser.h; sourceTree = "<group>"; };
+		47237C101ECC42C500E514C1 /* _MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _MTYelpUser.m; path = ../../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Model/Classes/_MTYelpUser.m; sourceTree = "<group>"; };
 		47260E091E797C380007990C /* MTGetPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesRequest.h; sourceTree = "<group>"; };
 		47260E0A1E797C380007990C /* MTGetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetPlaceRequest.m; sourceTree = "<group>"; };
 		47260E0C1E797C590007990C /* MTGetPlacesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesResponse.h; sourceTree = "<group>"; };
@@ -1001,6 +1013,10 @@
 				474001C41EB61FBC00C55420 /* MTGetYelpPlacesRequest.m */,
 				474001C51EB61FBC00C55420 /* MTGetYelpPlacesResponse.h */,
 				474001C61EB61FBC00C55420 /* MTGetYelpPlacesResponse.m */,
+				47237C061ECC404300E514C1 /* MTAuthenticateYelpRequest.h */,
+				47237C071ECC404300E514C1 /* MTAuthenticateYelpRequest.m */,
+				47237C091ECC405C00E514C1 /* MTAuthenticateYelpResponse.h */,
+				47237C0A1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m */,
 			);
 			path = Yelp;
 			sourceTree = "<group>";
@@ -1776,6 +1792,8 @@
 			isa = PBXGroup;
 			children = (
 				47A97FCF1EACE10A00AB8657 /* PlaceType */,
+				47237C0C1ECC42B600E514C1 /* MTYelpUser.h */,
+				47237C0D1ECC42B600E514C1 /* MTYelpUser.m */,
 				474001CC1EB622BF00C55420 /* MTYelpPlace.h */,
 				474001CD1EB622BF00C55420 /* MTYelpPlace.m */,
 				47A980381EAE272B00AB8657 /* MTPlaceReview.h */,
@@ -1800,6 +1818,8 @@
 		CE250F281B6771AC005447FF /* MachineFiles */ = {
 			isa = PBXGroup;
 			children = (
+				47237C0F1ECC42C500E514C1 /* _MTYelpUser.h */,
+				47237C101ECC42C500E514C1 /* _MTYelpUser.m */,
 				474001C91EB622AE00C55420 /* _MTYelpPlace.h */,
 				474001CA1EB622AE00C55420 /* _MTYelpPlace.m */,
 				47A9803B1EAE283100AB8657 /* _MTPlaceReview.h */,
@@ -2011,6 +2031,7 @@
 				4793CB161E7EEB5E0054B7FB /* MKInputBoxView.m in Sources */,
 				B013DBC01EB8DF5A00A96F75 /* MDSliderTickMarksView.m in Sources */,
 				B013DB9F1EB8DF5A00A96F75 /* MDCalendarDateHeader.m in Sources */,
+				47237C081ECC404300E514C1 /* MTAuthenticateYelpRequest.m in Sources */,
 				B013DBC31EB8DF5A00A96F75 /* UIView+MDExtension.m in Sources */,
 				47157CC31E7C8BAC000D11E9 /* AFURLRequestSerialization.m in Sources */,
 				47A97FE61EAD09FB00AB8657 /* ASValuePopUpView.m in Sources */,
@@ -2060,6 +2081,7 @@
 				474001C71EB61FBC00C55420 /* MTGetYelpPlacesRequest.m in Sources */,
 				B013DBEA1EB8E5F900A96F75 /* UINavigationController+Transition.m in Sources */,
 				4780732C1EAA70B400D98DD7 /* SDInternetConnection.m in Sources */,
+				47237C111ECC42C500E514C1 /* _MTYelpUser.m in Sources */,
 				47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */,
 				47A97FDB1EACF5E900AB8657 /* EDStarRating.m in Sources */,
 				B013DBBE1EB8DF5A00A96F75 /* MDSliderIcon.m in Sources */,
@@ -2134,6 +2156,7 @@
 				CE250F151B676682005447FF /* SDResult.m in Sources */,
 				B013DBA51EB8DF5A00A96F75 /* MDTimePickerDialog.m in Sources */,
 				B013DBD01EB8E13200A96F75 /* MTKeyStorageFacade.m in Sources */,
+				47237C0E1ECC42B600E514C1 /* MTYelpUser.m in Sources */,
 				B013DBA21EB8DF5A00A96F75 /* MDCalendarYearSelectorViewCell.m in Sources */,
 				47157CFB1E7C8BE6000D11E9 /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */,
 				47A980151EAE070E00AB8657 /* DetailLocationCell.m in Sources */,
@@ -2199,6 +2222,7 @@
 				47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */,
 				B013DBBD1EB8DF5A00A96F75 /* MDBubbleLabel.m in Sources */,
 				4780731E1EAA707F00D98DD7 /* ClusterAnnotationView.m in Sources */,
+				47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */,
 				47A980431EAE67E100AB8657 /* MTGoogleQueryString.m in Sources */,
 				B013DBAE1EB8DF5A00A96F75 /* MDCollectionViewCell.m in Sources */,
 				47157CC11E7C8BAC000D11E9 /* AFSecurityPolicy.m in Sources */,
