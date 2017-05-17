@@ -78,6 +78,8 @@
 		47237C411ECC518400E514C1 /* CountlyUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C301ECC518400E514C1 /* CountlyUserDetails.m */; };
 		47237C421ECC518400E514C1 /* CountlyViewTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C321ECC518400E514C1 /* CountlyViewTracking.m */; };
 		47237C461ECC596800E514C1 /* MTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C451ECC596800E514C1 /* MTAnalytics.m */; };
+		47237C4A1ECC6C9500E514C1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47237C481ECC6C9500E514C1 /* Fabric.framework */; };
+		47237C4B1ECC6C9500E514C1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47237C491ECC6C9500E514C1 /* Crashlytics.framework */; };
 		47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTGetPlaceRequest.m */; };
 		47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0D1E797C590007990C /* MTGetPlacesResponse.m */; };
 		47260E111E797EA60007990C /* MTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E101E797EA60007990C /* MTUser.m */; };
@@ -421,6 +423,8 @@
 		47237C321ECC518400E514C1 /* CountlyViewTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyViewTracking.m; sourceTree = "<group>"; };
 		47237C441ECC596800E514C1 /* MTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAnalytics.h; sourceTree = "<group>"; };
 		47237C451ECC596800E514C1 /* MTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTAnalytics.m; sourceTree = "<group>"; };
+		47237C481ECC6C9500E514C1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		47237C491ECC6C9500E514C1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		47260E091E797C380007990C /* MTGetPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesRequest.h; sourceTree = "<group>"; };
 		47260E0A1E797C380007990C /* MTGetPlaceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGetPlaceRequest.m; sourceTree = "<group>"; };
 		47260E0C1E797C590007990C /* MTGetPlacesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesResponse.h; sourceTree = "<group>"; };
@@ -808,8 +812,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B013DB421EB8DBF700A96F75 /* FBSDKCoreKit.framework in Frameworks */,
+				47237C4B1ECC6C9500E514C1 /* Crashlytics.framework in Frameworks */,
 				B013DB3B1EB8DBD600A96F75 /* SafariServices.framework in Frameworks */,
 				B013DB431EB8DBF700A96F75 /* FBSDKLoginKit.framework in Frameworks */,
+				47237C4A1ECC6C9500E514C1 /* Fabric.framework in Frameworks */,
 				B013DB441EB8DBF700A96F75 /* FBSDKShareKit.framework in Frameworks */,
 				47157C621E7C696B000D11E9 /* MobileCoreServices.framework in Frameworks */,
 				7F463DBF14CF218DC57446FA /* Pods_Local.framework in Frameworks */,
@@ -1823,6 +1829,8 @@
 		CE250EE71B676634005447FF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				47237C481ECC6C9500E514C1 /* Fabric.framework */,
+				47237C491ECC6C9500E514C1 /* Crashlytics.framework */,
 				47237C121ECC518400E514C1 /* Countly */,
 				B013DBD51EB8E22500A96F75 /* SSKeychain */,
 				B013DB451EB8DF5A00A96F75 /* Material */,
@@ -1973,6 +1981,7 @@
 				AE91E1B92CA62FB41276722E /* [CP] Embed Pods Frameworks */,
 				05E3B1D82D8CBCEA0FFB8704 /* [CP] Copy Pods Resources */,
 				47A97F971EABD7C800AB8657 /* Mogenerator Script */,
+				47237C471ECC6C7400E514C1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2077,6 +2086,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Local/Pods-Local-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		47237C471ECC6C7400E514C1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run a75f0b824aef17a34bc1de60d1021528c0c7c3ba 406412cdcd50165fda9a1c230de2ae77ebcd76bc01df0632aecda74756e577ce";
 		};
 		47A97F971EABD7C800AB8657 /* Mogenerator Script */ = {
 			isa = PBXShellScriptBuildPhase;

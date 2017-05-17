@@ -12,6 +12,8 @@
 #import "MTLoginViewController.h"
 #import "MTMainViewController.h"
 #import "Countly.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation NSURLRequest(DataController)
 
@@ -31,9 +33,14 @@ static PanelsViewController *rootController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self.facebook application:application didFinishLaunchingWithOptions:launchOptions];
+    [self setupCrashlytics];
     [self setupNavigationColors];
     [self setupCountly];
     return YES;
+}
+
+- (void)setupCrashlytics {
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 - (void)setupCountly {
