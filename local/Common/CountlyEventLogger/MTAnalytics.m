@@ -9,6 +9,17 @@
 #import "MTAnalytics.h"
 #import "Countly.h"
 
+NSString *const evLoginByFacebook = @"StartFacebookLogin";
+NSString *const evLoginByInstagram = @"StartInstagramLogin";
+
+NSString *const evLoginByFacebookComplete = @"FacebookLoginComplete";
+NSString *const evLoginByInstagramComplete = @"InstagramLoginComplete";
+
+NSString *const evLoginByFacebookFailed = @"FacebookLoginFailed";
+NSString *const evLoginByInstagramFailed = @"InstagramLoginFailed";
+
+NSString *const evLogUser = @"UserLogged";
+
 NSString *const evClickFilterItem = @"click_filteritem";
 NSString *const evClickMapAnnotation = @"click_mapannotation";
 NSString *const evClickMapCluster = @"click_mapcluster";
@@ -45,6 +56,14 @@ NSString *const evScreenProfile = @"screen_profile";
 
 - (void)logEndScreen:(NSString *)eventName {
     [[Countly sharedInstance] endEvent:eventName];
+}
+
+- (void)logSimpleEvent:(NSString *)eventName {
+    [[Countly sharedInstance] recordEvent:eventName];
+}
+
+- (void)logAuthenticationEvent:(NSString *)eventName info:(NSString *)info {
+    [[Countly sharedInstance] recordEvent:eventName segmentation:@{@"user" : info}];
 }
 
 @end

@@ -45,6 +45,8 @@ static PanelsViewController *rootController;
 
 - (void)setupCountly {
     CountlyConfig* config = CountlyConfig.new;
+    config.deviceID = CLYIDFV;
+    
     config.appKey = COUNTLY_APP_ID;
     config.host = @"https://try.count.ly";
     

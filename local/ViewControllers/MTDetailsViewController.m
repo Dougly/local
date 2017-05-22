@@ -55,6 +55,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
 
 @property (nonatomic, strong) CALayer *reviewBorder;
 @property (nonatomic, strong) CALayer *addressBorder;
+
 @end
 
 @implementation MTDetailsViewController
@@ -223,7 +224,7 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto, MTPlaceDetai
         self.ratingLabel.attributedText = [self.place ratingString];
         self.ratingIconLabelWidth.constant = 0;
         self.ratingIconAndLabelPadding.constant = 4;
-        self.ratingSourceLabel.text = @"Google";
+        self.ratingSourceLabel.text = @"GOOGLE";
     }
     
     [UIView animateWithDuration:0.4 animations:^{

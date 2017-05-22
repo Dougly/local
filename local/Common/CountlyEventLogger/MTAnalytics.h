@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const evLoginByFacebook;
+extern NSString *const evLoginByInstagram;
+
+extern NSString *const evLoginByFacebookComplete;
+extern NSString *const evLoginByInstagramComplete;
+
+extern NSString *const evLoginByFacebookFailed;
+extern NSString *const evLoginByInstagramFailed;
+extern NSString *const evLogUser;
+
+
 extern NSString *const evClickFilterItem;
 extern NSString *const evClickMapAnnotation;
 extern NSString *const evClickMapCluster;
@@ -29,5 +40,8 @@ extern NSString *const evScreenProfile;
 
 - (void)logStartScreen:(NSString *)screenName;
 - (void)logEndScreen:(NSString *)screenName;
+
+- (void)logSimpleEvent:(NSString *)eventName;
+- (void)logAuthenticationEvent:(NSString *)eventName info:(NSString *)info;
 
 @end

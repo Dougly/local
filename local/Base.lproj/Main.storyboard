@@ -905,6 +905,18 @@
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APq-KT-IUF">
+                                <rect key="frame" x="61" y="502" width="253" height="51"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="pdG-l0-zim"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <state key="normal" title="LOGIN AS GUEST"/>
+                                <connections>
+                                    <action selector="loginAsGuest:" destination="fmT-jb-ENa" eventType="touchUpInside" id="FRo-We-TuQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -914,12 +926,15 @@
                             <constraint firstItem="XQr-7M-Zid" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" id="Vul-B9-3b3"/>
                             <constraint firstItem="rRh-8O-1b2" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" constant="61" id="ZOU-0e-yLK"/>
                             <constraint firstItem="rRh-8O-1b2" firstAttribute="top" secondItem="caU-jh-BPP" secondAttribute="bottom" constant="15" id="eK1-EP-NCb"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="XmM-6c-SQV" secondAttribute="bottom" constant="8" id="j6d-Bh-9MU"/>
                             <constraint firstItem="caU-jh-BPP" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="jS6-0j-wx7"/>
                             <constraint firstItem="XQr-7M-Zid" firstAttribute="top" secondItem="Yed-yF-3fW" secondAttribute="top" id="kcI-2p-KHG"/>
                             <constraint firstAttribute="trailing" secondItem="rRh-8O-1b2" secondAttribute="trailing" constant="61" id="lnT-2u-XYp"/>
                             <constraint firstAttribute="trailing" secondItem="XQr-7M-Zid" secondAttribute="trailing" id="odH-V2-6b6"/>
                             <constraint firstItem="XmM-6c-SQV" firstAttribute="top" secondItem="rRh-8O-1b2" secondAttribute="bottom" constant="9" id="tF6-m7-lwU"/>
                             <constraint firstAttribute="trailing" secondItem="XmM-6c-SQV" secondAttribute="trailing" constant="61" id="wlo-xa-r3w"/>
+                            <constraint firstAttribute="trailing" secondItem="APq-KT-IUF" secondAttribute="trailing" constant="61" id="xhI-lq-BkH"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" constant="61" id="zRs-9x-dk0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vjg-Oy-3qS"/>
@@ -930,6 +945,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="facebookButton" destination="rRh-8O-1b2" id="d3m-fO-8IR"/>
+                        <outlet property="guestButton" destination="APq-KT-IUF" id="1z5-ZK-rtX"/>
                         <outlet property="instagramButton" destination="XmM-6c-SQV" id="GQP-Zg-sTV"/>
                     </connections>
                 </viewController>

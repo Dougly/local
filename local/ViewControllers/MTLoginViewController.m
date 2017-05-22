@@ -11,6 +11,7 @@
 #import "FacebookFacade.h"
 #import "MDButton.h"
 #import "MTInstagramViewController.h"
+#import "MTAnalytics.h"
 
 static NSString * const kFacebookToken = @"facebookToken";
 static NSString * const kFirstName     = @"first_name";
@@ -20,6 +21,7 @@ static NSString * const kEmail         = @"email";
 static NSString * const kId            = @"id";
 
 @interface MTLoginViewController ()<InstagramAuthDelegate>
+@property (nonatomic, weak) IBOutlet UIButton *guestButton;
 @property (nonatomic, weak) IBOutlet MDButton *facebookButton;
 @property (nonatomic, weak) IBOutlet MDButton *instagramButton;
 @property (nonatomic, strong) FacebookFacade *facebookFacade;
@@ -42,15 +44,27 @@ static NSString * const kId            = @"id";
     self.facebookButton.mdButtonType    = MDButtonTypeFlat;
     self.instagramButton.mdButtonType   = MDButtonTypeFlat;
     self.facebookButton.backgroundColor = kColorFacebook;
-    //[self setupStyleNavigationBarModal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self updateButtonVisibility];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     [self.facebookButton setSelected:NO];
     
     [self checkIfSignedIn];
+}
+
+- (void)updateButtonVisibility {
+    NSString *dateToHide = @"24 May 2017";
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MM yyyy"];
+    
+    NSDate *date = [formatter dateFromString:dateToHide];
+    
+    if ([date timeIntervalSinceNow] < 0.0) {
+        self.guestButton.hidden = YES;
+    }
 }
 
 - (void)checkIfSignedIn {
@@ -74,16 +88,20 @@ static NSString * const kId            = @"id";
 }
 
 - (IBAction)loginWithFacebook:(id)sender {
-        //[self.downloadProgressHud show:YES];
+    [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebook];
+    
     [self.facebookFacade openSessionWithCompletionHandler:^{
+        [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebookComplete];
         [self signUpWithFacebook];
     } andFailureBlock:^{
-        //[self.downloadProgressHud hide:YES];
+        [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebookFailed];
         [self.facebookFacade closeAndClearCache:YES];
     }];
 }
 
 - (IBAction)loginWithInstagram:(id)sender {
+    [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByInstagram];
+
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     MTInstagramViewController *instagramViewController = [main instantiateViewControllerWithIdentifier:@"MTInstagramViewController"];
@@ -91,6 +109,10 @@ static NSString * const kId            = @"id";
     [self presentViewController:instagramViewController
                        animated:YES
                      completion:NULL];
+}
+
+- (IBAction)loginAsGuest:(id)sender {
+    [self showMainScreen:YES];
 }
 
 - (void)signUpWithFacebook {
@@ -108,6 +130,10 @@ static NSString * const kId            = @"id";
             self.appManager.userEmail     = self.facebookEmail;
             self.appManager.facebookID    = self.facebookID;
             [[MTAppManager sharedInstance] save];
+            
+            NSString *info = [NSString stringWithFormat:@"%@, %@, %@", self.name, self.facebookEmail, self.facebookID];
+            [[MTAnalytics sharedAnalytics] logAuthenticationEvent:evLoginByFacebookComplete info:info];
+            
             if (self.appManager.userAuthToken) {
                 [self showMainScreen];
             }

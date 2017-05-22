@@ -82,7 +82,7 @@ NSString* const kCountlyLimitAdTrackingZeroID = @"00000000-0000-0000-0000-000000
 - (NSString *)zeroSafeIDFA
 {
 #if TARGET_OS_IOS
-    NSString* IDFA = ASIdentifierManager.sharedManager.advertisingIdentifier.UUIDString;
+    NSString* IDFA = nil;
     //NOTE: For Limit Ad Tracking zero-IDFA problem
     if ([IDFA isEqualToString:kCountlyLimitAdTrackingZeroID])
         IDFA = UIDevice.currentDevice.identifierForVendor.UUIDString;
