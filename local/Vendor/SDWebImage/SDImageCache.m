@@ -13,7 +13,8 @@
 #import <mach/mach.h>
 #import <mach/mach_host.h>
 
-static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
+static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 1; // 1 day
+static const NSInteger kDefaultCacheMaxCacheSize = 1; // the smallest possible value
 
 @interface SDImageCache ()
 
@@ -51,6 +52,8 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
 
         // Init default values
         _maxCacheAge = kDefaultCacheMaxCacheAge;
+        
+        _maxCacheSize = kDefaultCacheMaxCacheSize;
 
         // Init the memory cache
         _memCache = [[NSCache alloc] init];
@@ -69,7 +72,7 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(cleanDisk)
-                                                     name:UIApplicationWillTerminateNotification
+                                                     name:UIApplicationWillResignActiveNotification
                                                    object:nil];
 #endif
     }
@@ -325,6 +328,7 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
 
 - (void)cleanDisk
 {
+    [self clearMemory];
     dispatch_async(self.ioQueue, ^
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -398,6 +402,7 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
                     }
                 }
             }
+            [self clearDisk];
         }
     });
 }
