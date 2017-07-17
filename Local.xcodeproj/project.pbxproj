@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112716741F1D810100F6981B /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716731F1D810100F6981B /* FilterViewListener.m */; };
+		112716771F1D816800F6981B /* MTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716761F1D816800F6981B /* MTAnalytics.m */; };
+		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
+		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
 		11DB0E0C1F1D7C4C000F337C /* Countly_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB0DED1F1D7C4C000F337C /* Countly_OpenUDID.m */; };
 		11DB0E0D1F1D7C4C000F337C /* Countly.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB0DEF1F1D7C4C000F337C /* Countly.m */; };
 		11DB0E0E1F1D7C4C000F337C /* CountlyAPM.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB0DF11F1D7C4C000F337C /* CountlyAPM.m */; };
@@ -77,7 +81,6 @@
 		47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0A1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m */; };
 		47237C0E1ECC42B600E514C1 /* MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C0D1ECC42B600E514C1 /* MTYelpUser.m */; };
 		47237C111ECC42C500E514C1 /* _MTYelpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C101ECC42C500E514C1 /* _MTYelpUser.m */; };
-		47237C461ECC596800E514C1 /* MTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 47237C451ECC596800E514C1 /* MTAnalytics.m */; };
 		47237C4A1ECC6C9500E514C1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47237C481ECC6C9500E514C1 /* Fabric.framework */; };
 		47237C4B1ECC6C9500E514C1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47237C491ECC6C9500E514C1 /* Crashlytics.framework */; };
 		47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 47260E0A1E797C380007990C /* MTGetPlaceRequest.m */; };
@@ -126,12 +129,9 @@
 		4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073271EAA70B400D98DD7 /* SDKeyStorage.m */; };
 		4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073291EAA70B400D98DD7 /* SDUserSettings.m */; };
 		4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */; };
-		4788ADA21EC388680072CEF2 /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788ADA11EC388680072CEF2 /* FilterViewListener.m */; };
 		479102691EB33B140071BC2C /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479102681EB33B140071BC2C /* TitleView.xib */; };
 		4791026C1EB33B280071BC2C /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791026B1EB33B280071BC2C /* TitleView.m */; };
 		4791026F1EB33C5E0071BC2C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4791026E1EB33C5E0071BC2C /* FontAwesome.otf */; };
-		479278391EC9E9DE0058C2F5 /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */; };
-		4792783E1EC9F2D80058C2F5 /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */; };
 		4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */; };
 		4793CB0F1E7ED8C00054B7FB /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB081E7ED8C00054B7FB /* UIColor+HexString.m */; };
 		4793CB101E7ED8C00054B7FB /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB0A1E7ED8C00054B7FB /* UIImageEffects.m */; };
@@ -283,6 +283,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112716721F1D810100F6981B /* FilterViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewListener.h; path = local/Common/FilterViewListener/FilterViewListener.h; sourceTree = SOURCE_ROOT; };
+		112716731F1D810100F6981B /* FilterViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewListener.m; path = local/Common/FilterViewListener/FilterViewListener.m; sourceTree = SOURCE_ROOT; };
+		112716751F1D816800F6981B /* MTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTAnalytics.h; path = local/Common/CountlyEventLogger/MTAnalytics.h; sourceTree = SOURCE_ROOT; };
+		112716761F1D816800F6981B /* MTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTAnalytics.m; path = local/Common/CountlyEventLogger/MTAnalytics.m; sourceTree = SOURCE_ROOT; };
+		112716781F1D81AD00F6981B /* BorderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorderedTextView.h; path = local/Views/BorderedTextView/BorderedTextView.h; sourceTree = SOURCE_ROOT; };
+		112716791F1D81AD00F6981B /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextView.m; path = local/Views/BorderedTextView/BorderedTextView.m; sourceTree = SOURCE_ROOT; };
+		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
+		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
 		11DB0DEC1F1D7C4C000F337C /* Countly_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Countly_OpenUDID.h; path = local/Vendor/Countly/Countly_OpenUDID.h; sourceTree = SOURCE_ROOT; };
 		11DB0DED1F1D7C4C000F337C /* Countly_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Countly_OpenUDID.m; path = local/Vendor/Countly/Countly_OpenUDID.m; sourceTree = SOURCE_ROOT; };
 		11DB0DEE1F1D7C4C000F337C /* Countly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Countly.h; path = local/Vendor/Countly/Countly.h; sourceTree = SOURCE_ROOT; };
@@ -421,8 +429,6 @@
 		47237C0D1ECC42B600E514C1 /* MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTYelpUser.m; sourceTree = "<group>"; };
 		47237C0F1ECC42C500E514C1 /* _MTYelpUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MTYelpUser.h; sourceTree = "<group>"; };
 		47237C101ECC42C500E514C1 /* _MTYelpUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MTYelpUser.m; sourceTree = "<group>"; };
-		47237C441ECC596800E514C1 /* MTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTAnalytics.h; path = local/Common/CountlyEventLogger/MTAnalytics.h; sourceTree = "<group>"; };
-		47237C451ECC596800E514C1 /* MTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTAnalytics.m; path = local/Common/CountlyEventLogger/MTAnalytics.m; sourceTree = "<group>"; };
 		47237C481ECC6C9500E514C1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		47237C491ECC6C9500E514C1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		47260E091E797C380007990C /* MTGetPlacesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGetPlacesRequest.h; sourceTree = "<group>"; };
@@ -512,16 +518,10 @@
 		478073291EAA70B400D98DD7 /* SDUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUserSettings.m; sourceTree = "<group>"; };
 		4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSubfilterViewController.h; sourceTree = "<group>"; };
 		4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSubfilterViewController.m; sourceTree = "<group>"; };
-		4788ADA01EC388680072CEF2 /* FilterViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewListener.h; path = local/Common/FilterViewListener/FilterViewListener.h; sourceTree = "<group>"; };
-		4788ADA11EC388680072CEF2 /* FilterViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewListener.m; path = local/Common/FilterViewListener/FilterViewListener.m; sourceTree = "<group>"; };
 		479102681EB33B140071BC2C /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		4791026A1EB33B280071BC2C /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		4791026B1EB33B280071BC2C /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		4791026E1EB33C5E0071BC2C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Resources/FontAwesome.otf; sourceTree = "<group>"; };
-		479278371EC9E9DE0058C2F5 /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = "<group>"; };
-		479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = "<group>"; };
-		4792783C1EC9F2D80058C2F5 /* BorderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorderedTextView.h; path = local/Views/BorderedTextView/BorderedTextView.h; sourceTree = "<group>"; };
-		4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextView.m; path = local/Views/BorderedTextView/BorderedTextView.m; sourceTree = "<group>"; };
 		4793CAF41E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSkypeActivityIndicatorView.h; sourceTree = "<group>"; };
 		4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSkypeActivityIndicatorView.m; sourceTree = "<group>"; };
 		4793CB071E7ED8C00054B7FB /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
@@ -1043,8 +1043,8 @@
 		47237C431ECC594F00E514C1 /* CountlyEventLogger */ = {
 			isa = PBXGroup;
 			children = (
-				47237C441ECC596800E514C1 /* MTAnalytics.h */,
-				47237C451ECC596800E514C1 /* MTAnalytics.m */,
+				112716751F1D816800F6981B /* MTAnalytics.h */,
+				112716761F1D816800F6981B /* MTAnalytics.m */,
 			);
 			name = CountlyEventLogger;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Common/CountlyEventLogger;
@@ -1234,8 +1234,8 @@
 		4788AD9F1EC388680072CEF2 /* FilterViewListener */ = {
 			isa = PBXGroup;
 			children = (
-				4788ADA01EC388680072CEF2 /* FilterViewListener.h */,
-				4788ADA11EC388680072CEF2 /* FilterViewListener.m */,
+				112716721F1D810100F6981B /* FilterViewListener.h */,
+				112716731F1D810100F6981B /* FilterViewListener.m */,
 			);
 			name = FilterViewListener;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Common/FilterViewListener;
@@ -1254,8 +1254,8 @@
 		479278361EC9E9C40058C2F5 /* CustomBarButton */ = {
 			isa = PBXGroup;
 			children = (
-				479278371EC9E9DE0058C2F5 /* CustomButtonItem.h */,
-				479278381EC9E9DE0058C2F5 /* CustomButtonItem.m */,
+				1127167B1F1D81F200F6981B /* CustomButtonItem.h */,
+				1127167C1F1D81F200F6981B /* CustomButtonItem.m */,
 			);
 			name = CustomBarButton;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/CustomBarButton;
@@ -1264,8 +1264,8 @@
 		4792783B1EC9F2C30058C2F5 /* BorderedTextView */ = {
 			isa = PBXGroup;
 			children = (
-				4792783C1EC9F2D80058C2F5 /* BorderedTextView.h */,
-				4792783D1EC9F2D80058C2F5 /* BorderedTextView.m */,
+				112716781F1D81AD00F6981B /* BorderedTextView.h */,
+				112716791F1D81AD00F6981B /* BorderedTextView.m */,
 			);
 			name = BorderedTextView;
 			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Views/BorderedTextView;
@@ -2089,7 +2089,7 @@
 		};
 		47237C471ECC6C7400E514C1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -2189,7 +2189,6 @@
 				47A97F9C1EABD89900AB8657 /* _MTPhoto.m in Sources */,
 				47260E0B1E797C380007990C /* MTGetPlaceRequest.m in Sources */,
 				47157CF51E7C8BE6000D11E9 /* SDWebImageManager.m in Sources */,
-				4788ADA21EC388680072CEF2 /* FilterViewListener.m in Sources */,
 				474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */,
 				476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */,
 				47A980221EAE12AB00AB8657 /* MTGetPlaceDetailRequest.m in Sources */,
@@ -2269,14 +2268,13 @@
 				B013DB391EB8DB8000A96F75 /* FacebookFacade.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
+				112716771F1D816800F6981B /* MTAnalytics.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
 				CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */,
-				4792783E1EC9F2D80058C2F5 /* BorderedTextView.m in Sources */,
 				47A980371EAE188C00AB8657 /* MTWeekdayText.m in Sources */,
 				11DB0E0F1F1D7C4C000F337C /* CountlyAPMNetworkLog.m in Sources */,
 				47157C8B1E7C853A000D11E9 /* IDMCaptionView.m in Sources */,
 				B013DBA11EB8DF5A00A96F75 /* MDCalendarYearSelector.m in Sources */,
-				47237C461ECC596800E514C1 /* MTAnalytics.m in Sources */,
 				CE250F131B676682005447FF /* SDRequest.m in Sources */,
 				B013DBD11EB8E13200A96F75 /* MTStoryboardFlow.m in Sources */,
 				4791026C1EB33B280071BC2C /* TitleView.m in Sources */,
@@ -2313,8 +2311,8 @@
 				47A97FFB1EAE06AD00AB8657 /* TGAnnotation.m in Sources */,
 				47157CBE1E7C8BAC000D11E9 /* AFHTTPRequestOperationManager.m in Sources */,
 				47A9801E1EAE084800AB8657 /* ViewController.m in Sources */,
-				479278391EC9E9DE0058C2F5 /* CustomButtonItem.m in Sources */,
 				478073181EAA705500D98DD7 /* QNode.m in Sources */,
+				1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */,
 				47A97FB31EACDB2B00AB8657 /* RMPickerViewController.m in Sources */,
 				47A97FB21EACDB2B00AB8657 /* RMDateSelectionViewController.m in Sources */,
 				47157CF11E7C8BE6000D11E9 /* SDWebImageCompat.m in Sources */,
@@ -2348,6 +2346,7 @@
 				47157C8F1E7C853A000D11E9 /* IDMPhotoBrowser.m in Sources */,
 				B013DBB81EB8DF5A00A96F75 /* MDToast.m in Sources */,
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
+				112716741F1D810100F6981B /* FilterViewListener.m in Sources */,
 				4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */,
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
 				4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */,
@@ -2357,6 +2356,7 @@
 				477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */,
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
 				474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */,
+				1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */,
 				B013DBB61EB8DF5A00A96F75 /* MDTableViewCell.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */,
