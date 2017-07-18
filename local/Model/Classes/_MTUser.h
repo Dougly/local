@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTUser : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTUserID *objectID;
 
 @property (nonatomic, strong, nullable) NSString* accessToken;
@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTUser (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveAccessToken;
-- (void)setPrimitiveAccessToken:(nullable NSString*)value;
+- (NSString*)primitiveAccessToken;
+- (void)setPrimitiveAccessToken:(NSString*)value;
 
 @end
 

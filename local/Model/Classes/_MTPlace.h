@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTPlace : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTPlaceID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* distance;
@@ -91,68 +91,68 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTPlace (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveDistance;
-- (void)setPrimitiveDistance:(nullable NSNumber*)value;
+- (NSNumber*)primitiveDistance;
+- (void)setPrimitiveDistance:(NSNumber*)value;
 
 - (float)primitiveDistanceValue;
 - (void)setPrimitiveDistanceValue:(float)value_;
 
-- (nullable NSString*)primitiveFormattedAddress;
-- (void)setPrimitiveFormattedAddress:(nullable NSString*)value;
+- (NSString*)primitiveFormattedAddress;
+- (void)setPrimitiveFormattedAddress:(NSString*)value;
 
-- (nullable NSString*)primitiveIcon;
-- (void)setPrimitiveIcon:(nullable NSString*)value;
+- (NSString*)primitiveIcon;
+- (void)setPrimitiveIcon:(NSString*)value;
 
-- (nullable NSNumber*)primitiveIsOpenNow;
-- (void)setPrimitiveIsOpenNow:(nullable NSNumber*)value;
+- (NSNumber*)primitiveIsOpenNow;
+- (void)setPrimitiveIsOpenNow:(NSNumber*)value;
 
 - (BOOL)primitiveIsOpenNowValue;
 - (void)setPrimitiveIsOpenNowValue:(BOOL)value_;
 
-- (nullable NSNumber*)primitiveLat;
-- (void)setPrimitiveLat:(nullable NSNumber*)value;
+- (NSNumber*)primitiveLat;
+- (void)setPrimitiveLat:(NSNumber*)value;
 
 - (float)primitiveLatValue;
 - (void)setPrimitiveLatValue:(float)value_;
 
-- (nullable NSNumber*)primitiveLon;
-- (void)setPrimitiveLon:(nullable NSNumber*)value;
+- (NSNumber*)primitiveLon;
+- (void)setPrimitiveLon:(NSNumber*)value;
 
 - (float)primitiveLonValue;
 - (void)setPrimitiveLonValue:(float)value_;
 
-- (nullable NSString*)primitiveName;
-- (void)setPrimitiveName:(nullable NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
-- (nullable NSString*)primitivePlaceId;
-- (void)setPrimitivePlaceId:(nullable NSString*)value;
+- (NSString*)primitivePlaceId;
+- (void)setPrimitivePlaceId:(NSString*)value;
 
-- (nullable NSNumber*)primitivePricingLevel;
-- (void)setPrimitivePricingLevel:(nullable NSNumber*)value;
+- (NSNumber*)primitivePricingLevel;
+- (void)setPrimitivePricingLevel:(NSNumber*)value;
 
 - (int16_t)primitivePricingLevelValue;
 - (void)setPrimitivePricingLevelValue:(int16_t)value_;
 
-- (nullable NSNumber*)primitiveRating;
-- (void)setPrimitiveRating:(nullable NSNumber*)value;
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
 
 - (float)primitiveRatingValue;
 - (void)setPrimitiveRatingValue:(float)value_;
 
-- (nullable NSString*)primitiveReference;
-- (void)setPrimitiveReference:(nullable NSString*)value;
+- (NSString*)primitiveReference;
+- (void)setPrimitiveReference:(NSString*)value;
 
-- (nullable NSString*)primitiveScope;
-- (void)setPrimitiveScope:(nullable NSString*)value;
+- (NSString*)primitiveScope;
+- (void)setPrimitiveScope:(NSString*)value;
 
-- (nullable NSString*)primitiveTypes;
-- (void)setPrimitiveTypes:(nullable NSString*)value;
+- (NSString*)primitiveTypes;
+- (void)setPrimitiveTypes:(NSString*)value;
 
-- (nullable NSString*)primitiveUniqueId;
-- (void)setPrimitiveUniqueId:(nullable NSString*)value;
+- (NSString*)primitiveUniqueId;
+- (void)setPrimitiveUniqueId:(NSString*)value;
 
-- (nullable NSString*)primitiveVincinity;
-- (void)setPrimitiveVincinity:(nullable NSString*)value;
+- (NSString*)primitiveVincinity;
+- (void)setPrimitiveVincinity:(NSString*)value;
 
 - (NSMutableSet<MTPhoto*>*)primitivePhotos;
 - (void)setPrimitivePhotos:(NSMutableSet<MTPhoto*>*)value;

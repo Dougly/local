@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTPhoto : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTPhotoID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* height;
@@ -47,20 +47,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTPhoto (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveHeight;
-- (void)setPrimitiveHeight:(nullable NSNumber*)value;
+- (NSNumber*)primitiveHeight;
+- (void)setPrimitiveHeight:(NSNumber*)value;
 
 - (int32_t)primitiveHeightValue;
 - (void)setPrimitiveHeightValue:(int32_t)value_;
 
-- (nullable NSString*)primitiveHtmlAttributes;
-- (void)setPrimitiveHtmlAttributes:(nullable NSString*)value;
+- (NSString*)primitiveHtmlAttributes;
+- (void)setPrimitiveHtmlAttributes:(NSString*)value;
 
-- (nullable NSString*)primitiveReference;
-- (void)setPrimitiveReference:(nullable NSString*)value;
+- (NSString*)primitiveReference;
+- (void)setPrimitiveReference:(NSString*)value;
 
-- (nullable NSNumber*)primitiveWidth;
-- (void)setPrimitiveWidth:(nullable NSNumber*)value;
+- (NSNumber*)primitiveWidth;
+- (void)setPrimitiveWidth:(NSNumber*)value;
 
 - (int32_t)primitiveWidthValue;
 - (void)setPrimitiveWidthValue:(int32_t)value_;

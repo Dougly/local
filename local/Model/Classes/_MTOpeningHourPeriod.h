@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTOpeningHourPeriod : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTOpeningHourPeriodID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* closeDay;
@@ -50,26 +50,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTOpeningHourPeriod (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveCloseDay;
-- (void)setPrimitiveCloseDay:(nullable NSNumber*)value;
+- (NSNumber*)primitiveCloseDay;
+- (void)setPrimitiveCloseDay:(NSNumber*)value;
 
 - (int16_t)primitiveCloseDayValue;
 - (void)setPrimitiveCloseDayValue:(int16_t)value_;
 
-- (nullable NSString*)primitiveCloseTime;
-- (void)setPrimitiveCloseTime:(nullable NSString*)value;
+- (NSString*)primitiveCloseTime;
+- (void)setPrimitiveCloseTime:(NSString*)value;
 
-- (nullable NSNumber*)primitiveOpenDay;
-- (void)setPrimitiveOpenDay:(nullable NSNumber*)value;
+- (NSNumber*)primitiveOpenDay;
+- (void)setPrimitiveOpenDay:(NSNumber*)value;
 
 - (int16_t)primitiveOpenDayValue;
 - (void)setPrimitiveOpenDayValue:(int16_t)value_;
 
-- (nullable NSString*)primitiveOpenTime;
-- (void)setPrimitiveOpenTime:(nullable NSString*)value;
+- (NSString*)primitiveOpenTime;
+- (void)setPrimitiveOpenTime:(NSString*)value;
 
-- (nullable NSNumber*)primitivePeriodNumber;
-- (void)setPrimitivePeriodNumber:(nullable NSNumber*)value;
+- (NSNumber*)primitivePeriodNumber;
+- (void)setPrimitivePeriodNumber:(NSNumber*)value;
 
 - (int16_t)primitivePeriodNumberValue;
 - (void)setPrimitivePeriodNumberValue:(int16_t)value_;

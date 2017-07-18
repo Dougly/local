@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTPlaceDetails : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTPlaceDetailsID *objectID;
 
 @property (nonatomic, strong, nullable) NSString* adminLevel2;
@@ -121,65 +121,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTPlaceDetails (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveAdminLevel2;
-- (void)setPrimitiveAdminLevel2:(nullable NSString*)value;
+- (NSString*)primitiveAdminLevel2;
+- (void)setPrimitiveAdminLevel2:(NSString*)value;
 
-- (nullable NSString*)primitiveFormattedAddress;
-- (void)setPrimitiveFormattedAddress:(nullable NSString*)value;
+- (NSString*)primitiveFormattedAddress;
+- (void)setPrimitiveFormattedAddress:(NSString*)value;
 
-- (nullable NSString*)primitiveInternationalPhone;
-- (void)setPrimitiveInternationalPhone:(nullable NSString*)value;
+- (NSString*)primitiveInternationalPhone;
+- (void)setPrimitiveInternationalPhone:(NSString*)value;
 
-- (nullable NSNumber*)primitiveIsOpenNow;
-- (void)setPrimitiveIsOpenNow:(nullable NSNumber*)value;
+- (NSNumber*)primitiveIsOpenNow;
+- (void)setPrimitiveIsOpenNow:(NSNumber*)value;
 
 - (BOOL)primitiveIsOpenNowValue;
 - (void)setPrimitiveIsOpenNowValue:(BOOL)value_;
 
-- (nullable NSNumber*)primitiveLat;
-- (void)setPrimitiveLat:(nullable NSNumber*)value;
+- (NSNumber*)primitiveLat;
+- (void)setPrimitiveLat:(NSNumber*)value;
 
 - (float)primitiveLatValue;
 - (void)setPrimitiveLatValue:(float)value_;
 
-- (nullable NSString*)primitiveLocalPhone;
-- (void)setPrimitiveLocalPhone:(nullable NSString*)value;
+- (NSString*)primitiveLocalPhone;
+- (void)setPrimitiveLocalPhone:(NSString*)value;
 
-- (nullable NSNumber*)primitiveLon;
-- (void)setPrimitiveLon:(nullable NSNumber*)value;
+- (NSNumber*)primitiveLon;
+- (void)setPrimitiveLon:(NSNumber*)value;
 
 - (float)primitiveLonValue;
 - (void)setPrimitiveLonValue:(float)value_;
 
-- (nullable NSString*)primitiveName;
-- (void)setPrimitiveName:(nullable NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
-- (nullable NSString*)primitiveNeighbourhood;
-- (void)setPrimitiveNeighbourhood:(nullable NSString*)value;
+- (NSString*)primitiveNeighbourhood;
+- (void)setPrimitiveNeighbourhood:(NSString*)value;
 
-- (nullable NSString*)primitivePlaceId;
-- (void)setPrimitivePlaceId:(nullable NSString*)value;
+- (NSString*)primitivePlaceId;
+- (void)setPrimitivePlaceId:(NSString*)value;
 
-- (nullable NSNumber*)primitiveRating;
-- (void)setPrimitiveRating:(nullable NSNumber*)value;
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
 
 - (float)primitiveRatingValue;
 - (void)setPrimitiveRatingValue:(float)value_;
 
-- (nullable NSString*)primitiveStreetName;
-- (void)setPrimitiveStreetName:(nullable NSString*)value;
+- (NSString*)primitiveStreetName;
+- (void)setPrimitiveStreetName:(NSString*)value;
 
-- (nullable NSString*)primitiveStreetNumber;
-- (void)setPrimitiveStreetNumber:(nullable NSString*)value;
+- (NSString*)primitiveStreetNumber;
+- (void)setPrimitiveStreetNumber:(NSString*)value;
 
-- (nullable NSString*)primitiveSublocality;
-- (void)setPrimitiveSublocality:(nullable NSString*)value;
+- (NSString*)primitiveSublocality;
+- (void)setPrimitiveSublocality:(NSString*)value;
 
-- (nullable NSString*)primitiveVincinity;
-- (void)setPrimitiveVincinity:(nullable NSString*)value;
+- (NSString*)primitiveVincinity;
+- (void)setPrimitiveVincinity:(NSString*)value;
 
-- (nullable NSString*)primitiveWebsite;
-- (void)setPrimitiveWebsite:(nullable NSString*)value;
+- (NSString*)primitiveWebsite;
+- (void)setPrimitiveWebsite:(NSString*)value;
 
 - (NSMutableSet<MTOpeningHourPeriod*>*)primitiveOpeningHoursPeriods;
 - (void)setPrimitiveOpeningHoursPeriods:(NSMutableSet<MTOpeningHourPeriod*>*)value;

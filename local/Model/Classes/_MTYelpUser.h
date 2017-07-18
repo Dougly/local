@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTYelpUser : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTYelpUserID *objectID;
 
 @property (nonatomic, strong, nullable) NSString* bearer;
@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTYelpUser (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveBearer;
-- (void)setPrimitiveBearer:(nullable NSString*)value;
+- (NSString*)primitiveBearer;
+- (void)setPrimitiveBearer:(NSString*)value;
 
 @end
 

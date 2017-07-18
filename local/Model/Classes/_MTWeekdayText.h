@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTWeekdayText : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTWeekdayTextID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* day;
@@ -36,14 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTWeekdayText (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveDay;
-- (void)setPrimitiveDay:(nullable NSNumber*)value;
+- (NSNumber*)primitiveDay;
+- (void)setPrimitiveDay:(NSNumber*)value;
 
 - (int16_t)primitiveDayValue;
 - (void)setPrimitiveDayValue:(int16_t)value_;
 
-- (nullable NSString*)primitiveName;
-- (void)setPrimitiveName:(nullable NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
 - (MTPlaceDetails*)primitiveParentDetails;
 - (void)setPrimitiveParentDetails:(MTPlaceDetails*)value;

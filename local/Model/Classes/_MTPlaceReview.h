@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTPlaceReview : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTPlaceReviewID *objectID;
 
 @property (nonatomic, strong, nullable) NSString* authorAvatarUrl;
@@ -52,29 +52,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTPlaceReview (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveAuthorAvatarUrl;
-- (void)setPrimitiveAuthorAvatarUrl:(nullable NSString*)value;
+- (NSString*)primitiveAuthorAvatarUrl;
+- (void)setPrimitiveAuthorAvatarUrl:(NSString*)value;
 
-- (nullable NSString*)primitiveAuthorName;
-- (void)setPrimitiveAuthorName:(nullable NSString*)value;
+- (NSString*)primitiveAuthorName;
+- (void)setPrimitiveAuthorName:(NSString*)value;
 
-- (nullable NSString*)primitiveLanguage;
-- (void)setPrimitiveLanguage:(nullable NSString*)value;
+- (NSString*)primitiveLanguage;
+- (void)setPrimitiveLanguage:(NSString*)value;
 
-- (nullable NSNumber*)primitiveRating;
-- (void)setPrimitiveRating:(nullable NSNumber*)value;
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
 
 - (float)primitiveRatingValue;
 - (void)setPrimitiveRatingValue:(float)value_;
 
-- (nullable NSString*)primitiveRelativeTimeDescription;
-- (void)setPrimitiveRelativeTimeDescription:(nullable NSString*)value;
+- (NSString*)primitiveRelativeTimeDescription;
+- (void)setPrimitiveRelativeTimeDescription:(NSString*)value;
 
-- (nullable NSString*)primitiveText;
-- (void)setPrimitiveText:(nullable NSString*)value;
+- (NSString*)primitiveText;
+- (void)setPrimitiveText:(NSString*)value;
 
-- (nullable NSNumber*)primitiveTime;
-- (void)setPrimitiveTime:(nullable NSNumber*)value;
+- (NSNumber*)primitiveTime;
+- (void)setPrimitiveTime:(NSNumber*)value;
 
 - (int64_t)primitiveTimeValue;
 - (void)setPrimitiveTimeValue:(int64_t)value_;

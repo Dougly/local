@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _MTYelpPlace : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) MTYelpPlaceID *objectID;
 
 @property (nonatomic, strong, nullable) NSString* categories;
@@ -34,14 +34,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _MTYelpPlace (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSString*)primitiveCategories;
-- (void)setPrimitiveCategories:(nullable NSString*)value;
+- (NSString*)primitiveCategories;
+- (void)setPrimitiveCategories:(NSString*)value;
 
-- (nullable NSString*)primitiveName;
-- (void)setPrimitiveName:(nullable NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
-- (nullable NSNumber*)primitiveRating;
-- (void)setPrimitiveRating:(nullable NSNumber*)value;
+- (NSNumber*)primitiveRating;
+- (void)setPrimitiveRating:(NSNumber*)value;
 
 - (float)primitiveRatingValue;
 - (void)setPrimitiveRatingValue:(float)value_;
