@@ -31,7 +31,6 @@
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
 		47157C621E7C696B000D11E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47157C611E7C696B000D11E9 /* MobileCoreServices.framework */; };
-		47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C6D1E7C7457000D11E9 /* FDTakeController.m */; };
 		47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C711E7C7DC2000D11E9 /* VCFloatingActionButton.m */; };
 		47157C891E7C853A000D11E9 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C761E7C853A000D11E9 /* DACircularProgressView.m */; };
 		47157C8A1E7C853A000D11E9 /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47157C781E7C853A000D11E9 /* DALabeledCircularProgressView.m */; };
@@ -327,8 +326,6 @@
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
 		47157C611E7C696B000D11E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		47157C6C1E7C7457000D11E9 /* FDTakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTakeController.h; sourceTree = "<group>"; };
-		47157C6D1E7C7457000D11E9 /* FDTakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTakeController.m; sourceTree = "<group>"; };
 		47157C701E7C7DC2000D11E9 /* VCFloatingActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFloatingActionButton.h; sourceTree = "<group>"; };
 		47157C711E7C7DC2000D11E9 /* VCFloatingActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFloatingActionButton.m; sourceTree = "<group>"; };
 		47157C751E7C853A000D11E9 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
@@ -857,8 +854,6 @@
 		47157C6B1E7C7457000D11E9 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				47157C6C1E7C7457000D11E9 /* FDTakeController.h */,
-				47157C6D1E7C7457000D11E9 /* FDTakeController.m */,
 			);
 			path = ImagePicker;
 			sourceTree = "<group>";
@@ -2211,7 +2206,6 @@
 				B013DBEA1EB8E5F900A96F75 /* UINavigationController+Transition.m in Sources */,
 				4780732C1EAA70B400D98DD7 /* SDInternetConnection.m in Sources */,
 				47237C111ECC42C500E514C1 /* _MTYelpUser.m in Sources */,
-				47157C6E1E7C7457000D11E9 /* FDTakeController.m in Sources */,
 				47A97FDB1EACF5E900AB8657 /* EDStarRating.m in Sources */,
 				B013DBBE1EB8DF5A00A96F75 /* MDSliderIcon.m in Sources */,
 				478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */,

@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Local-swift.h"
+#import "Local-Swift.h"
 #import "MTSettings.h"
 #import "FacebookFacade.h"
 #import "MTLoginViewController.h"
