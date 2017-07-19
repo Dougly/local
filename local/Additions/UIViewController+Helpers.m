@@ -156,13 +156,16 @@ static CGFloat const kINSSearchBarImageSize = 22.0;
 }
 
 - (void)createBackButtonStyle {
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
      setBackgroundVerticalPositionAdjustment:-3 forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+    
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
      setBackButtonBackgroundVerticalPositionAdjustment:-3 forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil]
+
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIToolbar class]]]
      setBackgroundVerticalPositionAdjustment:3 forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil]
+    
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIToolbar class]]]
      setBackButtonBackgroundVerticalPositionAdjustment:3 forBarMetrics:UIBarMetricsDefault];
 }
 

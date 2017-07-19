@@ -147,13 +147,12 @@ open class AutoCompleteTextField:UITextField {
                 attributedAutoCompleteStrings.removeAll(keepingCapacity: false)
             }
             
-            if let autoCompleteStrings = autoCompleteStrings, let autoCompleteAttributes = autoCompleteAttributes {
+            if let autoCompleteStrings = autoCompleteStrings, let _ = autoCompleteAttributes {
                 for i in 0..<autoCompleteStrings.count{
-                    var place = autoCompleteStrings[i]
+                    let place = autoCompleteStrings[i]
                     let str = place.name
-                    let range = str?.range(of: text!, options: .caseInsensitive)
-                    let attString = NSMutableAttributedString(string: place.name, attributes: attrs)
-                    //attString.addAttributes(autoCompleteAttributes, range: range)
+                    let _ = str?.range(of: text!, options: .caseInsensitive)
+                    let _ = NSMutableAttributedString(string: place.name, attributes: attrs)
                     attributedAutoCompleteStrings.append(place)
                 }
             }
