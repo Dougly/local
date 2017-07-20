@@ -14,7 +14,7 @@
 
 -(NSString*)subtitle
 {
-  return [NSString stringWithFormat:@"%d objects here", self.objectsCount];
+  return [NSString stringWithFormat:@"%ld objects here", (long)self.objectsCount];
 }
 
 @end

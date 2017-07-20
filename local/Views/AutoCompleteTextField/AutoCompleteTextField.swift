@@ -259,7 +259,7 @@ extension AutoCompleteTextField: UITableViewDataSource, UITableViewDelegate {
                                 if let predictions = result["predictions"]{
                                     var locations = [PredictionPlace]()
                                     for dict in predictions as! [NSDictionary]{
-                                        var place = PredictionPlace()
+                                        let place = PredictionPlace()
                                         place.name = dict["description"] as! String
                                         place.placeId = dict["place_id"] as! String
                                         locations.append(place)

@@ -63,11 +63,11 @@
 
         if (image)
         {
-            NSLog(@"Prefetched %d out of %d", self.finishedCount, self.prefetchURLs.count);
+            NSLog(@"Prefetched %lu out of %lu", (unsigned long)self.finishedCount, (unsigned long)self.prefetchURLs.count);
         }
         else
         {
-            NSLog(@"Prefetched %d out of %d (Failed)", self.finishedCount, [self.prefetchURLs count]);
+            NSLog(@"Prefetched %lu out of %lu (Failed)", self.finishedCount, [self.prefetchURLs count]);
 
             // Add last failed
             self.skippedCount++;

@@ -146,8 +146,8 @@ static NSString * const kFacebookParameters     = @"id,name,link,first_name,last
 #pragma mark - utility methods
 
 - (void)handleAuthError:(NSError *)error {
-    NSString *message = error.userInfo[FBSDKErrorLocalizedDescriptionKey];
-    NSString *title = error.userInfo[FBSDKErrorLocalizedTitleKey];
+//    NSString *message = error.userInfo[FBSDKErrorLocalizedDescriptionKey];
+//    NSString *title = error.userInfo[FBSDKErrorLocalizedTitleKey];
 //    [self showMessage:title withTitle:message];
 }
 
