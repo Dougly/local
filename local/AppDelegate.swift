@@ -20,24 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         facebookFacade?.application(application, didFinishLaunchingWithOptions: launchOptions ?? [UIApplicationLaunchOptionsKey : Any]())
-//        setupCrashlytics()
-//        setupNavigationColors()
         return true
     }
     
-//    func setupCrashlytics() {
-//        Fabric.with([Crashlytics.self])
-//    }
+    // Facebook login -- Will be replaced with firebase facebook and instagram auth
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("🔥🔥🔥****** application handleOpenURL: %@", url)
+        let handled: Bool? = facebookFacade?.application(app, open: url, options: options)
+        return handled!
+    }
     
-    
-//    func setupNavigationColors() {
-//        UINavigationBar.appearance().isTranslucent = false
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: kLocalColor]
-//        UINavigationBar.appearance().tintColor = kLocalColor
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: kLocalColor, NSFontAttributeName: UIFont(name: "Helvetica", size: 18.0)]
-//    }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        print("🚙****** 🚙application handleOpenURL: %@", url)
+        let handled: Bool? = facebookFacade?.application(application, open: url, sourceApplication: sourceApplication ?? "", annotation: annotation)
+        return handled!
+    }
 
-    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -66,25 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         facebookFacade?.closeAndClearCache(true)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-//        if !url {
-//            return false
-//        }
-        print("🚙****** application handleOpenURL: %@", url)
-        let handled: Bool? = facebookFacade?.application(app, open: url, options: options)
-        return handled!
-    }
-
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        if !url {
-//            return false
-//        }
-        print("🚙****** 🚙application handleOpenURL: %@", url)
-        let handled: Bool? = facebookFacade?.application(application, open: url, sourceApplication: sourceApplication ?? "", annotation: annotation)
-        return handled!
-    }
-
 }
 
 
