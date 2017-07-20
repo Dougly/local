@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Facebook login -- Will be replaced with firebase facebook and instagram auth
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("🔥🔥🔥****** application handleOpenURL: %@", url)
+        print("🔥🔥🔥 application handleOpenURL: %@", url)
         let handled: Bool? = facebookFacade?.application(app, open: url, options: options)
         return handled!
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        print("🚙****** 🚙application handleOpenURL: %@", url)
+        print("🔥🔥🔥 application handleOpenURL: %@", url)
         let handled: Bool? = facebookFacade?.application(application, open: url, sourceApplication: sourceApplication ?? "", annotation: annotation)
         return handled!
     }

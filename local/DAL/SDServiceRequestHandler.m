@@ -293,8 +293,8 @@ static NSString * const SDFalseJsonParam                = @"false";
     if (IS_SUCCESSFUL_HTTP_STATUS(networkResponse.statusCode))
     {
         // try to extract error message
-        NSError *error = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
+//        NSError *error = nil;
+//        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:&error];
         
         /*if (!error && (![[jsonDict[@"status"] lowercaseString] isEqualToString:@"ok"]))
         {
