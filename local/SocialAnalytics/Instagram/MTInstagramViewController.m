@@ -7,10 +7,8 @@
 //
 
 #import "MTInstagramViewController.h"
-#import "AppDelegate.h"
 #import "MTAppManager.h"
 #import "MTProgressHUD.h"
-#import "MTAnalytics.h"
 
 #define INSTAGRAM_AUTHURL                               @"https://api.instagram.com/oauth/authorize/"
 #define INSTAGRAM_APIURl                                @"https://api.instagram.com/v1/users/"
@@ -151,9 +149,7 @@
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithRequest:authRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        
-        NSString *info = [NSString stringWithFormat:@"%@, %@, %@", dict[@"user"][@"username"], @"unknown", dict[@"user"][@"id"]];
-        [[MTAnalytics sharedAnalytics] logAuthenticationEvent:evLoginByInstagramComplete info:info];
+    
         
         [weakSelf handleAuth:[dict valueForKey:@"access_token"]];
     }] resume];

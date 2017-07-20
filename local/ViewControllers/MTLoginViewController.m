@@ -11,7 +11,6 @@
 #import "FacebookFacade.h"
 #import "MDButton.h"
 #import "MTInstagramViewController.h"
-#import "MTAnalytics.h"
 
 static NSString * const kFacebookToken = @"facebookToken";
 static NSString * const kFirstName     = @"first_name";
@@ -88,19 +87,15 @@ static NSString * const kId            = @"id";
 }
 
 - (IBAction)loginWithFacebook:(id)sender {
-    [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebook];
     
     [self.facebookFacade openSessionWithCompletionHandler:^{
-        [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebookComplete];
         [self signUpWithFacebook];
     } andFailureBlock:^{
-        [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByFacebookFailed];
         [self.facebookFacade closeAndClearCache:YES];
     }];
 }
 
 - (IBAction)loginWithInstagram:(id)sender {
-    [[MTAnalytics sharedAnalytics] logSimpleEvent:evLoginByInstagram];
 
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
@@ -130,9 +125,6 @@ static NSString * const kId            = @"id";
             self.appManager.userEmail     = self.facebookEmail;
             self.appManager.facebookID    = self.facebookID;
             [[MTAppManager sharedInstance] save];
-            
-            NSString *info = [NSString stringWithFormat:@"%@, %@, %@", self.name, self.facebookEmail, self.facebookID];
-            [[MTAnalytics sharedAnalytics] logAuthenticationEvent:evLoginByFacebookComplete info:info];
             
             if (self.appManager.userAuthToken) {
                 [self showMainScreen];

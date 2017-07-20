@@ -7,7 +7,6 @@
 //
 
 #import "MTAnalytics.h"
-#import "Countly.h"
 
 NSString *const evLoginByFacebook = @"StartFacebookLogin";
 NSString *const evLoginByInstagram = @"StartInstagramLogin";

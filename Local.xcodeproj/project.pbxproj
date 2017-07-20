@@ -11,7 +11,6 @@
 		110769B01F2036F400D44621 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110769AF1F2036F400D44621 /* Constants.swift */; };
 		110769D71F20429200D44621 /* NSURLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110769D61F20429200D44621 /* NSURLRequestExtension.swift */; };
 		112716741F1D810100F6981B /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716731F1D810100F6981B /* FilterViewListener.m */; };
-		112716771F1D816800F6981B /* MTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716761F1D816800F6981B /* MTAnalytics.m */; };
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
@@ -251,7 +250,6 @@
 		B013DBE91EB8E5F900A96F75 /* UINavigationBar+MTTransparent.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBE61EB8E5F900A96F75 /* UINavigationBar+MTTransparent.m */; };
 		B013DBEA1EB8E5F900A96F75 /* UINavigationController+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBE81EB8E5F900A96F75 /* UINavigationController+Transition.m */; };
 		B013DBED1EB8E61800A96F75 /* CALayer+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DBEC1EB8E61800A96F75 /* CALayer+Animations.m */; };
-		CE250EC01B67657E005447FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE250EBF1B67657E005447FF /* main.m */; };
 		CE250ECE1B67657E005447FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE250ECC1B67657E005447FF /* LaunchScreen.xib */; };
 		CE250EF01B676654005447FF /* NSObject+PNCast.m in Sources */ = {isa = PBXBuildFile; fileRef = CE250EEB1B676654005447FF /* NSObject+PNCast.m */; };
 		CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE250EED1B676654005447FF /* NSString+SDAdditions.m */; };
@@ -273,8 +271,6 @@
 		110769D61F20429200D44621 /* NSURLRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLRequestExtension.swift; sourceTree = "<group>"; };
 		112716721F1D810100F6981B /* FilterViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewListener.h; path = local/Common/FilterViewListener/FilterViewListener.h; sourceTree = SOURCE_ROOT; };
 		112716731F1D810100F6981B /* FilterViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewListener.m; path = local/Common/FilterViewListener/FilterViewListener.m; sourceTree = SOURCE_ROOT; };
-		112716751F1D816800F6981B /* MTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTAnalytics.h; path = local/Common/CountlyEventLogger/MTAnalytics.h; sourceTree = SOURCE_ROOT; };
-		112716761F1D816800F6981B /* MTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTAnalytics.m; path = local/Common/CountlyEventLogger/MTAnalytics.m; sourceTree = SOURCE_ROOT; };
 		112716781F1D81AD00F6981B /* BorderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorderedTextView.h; path = local/Views/BorderedTextView/BorderedTextView.h; sourceTree = SOURCE_ROOT; };
 		112716791F1D81AD00F6981B /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextView.m; path = local/Views/BorderedTextView/BorderedTextView.m; sourceTree = SOURCE_ROOT; };
 		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
@@ -731,7 +727,6 @@
 		C6BF3CEDC60E27101844274A /* Pods-Local.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Local/Pods-Local.debug.xcconfig"; sourceTree = "<group>"; };
 		CE250EBA1B67657E005447FF /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE250EBE1B67657E005447FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE250EBF1B67657E005447FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE250ECD1B67657E005447FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CE250EEA1B676654005447FF /* NSObject+PNCast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PNCast.h"; sourceTree = "<group>"; };
 		CE250EEB1B676654005447FF /* NSObject+PNCast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PNCast.m"; sourceTree = "<group>"; };
@@ -956,16 +951,6 @@
 				47157CED1E7C8BE6000D11E9 /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		47237C431ECC594F00E514C1 /* CountlyEventLogger */ = {
-			isa = PBXGroup;
-			children = (
-				112716751F1D816800F6981B /* MTAnalytics.h */,
-				112716761F1D816800F6981B /* MTAnalytics.m */,
-			);
-			name = CountlyEventLogger;
-			path = ../../../../../../Rostyslav.Stepanyak/Work/iOS/Local/local/Common/CountlyEventLogger;
 			sourceTree = "<group>";
 		};
 		47260E081E797B970007990C /* Engine */ = {
@@ -1667,7 +1652,6 @@
 			children = (
 				91AA5E511BCEDB97008154EC /* joe.pch */,
 				CE250EBE1B67657E005447FF /* Info.plist */,
-				CE250EBF1B67657E005447FF /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1708,7 +1692,6 @@
 		CE250EE41B676634005447FF /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				47237C431ECC594F00E514C1 /* CountlyEventLogger */,
 				4788AD9F1EC388680072CEF2 /* FilterViewListener */,
 				474001D71EB7974C00C55420 /* appstate */,
 				474001D31EB65F7700C55420 /* keywords */,
@@ -2176,7 +2159,6 @@
 				B013DB391EB8DB8000A96F75 /* FacebookFacade.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
-				112716771F1D816800F6981B /* MTAnalytics.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
 				CE250EF11B676654005447FF /* NSString+SDAdditions.m in Sources */,
 				47A980371EAE188C00AB8657 /* MTWeekdayText.m in Sources */,
@@ -2273,7 +2255,6 @@
 				47157CC11E7C8BAC000D11E9 /* AFSecurityPolicy.m in Sources */,
 				B013DBD41EB8E1FB00A96F75 /* NSDateHelper.m in Sources */,
 				47157CC01E7C8BAC000D11E9 /* AFNetworkReachabilityManager.m in Sources */,
-				CE250EC01B67657E005447FF /* main.m in Sources */,
 				B013DBC21EB8DF5A00A96F75 /* MDSuggestTableView.m in Sources */,
 				47A97FEB1EAD0A3F00AB8657 /* MTDistanceCell.m in Sources */,
 				47157CF31E7C8BE6000D11E9 /* SDWebImageDownloader.m in Sources */,

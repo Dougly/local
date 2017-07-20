@@ -9,7 +9,6 @@
 
 #import "MTConstants.h"
 #import "MTAppManager.h"
-#import "AppDelegate.h"
 #import "MTStoryboardFlow.h"
 #import <CoreData/CoreData.h>
 #import <QuartzCore/QuartzCore.h>
