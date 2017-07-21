@@ -33,7 +33,7 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
         // Google sign in
         GIDSignIn.sharedInstance().uiDelegate = self
         // Attempt to sign in silently
-        GIDSignIn.sharedInstance().signIn()
+        // GIDSignIn.sharedInstance().signIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {

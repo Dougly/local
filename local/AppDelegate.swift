@@ -15,17 +15,43 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var auth = Authentication()
     private var facebookFacade = FacebookFacade.sharedInstance()
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().delegate = auth
+        
+        
+        displayVC()
+        
         
         facebookFacade?.application(application, didFinishLaunchingWithOptions: launchOptions ?? [UIApplicationLaunchOptionsKey : Any]())
         return true
+    }
+    
+    func displayVC() {
+        window = UIWindow()
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
+        
+        let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
+        let loginVC: LoginVC = main.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        
+        if Auth.auth().currentUser != nil {
+            print("🔥🔥🔥 USER IS ALREADY LOGGED IN SO DISPLAY MAIN")
+            let controllers = [loginVC, mainViewController]
+            navController.setViewControllers(controllers, animated: false)
+        } else {
+            navController.setViewControllers([loginVC], animated: false)
+        }
+        
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
     }
     
     
@@ -110,6 +136,8 @@ extension AppDelegate: GIDSignInDelegate {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
+    
+    
     
     // Signout code
     /*
