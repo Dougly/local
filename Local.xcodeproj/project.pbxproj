@@ -14,6 +14,7 @@
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
+		11A00C3F1F22772100D42984 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3E1F22772100D42984 /* File.swift */; };
 		11C0623F1F2250F800602527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11C0623E1F2250F800602527 /* GoogleService-Info.plist */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
@@ -278,6 +279,7 @@
 		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
 		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		11A00C3E1F22772100D42984 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		11C0623E1F2250F800602527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
@@ -783,6 +785,14 @@
 				110769D61F20429200D44621 /* NSURLRequestExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		11A00C3D1F22770800D42984 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				11A00C3E1F22772100D42984 /* File.swift */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		44B98ECA40076F3926539957 /* Pods */ = {
@@ -1724,6 +1734,7 @@
 		CE250EE61B676634005447FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11A00C3D1F22770800D42984 /* Authentication */,
 				CE250F211B67719E005447FF /* Classes */,
 				CE250F1B1B6768A6005447FF /* MTDataModel.h */,
 				CE250F1C1B6768B0005447FF /* MTDataModel.m */,
@@ -2141,6 +2152,7 @@
 				476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */,
 				47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */,
 				B013DBA71EB8DF5A00A96F75 /* NSDate+MDExtension.m in Sources */,
+				11A00C3F1F22772100D42984 /* File.swift in Sources */,
 				47157C8D1E7C853A000D11E9 /* IDMPhoto.m in Sources */,
 				4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */,
 				47157C8A1E7C853A000D11E9 /* DALabeledCircularProgressView.m in Sources */,

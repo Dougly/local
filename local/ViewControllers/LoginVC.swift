@@ -7,17 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class LoginVC: UIViewController, InstagramAuthDelegate {
-    
-    /*
-    private let kFacebookToken: String = "facebookToken"
-    private let kFirstName: String = "first_name"
-    private let kLastName: String = "last_name"
-    private let kGender: String = "gender"
-    private let kEmail: String = "email"
-    private let kId: String = "id"
-    */
+class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var guestButton: UIButton!
     @IBOutlet weak var facebookButton: MDButton!
@@ -37,6 +29,11 @@ class LoginVC: UIViewController, InstagramAuthDelegate {
         facebookButton.mdButtonType = MDButtonType.flat
         instagramButton.mdButtonType = MDButtonType.flat
         facebookButton.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
+        
+        // Google sign in
+        GIDSignIn.sharedInstance().uiDelegate = self
+        // Attempt to sign in silently
+        GIDSignIn.sharedInstance().signIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,14 +70,6 @@ class LoginVC: UIViewController, InstagramAuthDelegate {
         let mainViewController: MTMainViewController? = main.instantiateViewController(withIdentifier: "MTMainViewController") as? MTMainViewController
         navigationController?.pushViewController(mainViewController!, animated: true)
     }
-    
-    /*
-    func showMainScreen(_ isAnimated: Bool) {
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let mainView: MTMainViewController? = main.instantiateViewController(withIdentifier: "MTMainViewController")
-        navigationController?.pushViewController(mainView!, animated: isAnimated)
-    }
-    */
  
     @IBAction func login(withFacebook sender: Any) {
         facebookFacade.openSession(completionHandler: {() -> Void in
@@ -130,7 +119,6 @@ class LoginVC: UIViewController, InstagramAuthDelegate {
         }
  */
     }
-
     
     // MARK: - instagram delegate
     func onAuthenticated(_ authToken: String) {
@@ -139,23 +127,5 @@ class LoginVC: UIViewController, InstagramAuthDelegate {
             self.showMainScreen()
         })
     }
-    
-    /*
-    // MARK: - access overrides
-    func facebookFacade() -> FacebookFacade {
-        if !facebookFacade {
-            facebookFacade = FacebookFacade.sharedInstance
-        }
-        return facebookFacade
-    }
-    
-    func appManager() -> MTAppManager {
-        if !appManager {
-            appManager = MTAppManager.sharedInstance
-        }
-        return appManager
-    }
-    */
 
-    
 }
