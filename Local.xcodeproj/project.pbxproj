@@ -13,6 +13,7 @@
 		112716741F1D810100F6981B /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716731F1D810100F6981B /* FilterViewListener.m */; };
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
+		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11C0623F1F2250F800602527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11C0623E1F2250F800602527 /* GoogleService-Info.plist */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
@@ -276,6 +277,7 @@
 		112716791F1D81AD00F6981B /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextView.m; path = local/Views/BorderedTextView/BorderedTextView.m; sourceTree = SOURCE_ROOT; };
 		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
 		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
+		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11C0623E1F2250F800602527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
@@ -1762,6 +1764,7 @@
 				478072FC1EA9529700D98DD7 /* ClockViewController.swift */,
 				476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */,
 				476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */,
+				11A00C3B1F225C6600D42984 /* LoginVC.swift */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
 				474001BF1EB6112600C55420 /* MTPageContainerViewController.h */,
@@ -2056,6 +2059,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */,
 				47157CF91E7C8BE6000D11E9 /* UIImage+MultiFormat.m in Sources */,
 				47157CF71E7C8BE6000D11E9 /* UIButton+WebCache.m in Sources */,
 				4793CB161E7EEB5E0054B7FB /* MKInputBoxView.m in Sources */,

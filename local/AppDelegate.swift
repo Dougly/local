@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 
 @UIApplicationMain
@@ -20,22 +21,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
         
         facebookFacade?.application(application, didFinishLaunchingWithOptions: launchOptions ?? [UIApplicationLaunchOptionsKey : Any]())
         return true
     }
     
+    
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])
+        -> Bool {
+            print("🔥🔥🔥 application handleOpenURL: %@", url)
+            let handled: Bool = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            return handled
+    }
+
+    
+    
     // Facebook login -- Will be replaced with firebase facebook and instagram auth
+    /*
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print("🔥🔥🔥 application handleOpenURL: %@", url)
         let handled: Bool? = facebookFacade?.application(app, open: url, options: options)
         return handled!
     }
+ */
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         print("🔥🔥🔥 application handleOpenURL: %@", url)
-        let handled: Bool? = facebookFacade?.application(application, open: url, sourceApplication: sourceApplication ?? "", annotation: annotation)
-        return handled!
+        let handled: Bool = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -68,4 +84,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+// MARK: Google Sign In
+extension AppDelegate: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            print("🔥🔥🔥 \(error)")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+}
 
