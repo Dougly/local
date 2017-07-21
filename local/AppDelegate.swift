@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().delegate = auth
         
         
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+
+        
         displayVC()
         
         
@@ -42,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
         let loginVC: LoginVC = main.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         
+        
         if Auth.auth().currentUser != nil {
             print("🔥🔥🔥 USER IS ALREADY LOGGED IN SO DISPLAY MAIN")
             let controllers = [loginVC, mainViewController]
@@ -49,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             navController.setViewControllers([loginVC], animated: false)
         }
+        
+        
+
         
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
@@ -128,6 +140,13 @@ extension AppDelegate: GIDSignInDelegate {
                 print("🔥🔥🔥 auth error: \(error)")
                 return
             }
+            
+            // Present main vc after logging in
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
+            
+            let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
+            navController.pushViewController(mainViewController, animated: true)
         }
     }
 

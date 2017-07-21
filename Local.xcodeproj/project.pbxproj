@@ -94,7 +94,6 @@
 		47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47447B331EB91695008EA2CC /* MTInstagramViewController.m */; };
 		476759901EC8CB8600E1B3C6 /* font-awesome-extension.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */; };
 		476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476BC22B1E79512600B1BA91 /* Images.xcassets */; };
-		476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */; };
 		476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */; };
 		476BC2461E7957E400B1BA91 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2421E7957E400B1BA91 /* NSString+Validation.m */; };
 		476BC24A1E79582C00B1BA91 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC2491E79582C00B1BA91 /* UIColor+BFPaperColors.m */; };
@@ -427,8 +426,6 @@
 		47447B331EB91695008EA2CC /* MTInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInstagramViewController.m; sourceTree = "<group>"; };
 		4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-awesome-extension.ttf"; sourceTree = "<group>"; };
 		476BC22B1E79512600B1BA91 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginViewController.h; sourceTree = "<group>"; };
-		476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginViewController.m; sourceTree = "<group>"; };
 		476BC23F1E7957E400B1BA91 /* NSString+MTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MTAdditions.h"; sourceTree = "<group>"; };
 		476BC2401E7957E400B1BA91 /* NSString+MTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MTAdditions.m"; sourceTree = "<group>"; };
 		476BC2411E7957E400B1BA91 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
@@ -1773,8 +1770,6 @@
 				478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */,
 				478073001EAA6FAD00D98DD7 /* MTMapViewController.m */,
 				478072FC1EA9529700D98DD7 /* ClockViewController.swift */,
-				476BC23C1E79577E00B1BA91 /* MTLoginViewController.h */,
-				476BC23D1E79577E00B1BA91 /* MTLoginViewController.m */,
 				11A00C3B1F225C6600D42984 /* LoginVC.swift */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
@@ -2150,7 +2145,6 @@
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
 				47260E111E797EA60007990C /* MTUser.m in Sources */,
 				47260E141E797EAD0007990C /* _MTUser.m in Sources */,
-				476BC23E1E79577E00B1BA91 /* MTLoginViewController.m in Sources */,
 				47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */,
 				B013DBA71EB8DF5A00A96F75 /* NSDate+MDExtension.m in Sources */,
 				47157C8D1E7C853A000D11E9 /* IDMPhoto.m in Sources */,

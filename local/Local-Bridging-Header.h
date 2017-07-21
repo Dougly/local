@@ -5,7 +5,6 @@
 //App Delegate
 #import "MTSettings.h"
 #import "FacebookFacade.h"
-#import "MTLoginViewController.h"
 #import "MTMainViewController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
