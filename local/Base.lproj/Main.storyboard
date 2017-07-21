@@ -389,7 +389,7 @@
         <scene sceneID="SuL-K4-FLR">
             <objects>
                 <navigationController id="TJM-Jq-CX2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="txI-3k-58r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="txI-3k-58r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -827,7 +827,7 @@
         <scene sceneID="OcB-1G-tFe">
             <objects>
                 <navigationController id="s4r-VE-yiM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Do7-d8-dNJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Do7-d8-dNJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -839,10 +839,10 @@
             </objects>
             <point key="canvasLocation" x="-2423" y="594"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginVC-->
         <scene sceneID="JvL-cz-8w2">
             <objects>
-                <viewController storyboardIdentifier="MTLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fmT-jb-ENa" customClass="MTLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MTLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fmT-jb-ENa" customClass="LoginVC" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2oE-1i-dwF"/>
                         <viewControllerLayoutGuide type="bottom" id="iBj-Ok-kLx"/>
@@ -1033,7 +1033,7 @@
         <scene sceneID="k6Y-uq-XB8">
             <objects>
                 <navigationController navigationBarHidden="YES" id="32c-xK-8s6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52o-No-nIL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="52o-No-nIL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

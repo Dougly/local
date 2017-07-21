@@ -10,14 +10,14 @@ import UIKit
 
 class LoginVC: UIViewController, InstagramAuthDelegate {
     
-    
+    /*
     private let kFacebookToken: String = "facebookToken"
     private let kFirstName: String = "first_name"
     private let kLastName: String = "last_name"
     private let kGender: String = "gender"
     private let kEmail: String = "email"
     private let kId: String = "id"
-    
+    */
     
     @IBOutlet weak var guestButton: UIButton!
     @IBOutlet weak var facebookButton: MDButton!
@@ -105,6 +105,7 @@ class LoginVC: UIViewController, InstagramAuthDelegate {
     // Will Be replaced with firebase fb auth
     
     func signUpWithFacebook() {
+        print("Hit sign up with facebook")
      /*
         if facebookFacade.isSessionOpen() {
             facebookFacade.startRequestForMe(completionHandler: {(_ result: Any, _ error: Error?) -> Void in
