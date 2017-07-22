@@ -33,13 +33,7 @@ class Authentication: NSObject, GIDSignInDelegate {
             }
             
             DispatchQueue.main.async {
-                print("🔥🔥🔥 got to diapatch main async")
-                // Present main vc after logging in
-                if let navController = self.navController {
-                    let main = UIStoryboard(name: "Main", bundle: nil)
-                    let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
-                    navController.pushViewController(mainViewController, animated: true)
-                }
+                self.presentMainVC()
             }
         }
     }
@@ -50,13 +44,24 @@ class Authentication: NSObject, GIDSignInDelegate {
         // ...
     }
     
-    // Signout code
-    /*
-     let firebaseAuth = Auth.auth()
-     do {
-     try firebaseAuth.signOut()
-     } catch let signOutError as NSError {
-     print ("Error signing out: %@", signOutError)
-     }
-     */
+    func presentMainVC() {
+        if let navController = self.navController {
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
+            navController.pushViewController(mainViewController, animated: true)
+        }
+    }
+    
+    func signOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            navController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            //TODO: present alert so user knows they were not signed out
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        
+    }
 }

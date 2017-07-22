@@ -29,6 +29,7 @@
 #import "MTPlaceDetails.h"
 #import "FilterListener.h"
 #import "MTDataModel.h"
+#import "Local-Swift.h"
 
 #define MIN_CLUSTERING_SPAN                       0.02
 
@@ -77,6 +78,18 @@
     self.titleView = [[[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:self options:nil] objectAtIndex:0];
     self.titleView.delegate = self;
     self.navigationItem.titleView = self.titleView;
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Log Out"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(logOut)];
+    [self.navigationItem setLeftBarButtonItem:item animated:YES];
+}
+
+- (void)logOut {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.auth signOut];
+    
 }
 
 - (void)getLocation {

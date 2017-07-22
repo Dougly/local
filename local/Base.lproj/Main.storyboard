@@ -411,29 +411,18 @@
                         <viewControllerLayoutGuide type="top" id="0mh-Q0-heE"/>
                         <viewControllerLayoutGuide type="bottom" id="QZg-sD-b1v"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Ful-Rk-RYr">
+                    <view key="view" contentMode="scaleToFill" id="Ful-Rk-RYr">
                         <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
-                                <rect key="frame" x="0.0" y="64" width="414" height="622"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
                                 <connections>
                                     <outlet property="delegate" destination="QO0-Qx-Uq8" id="s7q-gz-lKK"/>
                                 </connections>
                             </mapView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyz-4e-Fnt">
-                                <rect key="frame" x="348" y="22" width="46" height="46"/>
-                                <color key="backgroundColor" red="0.090988613665103912" green="0.40694671869277954" blue="0.12911421060562134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="FHg-6X-Lnq"/>
-                                    <constraint firstAttribute="width" constant="46" id="twD-Xr-mpT"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="settingsButtonClicked:" destination="QO0-Qx-Uq8" eventType="touchUpInside" id="ANp-HF-rch"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-2M-zRl">
-                                <rect key="frame" x="94.666666666666686" y="18" width="225" height="30"/>
+                                <rect key="frame" x="95" y="18" width="225" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UMq-3u-3bN"/>
@@ -450,17 +439,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gQc-jm-amm" firstAttribute="bottom" secondItem="QZg-sD-b1v" secondAttribute="top" id="1ww-va-kOg"/>
                             <constraint firstItem="4n0-2M-zRl" firstAttribute="centerX" secondItem="Ful-Rk-RYr" secondAttribute="centerX" id="2r2-gW-FbM"/>
-                            <constraint firstAttribute="trailing" secondItem="yyz-4e-Fnt" secondAttribute="trailing" constant="20" id="43E-TL-jP5"/>
-                            <constraint firstItem="QZg-sD-b1v" firstAttribute="top" secondItem="gQc-jm-amm" secondAttribute="bottom" id="Nri-gX-aud"/>
+                            <constraint firstItem="gQc-jm-amm" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" id="6zj-Nb-Sll"/>
+                            <constraint firstItem="gQc-jm-amm" firstAttribute="leading" secondItem="Ful-Rk-RYr" secondAttribute="leading" id="Gui-PQ-mmw"/>
                             <constraint firstItem="4n0-2M-zRl" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" constant="18" id="R8o-c3-jJ1"/>
-                            <constraint firstItem="gQc-jm-amm" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" id="hi2-CB-y97"/>
-                            <constraint firstItem="gQc-jm-amm" firstAttribute="leading" secondItem="Ful-Rk-RYr" secondAttribute="leading" id="qRr-Rz-QCi"/>
-                            <constraint firstAttribute="trailing" secondItem="gQc-jm-amm" secondAttribute="trailing" id="tKD-aN-7bR"/>
-                            <constraint firstItem="yyz-4e-Fnt" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" constant="22" id="uGu-So-qJv"/>
+                            <constraint firstItem="gQc-jm-amm" firstAttribute="trailing" secondItem="Ful-Rk-RYr" secondAttribute="trailing" id="fPZ-FM-FLs"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Wsr-vJ-T7p"/>
                     <connections>
                         <outlet property="mapView" destination="gQc-jm-amm" id="zFy-1s-3XJ"/>
@@ -469,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpF-47-C30" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.8" y="444.82758620689657"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="444.29347826086962"/>
         </scene>
         <!--Page Container View Controller-->
         <scene sceneID="4fL-79-Js3">
