@@ -35,17 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         
-        displayVC()
+        setWindowAndRootNavigationController()
         
         
         facebookFacade?.application(application, didFinishLaunchingWithOptions: launchOptions ?? [UIApplicationLaunchOptionsKey : Any]())
         return true
     }
     
-    func displayVC() {
+    func setWindowAndRootNavigationController() {
         window = UIWindow()
         let main = UIStoryboard(name: "Main", bundle: nil)
         let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
+        auth.navController = navController
+
         
         let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
         let loginVC: LoginVC = main.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -122,51 +124,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-// MARK: Google Sign In
-extension AppDelegate: GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if let error = error {
-            print("🔥🔥🔥 sign in error: \(error)")
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("🔥🔥🔥 auth error: \(error)")
-                return
-            }
-            
-            // Present main vc after logging in
-            let main = UIStoryboard(name: "Main", bundle: nil)
-            let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
-            
-            let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
-            navController.pushViewController(mainViewController, animated: true)
-        }
-    }
-
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
-    
-    
-    // Signout code
-    /*
-    let firebaseAuth = Auth.auth()
-    do {
-    try firebaseAuth.signOut()
-    } catch let signOutError as NSError {
-    print ("Error signing out: %@", signOutError)
-    }
- */
-    
-}
 

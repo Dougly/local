@@ -14,6 +14,8 @@ import GoogleSignIn
 
 class Authentication: NSObject, GIDSignInDelegate {
     
+    var navController: UINavigationController?
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
         if let error = error {
@@ -28,6 +30,16 @@ class Authentication: NSObject, GIDSignInDelegate {
             if let error = error {
                 print("🔥🔥🔥 auth error: \(error)")
                 return
+            }
+            
+            DispatchQueue.main.async {
+                print("🔥🔥🔥 got to diapatch main async")
+                // Present main vc after logging in
+                if let navController = self.navController {
+                    let main = UIStoryboard(name: "Main", bundle: nil)
+                    let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
+                    navController.pushViewController(mainViewController, animated: true)
+                }
             }
         }
     }
