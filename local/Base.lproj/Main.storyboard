@@ -374,6 +374,7 @@
                             <constraint firstItem="9R0-c5-5Gf" firstAttribute="leading" secondItem="QKp-ez-jfn" secondAttribute="leading" id="zay-HG-0f6"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="filterContainterView" destination="77w-Rs-zyk" id="22x-kc-P1O"/>
                         <outlet property="leftMarginForBottomMenuConstraint" destination="HUy-8f-t5E" id="Z4I-ee-cau"/>
@@ -389,7 +390,7 @@
         <scene sceneID="SuL-K4-FLR">
             <objects>
                 <navigationController id="TJM-Jq-CX2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="txI-3k-58r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="txI-3k-58r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -410,18 +411,18 @@
                         <viewControllerLayoutGuide type="top" id="0mh-Q0-heE"/>
                         <viewControllerLayoutGuide type="bottom" id="QZg-sD-b1v"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ful-Rk-RYr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="686"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Ful-Rk-RYr">
+                        <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
                                 <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                                 <connections>
                                     <outlet property="delegate" destination="QO0-Qx-Uq8" id="s7q-gz-lKK"/>
                                 </connections>
                             </mapView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyz-4e-Fnt">
-                                <rect key="frame" x="348" y="86" width="46" height="46"/>
+                                <rect key="frame" x="348" y="22" width="46" height="46"/>
                                 <color key="backgroundColor" red="0.090988613665103912" green="0.40694671869277954" blue="0.12911421060562134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="FHg-6X-Lnq"/>
@@ -432,7 +433,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-2M-zRl">
-                                <rect key="frame" x="94.666666666666686" y="82" width="225" height="30"/>
+                                <rect key="frame" x="94.666666666666686" y="18" width="225" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UMq-3u-3bN"/>
@@ -459,7 +460,7 @@
                             <constraint firstItem="yyz-4e-Fnt" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" constant="22" id="uGu-So-qJv"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Wsr-vJ-T7p"/>
                     <connections>
                         <outlet property="mapView" destination="gQc-jm-amm" id="zFy-1s-3XJ"/>
@@ -826,11 +827,15 @@
         <!--Navigation Controller-->
         <scene sceneID="OcB-1G-tFe">
             <objects>
-                <navigationController storyboardIdentifier="initialNavController" navigationBarHidden="YES" id="s4r-VE-yiM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Do7-d8-dNJ">
+                <navigationController storyboardIdentifier="initialNavController" id="s4r-VE-yiM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Do7-d8-dNJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hQA-1A-fEt">
+                        <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJl-dn-9yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1034,7 +1039,7 @@
         <scene sceneID="k6Y-uq-XB8">
             <objects>
                 <navigationController navigationBarHidden="YES" id="32c-xK-8s6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52o-No-nIL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="52o-No-nIL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

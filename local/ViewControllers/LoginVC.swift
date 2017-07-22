@@ -37,9 +37,9 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateButtonVisibility()
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
         facebookButton.isSelected = false
         checkIfSignedIn()
     }
