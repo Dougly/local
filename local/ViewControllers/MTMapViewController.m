@@ -20,7 +20,6 @@
 #import "CMTabbarView.h"
 #import "TitleView.h"
 #import "MapPopupView.h"
-#import "MTSettignsViewController.h"
 #import "LocationView.h"
 #import "ListView.h"
 #import "MTPageContainerViewController.h"
@@ -331,14 +330,6 @@
     } completion:^(BOOL finished) {
         [self.locationView removeFromSuperview];
     }];
-}
-
-#pragma mark - Temporary
-
-- (IBAction)settingsButtonClicked:(id)sender {
-    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MTSettignsViewController *viewController = [main instantiateViewControllerWithIdentifier:@"MTSettignsViewController"];
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - right navigation item

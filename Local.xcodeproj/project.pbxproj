@@ -101,7 +101,6 @@
 		476EC2D81EC865BA0007AF1D /* MTFilterPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */; };
 		476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */; };
 		477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */; };
-		478072FD1EA9529700D98DD7 /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478072FC1EA9529700D98DD7 /* ClockViewController.swift */; };
 		478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073001EAA6FAD00D98DD7 /* MTMapViewController.m */; };
 		478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073061EAA705500D98DD7 /* DummyAnnotation.m */; };
 		478073161EAA705500D98DD7 /* QCluster+Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073081EAA705500D98DD7 /* QCluster+Annotation.m */; };
@@ -130,7 +129,6 @@
 		47A97FA21EABD8A700AB8657 /* MTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97F9F1EABD8A700AB8657 /* MTPhoto.m */; };
 		47A97FA31EABD8A700AB8657 /* MTPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FA11EABD8A700AB8657 /* MTPlace.m */; };
 		47A97FA61EAC992D00AB8657 /* MKImageAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FA51EAC992D00AB8657 /* MKImageAnnotationView.m */; };
-		47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FA81EACDADA00AB8657 /* MTSettignsViewController.m */; };
 		47A97FB11EACDB2B00AB8657 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FAC1EACDB2B00AB8657 /* RMActionController.m */; };
 		47A97FB21EACDB2B00AB8657 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FAE1EACDB2B00AB8657 /* RMDateSelectionViewController.m */; };
 		47A97FB31EACDB2B00AB8657 /* RMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A97FB01EACDB2B00AB8657 /* RMPickerViewController.m */; };
@@ -195,12 +193,7 @@
 		9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5F01BCE8ADC0072929C /* IMGActivityIndicator.m */; };
 		9161F5F41BCE8C9C0072929C /* MTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161F5F31BCE8C9C0072929C /* MTProgressHUD.m */; };
 		9165343C1BCD15CB00E669A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9165343A1BCD15CB00E669A7 /* Main.storyboard */; };
-		B013DB391EB8DB8000A96F75 /* FacebookFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DB381EB8DB8000A96F75 /* FacebookFacade.m */; };
 		B013DB3B1EB8DBD600A96F75 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B013DB3A1EB8DBD600A96F75 /* SafariServices.framework */; };
-		B013DB411EB8DBF700A96F75 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B013DB3D1EB8DBF700A96F75 /* Bolts.framework */; };
-		B013DB421EB8DBF700A96F75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B013DB3E1EB8DBF700A96F75 /* FBSDKCoreKit.framework */; };
-		B013DB431EB8DBF700A96F75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B013DB3F1EB8DBF700A96F75 /* FBSDKLoginKit.framework */; };
-		B013DB441EB8DBF700A96F75 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B013DB401EB8DBF700A96F75 /* FBSDKShareKit.framework */; };
 		B013DB9C1EB8DF5A00A96F75 /* AutoResizeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DB471EB8DF5A00A96F75 /* AutoResizeTextView.m */; };
 		B013DB9D1EB8DF5A00A96F75 /* MDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DB4A1EB8DF5A00A96F75 /* MDCalendar.m */; };
 		B013DB9E1EB8DF5A00A96F75 /* MDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B013DB4C1EB8DF5A00A96F75 /* MDCalendarCell.m */; };
@@ -440,7 +433,6 @@
 		477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterViewController.h; sourceTree = "<group>"; };
 		477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterViewController.m; sourceTree = "<group>"; };
 		478072F71EA94E7600D98DD7 /* Local-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Bridging-Header.h"; sourceTree = "<group>"; };
-		478072FC1EA9529700D98DD7 /* ClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockViewController.swift; sourceTree = "<group>"; };
 		478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
 		478073001EAA6FAD00D98DD7 /* MTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMapViewController.m; sourceTree = "<group>"; };
 		478073051EAA705500D98DD7 /* DummyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyAnnotation.h; sourceTree = "<group>"; };
@@ -497,8 +489,6 @@
 		47A97FA11EABD8A700AB8657 /* MTPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPlace.m; sourceTree = "<group>"; };
 		47A97FA41EAC992D00AB8657 /* MKImageAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKImageAnnotationView.h; sourceTree = "<group>"; };
 		47A97FA51EAC992D00AB8657 /* MKImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKImageAnnotationView.m; sourceTree = "<group>"; };
-		47A97FA71EACDADA00AB8657 /* MTSettignsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettignsViewController.h; sourceTree = "<group>"; };
-		47A97FA81EACDADA00AB8657 /* MTSettignsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettignsViewController.m; sourceTree = "<group>"; };
 		47A97FAB1EACDB2B00AB8657 /* RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
 		47A97FAC1EACDB2B00AB8657 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		47A97FAD1EACDB2B00AB8657 /* RMDateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDateSelectionViewController.h; sourceTree = "<group>"; };
@@ -613,13 +603,7 @@
 		9161F5F31BCE8C9C0072929C /* MTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTProgressHUD.m; sourceTree = "<group>"; };
 		9165343B1BCD15CB00E669A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91AA5E511BCEDB97008154EC /* joe.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = joe.pch; sourceTree = "<group>"; };
-		B013DB371EB8DB8000A96F75 /* FacebookFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFacade.h; sourceTree = "<group>"; };
-		B013DB381EB8DB8000A96F75 /* FacebookFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFacade.m; sourceTree = "<group>"; };
 		B013DB3A1EB8DBD600A96F75 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		B013DB3D1EB8DBF700A96F75 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		B013DB3E1EB8DBF700A96F75 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		B013DB3F1EB8DBF700A96F75 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		B013DB401EB8DBF700A96F75 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		B013DB461EB8DF5A00A96F75 /* AutoResizeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoResizeTextView.h; sourceTree = "<group>"; };
 		B013DB471EB8DF5A00A96F75 /* AutoResizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoResizeTextView.m; sourceTree = "<group>"; };
 		B013DB491EB8DF5A00A96F75 /* MDCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendar.h; sourceTree = "<group>"; };
@@ -761,15 +745,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B013DB421EB8DBF700A96F75 /* FBSDKCoreKit.framework in Frameworks */,
 				47237C4B1ECC6C9500E514C1 /* Crashlytics.framework in Frameworks */,
 				B013DB3B1EB8DBD600A96F75 /* SafariServices.framework in Frameworks */,
-				B013DB431EB8DBF700A96F75 /* FBSDKLoginKit.framework in Frameworks */,
 				47237C4A1ECC6C9500E514C1 /* Fabric.framework in Frameworks */,
-				B013DB441EB8DBF700A96F75 /* FBSDKShareKit.framework in Frameworks */,
 				47157C621E7C696B000D11E9 /* MobileCoreServices.framework in Frameworks */,
 				7F463DBF14CF218DC57446FA /* Pods_Local.framework in Frameworks */,
-				B013DB411EB8DBF700A96F75 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1435,29 +1415,8 @@
 			isa = PBXGroup;
 			children = (
 				47447B311EB91695008EA2CC /* Instagram */,
-				B013DB361EB8DB8000A96F75 /* FacebookFacade */,
 			);
 			path = SocialAnalytics;
-			sourceTree = "<group>";
-		};
-		B013DB361EB8DB8000A96F75 /* FacebookFacade */ = {
-			isa = PBXGroup;
-			children = (
-				B013DB371EB8DB8000A96F75 /* FacebookFacade.h */,
-				B013DB381EB8DB8000A96F75 /* FacebookFacade.m */,
-			);
-			path = FacebookFacade;
-			sourceTree = "<group>";
-		};
-		B013DB3C1EB8DBF700A96F75 /* FacebookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				B013DB3D1EB8DBF700A96F75 /* Bolts.framework */,
-				B013DB3E1EB8DBF700A96F75 /* FBSDKCoreKit.framework */,
-				B013DB3F1EB8DBF700A96F75 /* FBSDKLoginKit.framework */,
-				B013DB401EB8DBF700A96F75 /* FBSDKShareKit.framework */,
-			);
-			path = FacebookSDK;
 			sourceTree = "<group>";
 		};
 		B013DB451EB8DF5A00A96F75 /* Material */ = {
@@ -1748,7 +1707,6 @@
 				47237C491ECC6C9500E514C1 /* Crashlytics.framework */,
 				B013DBD51EB8E22500A96F75 /* SSKeychain */,
 				B013DB451EB8DF5A00A96F75 /* Material */,
-				B013DB3C1EB8DBF700A96F75 /* FacebookSDK */,
 				47157CCE1E7C8BE6000D11E9 /* SDWebImage */,
 				9161F5EE1BCE8ADC0072929C /* MTProgressHud */,
 			);
@@ -1765,11 +1723,8 @@
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
 				47A9801D1EAE084800AB8657 /* ViewController.xib */,
-				47A97FA71EACDADA00AB8657 /* MTSettignsViewController.h */,
-				47A97FA81EACDADA00AB8657 /* MTSettignsViewController.m */,
 				478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */,
 				478073001EAA6FAD00D98DD7 /* MTMapViewController.m */,
-				478072FC1EA9529700D98DD7 /* ClockViewController.swift */,
 				11A00C3B1F225C6600D42984 /* LoginVC.swift */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
@@ -2167,10 +2122,8 @@
 				B013DBB41EB8DF5A00A96F75 /* MDTabBar.m in Sources */,
 				B013DBA91EB8DF5A00A96F75 /* MDMathHelper.m in Sources */,
 				47157CC51E7C8BAC000D11E9 /* AFURLSessionManager.m in Sources */,
-				478072FD1EA9529700D98DD7 /* ClockViewController.swift in Sources */,
 				CE250F121B676682005447FF /* SDDispatcher.m in Sources */,
 				47A97FC91EACDF7800AB8657 /* MTSettingsPreferences.m in Sources */,
-				B013DB391EB8DB8000A96F75 /* FacebookFacade.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
 				47A980461EAE688C00AB8657 /* MTGoogleTypesString.m in Sources */,
 				47A97FC81EACDF7800AB8657 /* MTSettings.m in Sources */,
@@ -2260,7 +2213,6 @@
 				B013DBB61EB8DF5A00A96F75 /* MDTableViewCell.m in Sources */,
 				47157CCC1E7C8BAC000D11E9 /* UIRefreshControl+AFNetworking.m in Sources */,
 				47A97FF71EADEF6200AB8657 /* MTLocationManager.m in Sources */,
-				47A97FA91EACDADA00AB8657 /* MTSettignsViewController.m in Sources */,
 				B013DBBD1EB8DF5A00A96F75 /* MDBubbleLabel.m in Sources */,
 				4780731E1EAA707F00D98DD7 /* ClusterAnnotationView.m in Sources */,
 				47237C0B1ECC405C00E514C1 /* MTAuthenticateYelpResponse.m in Sources */,

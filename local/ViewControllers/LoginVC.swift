@@ -14,7 +14,6 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var guestButton: UIButton!
     @IBOutlet weak var facebookButton: MDButton!
     @IBOutlet weak var instagramButton: MDButton!
-    var facebookFacade: FacebookFacade = FacebookFacade.sharedInstance()
     var appManager: MTAppManager = MTAppManager.sharedInstance()
     var facebookEmail: String = ""
     var facebookID: String = ""
@@ -26,6 +25,9 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         facebookButton.mdButtonType = MDButtonType.flat
         instagramButton.mdButtonType = MDButtonType.flat
         facebookButton.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
@@ -72,11 +74,11 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     }
  
     @IBAction func login(withFacebook sender: Any) {
-        facebookFacade.openSession(completionHandler: {() -> Void in
-            self.signUpWithFacebook()
-        }, andFailureBlock: {() -> Void in
-            self.facebookFacade.closeAndClearCache(true)
-        })
+//        facebookFacade.openSession(completionHandler: {() -> Void in
+//            self.signUpWithFacebook()
+//        }, andFailureBlock: {() -> Void in
+//            self.facebookFacade.closeAndClearCache(true)
+//        })
     }
     
     @IBAction func login(withInstagram sender: Any) {
