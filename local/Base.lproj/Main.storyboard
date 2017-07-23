@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -636,63 +637,39 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="local_bg" translatesAutoresizingMaskIntoConstraints="NO" id="XQr-7M-Zid">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-8O-1b2" customClass="MDButton">
-                                <rect key="frame" x="61" y="453" width="292" height="50"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ADv-yn-xeP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="FACEBOOK" image="ic_facebook_icon">
-                                    <color key="titleColor" red="1" green="0.9999405146" blue="0.99998033050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                        <color key="value" red="0.15686274510000001" green="0.21960784310000001" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="loginWithFacebook:" destination="fmT-jb-ENa" eventType="touchUpInside" id="08G-Bp-K9w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmM-6c-SQV" customClass="MDButton">
-                                <rect key="frame" x="61" y="512" width="292" height="51"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="C7g-mu-Egt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="INSTAGRAM" image="ic_instagram_icon" backgroundImage="ic_instagram_bg">
-                                    <color key="titleColor" red="1" green="0.9999405146" blue="0.99998033050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="loginWithInstagram:" destination="fmT-jb-ENa" eventType="touchUpInside" id="f88-N9-79r"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign-in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caU-jh-BPP">
-                                <rect key="frame" x="151.66666666666669" y="417" width="111.00000000000006" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="111" id="FFJ-h0-69m"/>
-                                    <constraint firstAttribute="height" constant="21" id="OhX-UZ-ECP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2x-Yr-G43" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                                <rect key="frame" x="61" y="571" width="292" height="51"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-Zc-H72" userLabel="Sign In Button Stack View">
+                                <rect key="frame" x="62" y="386.33333333333337" width="290" height="184.00000000000011"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2x-Yr-G43" userLabel="Google Sign In Button" customClass="GIDSignInButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="51.333333333333371"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-jE-6iJ" userLabel="Facebook Sign In Placeholder">
+                                        <rect key="frame" x="0.0" y="66.333333333333371" width="290" height="51.333333333333314"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmM-6c-SQV" customClass="MDButton">
+                                        <rect key="frame" x="0.0" y="132.66666666666669" width="290" height="51.333333333333371"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="INSTAGRAM" image="ic_instagram_icon" backgroundImage="ic_instagram_bg">
+                                            <color key="titleColor" red="1" green="0.9999405146" blue="0.99998033050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginWithInstagram:" destination="fmT-jb-ENa" eventType="touchUpInside" id="f88-N9-79r"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APq-KT-IUF">
-                                <rect key="frame" x="60.666666666666657" y="630" width="292" height="51"/>
+                                <rect key="frame" x="62" y="585.33333333333337" width="290" height="51.333333333333258"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <state key="normal" title="LOGIN AS GUEST"/>
@@ -703,26 +680,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="D2x-Yr-G43" firstAttribute="width" secondItem="XmM-6c-SQV" secondAttribute="width" id="3xP-bR-a3a"/>
-                            <constraint firstItem="APq-KT-IUF" firstAttribute="width" secondItem="D2x-Yr-G43" secondAttribute="width" id="79d-Af-jhi"/>
-                            <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="D2x-Yr-G43" secondAttribute="bottom" constant="8" id="7ZE-u0-eL6"/>
-                            <constraint firstItem="D2x-Yr-G43" firstAttribute="height" secondItem="XmM-6c-SQV" secondAttribute="height" id="AAh-RK-dwy"/>
-                            <constraint firstItem="iBj-Ok-kLx" firstAttribute="top" secondItem="XmM-6c-SQV" secondAttribute="bottom" constant="173" id="Ayq-gc-Vq6"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="centerX" secondItem="D2x-Yr-G43" secondAttribute="centerX" id="Aqn-pP-axC"/>
                             <constraint firstItem="iBj-Ok-kLx" firstAttribute="top" secondItem="XQr-7M-Zid" secondAttribute="bottom" id="EUq-KC-MPE"/>
-                            <constraint firstItem="APq-KT-IUF" firstAttribute="centerX" secondItem="D2x-Yr-G43" secondAttribute="centerX" id="Piv-xp-qR7"/>
-                            <constraint firstItem="D2x-Yr-G43" firstAttribute="centerX" secondItem="XmM-6c-SQV" secondAttribute="centerX" id="Qwh-c7-UQg"/>
-                            <constraint firstItem="XmM-6c-SQV" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" constant="61" id="SeA-BA-CBy"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="SH1-Zc-H72" secondAttribute="bottom" constant="15" id="TJM-2l-s19"/>
                             <constraint firstItem="XQr-7M-Zid" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" id="Vul-B9-3b3"/>
-                            <constraint firstItem="rRh-8O-1b2" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" constant="61" id="ZOU-0e-yLK"/>
-                            <constraint firstItem="rRh-8O-1b2" firstAttribute="top" secondItem="caU-jh-BPP" secondAttribute="bottom" constant="15" id="eK1-EP-NCb"/>
-                            <constraint firstItem="caU-jh-BPP" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="jS6-0j-wx7"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.3" id="iOQ-q6-P63"/>
                             <constraint firstItem="XQr-7M-Zid" firstAttribute="top" secondItem="Yed-yF-3fW" secondAttribute="top" id="kcI-2p-KHG"/>
-                            <constraint firstAttribute="trailing" secondItem="rRh-8O-1b2" secondAttribute="trailing" constant="61" id="lnT-2u-XYp"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" multiplier="0.25" id="loQ-tg-lLQ"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="width" secondItem="D2x-Yr-G43" secondAttribute="width" id="mcP-4P-Cxz"/>
                             <constraint firstAttribute="trailing" secondItem="XQr-7M-Zid" secondAttribute="trailing" id="odH-V2-6b6"/>
-                            <constraint firstItem="XmM-6c-SQV" firstAttribute="top" secondItem="rRh-8O-1b2" secondAttribute="bottom" constant="9" id="tF6-m7-lwU"/>
-                            <constraint firstItem="APq-KT-IUF" firstAttribute="height" secondItem="D2x-Yr-G43" secondAttribute="height" id="vHD-ys-ykI"/>
-                            <constraint firstItem="D2x-Yr-G43" firstAttribute="top" secondItem="XmM-6c-SQV" secondAttribute="bottom" constant="8" id="wXf-CG-DCm"/>
-                            <constraint firstAttribute="trailing" secondItem="XmM-6c-SQV" secondAttribute="trailing" constant="61" id="wlo-xa-r3w"/>
+                            <constraint firstItem="APq-KT-IUF" firstAttribute="height" secondItem="D2x-Yr-G43" secondAttribute="height" id="rKY-HR-aYK"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.7" id="wWr-EC-ysw"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="yor-DB-z5V"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vjg-Oy-3qS"/>
@@ -730,7 +699,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="facebookButton" destination="rRh-8O-1b2" id="d3m-fO-8IR"/>
+                        <outlet property="facebookPlaceholderView" destination="a3L-jE-6iJ" id="8BN-JH-Ubf"/>
                         <outlet property="guestButton" destination="APq-KT-IUF" id="1z5-ZK-rtX"/>
                         <outlet property="instagramButton" destination="XmM-6c-SQV" id="GQP-Zg-sTV"/>
                     </connections>
@@ -835,7 +804,6 @@
     <resources>
         <image name="ic_back" width="1" height="1"/>
         <image name="ic_close" width="70" height="70"/>
-        <image name="ic_facebook_icon" width="25" height="25"/>
         <image name="ic_instagram_bg" width="250" height="50"/>
         <image name="ic_instagram_icon" width="28" height="25"/>
         <image name="local_bg" width="375" height="667"/>

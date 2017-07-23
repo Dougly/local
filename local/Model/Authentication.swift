@@ -9,13 +9,21 @@
 import Foundation
 import FirebaseAuth
 import GoogleSignIn
+import FacebookLogin
+import FacebookCore
 
 // will potentialy use this for all auth logic
 
-class Authentication: NSObject, GIDSignInDelegate {
+enum AuthType {
+    case Google, Facebool, Instagram
+}
+
+class Authentication: NSObject, GIDSignInDelegate, LoginButtonDelegate {
     
     var navController: UINavigationController?
     
+    
+    // MARK: Google Authentication
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
         if let error = error {
@@ -28,7 +36,7 @@ class Authentication: NSObject, GIDSignInDelegate {
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
-                print("🔥🔥🔥 auth error: \(error)")
+                print("🔥🔥🔥 google auth error: \(error)")
                 return
             }
             
@@ -52,7 +60,10 @@ class Authentication: NSObject, GIDSignInDelegate {
         }
     }
     
+    // TODO: Add AuthType as a param to specify behavior based on what ervice they authenticated with
     func signOut() {
+        
+        GIDSignIn.sharedInstance().disconnect()
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -61,7 +72,25 @@ class Authentication: NSObject, GIDSignInDelegate {
             //TODO: present alert so user knows they were not signed out
             print ("Error signing out: %@", signOutError)
         }
-        
-        
     }
+    
+    // MARK: Facebook Authentication
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        let accessToken = AccessToken.current
+        guard let authToken = accessToken?.authenticationToken else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: authToken)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print("🔥🔥🔥 fb auth error: \(error)")
+                return
+            }
+            self.presentMainVC()
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+    }
+
+    
 }

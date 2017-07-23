@@ -15,7 +15,7 @@
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
-		11C0623F1F2250F800602527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11C0623E1F2250F800602527 /* GoogleService-Info.plist */; };
+		11B014741F247AE600ABAE0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B014731F247AE600ABAE0F /* GoogleService-Info.plist */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
@@ -272,7 +272,7 @@
 		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
-		11C0623E1F2250F800602527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11B014731F247AE600ABAE0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
@@ -1620,9 +1620,9 @@
 		CE250EBD1B67657E005447FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11B014731F247AE600ABAE0F /* GoogleService-Info.plist */,
 				91AA5E511BCEDB97008154EC /* joe.pch */,
 				CE250EBE1B67657E005447FF /* Info.plist */,
-				11C0623E1F2250F800602527 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1919,7 +1919,7 @@
 				47A97FBE1EACDBA500AB8657 /* MTTagCell.xib in Resources */,
 				47157D011E7C8C26000D11E9 /* floatTableViewCell.xib in Resources */,
 				47AA04F21EB388C600818247 /* LocationView.xib in Resources */,
-				11C0623F1F2250F800602527 /* GoogleService-Info.plist in Resources */,
+				11B014741F247AE600ABAE0F /* GoogleService-Info.plist in Resources */,
 				474001B81EB5D73E00C55420 /* ListView.xib in Resources */,
 				474001A91EB4D2CE00C55420 /* MTFilterViewCell.xib in Resources */,
 				47AA04DC1EB34A0500818247 /* MapPopupView.xib in Resources */,

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FacebookCore
+import FacebookLogin
 
 
 @UIApplicationMain
@@ -23,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = auth
+        
         
         setWindowAndRootNavigationController()
         
@@ -54,13 +57,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])
         -> Bool {
-            let handled: Bool = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            
+            var handled = false
+            
+            if let urlScheme = url.scheme {
+                
+                if urlScheme == "com.googleusercontent.apps.220419844882-lmn0vung4u6ie0ra85r7d8108ep5lfrv" {
+                    handled = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+                } else if urlScheme == "fb103939270288346" {
+                    handled = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+                }
+                
+            }
+            print("🔥🔥🔥 application handleOpenURL", url.scheme)
+            
             return handled
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        print("🔥🔥🔥 application handleOpenURL: %@", url)
-        let handled: Bool = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        print("🔥🔥🔥 application handleOpenURL", url.scheme)
+        
+        var handled = false
+        
+        if let urlScheme = url.scheme {
+            
+            if urlScheme == "com.googleusercontent.apps.220419844882-lmn0vung4u6ie0ra85r7d8108ep5lfrv" {
+                handled = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+            } else if urlScheme == "fb103939270288346" {
+                handled = SDKApplicationDelegate.shared.application(application, open: url)
+            }
+            
+        }
         return handled
     }
 

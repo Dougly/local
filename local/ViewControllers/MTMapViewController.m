@@ -88,7 +88,6 @@
 - (void)logOut {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.auth signOut];
-    
 }
 
 - (void)getLocation {
@@ -124,6 +123,7 @@
 
 - (void)getPlacesAtLocation:(CLLocationCoordinate2D)coordinate {
     MTGooglePlacesManager *manager = [MTGooglePlacesManager sharedManager];
+   
     
     self.qTree = nil;
     [manager query:coordinate radius:kRadiusSearch completion:^(BOOL success, NSArray *places, NSError *error) {

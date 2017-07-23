@@ -8,11 +8,12 @@
 
 import UIKit
 import GoogleSignIn
+import FacebookLogin
 
 class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var guestButton: UIButton!
-    @IBOutlet weak var facebookButton: MDButton!
+    @IBOutlet weak var facebookPlaceholderView: UIView!
     @IBOutlet weak var instagramButton: MDButton!
     var appManager: MTAppManager = MTAppManager.sharedInstance()
     var facebookEmail: String = ""
@@ -26,23 +27,35 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        facebookButton.mdButtonType = MDButtonType.flat
         instagramButton.mdButtonType = MDButtonType.flat
-        facebookButton.backgroundColor = UIColor(red: 59/255, green: 89/255, blue: 152/255, alpha: 1)
         
         // Google sign in
         GIDSignIn.sharedInstance().uiDelegate = self
         // Attempt to sign in silently
         // GIDSignIn.sharedInstance().signIn()
+        
+        let fbLoginButton = LoginButton(readPermissions: [ .publicProfile, .email ])
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        fbLoginButton.delegate = appDelegate.auth
+        
+        
+        view.addSubview(fbLoginButton)
+        fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        fbLoginButton.centerXAnchor.constraint(equalTo: facebookPlaceholderView.centerXAnchor).isActive = true
+        fbLoginButton.centerYAnchor.constraint(equalTo: facebookPlaceholderView.centerYAnchor).isActive = true
+        fbLoginButton.widthAnchor.constraint(equalTo: facebookPlaceholderView.widthAnchor).isActive = true
+        fbLoginButton.heightAnchor.constraint(equalTo: facebookPlaceholderView.heightAnchor).isActive = true
+
+        
+//        if let accessToken = AccessToken.current {
+//            // User is logged in, use 'accessToken' here.
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateButtonVisibility()
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        facebookButton.isSelected = false
         checkIfSignedIn()
     }
     
