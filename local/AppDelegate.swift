@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = auth
@@ -37,22 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let main = UIStoryboard(name: "Main", bundle: nil)
         let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
         auth.navController = navController
-
         
         let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
         let loginVC: LoginVC = main.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         
-        
         if Auth.auth().currentUser != nil {
-            print("🔥🔥🔥 USER IS ALREADY LOGGED IN SO DISPLAY MAIN")
             let controllers = [loginVC, mainViewController]
             navController.setViewControllers(controllers, animated: false)
         } else {
             navController.setViewControllers([loginVC], animated: false)
         }
-        
-        
-
         
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
@@ -62,21 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:])
         -> Bool {
-            print("🔥🔥🔥 application handleOpenURL: %@", url)
             let handled: Bool = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
             return handled
     }
-
-    
-    
-    // Facebook login -- Will be replaced with firebase facebook and instagram auth
-    /*
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("🔥🔥🔥 application handleOpenURL: %@", url)
-        let handled: Bool? = facebookFacade?.application(app, open: url, options: options)
-        return handled!
-    }
- */
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         print("🔥🔥🔥 application handleOpenURL: %@", url)
