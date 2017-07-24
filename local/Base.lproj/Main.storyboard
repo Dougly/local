@@ -727,7 +727,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Zrg-jj-f4e" id="xcn-6x-cDG"/>
-                        <outlet property="facebookSignInContainerView" destination="a3L-jE-6iJ" id="Fga-uM-ypa"/>
                         <outlet property="facebookSignInView" destination="jCZ-76-nt2" id="1Ld-De-9fY"/>
                         <outlet property="googleSignInButton" destination="D2x-Yr-G43" id="7Wz-7z-ToA"/>
                         <outlet property="guestButton" destination="APq-KT-IUF" id="1z5-ZK-rtX"/>

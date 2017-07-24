@@ -89,6 +89,7 @@ class Authentication: NSObject, GIDSignInDelegate {
                 loginVC.activityIndicator.stopAnimating()
                 if let error = error {
                     print("🔥🔥🔥 fb auth error: \(error)")
+                    loginVC.presentAlertfor(error: LoginError.emailUsedWithDifferentProvider)
                     return
                 }
                 self.presentMainVC()
