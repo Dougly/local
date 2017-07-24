@@ -12,59 +12,59 @@ import GoogleSignIn
 import FacebookLogin
 import FacebookCore
 
-// will potentialy use this for all auth logic
-
-enum AuthType {
-    case Google, Facebook, Instagram
-}
 
 class Authentication: NSObject, GIDSignInDelegate {
     
     var navController: UINavigationController?
     
     
-    // MARK: Google Authentication
+    // MARK: Google Auth
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
         if let error = error {
-            print("🔥🔥🔥 sign in error: \(error)")
+            print("🔥🔥🔥 google sign in error: \(error)")
             return
         }
-        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        authenticateForFirebase(with: credential)
+    }
+    
+
+    // MARK: Facebook Auth
+    func loginButtonDidCompleteLogin(_ result: LoginResult) {
+        let accessToken = AccessToken.current
+        guard let authToken = accessToken?.authenticationToken else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: authToken)
+        authenticateForFirebase(with: credential)
+    }
+    
+    
+    // MARK: Firebase Auth
+    func authenticateForFirebase(with credential: AuthCredential) {
         if let loginVC = getLoginVC() {
             loginVC.activityIndicator.startAnimating()
-            
-            
-            guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                           accessToken: authentication.accessToken)
             Auth.auth().signIn(with: credential) { (user, error) in
                 loginVC.activityIndicator.stopAnimating()
                 if let error = error {
-                    print("🔥🔥🔥 google auth error: \(error)")
+                    loginVC.presentAlertfor(errorMessage: error.localizedDescription)
                     return
                 }
-                self.presentMainVC()
+                loginVC.presentMainVC()
             }
         }
     }
     
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
-    func presentMainVC() {
+    func getLoginVC() -> LoginVC? {
         if let navController = self.navController {
-            let loginVC = navController.viewControllers[0] as! LoginVC
-            loginVC.presentMainVC()
+            return navController.viewControllers[0] as? LoginVC
         }
+        return nil
     }
     
-    // TODO: Add AuthType as a param to specify behavior based on what ervice they authenticated with
+    
+    // TODO: Add AuthType as a param to specify behavior based on what service they authenticated with
     func signOut() {
-        
         GIDSignIn.sharedInstance().disconnect()
         let firebaseAuth = Auth.auth()
         do {
@@ -76,36 +76,5 @@ class Authentication: NSObject, GIDSignInDelegate {
         }
     }
     
-    // MARK: Facebook Authentication
-    func loginButtonDidCompleteLogin(_ result: LoginResult) {
-        let accessToken = AccessToken.current
-        guard let authToken = accessToken?.authenticationToken else { return }
-        let credential = FacebookAuthProvider.credential(withAccessToken: authToken)
-        
-        
-        if let loginVC = getLoginVC() {
-            loginVC.activityIndicator.startAnimating()
-            Auth.auth().signIn(with: credential) { (user, error) in
-                loginVC.activityIndicator.stopAnimating()
-                if let error = error {
-                    print("🔥🔥🔥 fb auth error: \(error)")
-                    loginVC.presentAlertfor(error: LoginError.emailUsedWithDifferentProvider)
-                    return
-                }
-                self.presentMainVC()
-            }
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: LoginButton) {
-    }
-    
-    func getLoginVC() -> LoginVC? {
-        if let navController = self.navController {
-            return navController.viewControllers[0] as! LoginVC
-        }
-        return nil
-    }
-
     
 }

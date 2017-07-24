@@ -10,9 +10,6 @@ import UIKit
 import GoogleSignIn
 import FacebookLogin
 
-enum LoginError {
-    case emailUsedWithDifferentProvider
-}
 
 class LoginVC: UIViewController, GIDSignInUIDelegate {
     
@@ -49,13 +46,14 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     }
     
     
+    // Bypass authentication with guest account for appStore Demo Account
     @IBAction func login(asGuest sender: Any) {
         presentMainVC()
     }
     
     
     func setupFacebookButton() {
-        let facebookLoginTapGR = UITapGestureRecognizer(target: self, action: #selector(fbLoginButtonClicked))
+        let facebookLoginTapGR = UITapGestureRecognizer(target: self, action: #selector(fbLoginButtonTapped))
         facebookSignInView.addGestureRecognizer(facebookLoginTapGR)
         facebookSignInView.layer.cornerRadius = 3
         facebookSignInView.layer.shadowColor = UIColor.black.cgColor
@@ -68,13 +66,12 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     func setupGoogleButton(){
         GIDSignIn.sharedInstance().uiDelegate = self
         googleSignInButton.style = .wide
-
     }
     
     
-    func fbLoginButtonClicked(_ sender: UITapGestureRecognizer) {
+    func fbLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         let loginManager = LoginManager()
-        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+        loginManager.logIn([ .publicProfile, .email ], viewController: self) { loginResult in
             switch loginResult {
             case .failed(let error):
                 print(error)
@@ -94,19 +91,13 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         navigationController?.pushViewController(mainViewController, animated: true)
     }
     
-    func presentAlertfor(error: LoginError) {
+    
+    func presentAlertfor(errorMessage: String) {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //let linkAction = UIAlertAction(title: "LINK", style: .default) { (action) in
-            //do something
-        //}
+        let alert = UIAlertController(title: "Login Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
         
-        // Add more cases for better error handling
-        switch error {
-        case .emailUsedWithDifferentProvider:
-            let alert = UIAlertController(title: "Login Error", message: "This email has already been used with a different authenticaton provider. Please sign in using that provider.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-        }
     }
     
 
