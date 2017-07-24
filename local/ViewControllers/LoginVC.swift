@@ -10,11 +10,12 @@ import UIKit
 import GoogleSignIn
 import FacebookLogin
 
-class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
+class LoginVC: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var guestButton: UIButton!
-    @IBOutlet weak var facebookPlaceholderView: UIView!
-    @IBOutlet weak var instagramButton: MDButton!
+    @IBOutlet weak var facebookSignInView: UIView!
+    @IBOutlet weak var facebookSignInContainerView: UIView!
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
     var appManager: MTAppManager = MTAppManager.sharedInstance()
     var facebookEmail: String = ""
     var facebookID: String = ""
@@ -26,30 +27,46 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        instagramButton.mdButtonType = MDButtonType.flat
-        
+
         // Google sign in
         GIDSignIn.sharedInstance().uiDelegate = self
+        googleSignInButton.style = .wide
         // Attempt to sign in silently
         // GIDSignIn.sharedInstance().signIn()
         
-        let fbLoginButton = LoginButton(readPermissions: [ .publicProfile, .email ])
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        fbLoginButton.delegate = appDelegate.auth
+        
+        // Custom FB Login Button
+        let facebookLoginTapGR = UITapGestureRecognizer(target: self, action: #selector(fbLoginButtonClicked))
+        facebookSignInView.addGestureRecognizer(facebookLoginTapGR)
+        facebookSignInView.layer.cornerRadius = 3
+        facebookSignInView.layer.shadowColor = UIColor.black.cgColor
+        facebookSignInView.layer.shadowOpacity = 0.6
+        facebookSignInView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        facebookSignInView.layer.shadowRadius = 1
         
         
-        view.addSubview(fbLoginButton)
-        fbLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        fbLoginButton.centerXAnchor.constraint(equalTo: facebookPlaceholderView.centerXAnchor).isActive = true
-        fbLoginButton.centerYAnchor.constraint(equalTo: facebookPlaceholderView.centerYAnchor).isActive = true
-        fbLoginButton.widthAnchor.constraint(equalTo: facebookPlaceholderView.widthAnchor).isActive = true
-        fbLoginButton.heightAnchor.constraint(equalTo: facebookPlaceholderView.heightAnchor).isActive = true
 
+        
         
 //        if let accessToken = AccessToken.current {
 //            // User is logged in, use 'accessToken' here.
 //        }
+    }
+    
+    func fbLoginButtonClicked(_ sender: UITapGestureRecognizer) {
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.auth.loginButtonDidCompleteLogin(loginResult)
+                print("Logged in!")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,12 +111,12 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
 //        })
     }
     
-    @IBAction func login(withInstagram sender: Any) {
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let instagramViewController: MTInstagramViewController? = main.instantiateViewController(withIdentifier: "MTInstagramViewController") as? MTInstagramViewController
-        instagramViewController?.delegate = self
-        present(instagramViewController!, animated: true) { _ in }
-    }
+//    @IBAction func login(withInstagram sender: Any) {
+//        let main = UIStoryboard(name: "Main", bundle: nil)
+//        let instagramViewController: MTInstagramViewController? = main.instantiateViewController(withIdentifier: "MTInstagramViewController") as? MTInstagramViewController
+//        instagramViewController?.delegate = self
+//        present(instagramViewController!, animated: true) { _ in }
+//    }
     
     @IBAction func login(asGuest sender: Any) {
         showMainScreen()
@@ -136,12 +153,12 @@ class LoginVC: UIViewController, InstagramAuthDelegate, GIDSignInUIDelegate {
     }
     
     // MARK: - instagram delegate
-    func onAuthenticated(_ authToken: String) {
-        dismiss(animated: true, completion: {() -> Void in
-            self.appManager.userAuthToken = authToken
-            self.showMainScreen()
-        })
-    }
+//    func onAuthenticated(_ authToken: String) {
+//        dismiss(animated: true, completion: {() -> Void in
+//            self.appManager.userAuthToken = authToken
+//            self.showMainScreen()
+//        })
+//    }
 
 }
 

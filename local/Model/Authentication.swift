@@ -18,7 +18,7 @@ enum AuthType {
     case Google, Facebool, Instagram
 }
 
-class Authentication: NSObject, GIDSignInDelegate, LoginButtonDelegate {
+class Authentication: NSObject, GIDSignInDelegate {
     
     var navController: UINavigationController?
     
@@ -39,10 +39,7 @@ class Authentication: NSObject, GIDSignInDelegate, LoginButtonDelegate {
                 print("🔥🔥🔥 google auth error: \(error)")
                 return
             }
-            
-            DispatchQueue.main.async {
-                self.presentMainVC()
-            }
+            self.presentMainVC()
         }
     }
     
@@ -75,7 +72,7 @@ class Authentication: NSObject, GIDSignInDelegate, LoginButtonDelegate {
     }
     
     // MARK: Facebook Authentication
-    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+    func loginButtonDidCompleteLogin(_ result: LoginResult) {
         let accessToken = AccessToken.current
         guard let authToken = accessToken?.authenticationToken else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: authToken)

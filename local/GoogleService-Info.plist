@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>502702639063-5fo5qsh6530hp2va3jka405ug9pbea4a.apps.googleusercontent.com</string>
+	<string>220419844882-lmn0vung4u6ie0ra85r7d8108ep5lfrv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.502702639063-5fo5qsh6530hp2va3jka405ug9pbea4a</string>
+	<string>com.googleusercontent.apps.220419844882-lmn0vung4u6ie0ra85r7d8108ep5lfrv</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDUedfJh_QdJpyNg86-IsG8ySblDXyoq-c</string>
+	<string>AIzaSyAgPVjwQpMaVBHP8kyDzaWs5AfKcmIHgaQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>502702639063</string>
+	<string>220419844882</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.dougly.ClimbWithMe</string>
+	<string>com.local.food</string>
 	<key>PROJECT_ID</key>
-	<string>climbwithme-37371</string>
+	<string>local-643a6</string>
 	<key>STORAGE_BUCKET</key>
-	<string>climbwithme-37371.appspot.com</string>
+	<string>local-643a6.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:502702639063:ios:5fa8c17e6a044306</string>
+	<string>1:220419844882:ios:3c48e334907e05d0</string>
 	<key>DATABASE_URL</key>
-	<string>https://climbwithme-37371.firebaseio.com</string>
+	<string>https://local-643a6.firebaseio.com</string>
 </dict>
 </plist>

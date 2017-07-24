@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         let main = UIStoryboard(name: "Main", bundle: nil)
         let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
+        navController.navigationBar.isHidden = true
         auth.navController = navController
         
         let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController

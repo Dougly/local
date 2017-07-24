@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +15,9 @@
         </array>
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
+        </array>
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
         </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
@@ -224,7 +228,7 @@
         <scene sceneID="SuL-K4-FLR">
             <objects>
                 <navigationController id="TJM-Jq-CX2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="txI-3k-58r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="txI-3k-58r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -609,7 +613,7 @@
         <scene sceneID="OcB-1G-tFe">
             <objects>
                 <navigationController storyboardIdentifier="initialNavController" id="s4r-VE-yiM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Do7-d8-dNJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Do7-d8-dNJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -634,42 +638,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="local_bg" translatesAutoresizingMaskIntoConstraints="NO" id="XQr-7M-Zid">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-Zc-H72" userLabel="Sign In Button Stack View">
-                                <rect key="frame" x="62" y="386.33333333333337" width="290" height="184.00000000000011"/>
+                                <rect key="frame" x="62" y="386.33333333333326" width="290" height="110.66666666666669"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2x-Yr-G43" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="51.333333333333371"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="48"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-jE-6iJ" userLabel="Facebook Sign In Placeholder">
-                                        <rect key="frame" x="0.0" y="66.333333333333371" width="290" height="51.333333333333314"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmM-6c-SQV" customClass="MDButton">
-                                        <rect key="frame" x="0.0" y="132.66666666666669" width="290" height="51.333333333333371"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-jE-6iJ" userLabel="Facebook Sign In Container">
+                                        <rect key="frame" x="0.0" y="63" width="290" height="47.666666666666686"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-76-nt2" userLabel="Button">
+                                                <rect key="frame" x="3" y="2" width="284.33333333333331" height="43.666666666666686"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-login" translatesAutoresizingMaskIntoConstraints="NO" id="Xcn-OK-uEg">
+                                                        <rect key="frame" x="12.666666666666671" y="13" width="18" height="18"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Xcn-OK-uEg" secondAttribute="height" multiplier="1:1" id="CwE-Tp-b7t"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-d8-bxQ" userLabel="Sign in with Facebook">
+                                                        <rect key="frame" x="49.666666666666686" y="13.333333333333371" width="185" height="16.666666666666629"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" red="0.97638529539999996" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.2312091588973999" green="0.36248546838760376" blue="0.62689131498336792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="Xcn-OK-uEg" firstAttribute="centerY" secondItem="jCZ-76-nt2" secondAttribute="centerY" id="0kd-r2-PnD"/>
+                                                    <constraint firstItem="WqE-d8-bxQ" firstAttribute="width" secondItem="jCZ-76-nt2" secondAttribute="width" multiplier="0.65" id="5pU-Dd-pOW"/>
+                                                    <constraint firstItem="WqE-d8-bxQ" firstAttribute="centerX" secondItem="jCZ-76-nt2" secondAttribute="centerX" id="DSR-Ca-pRN"/>
+                                                    <constraint firstItem="WqE-d8-bxQ" firstAttribute="centerY" secondItem="Xcn-OK-uEg" secondAttribute="centerY" id="QEb-UT-3dC"/>
+                                                    <constraint firstItem="Xcn-OK-uEg" firstAttribute="centerX" secondItem="jCZ-76-nt2" secondAttribute="centerX" multiplier="0.15" id="oj6-sn-2ZW"/>
+                                                    <constraint firstItem="Xcn-OK-uEg" firstAttribute="height" secondItem="jCZ-76-nt2" secondAttribute="height" multiplier="0.4" id="xFX-c4-MHf"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                        <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="INSTAGRAM" image="ic_instagram_icon" backgroundImage="ic_instagram_bg">
-                                            <color key="titleColor" red="1" green="0.9999405146" blue="0.99998033050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="loginWithInstagram:" destination="fmT-jb-ENa" eventType="touchUpInside" id="f88-N9-79r"/>
-                                        </connections>
-                                    </button>
+                                        <constraints>
+                                            <constraint firstItem="jCZ-76-nt2" firstAttribute="height" secondItem="a3L-jE-6iJ" secondAttribute="height" multiplier="0.9" id="5xX-CV-Rya"/>
+                                            <constraint firstItem="jCZ-76-nt2" firstAttribute="width" secondItem="a3L-jE-6iJ" secondAttribute="width" multiplier="0.98" id="GMH-d4-d0J"/>
+                                            <constraint firstItem="jCZ-76-nt2" firstAttribute="centerX" secondItem="a3L-jE-6iJ" secondAttribute="centerX" id="I0Z-it-cAP"/>
+                                            <constraint firstItem="jCZ-76-nt2" firstAttribute="centerY" secondItem="a3L-jE-6iJ" secondAttribute="centerY" id="vM2-kz-KuD"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APq-KT-IUF">
-                                <rect key="frame" x="62" y="585.33333333333337" width="290" height="51.333333333333258"/>
+                                <rect key="frame" x="62" y="511.99999999999994" width="290" height="47.666666666666572"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <state key="normal" title="LOGIN AS GUEST"/>
@@ -677,18 +694,23 @@
                                     <action selector="loginAsGuest:" destination="fmT-jb-ENa" eventType="touchUpInside" id="FRo-We-TuQ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
+                                <rect key="frame" x="82.666666666666686" y="191.33333333333337" width="248.66666666666663" height="58.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="centerX" secondItem="D2x-Yr-G43" secondAttribute="centerX" id="Aqn-pP-axC"/>
-                            <constraint firstItem="iBj-Ok-kLx" firstAttribute="top" secondItem="XQr-7M-Zid" secondAttribute="bottom" id="EUq-KC-MPE"/>
+                            <constraint firstItem="aIo-Eo-42M" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.6" id="QMW-pl-OnN"/>
+                            <constraint firstItem="aIo-Eo-42M" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="0.6" id="Qo9-Xm-emX"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="SH1-Zc-H72" secondAttribute="bottom" constant="15" id="TJM-2l-s19"/>
-                            <constraint firstItem="XQr-7M-Zid" firstAttribute="leading" secondItem="Yed-yF-3fW" secondAttribute="leading" id="Vul-B9-3b3"/>
-                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.3" id="iOQ-q6-P63"/>
-                            <constraint firstItem="XQr-7M-Zid" firstAttribute="top" secondItem="Yed-yF-3fW" secondAttribute="top" id="kcI-2p-KHG"/>
-                            <constraint firstItem="SH1-Zc-H72" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" multiplier="0.25" id="loQ-tg-lLQ"/>
+                            <constraint firstItem="aIo-Eo-42M" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="a9y-XZ-V5R"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.2" id="iOQ-q6-P63"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" multiplier="0.15" id="loQ-tg-lLQ"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="width" secondItem="D2x-Yr-G43" secondAttribute="width" id="mcP-4P-Cxz"/>
-                            <constraint firstAttribute="trailing" secondItem="XQr-7M-Zid" secondAttribute="trailing" id="odH-V2-6b6"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="height" secondItem="D2x-Yr-G43" secondAttribute="height" id="rKY-HR-aYK"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.7" id="wWr-EC-ysw"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="yor-DB-z5V"/>
@@ -699,9 +721,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="facebookPlaceholderView" destination="a3L-jE-6iJ" id="8BN-JH-Ubf"/>
+                        <outlet property="facebookSignInContainerView" destination="a3L-jE-6iJ" id="Fga-uM-ypa"/>
+                        <outlet property="facebookSignInView" destination="jCZ-76-nt2" id="1Ld-De-9fY"/>
+                        <outlet property="googleSignInButton" destination="D2x-Yr-G43" id="7Wz-7z-ToA"/>
                         <outlet property="guestButton" destination="APq-KT-IUF" id="1z5-ZK-rtX"/>
-                        <outlet property="instagramButton" destination="XmM-6c-SQV" id="GQP-Zg-sTV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPq-vx-Gjx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,7 +811,7 @@
         <scene sceneID="k6Y-uq-XB8">
             <objects>
                 <navigationController navigationBarHidden="YES" id="32c-xK-8s6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52o-No-nIL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="52o-No-nIL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -802,11 +825,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Group 1" width="154" height="36"/>
+        <image name="facebook-login" width="17" height="17"/>
         <image name="ic_back" width="1" height="1"/>
         <image name="ic_close" width="70" height="70"/>
-        <image name="ic_instagram_bg" width="250" height="50"/>
-        <image name="ic_instagram_icon" width="28" height="25"/>
-        <image name="local_bg" width="375" height="667"/>
         <image name="sign-bg.png" width="1" height="1"/>
     </resources>
 </document>
