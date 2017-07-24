@@ -694,7 +694,7 @@
                                     <action selector="loginAsGuest:" destination="fmT-jb-ENa" eventType="touchUpInside" id="FRo-We-TuQ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
                                 <rect key="frame" x="82.666666666666686" y="191.33333333333337" width="248.66666666666663" height="58.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
@@ -825,7 +825,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Group 1" width="154" height="36"/>
+        <image name="LocalLogo" width="154" height="36"/>
         <image name="facebook-login" width="17" height="17"/>
         <image name="ic_back" width="1" height="1"/>
         <image name="ic_close" width="70" height="70"/>

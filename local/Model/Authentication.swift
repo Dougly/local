@@ -15,7 +15,7 @@ import FacebookCore
 // will potentialy use this for all auth logic
 
 enum AuthType {
-    case Google, Facebool, Instagram
+    case Google, Facebook, Instagram
 }
 
 class Authentication: NSObject, GIDSignInDelegate {
@@ -49,6 +49,7 @@ class Authentication: NSObject, GIDSignInDelegate {
         // ...
     }
     
+    // Move this logic to login page
     func presentMainVC() {
         if let navController = self.navController {
             let main = UIStoryboard(name: "Main", bundle: nil)

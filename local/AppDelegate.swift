@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = auth
         
-        
         setWindowAndRootNavigationController()
-        
         
         return true
     }
@@ -37,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         let main = UIStoryboard(name: "Main", bundle: nil)
         let navController: UINavigationController = main.instantiateViewController(withIdentifier: "initialNavController") as! UINavigationController
-        navController.navigationBar.isHidden = true
-        auth.navController = navController
-        
         let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
         let loginVC: LoginVC = main.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        
+        navController.navigationBar.isHidden = true
+        auth.navController = navController
         
         if Auth.auth().currentUser != nil {
             let controllers = [loginVC, mainViewController]
@@ -70,13 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
             }
-            print("🔥🔥🔥 application handleOpenURL", url.scheme)
             
             return handled
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        print("🔥🔥🔥 application handleOpenURL", url.scheme)
         
         var handled = false
         
