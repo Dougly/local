@@ -31,15 +31,21 @@ class Authentication: NSObject, GIDSignInDelegate {
             return
         }
         
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("🔥🔥🔥 google auth error: \(error)")
-                return
+        if let loginVC = getLoginVC() {
+            loginVC.activityIndicator.startAnimating()
+            
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (user, error) in
+                loginVC.activityIndicator.stopAnimating()
+                if let error = error {
+                    print("🔥🔥🔥 google auth error: \(error)")
+                    return
+                }
+                self.presentMainVC()
             }
-            self.presentMainVC()
         }
     }
     
@@ -49,12 +55,10 @@ class Authentication: NSObject, GIDSignInDelegate {
         // ...
     }
     
-    // Move this logic to login page
     func presentMainVC() {
         if let navController = self.navController {
-            let main = UIStoryboard(name: "Main", bundle: nil)
-            let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
-            navController.pushViewController(mainViewController, animated: true)
+            let loginVC = navController.viewControllers[0] as! LoginVC
+            loginVC.presentMainVC()
         }
     }
     
@@ -78,16 +82,28 @@ class Authentication: NSObject, GIDSignInDelegate {
         guard let authToken = accessToken?.authenticationToken else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: authToken)
         
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("🔥🔥🔥 fb auth error: \(error)")
-                return
+        
+        if let loginVC = getLoginVC() {
+            loginVC.activityIndicator.startAnimating()
+            Auth.auth().signIn(with: credential) { (user, error) in
+                loginVC.activityIndicator.stopAnimating()
+                if let error = error {
+                    print("🔥🔥🔥 fb auth error: \(error)")
+                    return
+                }
+                self.presentMainVC()
             }
-            self.presentMainVC()
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
+    }
+    
+    func getLoginVC() -> LoginVC? {
+        if let navController = self.navController {
+            return navController.viewControllers[0] as! LoginVC
+        }
+        return nil
     }
 
     

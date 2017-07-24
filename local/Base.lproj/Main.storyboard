@@ -700,14 +700,19 @@
                                     <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zrg-jj-f4e">
+                                <rect key="frame" x="197" y="347" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="centerX" secondItem="D2x-Yr-G43" secondAttribute="centerX" id="Aqn-pP-axC"/>
+                            <constraint firstItem="Zrg-jj-f4e" firstAttribute="bottom" secondItem="SH1-Zc-H72" secondAttribute="top" multiplier="0.95" id="KMS-V5-AZ0"/>
                             <constraint firstItem="aIo-Eo-42M" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.6" id="QMW-pl-OnN"/>
                             <constraint firstItem="aIo-Eo-42M" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="0.6" id="Qo9-Xm-emX"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="SH1-Zc-H72" secondAttribute="bottom" constant="15" id="TJM-2l-s19"/>
                             <constraint firstItem="aIo-Eo-42M" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="a9y-XZ-V5R"/>
+                            <constraint firstItem="Zrg-jj-f4e" firstAttribute="centerX" secondItem="SH1-Zc-H72" secondAttribute="centerX" id="eWi-VC-DUt"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.2" id="iOQ-q6-P63"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" multiplier="0.15" id="loQ-tg-lLQ"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="width" secondItem="D2x-Yr-G43" secondAttribute="width" id="mcP-4P-Cxz"/>
@@ -721,6 +726,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Zrg-jj-f4e" id="xcn-6x-cDG"/>
                         <outlet property="facebookSignInContainerView" destination="a3L-jE-6iJ" id="Fga-uM-ypa"/>
                         <outlet property="facebookSignInView" destination="jCZ-76-nt2" id="1Ld-De-9fY"/>
                         <outlet property="googleSignInButton" destination="D2x-Yr-G43" id="7Wz-7z-ToA"/>

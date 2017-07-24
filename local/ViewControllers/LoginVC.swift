@@ -16,6 +16,8 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var facebookSignInView: UIView!
     @IBOutlet weak var facebookSignInContainerView: UIView!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var appManager: MTAppManager = MTAppManager.sharedInstance()
     var facebookEmail: String = ""
     var facebookID: String = ""
@@ -31,9 +33,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         // Google sign in
         GIDSignIn.sharedInstance().uiDelegate = self
         googleSignInButton.style = .wide
-        // Attempt to sign in silently
-        // GIDSignIn.sharedInstance().signIn()
-        
         
         // Custom FB Login Button
         let facebookLoginTapGR = UITapGestureRecognizer(target: self, action: #selector(fbLoginButtonClicked))
@@ -44,13 +43,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         facebookSignInView.layer.shadowOffset = CGSize(width: 0, height: 1)
         facebookSignInView.layer.shadowRadius = 1
         
-        
-
-        
-        
-//        if let accessToken = AccessToken.current {
-//            // User is logged in, use 'accessToken' here.
-//        }
     }
     
     func fbLoginButtonClicked(_ sender: UITapGestureRecognizer) {
@@ -72,8 +64,6 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateButtonVisibility()
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        checkIfSignedIn()
     }
     
     // Hide guest sign in button
@@ -88,77 +78,18 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
             }
         }
     }
-
-    // TODO: This is not secure - should use keychain to save auth token. Although Using firebase should negate needing to save auth token
-    // Check user defaults for saved auth token
-    func checkIfSignedIn() {
-        if (MTAppManager.sharedInstance().userAuthToken != nil) {
-            showMainScreen()
-        }
-    }
     
-    func showMainScreen() {
+    func presentMainVC() {
         let main = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController: MTMainViewController? = main.instantiateViewController(withIdentifier: "MTMainViewController") as? MTMainViewController
-        navigationController?.pushViewController(mainViewController!, animated: true)
+        let mainViewController: MTMainViewController = main.instantiateViewController(withIdentifier: "MTMainViewController") as! MTMainViewController
+        navigationController?.pushViewController(mainViewController, animated: true)
     }
  
-    @IBAction func login(withFacebook sender: Any) {
-//        facebookFacade.openSession(completionHandler: {() -> Void in
-//            self.signUpWithFacebook()
-//        }, andFailureBlock: {() -> Void in
-//            self.facebookFacade.closeAndClearCache(true)
-//        })
-    }
-    
-//    @IBAction func login(withInstagram sender: Any) {
-//        let main = UIStoryboard(name: "Main", bundle: nil)
-//        let instagramViewController: MTInstagramViewController? = main.instantiateViewController(withIdentifier: "MTInstagramViewController") as? MTInstagramViewController
-//        instagramViewController?.delegate = self
-//        present(instagramViewController!, animated: true) { _ in }
-//    }
     
     @IBAction func login(asGuest sender: Any) {
-        showMainScreen()
+        presentMainVC()
     }
     
-    
-    // Will Be replaced with firebase fb auth
-    
-    func signUpWithFacebook() {
-        print("Hit sign up with facebook")
-     /*
-        if facebookFacade.isSessionOpen() {
-            facebookFacade.startRequestForMe(completionHandler: {(_ result: Any, _ error: Error?) -> Void in
-                let facebookToken: String = self.facebookFacade.sessionAccessToken()
-                facebookID = result[self.kId]
-                facebookEmail = result[self.kEmail]
-                firstName = result[self.kFirstName]
-                lastName = result[self.kLastName]
-                name = "\(firstName) \(lastName)"
-                appManager.userAuthToken = facebookToken
-                appManager.userName = name
-                appManager.userEmail = facebookEmail
-                appManager.facebookID = facebookID
-                MTAppManager.sharedInstance.save()
-                if appManager.userAuthToken {
-                    self.showMainScreen()
-                }
-            })
-        }
-        else {
-            
-        }
- */
-    }
-    
-    // MARK: - instagram delegate
-//    func onAuthenticated(_ authToken: String) {
-//        dismiss(animated: true, completion: {() -> Void in
-//            self.appManager.userAuthToken = authToken
-//            self.showMainScreen()
-//        })
-//    }
 
 }
 
