@@ -31,6 +31,7 @@ class Authentication: NSObject, GIDSignInDelegate {
     
 
     // MARK: Facebook Auth
+    // login button logic called in LoginVC due to trailing closure errors when called here.
     func loginButtonDidCompleteLogin(_ result: LoginResult) {
         let accessToken = AccessToken.current
         guard let authToken = accessToken?.authenticationToken else { return }
@@ -41,7 +42,8 @@ class Authentication: NSObject, GIDSignInDelegate {
     
     // MARK: Firebase Auth
     func authenticateForFirebase(with credential: AuthCredential) {
-        if let loginVC = getLoginVC() {
+        guard let navController = self.navController else { return }
+        if let loginVC = navController.viewControllers[0] as? LoginVC {
             loginVC.activityIndicator.startAnimating()
             Auth.auth().signIn(with: credential) { (user, error) in
                 loginVC.activityIndicator.stopAnimating()
@@ -52,14 +54,6 @@ class Authentication: NSObject, GIDSignInDelegate {
                 loginVC.presentMainVC()
             }
         }
-    }
-    
-    
-    func getLoginVC() -> LoginVC? {
-        if let navController = self.navController {
-            return navController.viewControllers[0] as? LoginVC
-        }
-        return nil
     }
     
     
