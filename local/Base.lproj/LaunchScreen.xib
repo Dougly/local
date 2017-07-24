@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blue Ribbon" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-Ue-Wm9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalSplash" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-Ue-Wm9">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
             </subviews>
@@ -31,6 +31,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Blue Ribbon" width="1557" height="2335"/>
+        <image name="LocalSplash" width="1513" height="2325"/>
     </resources>
 </document>
