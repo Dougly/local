@@ -13,6 +13,7 @@
 		112716741F1D810100F6981B /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716731F1D810100F6981B /* FilterViewListener.m */; };
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
+		118EA7D51F2BDB0D00655854 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7D41F2BDB0D00655854 /* DetailVC.swift */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
@@ -270,6 +271,7 @@
 		112716791F1D81AD00F6981B /* BorderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextView.m; path = local/Views/BorderedTextView/BorderedTextView.m; sourceTree = SOURCE_ROOT; };
 		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
 		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
+		118EA7D41F2BDB0D00655854 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1720,6 +1722,7 @@
 				47157C6B1E7C7457000D11E9 /* ImagePicker */,
 				474001DB1EB79B7000C55420 /* MTDetailsViewController.h */,
 				474001DC1EB79B7000C55420 /* MTDetailsViewController.m */,
+				118EA7D41F2BDB0D00655854 /* DetailVC.swift */,
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
 				47A9801D1EAE084800AB8657 /* ViewController.xib */,
@@ -2097,6 +2100,7 @@
 				47157CF41E7C8BE6000D11E9 /* SDWebImageDownloaderOperation.m in Sources */,
 				47157CEF1E7C8BE6000D11E9 /* NSData+GIF.m in Sources */,
 				9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */,
+				118EA7D51F2BDB0D00655854 /* DetailVC.swift in Sources */,
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
 				47260E111E797EA60007990C /* MTUser.m in Sources */,
 				47260E141E797EAD0007990C /* _MTUser.m in Sources */,

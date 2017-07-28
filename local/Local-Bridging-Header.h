@@ -14,4 +14,19 @@
 #import "MTColorConstants.h"
 #import "MTInstagramViewController.h"
 
+//Detail View
+#import "MTPlace.h"
+#import "MTPlaceDetails.h"
+#import "MTProgressHUD.h"
+#import "MTPhoto.h"
+#import "MTPlaceReview.h"
+#import "MTWeekdayText.h"
+#import "UIImageView+WebCache.h"
+#import "MTGetPlaceDetailRequest.h"
+#import "MTGetPlaceDetailsResponse.h"
+#import "MTOpeningHourPeriod.h"
+#import "MTYelpManager.h"
+#import "MTYelpPlace.h"
+#import "TGAnnotation.h"
+
 

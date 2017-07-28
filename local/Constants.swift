@@ -12,5 +12,6 @@ struct Constants {
     
     static let foreground = NSNotification.Name("AppToForegroundNotification")
     static let keywordChanged = NSNotification.Name("KeyWordsChangedNotification")
+    static let googleMapAPIKey = "AIzaSyBim_-bgtrgl7sp7C4p_76kaLVgyWpBvYY"
     
 }
