@@ -276,7 +276,7 @@
     imagePager.slideshowTimeInterval = 0.0f;
     imagePager.slideshowShouldCallScrollToDelegate = YES;
     
-    self.locationDetail.nbImages = [self.locationDetail.imagePager.dataSource.arrayWithImages count];
+    self.locationDetail.nbImages = (int)[self.locationDetail.imagePager.dataSource.arrayWithImages count];
     self.locationDetail.currentImage = 0;
     //[imagePager updateCaptionLabelForImageAtIndex:self.locationDetail.currentImage];
 }

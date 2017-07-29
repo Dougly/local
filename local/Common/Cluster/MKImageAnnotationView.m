@@ -21,7 +21,7 @@
 - (void)updateWithAnnotation:(id<MKAnnotation>)annotation {
     self.canShowCallout = NO;
     
-    UIImage *pinImage = [UIImage imageNamed:@"ic_pin"];
+    UIImage *pinImage = [UIImage imageNamed:@"LocalPin"];
     self.image = pinImage;
     self.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 }
