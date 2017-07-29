@@ -66,10 +66,10 @@ class DetailVC: UIViewController, MKMapViewDelegate {
                 self.mainImageView.setImageWith(url, completed: { (image, error, cacheType) in
                     self.mainImageView.alpha = 0.0
                     self.mainImageView.image = image
-                    self.mainImageView.contentMode = .scaleToFill
-                    UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                    self.mainImageView.contentMode = .scaleAspectFill
+                    UIView.animate(withDuration: 0.5) {
                         self.mainImageView.alpha = 1.0
-                    })
+                    }
                     MTProgressHUD.shared().dismiss()
                 })
             }
