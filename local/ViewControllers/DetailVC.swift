@@ -22,12 +22,6 @@ class DetailVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var ratingNumberLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var ratingIconLabel: UILabel!
-    @IBOutlet weak var ratingIconLabelWidth: NSLayoutConstraint!
-    @IBOutlet weak var ratingIconAndLabelPadding: NSLayoutConstraint!
-    @IBOutlet weak var ratingSourceLabel: UILabel!
     @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var ratingView: UIView!
@@ -59,28 +53,35 @@ class DetailVC: UIViewController, MKMapViewDelegate {
         MTProgressHUD.shared().dismiss()
         MTProgressHUD.shared().show(on: view, percentage: false)
         hideUI()
-        weak var weakSelf = self
         self.mainImageView.image = nil
-        getYelpRating()
-        getDetails(place!, completion: {(_ largestPhoto: MTPhoto, _ details: MTPlaceDetails) -> Void in
+//        getYelpRating()
+        
+        getDetails(place!) { (largestPhoto, details) in
             self.placeDetails = details
             self.showDetails()
-            let strinUrl: String = "https://maps.googleapis.com/maps/api/place/photo?&maxheight=\(1600)&photoreference=\(largestPhoto.reference)&key=\(Constants.googleMapAPIKey)"
-            self.mainImageView.setImageWith(URL(string: strinUrl), completed: {(_ image: UIImage, _ error: Error?, _ cacheType: SDImageCacheType) -> Void in
-                self.mainImageView.alpha = 0.0
-                self.mainImageView.image = image
-                self.mainImageView.contentMode = .scaleToFill
-                UIView.animate(withDuration: 0.5, animations: {() -> Void in
-                    self.mainImageView.alpha = 1.0
+            guard let photoRef = largestPhoto?.reference else { return }
+            let stringUrl: String = "https://maps.googleapis.com/maps/api/place/photo?&maxheight=\(1600)&photoreference=\(photoRef)&key=\(Constants.googleMapAPIKey)"
+            let url = URL(string: stringUrl)
+            if let url = url {
+                self.mainImageView.setImageWith(url, completed: { (image, error, cacheType) in
+                    self.mainImageView.alpha = 0.0
+                    self.mainImageView.image = image
+                    self.mainImageView.contentMode = .scaleToFill
+                    UIView.animate(withDuration: 0.5, animations: {() -> Void in
+                        self.mainImageView.alpha = 1.0
+                    })
+                    MTProgressHUD.shared().dismiss()
                 })
-                MTProgressHUD.shared().dismiss()
-            } as! SDWebImageCompletedBlock)
-        } as! (MTPhoto?, MTPlaceDetails?) -> Void)
+            }
+        }
     }
     
     func showDetails() {
-        detailsLabel.text = place?.getDetailsString()
-        titleLabel.text = place?.name
+        if let place = place {
+            detailsLabel.text = place.getDetailsString()
+            titleLabel.text = place.name
+        }
+        
         let reviews = self.placeDetails?.reviewsSet()?.allObjects
         if let reviews = reviews {
             if reviews.count > 0 {
@@ -88,6 +89,7 @@ class DetailVC: UIViewController, MKMapViewDelegate {
                 reviewTextView.text = review?.text
             }
         }
+        
         let sizeThatFitsReviewTextView = reviewTextView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width - 24, height: CGFloat(MAXFLOAT)))
         addressTextView.text = ""
         if let formattedAddress = placeDetails?.formattedAddress {
@@ -100,31 +102,31 @@ class DetailVC: UIViewController, MKMapViewDelegate {
             addressTextView.text = addressTextView.text + website
         }
         let sizeThatFitsAddressTextView = addressTextView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width - 24, height: CGFloat(MAXFLOAT)))
-        print("AddressHeight: \(sizeThatFitsAddressTextView.height)")
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double((Int64)(0.7 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {() -> Void in
-            //print("HEIGHTOFCONTENT: \(reviewTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + mapView.bounds?.size?.height)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double((Int64)(0.7 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
             self.contentHeight.constant = self.addressTextView.frame.origin.y + sizeThatFitsReviewTextView.height + sizeThatFitsAddressTextView.height + self.mapView.bounds.size.height - 50 * 1.2
         })
         
         let gregorian = Calendar(identifier: .gregorian)
         let comps = gregorian.dateComponents([.weekday], from: Date())
-        let weekday: Int? = comps.weekday
+        let weekday: Int = comps.weekday ?? 0
         let openPeriods = self.placeDetails?.openingHoursPeriods
-        let predicate = NSPredicate(format: "periodNumber == %d", weekday!)
-        var filteredPeriods: [Any] = openPeriods!.filter { predicate.evaluate(with: $0) }
+        let predicate = NSPredicate(format: "periodNumber == %d", weekday)
+        var filteredPeriods = openPeriods?.filter { predicate.evaluate(with: $0) }
+        
         //Sometimes opening time is devided into 2 periods like from 8am to 3pm and from 3pm to 22pm
         //That's why we need to sort. The latest period should come after earlier period
-        let descriptor = NSSortDescriptor(key: "openTime", ascending: true)
-        filteredPeriods = (filteredPeriods as NSArray).sortedArray(using: [descriptor])
-        if filteredPeriods.count > 0 {
-            let firstPeriod: MTOpeningHourPeriod? = filteredPeriods.first as? MTOpeningHourPeriod
-            var lastPeriod: MTOpeningHourPeriod? = filteredPeriods.first as? MTOpeningHourPeriod
-            if filteredPeriods.count > 1 {
-                lastPeriod = filteredPeriods.last as? MTOpeningHourPeriod
+        filteredPeriods = filteredPeriods?.sorted { $0.openTime! < $1.openTime! }
+        if let filteredPeriods = filteredPeriods {
+            if filteredPeriods.count > 0 {
+                let firstPeriod = filteredPeriods.first
+                var lastPeriod = filteredPeriods.first
+                if filteredPeriods.count > 1 {
+                    lastPeriod = filteredPeriods.last
+                }
+                let periodText: String? = "\(firstPeriod!.openPmTime())-\(lastPeriod!.closePmTime())"
+                hoursLabel.text = periodText
             }
-            let periodText: String? = "\(firstPeriod!.openPmTime())-\(lastPeriod!.closePmTime())"
-            hoursLabel.text = periodText
         }
         setupMap()
         showUI()
@@ -139,46 +141,22 @@ class DetailVC: UIViewController, MKMapViewDelegate {
         else {
             let request = MTGetPlaceDetailRequest()
             request.placeId = place.placeId
-            request.completionBlock = {(_ request: SDRequest, _ response: SDResult) -> Void in
-                if response.isSuccess() {
-                    let detailsResponse: MTGetPlaceDetailsResponse? = (response as? MTGetPlaceDetailsResponse)
-                    let placeDetails: MTPlaceDetails? = detailsResponse?.placeDetails
-                    let largestPhoto: MTPhoto? = placeDetails?.getLargestPhoto()
-                    completion(largestPhoto, placeDetails)
+            
+            request.completionBlock = { request, response in
+                if let response = response, let request = request {
+                    if response.isSuccess() {
+                        let detailsResponse: MTGetPlaceDetailsResponse? = (response as? MTGetPlaceDetailsResponse)
+                        let placeDetails: MTPlaceDetails? = detailsResponse?.placeDetails
+                        let largestPhoto: MTPhoto? = placeDetails?.getLargestPhoto()
+                        completion(largestPhoto, placeDetails)
+                    }
+                    else {
+                        completion(nil, nil)
+                    }
+                    request.run()
                 }
-                else {
-                    completion(nil, nil)
-                }
-            } as! SDRequestCompletionBlock
-            request.run()
+            }
         }
-    }
-    
-    func getYelpRating() {
-        ratingLabel.alpha = 0.0
-        weak var weakSelf = self
-        MTYelpManager.shared().getYelpPlace(matchingGooglePlace: place, completion: {(_ success: Bool, _ yelpPlace: MTYelpPlace, _ error: Error?) -> Void in
-            weakSelf!.showRating(yelpPlace)
-        } as! YelpCompletion)
-    }
-    
-    func showRating(_ yelpPlace: MTYelpPlace) {
-        if yelpPlace != nil {
-            ratingNumberLabel.text = String(format: "%.1f", CFloat(yelpPlace.rating!))
-            ratingLabel.attributedText = yelpPlace.ratingString()
-            ratingIconLabel.text = ""
-            ratingSourceLabel.text = "YELP"
-        }
-        else {
-            ratingNumberLabel.text = String(format: "%.1f", CFloat(place!.rating!))
-            ratingLabel.attributedText = place?.ratingString()
-            ratingIconLabelWidth.constant = 0
-            ratingIconAndLabelPadding.constant = 4
-            ratingSourceLabel.text = "GOOGLE"
-        }
-        UIView.animate(withDuration: 0.4, animations: {() -> Void in
-            self.ratingLabel.alpha = 1.0
-        })
     }
     
     func hideUI() {
@@ -186,10 +164,9 @@ class DetailVC: UIViewController, MKMapViewDelegate {
     }
     
     func showUI() {
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        UIView.animate(withDuration: 0.5, animations: {
             self.contentView.alpha = 1.0
-        }, completion: {(_ finished: Bool) -> Void in
-            //[weakSelf postProcessTextViewLinksStyle:weakSelf.addressTextView];
+        }, completion: { success in
             self.reviewTextView.tintColor = UIColor.red
             self.reviewTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
             self.addressTextView.tintColor = UIColor.red
@@ -198,7 +175,7 @@ class DetailVC: UIViewController, MKMapViewDelegate {
     }
     
     func setupMap() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double((Int64)(0.4 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {() -> Void in
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double((Int64)(0.4 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
             self.mapView.isUserInteractionEnabled = false
             self.mapView.delegate = self
             // this sets the zoom level, a smaller value like 0.02
@@ -206,8 +183,8 @@ class DetailVC: UIViewController, MKMapViewDelegate {
             let location = CLLocationCoordinate2D(latitude: Double((self.placeDetails?.lat)!), longitude: Double((self.placeDetails?.lon)!))
             let coordSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
             let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: location, span: coordSpan)
-          
-    
+            
+            
             // move the map to our location
             self.mapView?.setRegion(myRegion, animated: false)
             if (self.mapViewOverlay != nil) {
@@ -222,23 +199,22 @@ class DetailVC: UIViewController, MKMapViewDelegate {
         })
     }
     
-    // MARK: - MKMap View methods
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation.coordinate == mapView.centerCoordinate {
-//            return nil
-//        }
-        let MyPinAnnotationIdentifier: String = "Pin"
-        let pinView: MKPinAnnotationView? = (self.mapView?.dequeueReusableAnnotationView(withIdentifier: MyPinAnnotationIdentifier) as? MKPinAnnotationView)
-        if pinView == nil {
-            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: MyPinAnnotationIdentifier)
-            annotationView.image = UIImage(named: "ic_pin")
+        let myPinAnnotationIdentifier: String = "Pin"
+        let pinView: MKPinAnnotationView? = (self.mapView?.dequeueReusableAnnotationView(withIdentifier: myPinAnnotationIdentifier) as? MKPinAnnotationView)
+        if let pinView = pinView {
+            //pinView.center = CGPoint(x: pinView.frame.maxX / 2, y: pinView.frame.maxY)
+            pinView.centerOffset = CGPoint (x: 0, y: pinView.frame.maxY / 2)
+            pinView.image = #imageLiteral(resourceName: "LocalPin")
+            return pinView
+        } else {
+            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: myPinAnnotationIdentifier)
+            annotationView.centerOffset = CGPoint (x: 0, y: annotationView.frame.maxY / 2)
+            let pinImage = #imageLiteral(resourceName: "LocalPin")
+            annotationView.image = pinImage
             return annotationView
         }
-        else {
-            pinView?.image = UIImage(named: "ic_pin")
-            return pinView!
-        }
-        return nil
+
     }
 
     

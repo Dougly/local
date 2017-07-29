@@ -90,7 +90,6 @@
 		474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D11EB6236C00C55420 /* MTYelpManager.m */; };
 		474001D61EB65F9400C55420 /* FilterListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D51EB65F9400C55420 /* FilterListener.m */; };
 		474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001D91EB7978D00C55420 /* AppStateListener.m */; };
-		474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DC1EB79B7000C55420 /* MTDetailsViewController.m */; };
 		474001DF1EB79F4600C55420 /* MTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 474001DE1EB79F4600C55420 /* MTMainViewController.m */; };
 		47447B341EB91695008EA2CC /* MTInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47447B331EB91695008EA2CC /* MTInstagramViewController.m */; };
 		476759901EC8CB8600E1B3C6 /* font-awesome-extension.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4767598F1EC8CB8600E1B3C6 /* font-awesome-extension.ttf */; };
@@ -414,8 +413,6 @@
 		474001D51EB65F9400C55420 /* FilterListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterListener.m; sourceTree = "<group>"; };
 		474001D81EB7978D00C55420 /* AppStateListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStateListener.h; sourceTree = "<group>"; };
 		474001D91EB7978D00C55420 /* AppStateListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStateListener.m; sourceTree = "<group>"; };
-		474001DB1EB79B7000C55420 /* MTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailsViewController.h; sourceTree = "<group>"; };
-		474001DC1EB79B7000C55420 /* MTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailsViewController.m; sourceTree = "<group>"; };
 		474001DE1EB79F4600C55420 /* MTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMainViewController.m; sourceTree = "<group>"; };
 		47447B321EB91695008EA2CC /* MTInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTInstagramViewController.h; sourceTree = "<group>"; };
 		47447B331EB91695008EA2CC /* MTInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTInstagramViewController.m; sourceTree = "<group>"; };
@@ -1720,8 +1717,6 @@
 			children = (
 				47A97FAA1EACDB2B00AB8657 /* Picker */,
 				47157C6B1E7C7457000D11E9 /* ImagePicker */,
-				474001DB1EB79B7000C55420 /* MTDetailsViewController.h */,
-				474001DC1EB79B7000C55420 /* MTDetailsViewController.m */,
 				118EA7D41F2BDB0D00655854 /* DetailVC.swift */,
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
@@ -2183,7 +2178,6 @@
 				474001CB1EB622AE00C55420 /* _MTYelpPlace.m in Sources */,
 				47157CC81E7C8BAC000D11E9 /* UIAlertView+AFNetworking.m in Sources */,
 				B013DBBC1EB8DF5A00A96F75 /* MDProgressLayer.m in Sources */,
-				474001DD1EB79B7000C55420 /* MTDetailsViewController.m in Sources */,
 				B013DBB51EB8DF5A00A96F75 /* MDTabBarViewController.m in Sources */,
 				B013DBB31EB8DF5A00A96F75 /* MDSwitch.m in Sources */,
 				4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */,
