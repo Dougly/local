@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol TitleViewDelegate <NSObject>
-- (void)titleViewClicked:(BOOL)isRevealing;
-@end
+@protocol TitleViewDelegate;
 
 @interface TitleView : UIView
 @property (nonatomic, weak) id<TitleViewDelegate> delegate;

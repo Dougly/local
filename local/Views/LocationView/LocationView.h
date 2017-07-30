@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol LocationViewDelegate <NSObject>
-- (void)hideLocationView;
-@end
+@protocol LocationViewDelegate;
+@protocol LocationViewTextfieldCellDelegate;
 
 @interface LocationView : UIView
-@property (nonatomic, weak) id<LocationViewDelegate, MTLocationViewTextfieldCellDelegate>delegate;
+@property (nonatomic, weak) id<LocationViewDelegate, LocationViewTextfieldCellDelegate>delegate;
 @end

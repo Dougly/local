@@ -77,10 +77,11 @@ typedef NS_ENUM(NSInteger, MTFilterViewCellIndex) {
 #define BOTTOM_NAVIGATION_BAR_HEIGHT          50
 
 // --- LOCATION ---
-@protocol MTLocationViewTextfieldCellDelegate <NSObject>
-- (void)placeSelected:(NSString *)placeId;
-- (void)currentPlaceSelected;
-@end
+// Replaced this protocol in swift
+//@protocol MTLocationViewTextfieldCellDelegate <NSObject>
+//- (void)placeSelected:(NSString *)placeId;
+//- (void)currentPlaceSelected;
+//@end
 
 //Humar readable place types
 

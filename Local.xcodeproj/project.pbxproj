@@ -14,6 +14,10 @@
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
 		118EA7D51F2BDB0D00655854 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7D41F2BDB0D00655854 /* DetailVC.swift */; };
+		118EA7D71F2D42AA00655854 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7D61F2D42AA00655854 /* MapVC.swift */; };
+		118EA7D91F2D442600655854 /* TitleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7D81F2D442600655854 /* TitleViewDelegate.swift */; };
+		118EA7DB1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */; };
+		118EA7DD1F2D490100655854 /* LocationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
@@ -271,6 +275,10 @@
 		1127167B1F1D81F200F6981B /* CustomButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomButtonItem.h; path = local/Views/CustomBarButton/CustomButtonItem.h; sourceTree = SOURCE_ROOT; };
 		1127167C1F1D81F200F6981B /* CustomButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomButtonItem.m; path = local/Views/CustomBarButton/CustomButtonItem.m; sourceTree = SOURCE_ROOT; };
 		118EA7D41F2BDB0D00655854 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		118EA7D61F2D42AA00655854 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		118EA7D81F2D442600655854 /* TitleViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewDelegate.swift; sourceTree = "<group>"; };
+		118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewTextfieldCellDelegate.swift; sourceTree = "<group>"; };
+		118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewDelegate.swift; sourceTree = "<group>"; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1140,6 +1148,7 @@
 				479102681EB33B140071BC2C /* TitleView.xib */,
 				4791026A1EB33B280071BC2C /* TitleView.h */,
 				4791026B1EB33B280071BC2C /* TitleView.m */,
+				118EA7D81F2D442600655854 /* TitleViewDelegate.swift */,
 			);
 			path = TitleView;
 			sourceTree = "<group>";
@@ -1370,6 +1379,8 @@
 				47AA04EE1EB388C600818247 /* LocationView.h */,
 				47AA04EF1EB388C600818247 /* LocationView.m */,
 				47AA04F01EB388C600818247 /* LocationView.xib */,
+				118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */,
+				118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */,
 				47AA04E31EB387BA00818247 /* Cells */,
 			);
 			path = LocationView;
@@ -1723,6 +1734,7 @@
 				47A9801D1EAE084800AB8657 /* ViewController.xib */,
 				478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */,
 				478073001EAA6FAD00D98DD7 /* MTMapViewController.m */,
+				118EA7D61F2D42AA00655854 /* MapVC.swift */,
 				11A00C3B1F225C6600D42984 /* LoginVC.swift */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
@@ -2099,6 +2111,7 @@
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
 				47260E111E797EA60007990C /* MTUser.m in Sources */,
 				47260E141E797EAD0007990C /* _MTUser.m in Sources */,
+				118EA7D91F2D442600655854 /* TitleViewDelegate.swift in Sources */,
 				47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */,
 				B013DBA71EB8DF5A00A96F75 /* NSDate+MDExtension.m in Sources */,
 				47157C8D1E7C853A000D11E9 /* IDMPhoto.m in Sources */,
@@ -2121,6 +2134,7 @@
 				B013DBB41EB8DF5A00A96F75 /* MDTabBar.m in Sources */,
 				B013DBA91EB8DF5A00A96F75 /* MDMathHelper.m in Sources */,
 				47157CC51E7C8BAC000D11E9 /* AFURLSessionManager.m in Sources */,
+				118EA7DD1F2D490100655854 /* LocationViewDelegate.swift in Sources */,
 				CE250F121B676682005447FF /* SDDispatcher.m in Sources */,
 				47A97FC91EACDF7800AB8657 /* MTSettingsPreferences.m in Sources */,
 				47157C721E7C7DC2000D11E9 /* VCFloatingActionButton.m in Sources */,
@@ -2217,12 +2231,14 @@
 				47A980431EAE67E100AB8657 /* MTGoogleQueryString.m in Sources */,
 				B013DBAE1EB8DF5A00A96F75 /* MDCollectionViewCell.m in Sources */,
 				47157CC11E7C8BAC000D11E9 /* AFSecurityPolicy.m in Sources */,
+				118EA7DB1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift in Sources */,
 				B013DBD41EB8E1FB00A96F75 /* NSDateHelper.m in Sources */,
 				47157CC01E7C8BAC000D11E9 /* AFNetworkReachabilityManager.m in Sources */,
 				B013DBC21EB8DF5A00A96F75 /* MDSuggestTableView.m in Sources */,
 				47A97FEB1EAD0A3F00AB8657 /* MTDistanceCell.m in Sources */,
 				47157CF31E7C8BE6000D11E9 /* SDWebImageDownloader.m in Sources */,
 				47A980401EAE64DD00AB8657 /* MTGoogleFilter.m in Sources */,
+				118EA7D71F2D42AA00655854 /* MapVC.swift in Sources */,
 				47157C911E7C853A000D11E9 /* IDMTapDetectingView.m in Sources */,
 				B013DBCF1EB8E13200A96F75 /* MTAppManager.m in Sources */,
 				47A97F9D1EABD89900AB8657 /* _MTPlace.m in Sources */,

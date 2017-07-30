@@ -29,4 +29,23 @@
 #import "MTYelpPlace.h"
 #import "TGAnnotation.h"
 
+//MapVC
+#import "QTree.h"
+#import "QCluster.h"
+#import "ClusterAnnotationView.h"
+#import "MKImageAnnotationView.h"
+#import "MTGooglePlacesManager.h"
+#import "MTLocationManager.h"
+#import "MTAlertBuilder.h"
+//#import "ViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "CMTabbarView.h"
+#import "TitleView.h"
+#import "MapPopupView.h"
+#import "LocationView.h"
+#import "ListView.h"
+#import "MTPageContainerViewController.h"
+#import "FilterListener.h"
+#import "MTDataModel.h"
+
 
