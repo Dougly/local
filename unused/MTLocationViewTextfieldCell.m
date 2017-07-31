@@ -7,8 +7,8 @@
 //
 
 #import "MTLocationViewTextfieldCell.h"
-#import "Local-swift.h"
-
+#import "Local-Swift.h"
+@protocol LocationViewTextfieldCellDelegate;
 
 @interface MTLocationViewTextfieldCell()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet AutoCompleteTextField *autoCompleteTextField;
@@ -27,6 +27,7 @@
     self.autoCompleteTextField.onSelect = ^(PredictionPlace * _Nonnull place) {
         [self.autoCompleteTextField resignFirstResponder];
         [self.delegate placeSelected:place.placeId];
+        //[self.delegate placeSelected:place.placeId];
     };
 }
 

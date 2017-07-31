@@ -7,6 +7,7 @@
 //
 
 #import "TitleView.h"
+#import "Local-Swift.h"
 
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
 

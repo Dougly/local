@@ -9,13 +9,14 @@
 #import "LocationView.h"
 #import "MTLocationViewTextfieldCell.h"
 #import "MTLocationViewCurrentLocationCell.h"
+#import "Local-Swift.h"
 
 typedef NS_ENUM(NSInteger, MTLocationViewCellIndex) {
     MTLocationViewCellTextfield = 0,
     MTLocationViewCellCurrent,
 };
 
-@interface LocationView()<UITabBarDelegate, UITableViewDataSource, MTLocationViewTextfieldCellDelegate>
+@interface LocationView()<UITabBarDelegate, UITableViewDataSource, LocationViewTextfieldCellDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @end
 

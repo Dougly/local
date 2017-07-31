@@ -10,6 +10,9 @@
 		110769AE1F202AB300D44621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110769AD1F202AB300D44621 /* AppDelegate.swift */; };
 		110769B01F2036F400D44621 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110769AF1F2036F400D44621 /* Constants.swift */; };
 		110769D71F20429200D44621 /* NSURLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110769D61F20429200D44621 /* NSURLRequestExtension.swift */; };
+		11213C561F2FA6FA000861C9 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11213C551F2FA6FA000861C9 /* LocationView.swift */; };
+		11213C581F2FADEB000861C9 /* LocationViewTextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11213C571F2FADEB000861C9 /* LocationViewTextfieldCell.swift */; };
+		11213C5A1F2FE074000861C9 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11213C591F2FE074000861C9 /* TitleView.swift */; };
 		112716741F1D810100F6981B /* FilterViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716731F1D810100F6981B /* FilterViewListener.m */; };
 		1127167A1F1D81AD00F6981B /* BorderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112716791F1D81AD00F6981B /* BorderedTextView.m */; };
 		1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127167C1F1D81F200F6981B /* CustomButtonItem.m */; };
@@ -105,7 +108,6 @@
 		476EC2D81EC865BA0007AF1D /* MTFilterPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */; };
 		476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */; };
 		477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */; };
-		478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073001EAA6FAD00D98DD7 /* MTMapViewController.m */; };
 		478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073061EAA705500D98DD7 /* DummyAnnotation.m */; };
 		478073161EAA705500D98DD7 /* QCluster+Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073081EAA705500D98DD7 /* QCluster+Annotation.m */; };
 		478073171EAA705500D98DD7 /* QCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4780730B1EAA705500D98DD7 /* QCluster.m */; };
@@ -120,7 +122,6 @@
 		4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073291EAA70B400D98DD7 /* SDUserSettings.m */; };
 		4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */; };
 		479102691EB33B140071BC2C /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479102681EB33B140071BC2C /* TitleView.xib */; };
-		4791026C1EB33B280071BC2C /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791026B1EB33B280071BC2C /* TitleView.m */; };
 		4791026F1EB33C5E0071BC2C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4791026E1EB33C5E0071BC2C /* FontAwesome.otf */; };
 		4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */; };
 		4793CB0F1E7ED8C00054B7FB /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB081E7ED8C00054B7FB /* UIColor+HexString.m */; };
@@ -186,9 +187,7 @@
 		47AA04DC1EB34A0500818247 /* MapPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04DA1EB34A0500818247 /* MapPopupView.xib */; };
 		47AA04EA1EB3880F00818247 /* MTLocationViewCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */; };
 		47AA04EB1EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */; };
-		47AA04EC1EB3880F00818247 /* MTLocationViewTextfieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AA04E81EB3880F00818247 /* MTLocationViewTextfieldCell.m */; };
 		47AA04ED1EB3880F00818247 /* MTLocationViewTextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */; };
-		47AA04F11EB388C600818247 /* LocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AA04EF1EB388C600818247 /* LocationView.m */; };
 		47AA04F21EB388C600818247 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04F01EB388C600818247 /* LocationView.xib */; };
 		47D7793A1EB2563600A83922 /* CMTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D779391EB2563600A83922 /* CMTabbarView.m */; };
 		47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7793C1EB256DB00A83922 /* CMTabbarCollectionViewCell.m */; };
@@ -268,6 +267,9 @@
 		110769AD1F202AB300D44621 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		110769AF1F2036F400D44621 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		110769D61F20429200D44621 /* NSURLRequestExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLRequestExtension.swift; sourceTree = "<group>"; };
+		11213C551F2FA6FA000861C9 /* LocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		11213C571F2FADEB000861C9 /* LocationViewTextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewTextfieldCell.swift; sourceTree = "<group>"; };
+		11213C591F2FE074000861C9 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		112716721F1D810100F6981B /* FilterViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterViewListener.h; path = local/Common/FilterViewListener/FilterViewListener.h; sourceTree = SOURCE_ROOT; };
 		112716731F1D810100F6981B /* FilterViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterViewListener.m; path = local/Common/FilterViewListener/FilterViewListener.m; sourceTree = SOURCE_ROOT; };
 		112716781F1D81AD00F6981B /* BorderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorderedTextView.h; path = local/Views/BorderedTextView/BorderedTextView.h; sourceTree = SOURCE_ROOT; };
@@ -440,8 +442,6 @@
 		477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterViewController.h; sourceTree = "<group>"; };
 		477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterViewController.m; sourceTree = "<group>"; };
 		478072F71EA94E7600D98DD7 /* Local-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Bridging-Header.h"; sourceTree = "<group>"; };
-		478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
-		478073001EAA6FAD00D98DD7 /* MTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMapViewController.m; sourceTree = "<group>"; };
 		478073051EAA705500D98DD7 /* DummyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyAnnotation.h; sourceTree = "<group>"; };
 		478073061EAA705500D98DD7 /* DummyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyAnnotation.m; sourceTree = "<group>"; };
 		478073071EAA705500D98DD7 /* QCluster+Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QCluster+Annotation.h"; sourceTree = "<group>"; };
@@ -471,8 +471,6 @@
 		4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSubfilterViewController.h; sourceTree = "<group>"; };
 		4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSubfilterViewController.m; sourceTree = "<group>"; };
 		479102681EB33B140071BC2C /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
-		4791026A1EB33B280071BC2C /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
-		4791026B1EB33B280071BC2C /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		4791026E1EB33C5E0071BC2C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Resources/FontAwesome.otf; sourceTree = "<group>"; };
 		4793CAF41E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSkypeActivityIndicatorView.h; sourceTree = "<group>"; };
 		4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSkypeActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -589,11 +587,7 @@
 		47AA04E41EB3880F00818247 /* MTLocationViewCurrentLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLocationViewCurrentLocationCell.h; sourceTree = "<group>"; };
 		47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLocationViewCurrentLocationCell.m; sourceTree = "<group>"; };
 		47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLocationViewCurrentLocationCell.xib; sourceTree = "<group>"; };
-		47AA04E71EB3880F00818247 /* MTLocationViewTextfieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLocationViewTextfieldCell.h; sourceTree = "<group>"; };
-		47AA04E81EB3880F00818247 /* MTLocationViewTextfieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLocationViewTextfieldCell.m; sourceTree = "<group>"; };
 		47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLocationViewTextfieldCell.xib; sourceTree = "<group>"; };
-		47AA04EE1EB388C600818247 /* LocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationView.h; sourceTree = "<group>"; };
-		47AA04EF1EB388C600818247 /* LocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationView.m; sourceTree = "<group>"; };
 		47AA04F01EB388C600818247 /* LocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		47D779381EB2563600A83922 /* CMTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTabbarView.h; sourceTree = "<group>"; };
 		47D779391EB2563600A83922 /* CMTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTabbarView.m; sourceTree = "<group>"; };
@@ -1146,8 +1140,7 @@
 			isa = PBXGroup;
 			children = (
 				479102681EB33B140071BC2C /* TitleView.xib */,
-				4791026A1EB33B280071BC2C /* TitleView.h */,
-				4791026B1EB33B280071BC2C /* TitleView.m */,
+				11213C591F2FE074000861C9 /* TitleView.swift */,
 				118EA7D81F2D442600655854 /* TitleViewDelegate.swift */,
 			);
 			path = TitleView;
@@ -1376,8 +1369,7 @@
 		47AA04DD1EB3853F00818247 /* LocationView */ = {
 			isa = PBXGroup;
 			children = (
-				47AA04EE1EB388C600818247 /* LocationView.h */,
-				47AA04EF1EB388C600818247 /* LocationView.m */,
+				11213C551F2FA6FA000861C9 /* LocationView.swift */,
 				47AA04F01EB388C600818247 /* LocationView.xib */,
 				118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */,
 				118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */,
@@ -1392,8 +1384,7 @@
 				47AA04E41EB3880F00818247 /* MTLocationViewCurrentLocationCell.h */,
 				47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */,
 				47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */,
-				47AA04E71EB3880F00818247 /* MTLocationViewTextfieldCell.h */,
-				47AA04E81EB3880F00818247 /* MTLocationViewTextfieldCell.m */,
+				11213C571F2FADEB000861C9 /* LocationViewTextfieldCell.swift */,
 				47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */,
 			);
 			path = Cells;
@@ -1732,8 +1723,6 @@
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
 				47A9801D1EAE084800AB8657 /* ViewController.xib */,
-				478072FF1EAA6FAD00D98DD7 /* MTMapViewController.h */,
-				478073001EAA6FAD00D98DD7 /* MTMapViewController.m */,
 				118EA7D61F2D42AA00655854 /* MapVC.swift */,
 				11A00C3B1F225C6600D42984 /* LoginVC.swift */,
 				47D7793E1EB2619F00A83922 /* MTMainViewController.h */,
@@ -2047,7 +2036,9 @@
 				4780732B1EAA70B400D98DD7 /* Reachability.m in Sources */,
 				476BC24A1E79582C00B1BA91 /* UIColor+BFPaperColors.m in Sources */,
 				47A97FBD1EACDBA500AB8657 /* MTTagCell.m in Sources */,
+				11213C561F2FA6FA000861C9 /* LocationView.swift in Sources */,
 				B013DBAF1EB8DF5A00A96F75 /* MDProgress.m in Sources */,
+				11213C5A1F2FE074000861C9 /* TitleView.swift in Sources */,
 				B013DBE41EB8E5AE00A96F75 /* UIViewController+Helpers.m in Sources */,
 				B013DBBA1EB8DF5A00A96F75 /* MDCircularProgressLayer.m in Sources */,
 				B013DBAC1EB8DF5A00A96F75 /* UIViewHelper.m in Sources */,
@@ -2058,7 +2049,6 @@
 				B013DB9C1EB8DF5A00A96F75 /* AutoResizeTextView.m in Sources */,
 				CE250EF21B676654005447FF /* UIImage_SDAdditions.m in Sources */,
 				47157C901E7C853A000D11E9 /* IDMTapDetectingImageView.m in Sources */,
-				47AA04EC1EB3880F00818247 /* MTLocationViewTextfieldCell.m in Sources */,
 				47A9803A1EAE272B00AB8657 /* MTPlaceReview.m in Sources */,
 				47AA04EA1EB3880F00818247 /* MTLocationViewCurrentLocationCell.m in Sources */,
 				CE250EF01B676654005447FF /* NSObject+PNCast.m in Sources */,
@@ -2118,7 +2108,6 @@
 				4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */,
 				47157C8A1E7C853A000D11E9 /* DALabeledCircularProgressView.m in Sources */,
 				47157CC91E7C8BAC000D11E9 /* UIButton+AFNetworking.m in Sources */,
-				47AA04F11EB388C600818247 /* LocationView.m in Sources */,
 				4780732A1EAA70B400D98DD7 /* MTAlertBuilder.m in Sources */,
 				47A97FA21EABD8A700AB8657 /* MTPhoto.m in Sources */,
 				CE250F201B6768CD005447FF /* MTDataModel.xcdatamodeld in Sources */,
@@ -2146,7 +2135,6 @@
 				B013DBA11EB8DF5A00A96F75 /* MDCalendarYearSelector.m in Sources */,
 				CE250F131B676682005447FF /* SDRequest.m in Sources */,
 				B013DBD11EB8E13200A96F75 /* MTStoryboardFlow.m in Sources */,
-				4791026C1EB33B280071BC2C /* TitleView.m in Sources */,
 				B013DBA01EB8DF5A00A96F75 /* MDCalendarHeader.m in Sources */,
 				474001A81EB4D2CE00C55420 /* MTFilterViewCell.m in Sources */,
 				47A97FD61EACE10A00AB8657 /* MTPlaceTypeManager.m in Sources */,
@@ -2155,7 +2143,6 @@
 				B013DBAD1EB8DF5A00A96F75 /* MDButton.m in Sources */,
 				47A97FBB1EACDBA500AB8657 /* MTSwitchCell.m in Sources */,
 				47157CBF1E7C8BAC000D11E9 /* AFHTTPSessionManager.m in Sources */,
-				478073011EAA6FAD00D98DD7 /* MTMapViewController.m in Sources */,
 				47A9802C1EAE186800AB8657 /* _MTOpeningHourPeriod.m in Sources */,
 				CE250F151B676682005447FF /* SDResult.m in Sources */,
 				110769AE1F202AB300D44621 /* AppDelegate.swift in Sources */,
@@ -2193,6 +2180,7 @@
 				47157CC81E7C8BAC000D11E9 /* UIAlertView+AFNetworking.m in Sources */,
 				B013DBBC1EB8DF5A00A96F75 /* MDProgressLayer.m in Sources */,
 				B013DBB51EB8DF5A00A96F75 /* MDTabBarViewController.m in Sources */,
+				11213C581F2FADEB000861C9 /* LocationViewTextfieldCell.swift in Sources */,
 				B013DBB31EB8DF5A00A96F75 /* MDSwitch.m in Sources */,
 				4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */,
 				B013DBB01EB8DF5A00A96F75 /* MDRippleLayer.m in Sources */,

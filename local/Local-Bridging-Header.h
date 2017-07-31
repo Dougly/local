@@ -40,12 +40,13 @@
 //#import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CMTabbarView.h"
-#import "TitleView.h"
 #import "MapPopupView.h"
-#import "LocationView.h"
 #import "ListView.h"
 #import "MTPageContainerViewController.h"
 #import "FilterListener.h"
 #import "MTDataModel.h"
+
+//Location View
+#import "MTLocationViewCurrentLocationCell.h"
 
 

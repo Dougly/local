@@ -58,7 +58,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EaZ-Kz-vt4">
-                                                <rect key="frame" x="89.666666666666686" y="34" width="236" height="50"/>
+                                                <rect key="frame" x="89" y="34" width="236" height="50"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="236" id="2pd-TM-DoH"/>
@@ -228,9 +228,7 @@
         <scene sceneID="SuL-K4-FLR">
             <objects>
                 <navigationController id="TJM-Jq-CX2" sceneMemberID="viewController">
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="686"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="txI-3k-58r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="txI-3k-58r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -243,15 +241,15 @@
             </objects>
             <point key="canvasLocation" x="1089" y="445"/>
         </scene>
-        <!--Map View Controller-->
+        <!--MapVC-->
         <scene sceneID="tlU-5R-Mqr">
             <objects>
-                <viewController storyboardIdentifier="MTMapViewController" id="QO0-Qx-Uq8" customClass="MTMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="QO0-Qx-Uq8" customClass="MapVC" customModule="Local" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0mh-Q0-heE"/>
                         <viewControllerLayoutGuide type="bottom" id="QZg-sD-b1v"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ful-Rk-RYr">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Ful-Rk-RYr">
                         <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -289,6 +287,8 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Wsr-vJ-T7p"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="686"/>
                     <connections>
                         <outlet property="mapView" destination="gQc-jm-amm" id="zFy-1s-3XJ"/>
                         <outlet property="redoSearchButton" destination="4n0-2M-zRl" id="rDG-ME-uda"/>
@@ -306,7 +306,7 @@
                         <viewControllerLayoutGuide type="top" id="PK4-9O-P3a"/>
                         <viewControllerLayoutGuide type="bottom" id="eAK-CL-CSm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="usN-t8-iTc">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="usN-t8-iTc">
                         <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -363,7 +363,7 @@
                                                 <rect key="frame" x="0.0" y="259" width="375" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09AM-17AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hn-22-pZ5">
-                                                        <rect key="frame" x="62" y="11.333333333333314" width="295" height="17.666666666666686"/>
+                                                        <rect key="frame" x="62" y="11" width="295" height="18"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -525,7 +525,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R1O-tf-qFJ">
-                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
+                                <rect key="frame" x="189" y="350" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="4Nj-0w-ad8"/>
                                     <constraint firstAttribute="height" constant="37" id="Fxp-0a-0vS"/>
@@ -552,9 +552,7 @@
         <scene sceneID="OcB-1G-tFe">
             <objects>
                 <navigationController storyboardIdentifier="initialNavController" id="s4r-VE-yiM" sceneMemberID="viewController">
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Do7-d8-dNJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Do7-d8-dNJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -580,26 +578,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-Zc-H72" userLabel="Sign In Button Stack View">
-                                <rect key="frame" x="62" y="386.33333333333326" width="290" height="110.66666666666669"/>
+                                <rect key="frame" x="62" y="386" width="290" height="111"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2x-Yr-G43" userLabel="Google Sign In Button" customClass="GIDSignInButton">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="48"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-jE-6iJ" userLabel="Facebook Sign In Container">
-                                        <rect key="frame" x="0.0" y="63" width="290" height="47.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="63" width="290" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-76-nt2" userLabel="Button">
-                                                <rect key="frame" x="3" y="2" width="284.33333333333331" height="43.666666666666686"/>
+                                                <rect key="frame" x="3" y="2" width="284" height="44"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-login" translatesAutoresizingMaskIntoConstraints="NO" id="Xcn-OK-uEg">
-                                                        <rect key="frame" x="12.666666666666671" y="13" width="18" height="18"/>
+                                                        <rect key="frame" x="13" y="13" width="18" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Xcn-OK-uEg" secondAttribute="height" multiplier="1:1" id="CwE-Tp-b7t"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-d8-bxQ" userLabel="Sign in with Facebook">
-                                                        <rect key="frame" x="49.666666666666686" y="13" width="185" height="16.666666666666686"/>
+                                                        <rect key="frame" x="50" y="13" width="185" height="17"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" red="0.97638529539999996" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -627,7 +625,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APq-KT-IUF">
-                                <rect key="frame" x="62" y="511.99999999999994" width="290" height="47.666666666666572"/>
+                                <rect key="frame" x="62" y="512" width="290" height="48"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <state key="normal" title="LOGIN AS GUEST"/>
@@ -636,7 +634,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
-                                <rect key="frame" x="82.666666666666686" y="191.33333333333337" width="248.66666666666663" height="58.666666666666657"/>
+                                <rect key="frame" x="83" y="191" width="248" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
                                 </constraints>
@@ -757,9 +755,7 @@
         <scene sceneID="k6Y-uq-XB8">
             <objects>
                 <navigationController navigationBarHidden="YES" id="32c-xK-8s6" sceneMemberID="viewController">
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="264"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="52o-No-nIL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52o-No-nIL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
