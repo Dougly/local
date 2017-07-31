@@ -11,7 +11,7 @@ import UIKit
 import QuartzCore
 
 let MIN_CLUSTERING_SPAN = 0.02
-class MapVC: UIViewController, UIGestureRecognizerDelegate, LocationViewDelegate, ListViewDelegate, LocationViewTextfieldCellDelegate, PopupClickDelegate {
+class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var qTree: QTree?
@@ -19,7 +19,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate, LocationViewDelegate
     var titleView: TitleView?
     var locationView: LocationView?
     var listView: ListView?
-    var filterListener: FilterListener?
+    var filterListener: FilterListener = FilterListener()
     @IBOutlet weak var redoSearchButton: UIButton!
     var popupBeingSelelected: Bool = false
     
@@ -90,62 +90,45 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate, LocationViewDelegate
         if !isViewLoaded { return }
         qTree = MTGooglePlacesManager.shared().qTree
         let mapRegion = mapView.region
-        var useClustering = true
+        let useClustering = true
         
-        // NEED to look up min and
-//        NSMutableArray* annotationsToRemove = [self.mapView.annotations mutableCopy];
-//        [annotationsToRemove removeObject:self.mapView.userLocation];
-//        [annotationsToRemove removeObjectsInArray:objects];
-        let minNonClusteredSpan = useClustering ? MIN(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 10
-            : 0
-        
-        let objects = qTree?.getObjectsIn(mapRegion, minNonClusteredSpan: minNonClusteredSpan)
+        let minNonClusteredSpan: CLLocationDegrees = useClustering ? min(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 10 : 0
+        let objects = qTree?.getObjectsIn(mapRegion, minNonClusteredSpan: minNonClusteredSpan) as! [MKAnnotation]
         var annotationsToRemove = mapView.annotations
-        annotationsToRemove.remove(at: mapView.userLocation)
-        annotationsToRemove.remove(objects)
         
-        if let currentPopupView = currentPopupView {
-            annotationsToRemove.remove(at: currentPopupView.place)
+        annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(mapView.userLocation) }
+        for object in objects {
+            annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(object) }
         }
         
-        mapView.removeAnnotation(annotationsToRemove)
+        //Prevent the popup view from being clustered if it's visible
+        if let currentPopupView = currentPopupView {
+            annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(currentPopupView.place) }
+        }
+        
+        mapView.removeAnnotations(annotationsToRemove)
         var annotationsToAdd = objects
-        annotationsToAdd.remove(mapView.annotations)
+        
+        for object in mapView.annotations {
+            annotationsToAdd = annotationsToAdd.filter { !$0.isEqual(object) }
+        }
         
         mapView.addAnnotations(annotationsToAdd)
         
-        
     }
     
-    func drawCircleAroundCoordinate(coordinate: CLLocationCoordinate2D) {
-        
-    }
+    
     
     func showListAnimation(bool: Bool) {
         
     }
     
-   
-    
-    
-    
-    
-    
-    func setupFilterListener() {
-        
-    }
-    
-    func addGesture() {
-        
-    }
+
+
     
     func addBorderForRedoSearchButton() {
         redoSearchButton.layer.borderColor = UIColor(red: 238/255, green: 0/255, blue: 0/255, alpha: 1).cgColor
         redoSearchButton.layer.borderWidth = 0.5
-    }
-    
-    func hideLocationView() {
-        //duh
     }
     
    
@@ -207,7 +190,64 @@ extension MapVC: MKMapViewDelegate {
         currentPopupView = nil
         mapView.selectedAnnotations = []
     }
+    
+    //MARK: Overlays
+    
+    func drawCircleAroundCoordinate(coordinate: CLLocationCoordinate2D) {
+        let circle = MKCircle(center: coordinate, radius: 1000 + 700)
+        mapView.add(circle)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay.isKind(of: MKCircle.self) {
+            let circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
+            circle.lineWidth = 1.0
+            return circle
+        } else {
+            return MKOverlayRenderer()
+        }
+    }
+    
+    
+    //MARK: Map Tap Gestures
+    
+    func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.delegate = self
+        mapView.addGestureRecognizer(tapGesture)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return getTappedAnnotations(touch: touch).count == 0
+    }
+    
+    func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            if popupBeingSelelected {
+                removePopup()
+            } else {
+                didSelectItem(for: currentPopupView?.place)
+            }
+        }
+    }
+    
+    @IBAction func updatePlacesInCurrentArea(_ sender: Any) {
+        removePopup()
+        let centerCoordinate = mapView.centerCoordinate
+        updatePlaces(coordinate: centerCoordinate)
+    }
+    
+    func updatePlaces(coordinate: CLLocationCoordinate2D) {
+        mapView.removeOverlays(mapView.overlays)
+        getPlacesAtLocation(coordinate: coordinate)
+        drawCircleAroundCoordinate(coordinate: coordinate)
+        setZoomLevelWithCenter(coordinate: coordinate)
+    }
+    
 }
+
+
 
 extension MapVC: TitleViewDelegate {
     
@@ -224,8 +264,162 @@ extension MapVC: TitleViewDelegate {
         appDelegate.auth.signOut()
     }
     
+    
     func titleViewClicked(_ isRevealing: Bool) {
-        //duh
+        if isRevealing {
+            showLocationView()
+        } else {
+            hideLocationView()
+        }
+    }
+    
+    func showLocationView() {
+        locationView = Bundle.main.loadNibNamed("LocationView", owner: self, options: nil)?[0] as? LocationView
+        if let locationView = locationView {
+            locationView.delegate = self
+            locationView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 0)
+            view.addSubview(locationView)
+            
+            UIView.animate(withDuration: 0.5) {
+                locationView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            }
+        }
+    }
+    
+    
+    //MARK: Right Navigtion Item
+    
+    func showListNavigationItem() {
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_list_item"), style: .plain, target: self, action: #selector(showListByClickingNavigationItem))
+        let color = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
+        let font = UIFont(name: "FontAwesome", size: 16.0)!
+        let attributes: [String : Any] = [ NSForegroundColorAttributeName : color,
+                           NSFontAttributeName : font ]
+        item.setTitleTextAttributes(attributes, for: .normal)
+        self.navigationItem.rightBarButtonItem = item
+    }
+    
+    func showMapNavigationItem() {
+        let item = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_map_item"), style: .plain, target: self, action: #selector(showMap))
+        let color = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
+        let font = UIFont(name: "FontAwesome", size: 16.0)!
+        let attributes: [String : Any] = [ NSForegroundColorAttributeName : color,
+                                           NSFontAttributeName : font ]
+        item.setTitleTextAttributes(attributes, for: .normal)
+        self.navigationItem.rightBarButtonItem = item
+    }
+    
+    //MARK: Switching between list and map
+    func showListByClickingNavigationItem() {
+        showListAnimation(bool: true)
+    }
+    
+    func showListAnimated(animated: Bool) {
+        listView = Bundle.main.loadNibNamed("ListView", owner: self, options: nil)?[0] as? ListView
+        if let listView = listView {
+            listView.delegate = self
+            listView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+            view.addSubview(listView)
+        }
+        
+        if animated {
+            listView?.alpha = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.listView?.alpha = 1
+            })
+        }
+        
+        showMapNavigationItem()
+    }
+    
+    func showMap() {
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.listView?.alpha = 0.0
+        }) { (success) in
+            self.listView?.removeFromSuperview()
+        }
+        
+        showListNavigationItem()
+    }
+}
+
+extension MapVC: ListViewDelegate {
+    
+    func didSelectItem(for place: MTPlace!) {
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let pageController = main.instantiateViewController(withIdentifier: "MTPageContainerViewController") as? MTPageContainerViewController
+        
+        if let pageController = pageController {
+            pageController.title = place.name
+            pageController.place = place
+            navigationController?.pushViewController(pageController, animated: true)
+            removePopup()
+            popupBeingSelelected = false
+        }
+        
     }
     
 }
+
+extension MapVC: LocationViewTextfieldCellDelegate {
+    
+    func placeSelected(_ placeId: String) {
+        let request = MTGetPlaceDetailRequest.request(withOwner: self) as? MTGetPlaceDetailRequest
+        if let request = request {
+            request.placeId = placeId
+            request.completionBlock = { request, response in
+                if let response = response {
+                    if response.isSuccess() {
+                        let detailsResponse: MTGetPlaceDetailsResponse? = response as? MTGetPlaceDetailsResponse
+                        if let placeDetails = detailsResponse?.placeDetails {
+                            if let lat = placeDetails.lat?.floatValue, let lon = placeDetails.lon?.floatValue {
+                            let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))
+                            self.updatePlaces(coordinate: coordinate)
+                            }
+                        }
+                    }
+                }
+            }
+            request.run()
+        }
+    }
+    
+    func currentPlaceSelected() {
+        updatePlaces(coordinate: MTLocationManager.shared().lastLocation)
+    }
+    
+    func setupFilterListener() {
+        self.filterListener.onKeyWordUpdatedHandler = {
+            self.removePopup()
+            self.updatePlaces(coordinate: MTLocationManager.shared().lastUsedLocation)
+        }
+    }
+    
+}
+
+extension MapVC: LocationViewDelegate {
+    
+    func hideLocationView() {
+        titleView?.collapse()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.locationView?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0)
+        }) { success in
+            self.locationView?.removeFromSuperview()
+        }
+    }
+
+}
+
+extension MapVC: PopupClickDelegate {
+    
+    func popClicked(for place: MTPlace!) {
+        didSelectItem(for: place)
+    }
+    
+    func popupTouchBegan() {
+        popupBeingSelelected = true
+    }
+    
+}
+
+
