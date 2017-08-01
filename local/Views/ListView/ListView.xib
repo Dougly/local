@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,26 +14,16 @@
             <rect key="frame" x="0.0" y="0.0" width="434" height="489"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BbP-QR-jqt">
-                    <rect key="frame" x="0.0" y="0.0" width="434" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="OJE-gA-1Jb"/>
-                    </constraints>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="Z1S-5i-4iC"/>
-                    </connections>
-                </searchBar>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-3B-caS">
-                    <rect key="frame" x="0.0" y="44" width="434" height="2"/>
+                    <rect key="frame" x="0.0" y="-2" width="434" height="10"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="2" id="wkh-gJ-QSe"/>
+                        <constraint firstAttribute="height" constant="10" id="wkh-gJ-QSe"/>
                     </constraints>
                 </progressView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-Z7-tIe">
-                    <rect key="frame" x="0.0" y="46" width="434" height="443"/>
+                    <rect key="frame" x="0.0" y="8" width="434" height="481"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="Kuk-c2-nfe"/>
@@ -43,14 +33,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NL8-Z7-tIe" secondAttribute="trailing" id="DBw-op-sdx"/>
-                <constraint firstItem="BbP-QR-jqt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jxz-et-j8U"/>
-                <constraint firstItem="BbP-QR-jqt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RzW-qt-C8P"/>
-                <constraint firstAttribute="bottom" secondItem="NL8-Z7-tIe" secondAttribute="bottom" id="ZXr-wA-890"/>
-                <constraint firstAttribute="trailing" secondItem="BbP-QR-jqt" secondAttribute="trailing" id="dH9-9w-lCF"/>
+                <constraint firstItem="TZa-3B-caS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-2" id="CY3-sI-Ebp"/>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="DBw-op-sdx"/>
+                <constraint firstItem="NL8-Z7-tIe" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="ZXr-wA-890"/>
                 <constraint firstItem="NL8-Z7-tIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pGG-6D-tiJ"/>
-                <constraint firstAttribute="trailing" secondItem="TZa-3B-caS" secondAttribute="trailing" id="qOT-hz-1aU"/>
-                <constraint firstItem="TZa-3B-caS" firstAttribute="top" secondItem="BbP-QR-jqt" secondAttribute="bottom" id="xKo-5V-ilP"/>
+                <constraint firstItem="TZa-3B-caS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="qOT-hz-1aU"/>
                 <constraint firstItem="NL8-Z7-tIe" firstAttribute="top" secondItem="TZa-3B-caS" secondAttribute="bottom" id="xf2-W5-Ffq"/>
                 <constraint firstItem="TZa-3B-caS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zxh-ed-QWG"/>
             </constraints>
@@ -59,7 +46,6 @@
             <connections>
                 <outlet property="progressView" destination="TZa-3B-caS" id="BK3-w8-mGQ"/>
                 <outlet property="progressViewHeight" destination="wkh-gJ-QSe" id="KpF-mv-8Rn"/>
-                <outlet property="searchBar" destination="BbP-QR-jqt" id="aJs-Ba-ZZM"/>
                 <outlet property="tableView" destination="NL8-Z7-tIe" id="ZVi-ZO-dlX"/>
             </connections>
             <point key="canvasLocation" x="17" y="27.5"/>

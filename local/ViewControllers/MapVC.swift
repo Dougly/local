@@ -302,11 +302,19 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
     }
     
     func showList(animated: Bool) {
+        if !animated {
         listView = Bundle.main.loadNibNamed("ListView", owner: self, options: nil)?[0] as? ListView
-        if let listView = listView {
-            listView.delegate = self
-            listView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
-            view.addSubview(listView)
+        
+            if let listView = listView {
+                listView.delegate = self
+                listView.translatesAutoresizingMaskIntoConstraints = false
+                self.view.addSubview(listView)
+                listView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+                listView.topAnchor.constraint(equalTo: self.searchView.bottomAnchor).isActive = true
+                listView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+                listView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            }
+
         }
         
         if animated {
@@ -323,7 +331,6 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
         UIView.animate(withDuration: 0.5, animations: { 
             self.listView?.alpha = 0.0
         }) { (success) in
-            self.listView?.removeFromSuperview()
         }
         
         showListNavigationItem()
