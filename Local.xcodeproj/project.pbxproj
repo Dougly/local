@@ -21,6 +21,7 @@
 		118EA7D91F2D442600655854 /* TitleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7D81F2D442600655854 /* TitleViewDelegate.swift */; };
 		118EA7DB1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */; };
 		118EA7DD1F2D490100655854 /* LocationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */; };
+		119C34061F3043B90037E6DC /* MTReloadAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C34051F3043B90037E6DC /* MTReloadAnnotations.m */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
@@ -281,6 +282,8 @@
 		118EA7D81F2D442600655854 /* TitleViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewDelegate.swift; sourceTree = "<group>"; };
 		118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewTextfieldCellDelegate.swift; sourceTree = "<group>"; };
 		118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewDelegate.swift; sourceTree = "<group>"; };
+		119C34041F3043140037E6DC /* MTReloadAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTReloadAnnotations.h; sourceTree = "<group>"; };
+		119C34051F3043B90037E6DC /* MTReloadAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReloadAnnotations.m; sourceTree = "<group>"; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1079,6 +1082,8 @@
 				478073081EAA705500D98DD7 /* QCluster+Annotation.m */,
 				47A97FA41EAC992D00AB8657 /* MKImageAnnotationView.h */,
 				47A97FA51EAC992D00AB8657 /* MKImageAnnotationView.m */,
+				119C34041F3043140037E6DC /* MTReloadAnnotations.h */,
+				119C34051F3043B90037E6DC /* MTReloadAnnotations.m */,
 			);
 			path = Cluster;
 			sourceTree = "<group>";
@@ -2059,6 +2064,7 @@
 				474001CE1EB622BF00C55420 /* MTYelpPlace.m in Sources */,
 				476BC2451E7957E400B1BA91 /* NSString+MTAdditions.m in Sources */,
 				47A980221EAE12AB00AB8657 /* MTGetPlaceDetailRequest.m in Sources */,
+				119C34061F3043B90037E6DC /* MTReloadAnnotations.m in Sources */,
 				47157CCD1E7C8BAC000D11E9 /* UIWebView+AFNetworking.m in Sources */,
 				47D7793A1EB2563600A83922 /* CMTabbarView.m in Sources */,
 				47157C891E7C853A000D11E9 /* DACircularProgressView.m in Sources */,

@@ -15,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TitleView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TitleView" customModule="Local" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="177" height="37"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -72,9 +72,9 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="coverButton" destination="2TP-ne-S0R" id="EfG-WR-8jc"/>
-                <outlet property="dropDownLabel" destination="prf-L9-MPo" id="K4x-eJ-wek"/>
-                <outlet property="mainLabel" destination="xeY-Vo-E5O" id="5J4-mB-fvp"/>
+                <outlet property="coverButton" destination="2TP-ne-S0R" id="qro-VE-chS"/>
+                <outlet property="dropDownLabel" destination="prf-L9-MPo" id="6l2-fQ-MrF"/>
+                <outlet property="mainLabel" destination="xeY-Vo-E5O" id="196-dj-9rT"/>
             </connections>
             <point key="canvasLocation" x="-116.5" y="93.5"/>
         </view>

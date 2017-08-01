@@ -27,7 +27,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
         MTDataModel.sharedDatabaseStorage().clearPlaces()
-        showListAnimation(bool: false)
+        showList(animated: false)
         getLocation()
         addTitleView()
         setupFilterListener()
@@ -68,8 +68,18 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         manager?.query(coordinate, radius: 1000, completion: { (success, places, error) in
             if success {
                 self.reloadAnnotations()
+                if places?.count == 0 {
+                    self.presentAlert(with: "There were no places found matching your search criteria.")
+                }
             }
         })
+    }
+    
+    func presentAlert(with message: String) {
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alert = UIAlertController(title: "No Places Found", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func getTappedAnnotations(touch: UITouch) -> [MKAnnotationView] {
@@ -86,42 +96,11 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         return tappedAnnotations
     }
     
+    
     func reloadAnnotations() {
-        if !isViewLoaded { return }
-        qTree = MTGooglePlacesManager.shared().qTree
-        let mapRegion = mapView.region
-        let useClustering = true
-        
-        let minNonClusteredSpan: CLLocationDegrees = useClustering ? min(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 10 : 0
-        let objects = qTree?.getObjectsIn(mapRegion, minNonClusteredSpan: minNonClusteredSpan) as! [MKAnnotation]
-        var annotationsToRemove = mapView.annotations
-        
-        annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(mapView.userLocation) }
-        for object in objects {
-            annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(object) }
-        }
-        
-        //Prevent the popup view from being clustered if it's visible
-        if let currentPopupView = currentPopupView {
-            annotationsToRemove = annotationsToRemove.filter { !$0.isEqual(currentPopupView.place) }
-        }
-        
-        mapView.removeAnnotations(annotationsToRemove)
-        var annotationsToAdd = objects
-        
-        for object in mapView.annotations {
-            annotationsToAdd = annotationsToAdd.filter { !$0.isEqual(object) }
-        }
-        
-        mapView.addAnnotations(annotationsToAdd)
-        
+        MTReloadAnnotations.reloadAnnotations(self.isViewLoaded, self.mapView, self.qTree)
     }
-    
-    
-    
-    func showListAnimation(bool: Bool) {
-        
-    }
+
     
 
 
@@ -226,8 +205,8 @@ extension MapVC: MKMapViewDelegate {
         if gestureRecognizer.state == .ended {
             if popupBeingSelelected {
                 removePopup()
-            } else {
-                didSelectItem(for: currentPopupView?.place)
+            } else if let currentPopupView = currentPopupView {
+                didSelectItem(for: currentPopupView.place)
             }
         }
     }
@@ -311,10 +290,10 @@ extension MapVC: TitleViewDelegate {
     
     //MARK: Switching between list and map
     func showListByClickingNavigationItem() {
-        showListAnimation(bool: true)
+        showList(animated: true)
     }
     
-    func showListAnimated(animated: Bool) {
+    func showList(animated: Bool) {
         listView = Bundle.main.loadNibNamed("ListView", owner: self, options: nil)?[0] as? ListView
         if let listView = listView {
             listView.delegate = self
@@ -345,7 +324,7 @@ extension MapVC: TitleViewDelegate {
 
 extension MapVC: ListViewDelegate {
     
-    func didSelectItem(for place: MTPlace!) {
+    func didSelectItem(for place: MTPlace) {
         let main = UIStoryboard(name: "Main", bundle: nil)
         let pageController = main.instantiateViewController(withIdentifier: "MTPageContainerViewController") as? MTPageContainerViewController
         

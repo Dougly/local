@@ -45,6 +45,7 @@
 #import "MTPageContainerViewController.h"
 #import "FilterListener.h"
 #import "MTDataModel.h"
+#import "MTReloadAnnotations.h"
 
 //Location View
 #import "MTLocationViewCurrentLocationCell.h"
