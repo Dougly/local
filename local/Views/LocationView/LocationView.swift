@@ -14,7 +14,9 @@ enum MTLocationViewCellIndex : Int {
 }
 
 class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationViewTextfieldCellDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
+    
     
     var delegate: (LocationViewDelegate & LocationViewTextfieldCellDelegate)?
     let locationViewCellTextfield: String = "LocationViewTextfieldCell"

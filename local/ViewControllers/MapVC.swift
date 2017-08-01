@@ -253,7 +253,7 @@ extension MapVC: TitleViewDelegate {
     }
     
     func showLocationView() {
-        locationView = Bundle.main.loadNibNamed("LocationView", owner: self, options: nil)?[0] as? LocationView
+        locationView = Bundle.main.loadNibNamed("LocationView2", owner: self, options: nil)?[0] as? LocationView
         if let locationView = locationView {
             locationView.delegate = self
             locationView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 0)

@@ -22,6 +22,7 @@
 		118EA7DB1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */; };
 		118EA7DD1F2D490100655854 /* LocationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */; };
 		119C34061F3043B90037E6DC /* MTReloadAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C34051F3043B90037E6DC /* MTReloadAnnotations.m */; };
+		119C34081F30B77B0037E6DC /* LocationView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119C34071F30B77B0037E6DC /* LocationView2.xib */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
@@ -188,7 +189,7 @@
 		47AA04DC1EB34A0500818247 /* MapPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04DA1EB34A0500818247 /* MapPopupView.xib */; };
 		47AA04EA1EB3880F00818247 /* MTLocationViewCurrentLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */; };
 		47AA04EB1EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */; };
-		47AA04ED1EB3880F00818247 /* MTLocationViewTextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */; };
+		47AA04ED1EB3880F00818247 /* LocationViewTextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04E91EB3880F00818247 /* LocationViewTextfieldCell.xib */; };
 		47AA04F21EB388C600818247 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AA04F01EB388C600818247 /* LocationView.xib */; };
 		47D7793A1EB2563600A83922 /* CMTabbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D779391EB2563600A83922 /* CMTabbarView.m */; };
 		47D7793D1EB256DB00A83922 /* CMTabbarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D7793C1EB256DB00A83922 /* CMTabbarCollectionViewCell.m */; };
@@ -284,6 +285,7 @@
 		118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewDelegate.swift; sourceTree = "<group>"; };
 		119C34041F3043140037E6DC /* MTReloadAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTReloadAnnotations.h; sourceTree = "<group>"; };
 		119C34051F3043B90037E6DC /* MTReloadAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReloadAnnotations.m; sourceTree = "<group>"; };
+		119C34071F30B77B0037E6DC /* LocationView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationView2.xib; sourceTree = "<group>"; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -590,7 +592,7 @@
 		47AA04E41EB3880F00818247 /* MTLocationViewCurrentLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLocationViewCurrentLocationCell.h; sourceTree = "<group>"; };
 		47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLocationViewCurrentLocationCell.m; sourceTree = "<group>"; };
 		47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLocationViewCurrentLocationCell.xib; sourceTree = "<group>"; };
-		47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLocationViewTextfieldCell.xib; sourceTree = "<group>"; };
+		47AA04E91EB3880F00818247 /* LocationViewTextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewTextfieldCell.xib; sourceTree = "<group>"; };
 		47AA04F01EB388C600818247 /* LocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		47D779381EB2563600A83922 /* CMTabbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTabbarView.h; sourceTree = "<group>"; };
 		47D779391EB2563600A83922 /* CMTabbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMTabbarView.m; sourceTree = "<group>"; };
@@ -1376,6 +1378,7 @@
 			children = (
 				11213C551F2FA6FA000861C9 /* LocationView.swift */,
 				47AA04F01EB388C600818247 /* LocationView.xib */,
+				119C34071F30B77B0037E6DC /* LocationView2.xib */,
 				118EA7DA1F2D450800655854 /* LocationViewTextfieldCellDelegate.swift */,
 				118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */,
 				47AA04E31EB387BA00818247 /* Cells */,
@@ -1390,7 +1393,7 @@
 				47AA04E51EB3880F00818247 /* MTLocationViewCurrentLocationCell.m */,
 				47AA04E61EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib */,
 				11213C571F2FADEB000861C9 /* LocationViewTextfieldCell.swift */,
-				47AA04E91EB3880F00818247 /* MTLocationViewTextfieldCell.xib */,
+				47AA04E91EB3880F00818247 /* LocationViewTextfieldCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1911,11 +1914,12 @@
 				476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */,
 				9165343C1BCD15CB00E669A7 /* Main.storyboard in Resources */,
 				47A980131EAE070E00AB8657 /* AddressLocationCell.xib in Resources */,
-				47AA04ED1EB3880F00818247 /* MTLocationViewTextfieldCell.xib in Resources */,
+				47AA04ED1EB3880F00818247 /* LocationViewTextfieldCell.xib in Resources */,
 				47A97FEC1EAD0A3F00AB8657 /* MTDistanceCell.xib in Resources */,
 				47A97FE01EACF74E00AB8657 /* MTRatingCell.xib in Resources */,
 				47157C8E1E7C853A000D11E9 /* IDMPhotoBrowser.bundle in Resources */,
 				47A9801A1EAE070E00AB8657 /* UserCell.xib in Resources */,
+				119C34081F30B77B0037E6DC /* LocationView2.xib in Resources */,
 				47A980181EAE070E00AB8657 /* TipCell.xib in Resources */,
 				47AA04EB1EB3880F00818247 /* MTLocationViewCurrentLocationCell.xib in Resources */,
 				476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */,
