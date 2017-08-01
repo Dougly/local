@@ -23,6 +23,8 @@
 		118EA7DD1F2D490100655854 /* LocationViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EA7DC1F2D490100655854 /* LocationViewDelegate.swift */; };
 		119C34061F3043B90037E6DC /* MTReloadAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C34051F3043B90037E6DC /* MTReloadAnnotations.m */; };
 		119C34081F30B77B0037E6DC /* LocationView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119C34071F30B77B0037E6DC /* LocationView2.xib */; };
+		119C340A1F30E7BA0037E6DC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119C34091F30E7BA0037E6DC /* SearchView.swift */; };
+		119C340C1F30E9950037E6DC /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119C340B1F30E9950037E6DC /* SearchView.xib */; };
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
@@ -286,6 +288,8 @@
 		119C34041F3043140037E6DC /* MTReloadAnnotations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTReloadAnnotations.h; sourceTree = "<group>"; };
 		119C34051F3043B90037E6DC /* MTReloadAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReloadAnnotations.m; sourceTree = "<group>"; };
 		119C34071F30B77B0037E6DC /* LocationView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationView2.xib; sourceTree = "<group>"; };
+		119C34091F30E7BA0037E6DC /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		119C340B1F30E9950037E6DC /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -768,6 +772,16 @@
 				110769D61F20429200D44621 /* NSURLRequestExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		119C340D1F3126D60037E6DC /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				119C34091F30E7BA0037E6DC /* SearchView.swift */,
+				119C340B1F30E9950037E6DC /* SearchView.xib */,
+			);
+			name = SearchView;
+			path = TitleView;
 			sourceTree = "<group>";
 		};
 		11A00C3D1F22770800D42984 /* Authentication */ = {
@@ -1756,6 +1770,7 @@
 				47AA04DD1EB3853F00818247 /* LocationView */,
 				47AA04D71EB349D400818247 /* MapPopup */,
 				479102671EB33B140071BC2C /* TitleView */,
+				119C340D1F3126D60037E6DC /* SearchView */,
 				47D779341EB2444E00A83922 /* Tabbar */,
 				47A980041EAE070E00AB8657 /* DetailCell */,
 				47A97FFC1EAE06DA00AB8657 /* DetailView */,
@@ -1925,6 +1940,7 @@
 				476BC22C1E79512600B1BA91 /* Images.xcassets in Resources */,
 				479102691EB33B140071BC2C /* TitleView.xib in Resources */,
 				47A97FBE1EACDBA500AB8657 /* MTTagCell.xib in Resources */,
+				119C340C1F30E9950037E6DC /* SearchView.xib in Resources */,
 				47157D011E7C8C26000D11E9 /* floatTableViewCell.xib in Resources */,
 				47AA04F21EB388C600818247 /* LocationView.xib in Resources */,
 				11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */,
@@ -2148,6 +2164,7 @@
 				B013DBA01EB8DF5A00A96F75 /* MDCalendarHeader.m in Sources */,
 				474001A81EB4D2CE00C55420 /* MTFilterViewCell.m in Sources */,
 				47A97FD61EACE10A00AB8657 /* MTPlaceTypeManager.m in Sources */,
+				119C340A1F30E7BA0037E6DC /* SearchView.swift in Sources */,
 				B013DBAA1EB8DF5A00A96F75 /* UIColorHelper.m in Sources */,
 				47157CFA1E7C8BE6000D11E9 /* UIImage+WebP.m in Sources */,
 				B013DBAD1EB8DF5A00A96F75 /* MDButton.m in Sources */,

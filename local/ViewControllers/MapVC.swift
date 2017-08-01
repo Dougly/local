@@ -13,15 +13,17 @@ import QuartzCore
 let MIN_CLUSTERING_SPAN = 0.02
 class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var mapView: MKMapView!
     var qTree: QTree?
     var currentPopupView: MapPopupView?
-    var titleView: TitleView?
+    //var titleView: TitleView?
     var locationView: LocationView?
     var listView: ListView?
     var filterListener: FilterListener = FilterListener()
     @IBOutlet weak var redoSearchButton: UIButton!
     var popupBeingSelelected: Bool = false
+    var locationViewBottomAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         addTitleView()
         setupFilterListener()
         addGesture()
+        addLocationView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,14 +231,29 @@ extension MapVC: MKMapViewDelegate {
 
 
 
-extension MapVC: TitleViewDelegate {
+extension MapVC: TitleViewDelegate, SearchViewDelegate {
     
     func addTitleView() {
-        self.titleView = Bundle.main.loadNibNamed("TitleView", owner: self, options: nil)?[0] as? TitleView
-        self.titleView?.delegate = self
-        self.navigationItem.titleView = self.titleView
+//        self.titleView = Bundle.main.loadNibNamed("TitleView", owner: self, options: nil)?[0] as? TitleView
+//        self.titleView?.delegate = self
+        
+        //self.searchView = Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)?[0] as? SearchView
+        searchView.delegate = self
+        
+        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 40))
+        titleImageView.image = #imageLiteral(resourceName: "LocalLogo")
+        titleImageView.contentMode = .scaleAspectFill
+        self.navigationItem.titleView = titleImageView
         let item = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
         self.navigationItem.setLeftBarButton(item, animated: true)
+    }
+    
+    func searchViewClicked(_ isRevealing: Bool) {
+        if isRevealing {
+            showLocationView()
+        } else {
+            hideLocationView()
+        }
     }
     
     func logOut() {
@@ -252,18 +270,8 @@ extension MapVC: TitleViewDelegate {
         }
     }
     
-    func showLocationView() {
-        locationView = Bundle.main.loadNibNamed("LocationView2", owner: self, options: nil)?[0] as? LocationView
-        if let locationView = locationView {
-            locationView.delegate = self
-            locationView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 0)
-            view.addSubview(locationView)
-            
-            UIView.animate(withDuration: 0.5) {
-                locationView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            }
-        }
-    }
+    
+    
     
     
     //MARK: Right Navigtion Item
@@ -343,6 +351,7 @@ extension MapVC: ListViewDelegate {
 extension MapVC: LocationViewTextfieldCellDelegate {
     
     func placeSelected(_ placeId: String) {
+        print("⚡️⚡️⚡️ placeID: \(placeId)")
         let request = MTGetPlaceDetailRequest.request(withOwner: self) as? MTGetPlaceDetailRequest
         if let request = request {
             request.placeId = placeId
@@ -378,14 +387,53 @@ extension MapVC: LocationViewTextfieldCellDelegate {
 
 extension MapVC: LocationViewDelegate {
     
-    func hideLocationView() {
-        titleView?.collapse()
-        UIView.animate(withDuration: 0.5, animations: {
-            self.locationView?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0)
-        }) { success in
-            self.locationView?.removeFromSuperview()
+    func addLocationView() {
+        locationView = Bundle.main.loadNibNamed("LocationView2", owner: self, options: nil)?[0] as? LocationView
+        if let locationView = locationView {
+            locationView.delegate = self
+            locationView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(locationView)
+            locationView.topAnchor.constraint(equalTo: self.searchView.bottomAnchor).isActive = true
+            locationView.leadingAnchor.constraint(equalTo: self.searchView.leadingAnchor).isActive = true
+            locationView.trailingAnchor.constraint(equalTo: self.searchView.trailingAnchor).isActive = true
+            locationViewBottomAnchor = locationView.bottomAnchor.constraint(equalTo: self.searchView.bottomAnchor)
+            locationViewBottomAnchor?.isActive = true
         }
     }
+    
+    func hideLocationView() {
+        searchView.collapse()
+        UIView.animate(withDuration: 0.5, animations: {
+            //self.locationView?.frame = CGRect(x: 0, y: 40, width: self.view.bounds.size.width, height: 0)
+            self.locationViewBottomAnchor?.isActive = false
+            self.locationViewBottomAnchor = self.locationView?.bottomAnchor.constraint(equalTo: self.searchView.bottomAnchor)
+            self.locationViewBottomAnchor?.isActive = true
+            self.view.layoutIfNeeded()
+        }) { success in
+            if success {
+                self.locationView?.removeFromSuperview()
+                self.addLocationView()
+            }
+        }
+    }
+    
+    func showLocationView() {
+        if let locationView = locationView {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.locationViewBottomAnchor?.isActive = false
+                self.locationViewBottomAnchor = locationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+                self.locationViewBottomAnchor?.isActive = true
+                self.view.layoutIfNeeded()
+            }, completion: { success in
+                if success {
+                    if let cell = locationView.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? LocationViewTextfieldCell {
+                        cell.autoCompleteTextField.becomeFirstResponder()
+                    }
+                }
+            })
+        }
+    }
+
 
 }
 

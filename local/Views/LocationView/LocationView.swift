@@ -17,7 +17,6 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var delegate: (LocationViewDelegate & LocationViewTextfieldCellDelegate)?
     let locationViewCellTextfield: String = "LocationViewTextfieldCell"
     let locationViewCellCurrent: String = "MTLocationViewCurrentLocationCell"

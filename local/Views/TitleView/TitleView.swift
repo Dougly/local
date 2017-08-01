@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
-enum DropDownState : Int {
-    case hidden = 0
-    case revealed = 1
-}
+//
+//enum DropDownState : Int {
+//    case hidden = 0
+//    case revealed = 1
+//}
 
 class TitleView: UIView {
     weak var delegate: TitleViewDelegate?

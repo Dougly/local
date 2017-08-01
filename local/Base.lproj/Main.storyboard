@@ -249,18 +249,18 @@
                         <viewControllerLayoutGuide type="top" id="0mh-Q0-heE"/>
                         <viewControllerLayoutGuide type="bottom" id="QZg-sD-b1v"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Ful-Rk-RYr">
+                    <view key="view" contentMode="scaleToFill" id="Ful-Rk-RYr">
                         <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-jm-amm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
+                                <rect key="frame" x="0.0" y="40" width="414" height="582"/>
                                 <connections>
                                     <outlet property="delegate" destination="QO0-Qx-Uq8" id="s7q-gz-lKK"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-2M-zRl">
-                                <rect key="frame" x="95" y="18" width="225" height="30"/>
+                                <rect key="frame" x="95" y="58" width="225" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UMq-3u-3bN"/>
@@ -274,15 +274,25 @@
                                     <action selector="updatePlacesInCurrentArea:" destination="QO0-Qx-Uq8" eventType="touchUpInside" id="Z0L-04-gWz"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhp-81-xrp" customClass="SearchView" customModule="Local" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gt9-pv-x1D"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gQc-jm-amm" firstAttribute="bottom" secondItem="QZg-sD-b1v" secondAttribute="top" id="1ww-va-kOg"/>
                             <constraint firstItem="4n0-2M-zRl" firstAttribute="centerX" secondItem="Ful-Rk-RYr" secondAttribute="centerX" id="2r2-gW-FbM"/>
-                            <constraint firstItem="gQc-jm-amm" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" id="6zj-Nb-Sll"/>
+                            <constraint firstItem="vhp-81-xrp" firstAttribute="centerX" secondItem="Ful-Rk-RYr" secondAttribute="centerX" id="7Z8-N6-1wj"/>
+                            <constraint firstItem="4n0-2M-zRl" firstAttribute="top" secondItem="gQc-jm-amm" secondAttribute="top" constant="18" id="8Qg-3X-58n"/>
                             <constraint firstItem="gQc-jm-amm" firstAttribute="leading" secondItem="Ful-Rk-RYr" secondAttribute="leading" id="Gui-PQ-mmw"/>
-                            <constraint firstItem="4n0-2M-zRl" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" constant="18" id="R8o-c3-jJ1"/>
+                            <constraint firstItem="vhp-81-xrp" firstAttribute="top" secondItem="0mh-Q0-heE" secondAttribute="bottom" id="RzH-a6-ieI"/>
                             <constraint firstItem="gQc-jm-amm" firstAttribute="trailing" secondItem="Ful-Rk-RYr" secondAttribute="trailing" id="fPZ-FM-FLs"/>
+                            <constraint firstItem="vhp-81-xrp" firstAttribute="width" secondItem="Ful-Rk-RYr" secondAttribute="width" id="j9Z-z6-gkY"/>
+                            <constraint firstItem="gQc-jm-amm" firstAttribute="top" secondItem="vhp-81-xrp" secondAttribute="bottom" id="lBb-8H-8XB"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -292,6 +302,7 @@
                     <connections>
                         <outlet property="mapView" destination="gQc-jm-amm" id="zFy-1s-3XJ"/>
                         <outlet property="redoSearchButton" destination="4n0-2M-zRl" id="rDG-ME-uda"/>
+                        <outlet property="searchView" destination="vhp-81-xrp" id="hPZ-9R-qi2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpF-47-C30" sceneMemberID="firstResponder"/>
@@ -306,7 +317,7 @@
                         <viewControllerLayoutGuide type="top" id="PK4-9O-P3a"/>
                         <viewControllerLayoutGuide type="bottom" id="eAK-CL-CSm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="usN-t8-iTc">
+                    <view key="view" contentMode="scaleToFill" id="usN-t8-iTc">
                         <rect key="frame" x="0.0" y="64" width="414" height="622"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -597,7 +608,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-d8-bxQ" userLabel="Sign in with Facebook">
-                                                        <rect key="frame" x="50" y="13" width="185" height="17"/>
+                                                        <rect key="frame" x="50" y="13.333333333333314" width="185" height="16.666666666666686"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" red="0.97638529539999996" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -634,7 +645,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
-                                <rect key="frame" x="83" y="191" width="248" height="59"/>
+                                <rect key="frame" x="83" y="191.33333333333334" width="248" height="58.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
                                 </constraints>
