@@ -124,8 +124,11 @@ class DetailVC: UIViewController, MKMapViewDelegate {
                 if filteredPeriods.count > 1 {
                     lastPeriod = filteredPeriods.last
                 }
-                let periodText: String? = "\(firstPeriod!.openPmTime())-\(lastPeriod!.closePmTime())"
-                hoursLabel.text = periodText
+                if let first = firstPeriod?.openPmTime(), let last = lastPeriod?.closePmTime() {
+                    let periodText = "\(first)-\(last)"
+                    hoursLabel.text = periodText
+
+                }
             }
         }
         setupMap()

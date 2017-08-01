@@ -26,7 +26,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *places;
 @property (nonatomic, strong) FilterListener *filterListener;
-@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, strong) NSArray *placesBeforeSort;
 @property (nonatomic, strong) NSMutableArray *oldRowsBeforeSort;
@@ -34,6 +33,8 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 @property (nonatomic, strong) NSTimer *hideProgressViewTimer;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *progressViewHeight;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @property (nonatomic) CGFloat CELL_HEIGHT;
 @end
 
@@ -49,6 +50,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     [self subscribeForNewPlaces];
     [self registerCells];
     [self getAllPlaces];
+    [self.activityIndicator startAnimating];
 }
 
 - (void)layoutSubviews {
@@ -231,6 +233,8 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 - (void)locationChanged {
     self.places = nil;
     [self.tableView reloadData];
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
 }
 
 - (void)updateProgressView:(BOOL)isFinalPackOfPlaces {
@@ -245,11 +249,10 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     else {
         self.progressView.progress = 0;
         self.progressViewHeight.constant = 2;
+        [self.activityIndicator stopAnimating];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
             [self.progressView updateConstraints];
             [self.progressView layoutSubviews];
-            
             [self.progressView setProgress:0.6 animated:YES];
         });
     }
@@ -303,15 +306,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     }
     
     [self.tableView reloadData];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self.searchBar resignFirstResponder];
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - access overrides

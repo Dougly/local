@@ -239,10 +239,14 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
         
         //self.searchView = Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)?[0] as? SearchView
         searchView.delegate = self
-        
-        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 40))
+        //aspect ratio 155 x 37
+        guard let navBarHeight = navigationController?.navigationBar.frame.height else { return }
+        let height = navBarHeight * 0.6
+        let width = (height * 155) / 37
+        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         titleImageView.image = #imageLiteral(resourceName: "LocalLogo")
-        titleImageView.contentMode = .scaleAspectFill
+        titleImageView.contentMode = .scaleAspectFit
+        titleImageView.clipsToBounds = true
         self.navigationItem.titleView = titleImageView
         let item = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
         self.navigationItem.setLeftBarButton(item, animated: true)

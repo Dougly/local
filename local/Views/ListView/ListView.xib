@@ -15,26 +15,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-3B-caS">
-                    <rect key="frame" x="0.0" y="-2" width="434" height="10"/>
+                    <rect key="frame" x="0.0" y="0.0" width="434" height="2"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="10" id="wkh-gJ-QSe"/>
+                        <constraint firstAttribute="height" constant="2" id="wkh-gJ-QSe"/>
                     </constraints>
                 </progressView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-Z7-tIe">
-                    <rect key="frame" x="0.0" y="8" width="434" height="481"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="2" width="434" height="487"/>
+                    <color key="backgroundColor" red="0.97647058823529409" green="0.97652524709701538" blue="0.97635477781295776" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="Kuk-c2-nfe"/>
                         <outlet property="delegate" destination="iN0-l3-epB" id="2X1-2u-iCM"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VmJ-1e-hXq">
+                    <rect key="frame" x="207" y="234" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="TZa-3B-caS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-2" id="CY3-sI-Ebp"/>
+                <constraint firstItem="VmJ-1e-hXq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6mB-He-cWq"/>
+                <constraint firstItem="TZa-3B-caS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CY3-sI-Ebp"/>
                 <constraint firstItem="NL8-Z7-tIe" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="DBw-op-sdx"/>
+                <constraint firstItem="VmJ-1e-hXq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JqT-GG-KT5"/>
                 <constraint firstItem="NL8-Z7-tIe" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="ZXr-wA-890"/>
                 <constraint firstItem="NL8-Z7-tIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pGG-6D-tiJ"/>
                 <constraint firstItem="TZa-3B-caS" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="qOT-hz-1aU"/>
@@ -44,6 +49,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="activityIndicator" destination="VmJ-1e-hXq" id="24W-j6-BvT"/>
                 <outlet property="progressView" destination="TZa-3B-caS" id="BK3-w8-mGQ"/>
                 <outlet property="progressViewHeight" destination="wkh-gJ-QSe" id="KpF-mv-8Rn"/>
                 <outlet property="tableView" destination="NL8-Z7-tIe" id="ZVi-ZO-dlX"/>
