@@ -588,15 +588,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalFadedBackground" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-B9-GMt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-Zc-H72" userLabel="Sign In Button Stack View">
-                                <rect key="frame" x="62" y="386" width="290" height="111"/>
+                                <rect key="frame" x="62" y="496.66666666666663" width="290" height="110.99999999999989"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2x-Yr-G43" userLabel="Google Sign In Button" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="290" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="47.999999999999943"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-jE-6iJ" userLabel="Facebook Sign In Container">
-                                        <rect key="frame" x="0.0" y="63" width="290" height="48"/>
+                                        <rect key="frame" x="0.0" y="62.999999999999943" width="290" height="48"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCZ-76-nt2" userLabel="Button">
                                                 <rect key="frame" x="3" y="2" width="284" height="44"/>
@@ -608,7 +612,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-d8-bxQ" userLabel="Sign in with Facebook">
-                                                        <rect key="frame" x="50" y="13.333333333333314" width="185" height="16.666666666666686"/>
+                                                        <rect key="frame" x="50" y="13.333333333333371" width="185" height="16.666666666666629"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" red="0.97638529539999996" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -636,7 +640,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APq-KT-IUF">
-                                <rect key="frame" x="62" y="512" width="290" height="48"/>
+                                <rect key="frame" x="62" y="622.66666666666663" width="290" height="48"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.62352941179999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                 <state key="normal" title="LOGIN AS GUEST"/>
@@ -645,27 +649,61 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-Eo-42M" userLabel="Logo Image View">
-                                <rect key="frame" x="83" y="191.33333333333334" width="248" height="58.333333333333314"/>
+                                <rect key="frame" x="83" y="118.00000000000001" width="248" height="58.333333333333357"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aIo-Eo-42M" secondAttribute="height" multiplier="462:109" id="fs1-B0-iOH"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Zrg-jj-f4e">
-                                <rect key="frame" x="197" y="347" width="20" height="20"/>
+                                <rect key="frame" x="197" y="452" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="satisfy your cravings with curated food &amp; drink recomendations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iDY-FP-mcy" userLabel="Tag Line">
+                                <rect key="frame" x="82.666666666666686" y="237.66666666666663" width="248.66666666666663" height="40.333333333333371"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.54147028919999995" green="0.54881572720000005" blue="0.5619947314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by signing in you agree to our" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-SA-oXg" userLabel="Privacy Policy Label">
+                                <rect key="frame" x="62" y="652.66666666666652" width="290" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.54147028919999995" green="0.54881572720000005" blue="0.5619947314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDW-3q-tGy" userLabel="Privacy Policy Button">
+                                <rect key="frame" x="154.66666666666669" y="673" width="105.00000000000006" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="privacy policy">
+                                    <color key="titleColor" red="0.54147028919999995" green="0.54881572720000005" blue="0.5619947314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="privacyPolicyButtonTapped:" destination="fmT-jb-ENa" eventType="touchUpInside" id="r9G-H9-8nb"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PcO-SA-oXg" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="2SK-bu-PFy"/>
+                            <constraint firstItem="L6A-B9-GMt" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" id="2gW-N4-zOO"/>
+                            <constraint firstItem="L6A-B9-GMt" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" id="ABy-cY-mqg"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="centerX" secondItem="D2x-Yr-G43" secondAttribute="centerX" id="Aqn-pP-axC"/>
+                            <constraint firstItem="lDW-3q-tGy" firstAttribute="top" secondItem="PcO-SA-oXg" secondAttribute="bottom" id="IKx-cS-HMa"/>
                             <constraint firstItem="Zrg-jj-f4e" firstAttribute="bottom" secondItem="SH1-Zc-H72" secondAttribute="top" multiplier="0.95" id="KMS-V5-AZ0"/>
+                            <constraint firstItem="L6A-B9-GMt" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" id="KQU-CS-2CM"/>
                             <constraint firstItem="aIo-Eo-42M" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.6" id="QMW-pl-OnN"/>
-                            <constraint firstItem="aIo-Eo-42M" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="0.6" id="Qo9-Xm-emX"/>
+                            <constraint firstItem="aIo-Eo-42M" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="0.4" id="Qo9-Xm-emX"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="top" secondItem="SH1-Zc-H72" secondAttribute="bottom" constant="15" id="TJM-2l-s19"/>
+                            <constraint firstItem="iDY-FP-mcy" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="0.7" id="Xyd-pj-qWN"/>
+                            <constraint firstItem="iDY-FP-mcy" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="Yf4-Kx-iLa"/>
                             <constraint firstItem="aIo-Eo-42M" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="a9y-XZ-V5R"/>
+                            <constraint firstItem="PcO-SA-oXg" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.7" id="adf-xr-MHU"/>
                             <constraint firstItem="Zrg-jj-f4e" firstAttribute="centerX" secondItem="SH1-Zc-H72" secondAttribute="centerX" id="eWi-VC-DUt"/>
-                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.2" id="iOQ-q6-P63"/>
+                            <constraint firstItem="iDY-FP-mcy" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.6" id="grK-bX-42z"/>
+                            <constraint firstItem="SH1-Zc-H72" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.5" id="iOQ-q6-P63"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="height" secondItem="Yed-yF-3fW" secondAttribute="height" multiplier="0.15" id="loQ-tg-lLQ"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="width" secondItem="D2x-Yr-G43" secondAttribute="width" id="mcP-4P-Cxz"/>
+                            <constraint firstItem="PcO-SA-oXg" firstAttribute="centerY" secondItem="Yed-yF-3fW" secondAttribute="centerY" multiplier="1.8" id="pqa-FW-UXp"/>
+                            <constraint firstItem="lDW-3q-tGy" firstAttribute="centerX" secondItem="PcO-SA-oXg" secondAttribute="centerX" id="qDD-Xz-WkS"/>
+                            <constraint firstItem="L6A-B9-GMt" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="rDr-a3-pt8"/>
                             <constraint firstItem="APq-KT-IUF" firstAttribute="height" secondItem="D2x-Yr-G43" secondAttribute="height" id="rKY-HR-aYK"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="width" secondItem="Yed-yF-3fW" secondAttribute="width" multiplier="0.7" id="wWr-EC-ysw"/>
                             <constraint firstItem="SH1-Zc-H72" firstAttribute="centerX" secondItem="Yed-yF-3fW" secondAttribute="centerX" id="yor-DB-z5V"/>
@@ -780,6 +818,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LocalFadedBackground" width="504" height="775"/>
         <image name="LocalLogo" width="154" height="36"/>
         <image name="facebook-login" width="17" height="17"/>
         <image name="ic_back" width="1" height="1"/>

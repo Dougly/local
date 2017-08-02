@@ -51,6 +51,11 @@ class LoginVC: UIViewController, GIDSignInUIDelegate {
         presentMainVC()
     }
     
+    @IBAction func privacyPolicyButtonTapped(_ sender: UIButton) {
+        if let url = URL(string: "https://www.thelocal.io/privacy-policy") {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
     func setupFacebookButton() {
         let facebookLoginTapGR = UITapGestureRecognizer(target: self, action: #selector(fbLoginButtonTapped))
