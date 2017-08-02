@@ -27,9 +27,9 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     override func awakeFromNib() {
         MTDataModel.sharedDatabaseStorage().clearPlaces()
-        showList(animated: false)
+        showList(animated: false, visible: true)
         getLocation()
-        addTitleView()
+        addSearchView()
         setupFilterListener()
         addGesture()
         addLocationView()
@@ -44,6 +44,12 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addBorderForRedoSearchButton()
+    }
+    
+    func reloadListandSearch() {
+        listView = nil
+        showList(animated: false, visible: false)
+        addSearchView()
     }
     
     func getLocation() {
@@ -197,6 +203,7 @@ extension MapVC: MKMapViewDelegate {
         removePopup()
         let centerCoordinate = mapView.centerCoordinate
         updatePlaces(coordinate: centerCoordinate)
+        reloadListandSearch()
     }
     
     func updatePlaces(coordinate: CLLocationCoordinate2D) {
@@ -210,9 +217,9 @@ extension MapVC: MKMapViewDelegate {
 
 
 
-extension MapVC: TitleViewDelegate, SearchViewDelegate {
+extension MapVC: SearchViewDelegate {
     
-    func addTitleView() {
+    func addSearchView() {
 //        self.titleView = Bundle.main.loadNibNamed("TitleView", owner: self, options: nil)?[0] as? TitleView
 //        self.titleView?.delegate = self
         
@@ -245,17 +252,6 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
     }
     
     
-    func titleViewClicked(_ isRevealing: Bool) {
-        if isRevealing {
-            showLocationView()
-        } else {
-            hideLocationView()
-        }
-    }
-    
-    
-    
-    
     
     //MARK: Right Navigtion Item
     
@@ -281,10 +277,10 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
     
     //MARK: Switching between list and map
     func showListByClickingNavigationItem() {
-        showList(animated: true)
+        showList(animated: true, visible: true)
     }
     
-    func showList(animated: Bool) {
+    func showList(animated: Bool, visible: Bool) {
         if !animated {
         listView = Bundle.main.loadNibNamed("ListView", owner: self, options: nil)?[0] as? ListView
         
@@ -300,14 +296,17 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
 
         }
         
-        if animated {
-            listView?.alpha = 0
-            UIView.animate(withDuration: 0.5, animations: {
-                self.listView?.alpha = 1
-            })
+        listView?.alpha = 0
+        if visible {
+            if animated {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.listView?.alpha = 1
+                })
+            } else {
+                listView?.alpha = 1
+            }
+            showMapNavigationItem()
         }
-        
-        showMapNavigationItem()
     }
     
     func showMap() {
@@ -315,7 +314,6 @@ extension MapVC: TitleViewDelegate, SearchViewDelegate {
             self.listView?.alpha = 0.0
         }) { (success) in
         }
-        
         showListNavigationItem()
     }
 }
@@ -347,7 +345,7 @@ extension MapVC: LocationViewTextfieldCellDelegate {
             request.completionBlock = { request, response in
                 if let response = response {
                     if response.isSuccess() {
-                        let detailsResponse: MTGetPlaceDetailsResponse? = response as? MTGetPlaceDetailsResponse
+                        let detailsResponse = response as? MTGetPlaceDetailsResponse
                         if let placeDetails = detailsResponse?.placeDetails {
                             if let lat = placeDetails.lat?.floatValue, let lon = placeDetails.lon?.floatValue {
                             let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(lon))

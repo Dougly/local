@@ -15,6 +15,7 @@
 @end
 
 @interface ListView : UIView
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, weak) id<ListViewDelegate>delegate;
 @end

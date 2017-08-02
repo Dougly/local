@@ -6,7 +6,7 @@
 //  Copyright © 2017 Tilf AB. All rights reserved.
 //
 
-#import "MTGetYelpplacesResponse.h"
+#import "MTGetYelpPlacesResponse.h"
 
 @implementation MTGetYelpPlacesResponse
 

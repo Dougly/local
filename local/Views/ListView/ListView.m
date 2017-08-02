@@ -23,7 +23,6 @@
 typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 
 @interface ListView()<UITabBarDelegate, UITableViewDataSource, UISearchBarDelegate>
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *places;
 @property (nonatomic, strong) FilterListener *filterListener;
 
