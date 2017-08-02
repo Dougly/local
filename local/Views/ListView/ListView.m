@@ -33,7 +33,6 @@ typedef void(^DetailsLargsetPhotoCompletion)(MTPhoto *largestPhoto);
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 @property (nonatomic, strong) NSTimer *hideProgressViewTimer;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *progressViewHeight;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic) CGFloat CELL_HEIGHT;
 @end
@@ -238,6 +237,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 }
 
 - (void)updateProgressView:(BOOL)isFinalPackOfPlaces {
+    [self.activityIndicator stopAnimating];
     if (isFinalPackOfPlaces) {
         self.progressViewHeight.constant = 2;
         [self.progressView setProgress:1.0 animated:YES];
@@ -249,7 +249,6 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
     else {
         self.progressView.progress = 0;
         self.progressViewHeight.constant = 2;
-        [self.activityIndicator stopAnimating];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.progressView updateConstraints];
             [self.progressView layoutSubviews];

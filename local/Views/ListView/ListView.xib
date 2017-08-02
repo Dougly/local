@@ -49,7 +49,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="activityIndicator" destination="VmJ-1e-hXq" id="24W-j6-BvT"/>
+                <outlet property="activityIndicator" destination="VmJ-1e-hXq" id="nwO-ss-Z5d"/>
                 <outlet property="progressView" destination="TZa-3B-caS" id="BK3-w8-mGQ"/>
                 <outlet property="progressViewHeight" destination="wkh-gJ-QSe" id="KpF-mv-8Rn"/>
                 <outlet property="tableView" destination="NL8-Z7-tIe" id="ZVi-ZO-dlX"/>

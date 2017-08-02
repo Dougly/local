@@ -73,6 +73,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
                 self.reloadAnnotations()
                 if places?.count == 0 {
                     self.presentAlert(with: "There were no places found matching your search criteria.")
+                    self.listView?.activityIndicator.stopAnimating()
                 }
             }
         })
