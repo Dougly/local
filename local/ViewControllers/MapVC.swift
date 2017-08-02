@@ -25,9 +25,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     var popupBeingSelelected: Bool = false
     var locationViewBottomAnchor: NSLayoutConstraint?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
+    override func awakeFromNib() {
         MTDataModel.sharedDatabaseStorage().clearPlaces()
         showList(animated: false)
         getLocation()
@@ -35,6 +33,12 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         setupFilterListener()
         addGesture()
         addLocationView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,27 +90,14 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func getTappedAnnotations(touch: UITouch) -> [MKAnnotationView] {
-        var tappedAnnotations: [MKAnnotationView] = []
-        for annotation in self.mapView.annotations {
-            let view = self.mapView.view(for: annotation)
-            let location = touch.location(in: view)
-            if let view = view {
-                if view.bounds.contains(location) {
-                    tappedAnnotations.append(view)
-                }
-            }
-        }
-        return tappedAnnotations
+    func getTappedAnnotations(touch: UITouch) -> [Any] {
+        return MTReloadAnnotations.getTappedAnnotations(touch, self.mapView)
     }
     
     
     func reloadAnnotations() {
-        MTReloadAnnotations.reloadAnnotations(self.isViewLoaded, self.mapView, self.qTree)
+        MTReloadAnnotations.reloadAnnotations(self.isViewLoaded, self.mapView, self.qTree, self.currentPopupView)
     }
-
-    
-
 
     
     func addBorderForRedoSearchButton() {
@@ -363,7 +354,6 @@ extension MapVC: ListViewDelegate {
 extension MapVC: LocationViewTextfieldCellDelegate {
     
     func placeSelected(_ placeId: String) {
-        print("⚡️⚡️⚡️ placeID: \(placeId)")
         let request = MTGetPlaceDetailRequest.request(withOwner: self) as? MTGetPlaceDetailRequest
         if let request = request {
             request.placeId = placeId
@@ -400,7 +390,7 @@ extension MapVC: LocationViewTextfieldCellDelegate {
 extension MapVC: LocationViewDelegate {
     
     func addLocationView() {
-        locationView = Bundle.main.loadNibNamed("LocationView2", owner: self, options: nil)?[0] as? LocationView
+        locationView = Bundle.main.loadNibNamed("LocationView", owner: self, options: nil)?[0] as? LocationView
         if let locationView = locationView {
             locationView.delegate = self
             locationView.translatesAutoresizingMaskIntoConstraints = false
