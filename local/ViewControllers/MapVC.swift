@@ -116,20 +116,7 @@ extension MapVC: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.isKind(of: QCluster.self) {
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: ClusterAnnotationView.reuseId()) as? ClusterAnnotationView
-            if annotationView != nil {
-                annotationView = ClusterAnnotationView(cluster: annotation as! QCluster)
-            }
-            annotationView?.cluster = annotation as! QCluster
-            return annotationView
-        } else if (annotation.isKind(of: MTPlace.self)) {
-            let defaultPinID = "com.local.food"
-            let pinView = MKImageAnnotationView(annotation: annotation, reuseIdentifier: defaultPinID)
-            return pinView
-        } else {
-            return nil
-        }
+        return MTReloadAnnotations.getAnnotationView(mapView, annotation)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

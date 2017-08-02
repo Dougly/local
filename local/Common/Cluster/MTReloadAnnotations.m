@@ -12,13 +12,16 @@
 #import "QCluster.h"
 #import "MTGooglePlacesManager.h"
 #import "MapPopupView.h"
-
+#import "ClusterAnnotationView.h"
+#import "MKImageAnnotationView.h"
+#import "MTPlace.h"
 @implementation MTReloadAnnotations
 
+
+// TODO: Replace this library with swift map clustering library
 + (void)reloadAnnotations:(BOOL)isViewLoaded :(MKMapView *)mapView :(QTree *)qTree :(MapPopupView*)currentPopupView {
     
     if( !isViewLoaded ) {
-        NSLog(@"view isnt loaded??????");
         return;
     }
     
@@ -43,7 +46,6 @@
     
     NSMutableArray* annotationsToAdd = [objects mutableCopy];
     [annotationsToAdd removeObjectsInArray:mapView.annotations];
-    NSLog(@"🎃🎃🎃 annotations: %@", annotationsToAdd);
     [mapView addAnnotations:annotationsToAdd];
    
 }
@@ -60,5 +62,29 @@
     }
     return tappedAnnotations;
 }
+
++ (MKAnnotationView*)getAnnotationView:(MKMapView*)mapView :(id<MKAnnotation>)annotation {
+    
+    if( [annotation isKindOfClass:[QCluster class]] ) {
+        ClusterAnnotationView* annotationView = (ClusterAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[ClusterAnnotationView reuseId]];
+        if (!annotationView ) {
+            annotationView = [[ClusterAnnotationView alloc] initWithCluster:(QCluster*)annotation];
+        }
+        annotationView.cluster = (QCluster*)annotation;
+        return annotationView;
+    }
+    else if ([annotation isKindOfClass:[MTPlace class]]){
+        static NSString *defaultPinID = @"com.local.food";
+        
+        MKImageAnnotationView *pinView = [[MKImageAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        
+        return pinView;
+    }
+    else {
+        return nil;
+    }
+}
+
+
 
 @end
