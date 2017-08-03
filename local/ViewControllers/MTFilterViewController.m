@@ -11,6 +11,7 @@
 #import "MTSettings.h"
 #import "MTSubfilterViewController.h"
 #import "MTFilterPriceCell.h"
+@import Firebase;
 
 @interface MTFilterViewController()
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -180,6 +181,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [FIRAnalytics logEventWithName:@"selected_filter" parameters:nil];
     if (indexPath.row == MTFilterViewCellCoffee || indexPath.row == MTFilterViewCellHardStuff) {
         [MTSettings sharedSettings].filterKeyWords = FILTERS_KEY_WORDS[indexPath.row];
         MTFilterViewCell *currentlySelectedCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];

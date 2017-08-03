@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseAuth
 import GoogleSignIn
 import FacebookLogin
@@ -27,16 +28,19 @@ class Authentication: NSObject, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         authenticateForFirebase(with: credential)
+        Analytics.logEvent(Constants.googleSignInEvent, parameters: nil)
+        Analytics.logEvent(Constants.loginEvent, parameters: ["sign_up_method" : "google"])
     }
     
 
     // MARK: Facebook Auth
-    // login button logic called in LoginVC due to trailing closure errors when called here.
     func loginButtonDidCompleteLogin(_ result: LoginResult) {
         let accessToken = AccessToken.current
         guard let authToken = accessToken?.authenticationToken else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: authToken)
         authenticateForFirebase(with: credential)
+        Analytics.logEvent(Constants.facebookSignInEvent, parameters: nil)
+        Analytics.logEvent(Constants.loginEvent, parameters: ["sign_up_method" : "facebook"])
     }
     
     

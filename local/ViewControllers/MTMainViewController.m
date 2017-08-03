@@ -13,6 +13,7 @@
 #import "MTDataModel.h"
 #import "FilterViewListener.h"
 #import "MTFilterViewController.h"
+@import Firebase;
 
 #define FILTER_VIEW_HEIGHT              250
 
@@ -97,7 +98,7 @@
 #pragma mark - FilterView
 
 - (void)showFilterView {
-    
+    [FIRAnalytics logEventWithName:@"opened_filter_menu" parameters:nil];
     [UIView animateWithDuration:0.4 animations:^{
         /* This looks ugly. navigation for filterview should be refactored*/
         MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;

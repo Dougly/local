@@ -14,6 +14,7 @@
 #import "MTPageContainerViewController.h"
 #import "FilterListener.h"
 #import "CustomButtonItem.h"
+@import Firebase;
 
 #define MAX_TITLE_SYMBOLS                 23
 
@@ -56,6 +57,7 @@
 }
 
 - (void)share {
+    [FIRAnalytics logEventWithName:@"share_button_tapped" parameters:nil];
     DetailVC *viewController = [self.pageViewController.viewControllers lastObject];
     MTPlaceDetails *placeDetails = viewController.placeDetails;
     

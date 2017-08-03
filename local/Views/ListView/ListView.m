@@ -17,6 +17,8 @@
 #import "MTGetPlaceDetailsResponse.h"
 #import "FilterListener.h"
 #import "MTProgressHUD.h"
+#import "Local-Swift.h"
+@import Firebase;
 
 #define NUMBER_OF_CELLS_PER_SCREEN                 3.1
 
@@ -136,7 +138,7 @@ NSString *const LIST_VIEW_CELL = @"MTListViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MTPlace *selectedPlace = self.places[indexPath.row];
-    
+    [FIRAnalytics logEventWithName: @"selected_list_item" parameters:nil];
     [self.delegate didSelectItemForPlace:selectedPlace];
 }
 

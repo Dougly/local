@@ -18,22 +18,25 @@ protocol SearchViewDelegate: NSObjectProtocol {
 }
 
 class SearchView: UIView {
-    weak var delegate: SearchViewDelegate?
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var coverButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    weak var delegate: SearchViewDelegate?
     var state = DropDownState(rawValue: 0)!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
     
     func commonInit() {
         Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)
@@ -43,10 +46,6 @@ class SearchView: UIView {
         contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         contentView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-
-        
-        //add constraints
-        
     }
     
     
@@ -62,6 +61,7 @@ class SearchView: UIView {
         })
     }
     
+    
     func collapse() {
         coverButton.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {() -> Void in
@@ -73,6 +73,7 @@ class SearchView: UIView {
             self.state = .hidden
         })
     }
+    
     
     @IBAction func searchClicked(_ sender: Any) {
         delegate?.searchViewClicked(state == .hidden)
@@ -86,6 +87,7 @@ class SearchView: UIView {
 
     }
     
+    
     private func fadeImage() {
         UIView.animate(withDuration: 0.25) {
             self.imageView.alpha = 0
@@ -93,7 +95,7 @@ class SearchView: UIView {
         }
     }
     
-    
+
     private func switchImage(to image: UIImage) {
         imageView.image = image
         UIView.animate(withDuration: 0.25) {
@@ -101,5 +103,6 @@ class SearchView: UIView {
             self.layoutIfNeeded()
         }
     }
+    
     
 }

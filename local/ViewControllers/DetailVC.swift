@@ -7,14 +7,9 @@
 //
 
 import Foundation
+import Firebase
 
 class DetailVC: UIViewController, MKMapViewDelegate {
-    
-    var pageIndex: Int = 0
-    var place: MTPlace?
-    private(set) var placeDetails: MTPlaceDetails?
-    var initialScrollBottomMargin: CGFloat = 0.0
-
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentHeight: NSLayoutConstraint!
@@ -26,17 +21,22 @@ class DetailVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var hoursLabel: UILabel!
-    
     @IBOutlet weak var mapView: MKMapView!
     var mapViewOverlay: UIView?
     var reviewBorder: CALayer?
     var addressBorder: CALayer?
+    var pageIndex: Int = 0
+    var place: MTPlace?
+    private(set) var placeDetails: MTPlaceDetails?
+    var initialScrollBottomMargin: CGFloat = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         addBordersForRatingView()
     }
+    
     
     func addBordersForRatingView() {
         let upperBorder = CALayer()
@@ -49,14 +49,14 @@ class DetailVC: UIViewController, MKMapViewDelegate {
         ratingView.layer.addSublayer(bottomBorder)
     }
     
+    
     func setup() {
         MTProgressHUD.shared().dismiss()
         MTProgressHUD.shared().show(on: view, percentage: false)
         hideUI()
         self.mainImageView.image = nil
-//        getYelpRating()
-        
-        getDetails(place!) { (largestPhoto, details) in
+        guard let place = place else { return }
+        getDetails(place) { (largestPhoto, details) in
             self.placeDetails = details
             self.showDetails()
             guard let photoRef = largestPhoto?.reference else { return }
@@ -75,6 +75,7 @@ class DetailVC: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
     
     func showDetails() {
         if let place = place {
@@ -162,9 +163,11 @@ class DetailVC: UIViewController, MKMapViewDelegate {
         }
     }
     
+    
     func hideUI() {
         contentView.alpha = 0.0
     }
+    
     
     func showUI() {
         UIView.animate(withDuration: 0.5, animations: {
@@ -176,6 +179,7 @@ class DetailVC: UIViewController, MKMapViewDelegate {
             self.addressTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.red]
         })
     }
+    
     
     func setupMap() {
         DispatchQueue.main.asyncAfter(deadline: .now() + Double((Int64)(0.4 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
@@ -201,6 +205,7 @@ class DetailVC: UIViewController, MKMapViewDelegate {
             self.mapView?.addAnnotation(annot!)
         })
     }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let myPinAnnotationIdentifier: String = "Pin"

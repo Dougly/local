@@ -10,7 +10,6 @@ import UIKit
 import GoogleSignIn
 import FacebookLogin
 
-
 class LoginVC: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var guestButton: UIButton!

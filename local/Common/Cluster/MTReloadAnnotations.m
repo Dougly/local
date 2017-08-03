@@ -15,8 +15,10 @@
 #import "ClusterAnnotationView.h"
 #import "MKImageAnnotationView.h"
 #import "MTPlace.h"
-@implementation MTReloadAnnotations
+@import Firebase;
 
+
+@implementation MTReloadAnnotations
 
 // TODO: Replace this library with swift map clustering library
 + (void)reloadAnnotations:(BOOL)isViewLoaded :(MKMapView *)mapView :(QTree *)qTree :(MapPopupView*)currentPopupView {
@@ -58,6 +60,13 @@
         CGPoint location = [touch locationInView:view];
         if(CGRectContainsPoint(view.bounds, location)) {
             [tappedAnnotations addObject:view];
+            
+            //Analytics
+            if( [annotation isKindOfClass:[QCluster class]] ) {
+                [FIRAnalytics logEventWithName:@"tapped_map_cluster" parameters:nil];
+            } else {
+                [FIRAnalytics logEventWithName:@"tapped_map_pin" parameters:nil];
+            }
         }
     }
     return tappedAnnotations;

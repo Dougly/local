@@ -16,10 +16,10 @@ enum MTLocationViewCellIndex : Int {
 class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationViewTextfieldCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    
     var delegate: (LocationViewDelegate & LocationViewTextfieldCellDelegate)?
     let locationViewCellTextfield: String = "LocationViewTextfieldCell"
     let locationViewCellCurrent: String = "MTLocationViewCurrentLocationCell"
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,19 +27,23 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
+    
     func registerCells() {
         tableView.register(UINib(nibName: "LocationViewTextfieldCell", bundle: nil), forCellReuseIdentifier: locationViewCellTextfield)
         tableView.register(UINib(nibName: "MTLocationViewCurrentLocationCell", bundle: nil), forCellReuseIdentifier: locationViewCellCurrent)
     }
+    
     
     // MARK: - UITableView delegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var finalCell: UITableViewCell = UITableViewCell()
@@ -56,11 +60,13 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
         return finalCell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == MTLocationViewCellIndex.mtLocationViewCellCurrent.rawValue {
             currentPlaceSelected()
         }
     }
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pullDistance: CGFloat = scrollView.contentOffset.y
@@ -69,6 +75,7 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
             delegate = nil
         }
     }
+    
     
     // MARK: - MTLocationViewTextfieldCellDelegate
     func placeSelected(_ placeId: String) {
@@ -79,6 +86,7 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
         delegate = nil
     }
     
+    
     func currentPlaceSelected() {
         delegate?.currentPlaceSelected()
         let name = NSNotification.Name(rawValue: "LocationChangedNotification")
@@ -86,4 +94,6 @@ class LocationView: UIView, UITabBarDelegate, UITableViewDataSource, LocationVie
         delegate?.hideLocationView()
         delegate = nil
     }
+    
+    
 }
