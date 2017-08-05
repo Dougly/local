@@ -28,7 +28,8 @@
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
 		11B8768E1F362A8F0038380F /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8768D1F362A8F0038380F /* CurrentView.swift */; };
 		11B876901F362B1A0038380F /* FilterSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8768F1F362B1A0038380F /* FilterSelected.swift */; };
-		11B876921F3634890038380F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B876911F3634890038380F /* FilterViewController.swift */; };
+		11B876921F3634890038380F /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B876911F3634890038380F /* FilterVC.swift */; };
+		11B876941F365C350038380F /* SubFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B876931F365C350038380F /* SubFilterVC.swift */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
@@ -112,7 +113,6 @@
 		476BC24D1E795A1500B1BA91 /* SDAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 476BC24C1E795A1500B1BA91 /* SDAuth.m */; };
 		476EC2D81EC865BA0007AF1D /* MTFilterPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */; };
 		476EC2D91EC865BA0007AF1D /* MTFilterPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */; };
-		477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */; };
 		478073151EAA705500D98DD7 /* DummyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073061EAA705500D98DD7 /* DummyAnnotation.m */; };
 		478073161EAA705500D98DD7 /* QCluster+Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073081EAA705500D98DD7 /* QCluster+Annotation.m */; };
 		478073171EAA705500D98DD7 /* QCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4780730B1EAA705500D98DD7 /* QCluster.m */; };
@@ -125,7 +125,6 @@
 		4780732C1EAA70B400D98DD7 /* SDInternetConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073251EAA70B400D98DD7 /* SDInternetConnection.m */; };
 		4780732D1EAA70B400D98DD7 /* SDKeyStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073271EAA70B400D98DD7 /* SDKeyStorage.m */; };
 		4780732E1EAA70B400D98DD7 /* SDUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 478073291EAA70B400D98DD7 /* SDUserSettings.m */; };
-		4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */; };
 		4791026F1EB33C5E0071BC2C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4791026E1EB33C5E0071BC2C /* FontAwesome.otf */; };
 		4793CAF61E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */; };
 		4793CB0F1E7ED8C00054B7FB /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4793CB081E7ED8C00054B7FB /* UIColor+HexString.m */; };
@@ -292,7 +291,8 @@
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11B8768D1F362A8F0038380F /* CurrentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
 		11B8768F1F362B1A0038380F /* FilterSelected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSelected.swift; sourceTree = "<group>"; };
-		11B876911F3634890038380F /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		11B876911F3634890038380F /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		11B876931F365C350038380F /* SubFilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubFilterVC.swift; sourceTree = "<group>"; };
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
@@ -448,8 +448,6 @@
 		476EC2D51EC865BA0007AF1D /* MTFilterPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterPriceCell.h; sourceTree = "<group>"; };
 		476EC2D61EC865BA0007AF1D /* MTFilterPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterPriceCell.m; sourceTree = "<group>"; };
 		476EC2D71EC865BA0007AF1D /* MTFilterPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTFilterPriceCell.xib; sourceTree = "<group>"; };
-		477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFilterViewController.h; sourceTree = "<group>"; };
-		477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFilterViewController.m; sourceTree = "<group>"; };
 		478072F71EA94E7600D98DD7 /* Local-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Local-Bridging-Header.h"; sourceTree = "<group>"; };
 		478073051EAA705500D98DD7 /* DummyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyAnnotation.h; sourceTree = "<group>"; };
 		478073061EAA705500D98DD7 /* DummyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyAnnotation.m; sourceTree = "<group>"; };
@@ -477,8 +475,6 @@
 		478073271EAA70B400D98DD7 /* SDKeyStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDKeyStorage.m; sourceTree = "<group>"; };
 		478073281EAA70B400D98DD7 /* SDUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUserSettings.h; sourceTree = "<group>"; };
 		478073291EAA70B400D98DD7 /* SDUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUserSettings.m; sourceTree = "<group>"; };
-		4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSubfilterViewController.h; sourceTree = "<group>"; };
-		4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSubfilterViewController.m; sourceTree = "<group>"; };
 		4791026E1EB33C5E0071BC2C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Resources/FontAwesome.otf; sourceTree = "<group>"; };
 		4793CAF41E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSkypeActivityIndicatorView.h; sourceTree = "<group>"; };
 		4793CAF51E7E9E5C0054B7FB /* SCSkypeActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSkypeActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -1740,11 +1736,8 @@
 				474001DE1EB79F4600C55420 /* MTMainViewController.m */,
 				474001BF1EB6112600C55420 /* MTPageContainerViewController.h */,
 				474001C01EB6112600C55420 /* MTPageContainerViewController.m */,
-				477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */,
-				477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */,
-				11B876911F3634890038380F /* FilterViewController.swift */,
-				4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */,
-				4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */,
+				11B876911F3634890038380F /* FilterVC.swift */,
+				11B876931F365C350038380F /* SubFilterVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2109,7 +2102,7 @@
 				474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */,
 				47157CF41E7C8BE6000D11E9 /* SDWebImageDownloaderOperation.m in Sources */,
 				47157CEF1E7C8BE6000D11E9 /* NSData+GIF.m in Sources */,
-				11B876921F3634890038380F /* FilterViewController.swift in Sources */,
+				11B876921F3634890038380F /* FilterVC.swift in Sources */,
 				9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */,
 				118EA7D51F2BDB0D00655854 /* DetailVC.swift in Sources */,
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
@@ -2217,11 +2210,9 @@
 				112716741F1D810100F6981B /* FilterViewListener.m in Sources */,
 				4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */,
 				47260E0E1E797C590007990C /* MTGetPlacesResponse.m in Sources */,
-				4788AD9E1EC378310072CEF2 /* MTSubfilterViewController.m in Sources */,
 				B013DBA61EB8DF5A00A96F75 /* NSCalendarHelper.m in Sources */,
 				B013DBA31EB8DF5A00A96F75 /* MDDatePicker.m in Sources */,
 				47157CFC1E7C8BE6000D11E9 /* UIImageView+WebCache.m in Sources */,
-				477B5F821EC35EBD0001AC8B /* MTFilterViewController.m in Sources */,
 				47A980171EAE070E00AB8657 /* TipCell.m in Sources */,
 				474001D21EB6236C00C55420 /* MTYelpManager.m in Sources */,
 				1127167D1F1D81F200F6981B /* CustomButtonItem.m in Sources */,
@@ -2240,6 +2231,7 @@
 				B013DBC21EB8DF5A00A96F75 /* MDSuggestTableView.m in Sources */,
 				47A97FEB1EAD0A3F00AB8657 /* MTDistanceCell.m in Sources */,
 				47157CF31E7C8BE6000D11E9 /* SDWebImageDownloader.m in Sources */,
+				11B876941F365C350038380F /* SubFilterVC.swift in Sources */,
 				47A980401EAE64DD00AB8657 /* MTGoogleFilter.m in Sources */,
 				118EA7D71F2D42AA00655854 /* MapVC.swift in Sources */,
 				47157C911E7C853A000D11E9 /* IDMTapDetectingView.m in Sources */,

@@ -12,7 +12,7 @@
 #import "AppStateListener.h"
 #import "MTDataModel.h"
 #import "FilterViewListener.h"
-#import "MTFilterViewController.h"
+#import "Local-Swift.h"
 @import Firebase;
 
 #define FILTER_VIEW_HEIGHT              250
@@ -101,7 +101,7 @@
     [FIRAnalytics logEventWithName:@"opened_filter_menu" parameters:nil];
     [UIView animateWithDuration:0.4 animations:^{
         /* This looks ugly. navigation for filterview should be refactored*/
-        MTFilterViewController *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
+        FilterVC *filterViewController = ((UINavigationController *)self.childViewControllers.lastObject).viewControllers.firstObject;
         [filterViewController.navigationController popViewControllerAnimated:NO];
         [filterViewController prepareForShow];
         self.filterContainterView.alpha = 1.0;

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FilterViewController: UIViewController {
+class FilterVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var subfilterIndex: Int = 0
@@ -156,22 +156,24 @@ class FilterViewController: UIViewController {
         }
         else {
             let main = UIStoryboard(name: "Main", bundle: nil)
-            let subfilterViewController: MTSubfilterViewController? = main.instantiateViewController(withIdentifier: "MTSubfilterViewController")
-            subfilterViewController?.filterGroupIndex = (MTFilterViewCellIndex)
-            indexPath.row
-            navigationController?.pushViewController(subfilterViewController!, animated: true)
+            let subfilterViewController = main.instantiateViewController(withIdentifier: "subFilterVC") as! SubFilterVC
+            subfilterViewController.filterGroupIndex = FilterViewCellIndex(rawValue: indexPath.row)
+            navigationController?.pushViewController(subfilterViewController, animated: true)
         }
-        self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow(), animated: true)
-        FIRAnalytics.logEvent(withName: "selected_filter", parameters: nil)
+        self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
+        Analytics.logEvent(Constants.selectedFilterEvent, parameters: nil)
         // Add switch statement
     }
     
+    
+    //If user swipes down hide scroll view
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pullDistance: CGFloat = scrollView.contentOffset.y
         if pullDistance < -70 {
             if !isClosed {
-                let userInfo: [AnyHashable: Any] = [kRevertFilterViewToPreviousIndex: (true)]
-                NotificationCenter.default.post(name: nHIDE_FILTER_VIEW_NOTIFICATION, object: nil, userInfo: userInfo as? [AnyHashable : Any] ?? [AnyHashable : Any]())
+                let userInfo: [AnyHashable: Any] = ["RevertFilterVIewToPreviousIndex" : (true)]
+                let name = NSNotification.Name(rawValue: "HideFilterViewNotification")
+                NotificationCenter.default.post(name: name, object: nil, userInfo: userInfo)
                 isClosed = true
             }
         }
