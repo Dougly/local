@@ -37,7 +37,35 @@ struct Constants {
     static let openedFilterMenuEvent = "opened_filter_menu"
     
     //Need to be more specific with filters
-    let selectedFilterEvent = "selected_filter"
+    static let selectedFilterEvent = "selected_filter"
     
     
+    //Filter View
+    static let filterKeyWords: [String] = ["coffee+tea", "healthy", "comfort", "sweet", "wine+beer+cocktail"]
+    
+    static let subFilterKeyWords: [[String]] = [[],
+                                                ["juice", "smoothie", "seafood+sushi", "vegetarian", "salad"],
+                                                ["italian", "american", "indian+masala+tandori", "french", "mexican", "chinese", "pizza", "steak"],
+                                                ["ice+cream", "pastry", "bakery"],
+                                                []]
+    
+    static let filterTitles: [String] = ["Caffeine", "Healthy-ish", "Comfort Food", "Sweet Treats", "The hard stuff"]
+    
+    static let subFilterTitles: [[String]] = [[],
+                                              ["Juice", "Smoothie", "Seafood & Sushi", "Vegetarian", "Salad"],
+                                              ["Italian", "American", "Indian" , "French", "Mexican", "Chinese", "Pizza", "Steak"],
+                                              ["Ice cream", "Pastry", "Bakery"],
+                                              []]
+    
+    
+}
+
+enum FilterViewCellIndex: Int {
+    case coffee = 0
+    case healthy = 1
+    case comfort = 2
+    case sweet = 3
+    case hardStuff = 4
+    case price = 5
+    case count = 6
 }

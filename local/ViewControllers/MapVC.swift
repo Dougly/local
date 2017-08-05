@@ -76,7 +76,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
             if success {
                 self.reloadAnnotations()
                 if places?.count == 0 {
-                    self.presentAlert(with: "There were no places found matching your search criteria.")
+                    self.presentAlert(with: "We couldn't find an exact match, but here are some top rated spots nearby that might satisfy your craving. If you're on a mission, try adjusting your search area.")
                     self.listView?.activityIndicator.stopAnimating()
                 }
             }
@@ -86,7 +86,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     func presentAlert(with message: String) {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let alert = UIAlertController(title: "No Places Found", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Hmmm...", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
@@ -309,6 +309,10 @@ extension MapVC: SearchViewDelegate {
                 listView?.alpha = 1
             }
             showMapNavigationItem()
+            
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.currentView = .list
+            }
         }
     }
     
@@ -317,6 +321,9 @@ extension MapVC: SearchViewDelegate {
         UIView.animate(withDuration: 0.5, animations: { 
             self.listView?.alpha = 0.0
         }) { (success) in
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.currentView = .map
+            }
         }
         showListNavigationItem()
     }

@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var auth = Authentication()
     
+    //Tracking For Analytics
+    var currentView: CurrentView?
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -42,8 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser != nil {
             let controllers = [loginVC, mainViewController]
             navController.setViewControllers(controllers, animated: false)
+            self.currentView = .list
         } else {
             navController.setViewControllers([loginVC], animated: false)
+            self.currentView = .login
         }
         
         window?.rootViewController = navController

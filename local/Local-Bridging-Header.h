@@ -50,4 +50,9 @@
 //Location View
 #import "MTLocationViewCurrentLocationCell.h"
 
+//FilterVC
+#import "MTFilterViewCell.h"
+#import "MTFilterPriceCell.h"
+#import "MTSubfilterViewController.h"
+
 

@@ -26,6 +26,9 @@
 		11A00C3C1F225C6600D42984 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C3B1F225C6600D42984 /* LoginVC.swift */; };
 		11A00C411F22779C00D42984 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00C401F22779C00D42984 /* Authentication.swift */; };
 		11B1A7EF1F254B2A000EADBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */; };
+		11B8768E1F362A8F0038380F /* CurrentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8768D1F362A8F0038380F /* CurrentView.swift */; };
+		11B876901F362B1A0038380F /* FilterSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8768F1F362B1A0038380F /* FilterSelected.swift */; };
+		11B876921F3634890038380F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B876911F3634890038380F /* FilterViewController.swift */; };
 		4713822D1EB3B61F0009344C /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */; };
 		4713822F1EB3C2820009344C /* PredictionPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713822E1EB3C2820009344C /* PredictionPlace.swift */; };
 		47157C531E7C45FB000D11E9 /* sign-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47157C501E7C45FB000D11E9 /* sign-bg.png */; };
@@ -287,6 +290,9 @@
 		11A00C3B1F225C6600D42984 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		11A00C401F22779C00D42984 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		11B1A7EE1F254B29000EADBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11B8768D1F362A8F0038380F /* CurrentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentView.swift; sourceTree = "<group>"; };
+		11B8768F1F362B1A0038380F /* FilterSelected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSelected.swift; sourceTree = "<group>"; };
+		11B876911F3634890038380F /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4713822C1EB3B61F0009344C /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		4713822E1EB3C2820009344C /* PredictionPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionPlace.swift; sourceTree = "<group>"; };
 		47157C501E7C45FB000D11E9 /* sign-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sign-bg.png"; path = "Images.xcassets/other/sign-bg.png"; sourceTree = "<group>"; };
@@ -784,6 +790,15 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
+		11B8768C1F3629E90038380F /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				11B8768D1F362A8F0038380F /* CurrentView.swift */,
+				11B8768F1F362B1A0038380F /* FilterSelected.swift */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
 		44B98ECA40076F3926539957 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,13 +825,6 @@
 				6D10C4E2D8B6ED29FDA40272 /* Pods_Local.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		47157C6B1E7C7457000D11E9 /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		47157C6F1E7C7DC2000D11E9 /* FloatingButton */ = {
@@ -1694,6 +1702,7 @@
 		CE250EE61B676634005447FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11B8768C1F3629E90038380F /* Analytics */,
 				11A00C3D1F22770800D42984 /* Authentication */,
 				CE250F211B67719E005447FF /* Classes */,
 				CE250F1B1B6768A6005447FF /* MTDataModel.h */,
@@ -1721,7 +1730,6 @@
 			isa = PBXGroup;
 			children = (
 				47A97FAA1EACDB2B00AB8657 /* Picker */,
-				47157C6B1E7C7457000D11E9 /* ImagePicker */,
 				118EA7D41F2BDB0D00655854 /* DetailVC.swift */,
 				47A9801B1EAE084800AB8657 /* ViewController.h */,
 				47A9801C1EAE084800AB8657 /* ViewController.m */,
@@ -1734,6 +1742,7 @@
 				474001C01EB6112600C55420 /* MTPageContainerViewController.m */,
 				477B5F801EC35EBD0001AC8B /* MTFilterViewController.h */,
 				477B5F811EC35EBD0001AC8B /* MTFilterViewController.m */,
+				11B876911F3634890038380F /* FilterViewController.swift */,
 				4788AD9C1EC378310072CEF2 /* MTSubfilterViewController.h */,
 				4788AD9D1EC378310072CEF2 /* MTSubfilterViewController.m */,
 			);
@@ -2036,6 +2045,7 @@
 				47157CCB1E7C8BAC000D11E9 /* UIProgressView+AFNetworking.m in Sources */,
 				4793CB111E7ED8C00054B7FB /* UIView+DropShadow.m in Sources */,
 				B013DBA81EB8DF5A00A96F75 /* MDDeviceHelper.m in Sources */,
+				11B876901F362B1A0038380F /* FilterSelected.swift in Sources */,
 				4780732B1EAA70B400D98DD7 /* Reachability.m in Sources */,
 				476BC24A1E79582C00B1BA91 /* UIColor+BFPaperColors.m in Sources */,
 				47A97FBD1EACDBA500AB8657 /* MTTagCell.m in Sources */,
@@ -2099,6 +2109,7 @@
 				474001DA1EB7978D00C55420 /* AppStateListener.m in Sources */,
 				47157CF41E7C8BE6000D11E9 /* SDWebImageDownloaderOperation.m in Sources */,
 				47157CEF1E7C8BE6000D11E9 /* NSData+GIF.m in Sources */,
+				11B876921F3634890038380F /* FilterViewController.swift in Sources */,
 				9161F5F11BCE8ADC0072929C /* IMGActivityIndicator.m in Sources */,
 				118EA7D51F2BDB0D00655854 /* DetailVC.swift in Sources */,
 				B013DBDB1EB8E22500A96F75 /* SSKeychainQuery.m in Sources */,
@@ -2200,6 +2211,7 @@
 				47157CEE1E7C8BE6000D11E9 /* MKAnnotationView+WebCache.m in Sources */,
 				47157CCA1E7C8BAC000D11E9 /* UIImageView+AFNetworking.m in Sources */,
 				47157C8F1E7C853A000D11E9 /* IDMPhotoBrowser.m in Sources */,
+				11B8768E1F362A8F0038380F /* CurrentView.swift in Sources */,
 				B013DBB81EB8DF5A00A96F75 /* MDToast.m in Sources */,
 				478073171EAA705500D98DD7 /* QCluster.m in Sources */,
 				112716741F1D810100F6981B /* FilterViewListener.m in Sources */,

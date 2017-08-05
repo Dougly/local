@@ -181,7 +181,10 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [FIRAnalytics logEventWithName:@"selected_filter" parameters:nil];
+    // Analytics
+    
+    
+    // Cell selection logic
     if (indexPath.row == MTFilterViewCellCoffee || indexPath.row == MTFilterViewCellHardStuff) {
         [MTSettings sharedSettings].filterKeyWords = FILTERS_KEY_WORDS[indexPath.row];
         MTFilterViewCell *currentlySelectedCell = [self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
@@ -197,6 +200,7 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
                                                                 object:nil
                                                               userInfo:false];
         });
+        
     }
     else {
         UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -206,6 +210,10 @@ NSString *const FILTER_PRICE_CELL = @"MTFilterPriceCell";
     }
     
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
+    [FIRAnalytics logEventWithName:@"selected_filter" parameters:nil];
+    // Add switch statement
+    
 }
 
 

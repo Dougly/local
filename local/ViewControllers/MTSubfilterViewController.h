@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@enum 
 
 @interface MTSubfilterViewController : UIViewController
 @property (nonatomic) MTFilterViewCellIndex filterGroupIndex;
