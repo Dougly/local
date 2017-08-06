@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FilterVC: UIViewController {
+class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var subfilterIndex: Int = 0
@@ -42,13 +42,18 @@ class FilterVC: UIViewController {
     func calculateSelectedIndexPath() {
         var index: Int = -1
         guard let filterKeyWord = MTSettings.shared().filterKeyWords else { return }
-        
+        print(filterKeyWord)
         switch filterKeyWord {
         case Constants.filterKeyWords[0]:
+            print("got to 0")
+
             index = 0
         case Constants.filterKeyWords[4]:
+            print("got to 4")
+
             index = 4
         default:
+            print("got to default")
             for (i, stringArray) in Constants.subFilterKeyWords.enumerated() {
                 for (j, subfilterWord) in stringArray.enumerated() {
                     if subfilterWord == filterKeyWord {
@@ -59,7 +64,7 @@ class FilterVC: UIViewController {
                 }
             }
         }
-        
+        print("selected index : \(index)")
         selectedIndexPath = IndexPath(row: index, section: 0)
     }
     
@@ -81,7 +86,10 @@ class FilterVC: UIViewController {
         var finalCell: UITableViewCell? = nil
         // all the filter cells
         if indexPath.row < FilterViewCellIndex.price.rawValue {
+            print("first if")
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "MTFilterViewCell", for: indexPath) as! MTFilterViewCell
+            var subfilterString: String = ""
             
             if let selectedIndexPath = self.selectedIndexPath {
                 if indexPath.row == selectedIndexPath.row {
@@ -91,49 +99,50 @@ class FilterVC: UIViewController {
                     cell.markImageView?.isHidden = true
                 }
                 
-                var subfilterString: String = ""
-                
-                if selectedIndexPath.row < Constants.filterTitles.count && indexPath.row == selectedIndexPath.row {
+                if selectedIndexPath.row < Constants.filterTitles.count && indexPath.row == selectedIndexPath.row && !Constants.subFilterTitles[selectedIndexPath.row].isEmpty {
                     if selectedIndexPath.row >= FilterViewCellIndex.healthy.rawValue {
                         let subfilters = Constants.subFilterTitles[selectedIndexPath.row]
+                        print(subfilters.count)
+                        print(subfilterIndex)
                         subfilterString = subfilters[subfilterIndex]
                         subfilterString = " [\(subfilterString)]"
                         
                     }
                 }
-                
-                switch indexPath.row {
-                case FilterViewCellIndex.coffee.rawValue:
-                    cell.leftImageButton?.titleLabel?.font = UIFont(name: "FontAwesome", size: 14)
-                    cell.leftImageButton?.setTitle("", for: .normal)
-                    cell.captionLabel?.text = "Caffeine"
-                    finalCell = cell
-                case FilterViewCellIndex.hardStuff.rawValue:
-                    cell.leftImageButton?.titleLabel?.font = UIFont(name: "FontAwesome", size: 14)
-                    cell.leftImageButton?.setTitle("0000f000", for: .normal)
-                    cell.captionLabel?.text = "The Hard Stuff"
-                    finalCell = cell
-                case FilterViewCellIndex.healthy.rawValue:
-                    cell.leftImageButton?.setTitle("0000e09e", for: .normal)
-                    cell.captionLabel?.text = "Healthy-ish" + (subfilterString)
-                    finalCell = cell
-                case FilterViewCellIndex.comfort.rawValue:
-                    cell.leftImageButton?.setTitle("0000e04d", for: .normal)
-                    cell.captionLabel?.text = "Comfort Food" + (subfilterString)
-                    finalCell = cell
-                case FilterViewCellIndex.sweet.rawValue:
-                    cell.leftImageButton?.setTitle("0000e073", for: .normal)
-                    cell.captionLabel?.text = "Sweet Treats" + (subfilterString)
-                    finalCell = cell
-                default:
-                    break
-                }
             }
-        }
-        else {
+            
+            switch indexPath.row {
+            case FilterViewCellIndex.coffee.rawValue:
+                cell.leftImageButton?.titleLabel?.font = UIFont(name: "FontAwesome", size: 14)
+                cell.leftImageButton?.setTitle("", for: .normal)
+                cell.captionLabel?.text = "Caffeine"
+                finalCell = cell
+            case FilterViewCellIndex.hardStuff.rawValue:
+                cell.leftImageButton?.titleLabel?.font = UIFont(name: "FontAwesome", size: 14)
+                cell.leftImageButton?.setTitle("0000f000", for: .normal)
+                cell.captionLabel?.text = "The Hard Stuff"
+                finalCell = cell
+            case FilterViewCellIndex.healthy.rawValue:
+                cell.leftImageButton?.setTitle("0000e09e", for: .normal)
+                cell.captionLabel?.text = "Healthy-ish" + (subfilterString)
+                finalCell = cell
+            case FilterViewCellIndex.comfort.rawValue:
+                cell.leftImageButton?.setTitle("0000e04d", for: .normal)
+                cell.captionLabel?.text = "Comfort Food" + (subfilterString)
+                finalCell = cell
+            case FilterViewCellIndex.sweet.rawValue:
+                cell.leftImageButton?.setTitle("0000e073", for: .normal)
+                cell.captionLabel?.text = "Sweet Treats" + (subfilterString)
+                finalCell = cell
+            default:
+                break
+            }
+        } else {
+            print("got to else")
             let cell = tableView.dequeueReusableCell(withIdentifier: "MTFilterPriceCell", for: indexPath) as! MTFilterPriceCell
             finalCell = cell
         }
+        print(finalCell)
         return finalCell!
     }
     

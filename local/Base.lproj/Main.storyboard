@@ -740,8 +740,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="7tQ-6P-8bD" id="OEe-Ka-TZL"/>
-                                    <outlet property="delegate" destination="7tQ-6P-8bD" id="kA5-9G-3k4"/>
+                                    <outlet property="dataSource" destination="7tQ-6P-8bD" id="rtA-mA-bl8"/>
+                                    <outlet property="delegate" destination="7tQ-6P-8bD" id="nGB-io-B01"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -779,8 +779,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="Ors-TJ-fjg" id="PsW-Ox-sxc"/>
-                                    <outlet property="delegate" destination="Ors-TJ-fjg" id="CBj-2Q-WlS"/>
+                                    <outlet property="dataSource" destination="Ors-TJ-fjg" id="pMI-oV-OqV"/>
+                                    <outlet property="delegate" destination="Ors-TJ-fjg" id="9JL-DP-wh8"/>
                                 </connections>
                             </tableView>
                         </subviews>

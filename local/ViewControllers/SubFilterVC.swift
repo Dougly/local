@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SubFilterVC: UIViewController, UIGestureRecognizerDelegate {
+class SubFilterVC: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource  {
     
     //let SUB_FILTER_VIEW_CELL: String = "MTFilterViewCell"
     var filterGroupIndex: FilterViewCellIndex?
@@ -100,8 +100,9 @@ class SubFilterVC: UIViewController, UIGestureRecognizerDelegate {
             let keywords = Constants.subFilterKeyWords[filterGroupIndex.rawValue]
             MTSettings.shared().filterKeyWords = keywords[indexPath.row]
             guard let selectedIndexPath = selectedIndexPath else { return }
-            let currentlySelectedCell = self.tableView.cellForRow(at: selectedIndexPath) as! MTFilterViewCell
-            currentlySelectedCell.markImageView?.isHidden = true
+            print("(******** + \(selectedIndexPath)")
+            let currentlySelectedCell = tableView.cellForRow(at: selectedIndexPath) as? MTFilterViewCell
+            currentlySelectedCell?.markImageView?.isHidden = true
             let newlySelectedCell = self.tableView.cellForRow(at: indexPath) as! MTFilterViewCell
             newlySelectedCell.markImageView?.isHidden = false
             self.selectedIndexPath = indexPath
